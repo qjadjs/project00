@@ -60,7 +60,6 @@ public class BoardController {
 	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
 		log.info("modify : " + board);
 		if (service.modify(board) == true) {
-			// 1회용 속성이 flashAttribute 추가
 			rttr.addFlashAttribute("result", "success");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
