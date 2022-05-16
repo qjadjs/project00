@@ -1,4 +1,4 @@
-package com.globain.domain;
+package com.globalin.domain;
 
 import java.util.Date;
 

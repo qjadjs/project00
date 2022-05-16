@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.globain.domain.BoardVO;
+import com.globalin.domain.BoardVO;
+import com.globalin.domain.Criteria;
+import com.globalin.domain.Page;
+import com.globalin.service.BoardService;
 
 @Controller
 @RequestMapping("/board/*")
