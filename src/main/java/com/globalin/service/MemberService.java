@@ -1,4 +1,4 @@
-package com.globain.service;
+package com.globalin.service;
 
 import com.globalin.domain.MemberVO;
 

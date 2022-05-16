@@ -1,6 +1,5 @@
 package com.globalin.domain;
 
-<<<<<<< HEAD
 import java.util.Date;
 
 public class MemberVO {
@@ -45,12 +44,5 @@ public class MemberVO {
 		return "MemberVO [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", email=" + email
 				+ ", regDate=" + regDate + "]";
 	}
-	
-	
-	
-	
-=======
-public class MemberVO {
-
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 }
+	

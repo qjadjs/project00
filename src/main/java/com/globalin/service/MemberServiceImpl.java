@@ -1,4 +1,4 @@
-package com.globain.service;
+package com.globalin.service;
 
 public class MemberServiceImpl implements MemberService {
 	
