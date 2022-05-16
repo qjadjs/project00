@@ -5,45 +5,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<!-- include summernote-ko-KR -->
+<script src="/resources/js/summernote-ko-KR.js"></script>
 <title>게시글 작성</title>
 </head>
-<script src="resources/js/summernote/summernote-lite.js"></script>
-<script src="resources/js/summernote/lang/summernote-ko-KR.js"></script>
-<link rel="stylesheet"
-	href="resources/css/summernote/summernote-lite.css">
 <body>
-	<div>
-		<form method="post">
-			<input type="text" name="title"> <input type="hidden"
-				name="writer" value="${작성자 이름}">
-			<textarea id="summernote" name="editordata"></textarea>
+	<div style="width: 60%; margin: auto;">
+		<form method="post" action="/write">
+			<input type="text" name="writer" style="width: 20%;"
+				placeholder="작성자" /><br> <input type="text" name="title"
+				style="width: 40%;" placeholder="제목" /> <br>
+			<br>
+			<textarea id="summernote" name="content"></textarea>
+			<input id="subBtn" type="button" value="글 작성" style="float: right;"
+				onclick="goWrite(this.form)" />
 		</form>
 	</div>
 </body>
 <script>
 	$(document).ready(function() {
-
-		$("#summernote").summernote({
-			height : 300,
-			minHeight : null,
-			maxHeignt : null,
+		$('#summernote').summernote({
+			placeholder : '내용을 입력하세요',
+			minHeight : 370,
+			maxHeight : null,
 			focus : true,
-			lang : "ko-KR",
-			placeholder : '최대 2048자까지 쓸 수 있습니다',
-			toolbar: [
-			    ['fontname', ['fontname']],
-			    ['fontsize', ['fontsize']],
-			    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-			    ['color', ['forecolor','color']],
-			    ['table', ['table']],
-			    ['para', ['ul', 'ol', 'paragraph']],
-			    ['height', ['height']],
-			    ['insert',['picture','link','video']],
-			    ['view', ['fullscreen', 'help']]
-			  ],
-			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-		})
-	})
+			lang : 'ko-KR'
+		});
+	});
 </script>
 </html>

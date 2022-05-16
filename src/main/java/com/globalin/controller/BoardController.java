@@ -35,10 +35,10 @@ public class BoardController {
 		model.addAttribute("pageMaker", new Page(cri, total));
 	}
 
-	@PostMapping("/writer")
-	@PreAuthorize("isAuthenticated()")
-	public String writer(BoardVO board, RedirectAttributes rttr) {
-		log.info("writer : " + board);
+	@PostMapping("/write")
+//	@PreAuthorize("isAuthenticated()")
+	public String write(BoardVO board, RedirectAttributes rttr) {
+		log.info("write : " + board);
 
 		service.write(board);
 		rttr.addFlashAttribute("result", board.getBno());
@@ -55,7 +55,7 @@ public class BoardController {
 		model.addAttribute("board", board);
 	}
 
-	@PreAuthorize("principal.username == #board.writer")
+//	@PreAuthorize("principal.username == #board.writer")
 	@PostMapping("/modify")
 	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
 		log.info("modify : " + board);
@@ -67,7 +67,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@PreAuthorize("principal.username == #writer")
+//	@PreAuthorize("principal.username == #writer")
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr, String writer) {
 
@@ -80,8 +80,8 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@GetMapping("/writer")
+	@GetMapping("/write")
 //	@PreAuthorize("isAuthenticated()")
-	public void writer() {
+	public void write() {
 	}
 }
