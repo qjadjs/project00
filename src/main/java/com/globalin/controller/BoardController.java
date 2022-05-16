@@ -35,12 +35,12 @@ public class BoardController {
 		model.addAttribute("pageMaker", new Page(cri, total));
 	}
 
-	@PostMapping("/register")
+	@PostMapping("/writer")
 	@PreAuthorize("isAuthenticated()")
-	public String register(BoardVO board, RedirectAttributes rttr) {
-		log.info("register : " + board);
+	public String writer(BoardVO board, RedirectAttributes rttr) {
+		log.info("writer : " + board);
 
-		service.register(board);
+		service.write(board);
 		rttr.addFlashAttribute("result", board.getBno());
 
 		return "redirect:/board/list";
@@ -80,8 +80,8 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@GetMapping("/register")
-	@PreAuthorize("isAuthenticated()")
-	public void register() {
+	@GetMapping("/writer")
+//	@PreAuthorize("isAuthenticated()")
+	public void writer() {
 	}
 }

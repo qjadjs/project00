@@ -21,7 +21,7 @@ public class BoardServiceImpl implements BoardService {
 	private Logger log = LoggerFactory.getLogger(BoardServiceImpl.class);
 
 	@Override
-	public void register(BoardVO board) {
+	public void write(BoardVO board) {
 		log.info("게시물 등록 : " + board);
 		mapper.insertSelectKey(board);
 	}

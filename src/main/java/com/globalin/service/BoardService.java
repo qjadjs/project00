@@ -7,7 +7,7 @@ import com.globalin.domain.Criteria;
 
 public interface BoardService {
 
-	public void register(BoardVO board);
+	public void write(BoardVO board);
 
 	public BoardVO get(int bno);
 
