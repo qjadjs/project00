@@ -7,6 +7,7 @@
 <title>REGISTER PAGE</title>
 </head>
 <body>
+<div></div>
 <form action="register" method="post">
 	<input type="text" name="userid" placeholder="아이디">
 	<input type="password" name="userpw" placeholder="비밀번호">
