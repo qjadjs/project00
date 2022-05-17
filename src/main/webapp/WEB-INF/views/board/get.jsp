@@ -190,24 +190,8 @@
 				console.log(pageHtml);
 
 			}
-			
 	});
 		
-		function goWrite(frm) {
-			var title = frm.title.value;
-			var writer = frm.writer.value;
-			var content = frm.content.value;
-			
-			if (content.trim() == ''){
-				alert("내용을 입력해주세요");
-				return false;
-			}
-			frm.submit();
-		};
-		
-		
-		
-
 </script>
 	<script type="text/javascript">
 	$(document).ready(function() {
