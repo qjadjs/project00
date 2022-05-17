@@ -84,12 +84,13 @@
 
 	}
 </script>
+<link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
-<body class="register-body" bgcolor='#212529' weight="100px";>
-	<form action="/user/register" method="post" onsubmit="return checked()">
-		<fieldset style="width: 350;">
-			<legend align="center">회원가입</legend>
-			<table align="center">
+<body class="register-body">
+	<form class= "register-form" action="/user/register" method="post" onsubmit="return checked()">
+		<fieldset>
+			<legend align="center" class="register-fieldset">회원가입</legend>
+			<table class="tb">
 				<tr>
 					<td><input type="text" name="userId" id="userId"
 						placeholder="아이디"> <input type="button"
@@ -114,8 +115,10 @@
 						placeholder="이메일"></td>
 				</tr>
 			</table>
-			<input type="submit" value="회원가입"> <input type="reset"
-				value="리셋">
+			<div class="register-input">
+			<input type="submit" value="회원가입"> 
+			<input type="reset"value="리셋">
+			</div>
 		</fieldset>
 	</form>
 

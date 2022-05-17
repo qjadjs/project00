@@ -395,5 +395,24 @@ dl {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
 }
-
+.tb {
+	text-align: center;
+	align-items: center;
+	align-content: center;
+}
+.register-form {
+	margin-left: 680px;
+	margin-right: 700px;
+	margin-top: 180px;
+	
+}
+.register-body {
+	background-color:#212529;
+}
+.register-fieldset {
+	color : white;
+}
+.register-input {
+	align: center;
+}
 }
