@@ -31,7 +31,7 @@
 				style="width: 100%;" placeholder="제목" />
 			<br>
 			<br>
-			<textarea id="summernote" name="content" placeholder="내용을 입력하세요"></textarea>
+			<textarea id="summernote" name="content"></textarea>
 			<br>
 			<input id="subBtn" type="button" value="글 작성" style="float: center;"
 				onclick="goWrite(this.form)" />

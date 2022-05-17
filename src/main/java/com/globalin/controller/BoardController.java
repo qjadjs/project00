@@ -64,7 +64,7 @@ public class BoardController {
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
-		return "redirect:/board/get?";
+		return "redirect:/board/list";
 	}
 
 //	@PreAuthorize("principal.username == #writer")
