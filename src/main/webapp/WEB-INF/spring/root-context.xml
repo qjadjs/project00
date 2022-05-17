@@ -21,8 +21,8 @@
 			value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value="junjun"></property>
-		<property name="password" value="12345"></property>
+		<property name="username" value="system"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 
 	<!-- sql session factory를 추가 sql session factory에 필요한 의존성 주입 -->
