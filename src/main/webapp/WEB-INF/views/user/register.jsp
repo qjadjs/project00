@@ -46,8 +46,7 @@
 			nametext.value = "";
 			nametext.focus();
 			return false;
-		}
-		else if (!regExp1.test(password)) {
+		} else if (!regExp1.test(password)) {
 			alert("형식에 맞춰 비밀번호를 입력하세요");
 			patext.value = "";
 			patext.focus();
@@ -87,39 +86,26 @@
 <link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
 <body class="register-body">
-	<form class= "register-form" action="/user/register" method="post" onsubmit="return checked()">
-		<fieldset>
-			<legend align="center" class="register-fieldset">회원가입</legend>
-			<table class="tb">
-				<tr>
-					<td><input type="text" name="userId" id="userId"
-						placeholder="아이디"> <input type="button"
-						onclick="idOverlap()" value="중복확인" /></td>
+	<form class="joinForm" action="/user/register" method="post"
+		onsubmit="return checked()">
+		
+		<div class="textForm">
+			<input type="text" name="userId" class="id" id="userId"
+				placeholder="아이디"> <input type="button"
+				onclick="idOverlap()" value="중복확인" /> <input type="text"
+				name="userName" class="name" id="userName" placeholder="이름 ">
 
-				</tr>
-				<tr>
-					<td><input type="text" name="userName" id="userName"
-						placeholder="이름 "></td>
-				</tr>
-				<tr>
-					<td><input type="password" name="userPw" id="password"
-						placeholder="비밀번호"></td>
-				</tr>
-				<tr>
-					<td><input type="password" name="passwordConfrim"
-						id="passwordConfirm" placeholder="비밀번호  확인"
-						onkeyup="passConfirm()"> <span id="confirmMsg"></span></td>
-				</tr>
-				<tr>
-					<td><input type="email" name="userEmail" id="userEmail"
-						placeholder="이메일"></td>
-				</tr>
-			</table>
-		<div class="register-input">
-			<input type="submit" value="회원가입"> 
-			<input type="reset"value="리셋">
+			<input type="password" name="userPw" class="pw" id="password"
+				placeholder="비밀번호"> <input type="password"
+				name="passwordConfrim" class="pw" id="passwordConfirm"
+				placeholder="비밀번호  확인" onkeyup="passConfirm()"> <span
+				id="confirmMsg"></span> <input type="email" class="email"
+				name="userEmail" id="userEmail" placeholder="이메일">
+
 		</div>
-		</fieldset>
+		<div class="register-input">
+			<input type="submit" class="btn" value="J O I N"/>
+		</div>
 	</form>
 
 </body>
