@@ -24,7 +24,7 @@ public class UserRegisterController {
 	// 회원가입 페이지
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerGET() throws Exception {
-		log.info("/register : " );
+		log.info("/register : ");
 		return "/user/register";
 	}
 
@@ -36,6 +36,11 @@ public class UserRegisterController {
 		userService.register(userVO);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		return "redirect:/user/login";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() throws Exception {
+		return "/user/login";
 	}
 
 }

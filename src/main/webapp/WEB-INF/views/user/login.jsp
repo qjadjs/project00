@@ -7,7 +7,7 @@
 <title>LOGIN PAGE</title>
 </head>
 <body>
-	<form action="/user/loginPost" method="post">
+	<form action="/login" method="post">
 		<div>
 			<input type="text" name="userid" placeholder="아아디">
 		</div>
