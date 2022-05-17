@@ -5,11 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"/>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"/>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <title>게시글</title>
@@ -25,15 +33,18 @@
 		</div>
 		<div style="width: 70%; margin: auto; text-align: center; height: 110%;">
 			<div>
-			<div style="width: 100%; font-size: 25px;">
-			<input type="text" name="title" readonly value='<c:out value="${board.title}"/>'/>
-			<br>
-			<input type="text" style="height: 100%; font-size: 10px; float: right;" name="writer" readonly value='<c:out value="${board.writer}"/>'>
+			<div style="width: 100%; font-size: 25px;" name="title" >
+			<c:out value="${board.title}"/>			
 			</div>
 			<br>
+			<div style="height: 100%; font-size: 10px; float: right;" name="writer">
+			<c:out value="${board.writer}"/>
 			</div>
-			<div style="width: 100%; font-size: 15px;">
-			<textarea readonly cols="100" rows="10"><c:out value="${board.content}"/></textarea>
+			</div>
+			<br>
+			<div name="content" style="width: 100%; font-size: 15px; height: 300px; border-color: black;">
+			<c:out value="${board.content}"/>
+			</div>
 			</div>
 		</div>
 	</form>
@@ -75,6 +86,18 @@
 				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 			  });
 		});
+		
+		function goWrite(frm) {
+			var title = frm.title.value;
+			var writer = frm.writer.value;
+			var content = frm.content.value;
+			
+			if (content.trim() == ''){
+				alert("내용을 입력해주세요");
+				return false;
+			}
+			frm.submit();
+		};
 		
 
 </script>
