@@ -115,10 +115,10 @@
 						placeholder="이메일"></td>
 				</tr>
 			</table>
-			<div class="register-input">
+		<div class="register-input">
 			<input type="submit" value="회원가입"> 
 			<input type="reset"value="리셋">
-			</div>
+		</div>
 		</fieldset>
 	</form>
 
