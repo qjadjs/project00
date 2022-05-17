@@ -45,7 +45,7 @@
 					<button class="btn btn-outline-dark" type="submit" ><a href = "logins.jsp" style="text-decoration:none">로그인</button>
 				</form>
 				<form class="register-btn">
-					<button class="btn btn-outline-dark" type="submit" ><a href = "register.jsp" style="text-decoration:none">회원가입</button>
+					<button class="btn btn-outline-dark" type="submit" ><a href = "http://localhost:9090/user/register" style="text-decoration:none">회원가입</button>
 				</form>
 			</div>
 		</div>
