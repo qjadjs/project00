@@ -30,7 +30,7 @@
 				style="width: 40%;" placeholder="제목" /> <br>
 			<br>
 			<textarea id="summernote" name="content"></textarea>
-			<input id="subBtn" type="button" value="글 작성" style="float: right;"
+			<input id="subBtn" type="button" value="글 작성" style="float: center;"
 				onclick="goWrite(this.form)" />
 		</form>
 	</div>
