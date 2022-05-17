@@ -33,7 +33,14 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form class="login-btn">
+                        <button class="btn btn-outline-dark" type="submit">
+                            
+                로그인
+                            
+                        </button>
+                    </form>
+                    <form class="register-btn">
                         <button class="btn btn-outline-dark" type="submit">
                             
                             회원가입
