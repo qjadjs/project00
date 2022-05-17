@@ -41,7 +41,13 @@
 			idtext.value = "";
 			idtext.focus();
 			return false;
-		} else if (!regExp1.test(password)) {
+		} else if (!regname.test(name)) {
+			alert("바른 이름을 입력해주세요");
+			nametext.value = "";
+			nametext.focus();
+			return false;
+		}
+		else if (!regExp1.test(password)) {
 			alert("형식에 맞춰 비밀번호를 입력하세요");
 			patext.value = "";
 			patext.focus();
@@ -80,17 +86,19 @@
 </script>
 </head>
 <body class="register-body" bgcolor='#212529' weight="100px";>
-	<form action="/register" method="post" onsubmit="return checked()">
+	<form action="/user/register" method="post" onsubmit="return checked()">
 		<fieldset style="width: 350;">
 			<legend align="center">회원가입</legend>
 			<table align="center">
 				<tr>
-					<td><input type="text" name="userId" id="userId" placeholder="아이디">
-						<input type="button" onclick="idOverlap()" value="중복확인" /></td>
+					<td><input type="text" name="userId" id="userId"
+						placeholder="아이디"> <input type="button"
+						onclick="idOverlap()" value="중복확인" /></td>
 
 				</tr>
 				<tr>
-					<td><input type="text" name="userName" id="userName" placeholder="이름 "></td>
+					<td><input type="text" name="userName" id="userName"
+						placeholder="이름 "></td>
 				</tr>
 				<tr>
 					<td><input type="password" name="userPw" id="password"
@@ -102,8 +110,8 @@
 						onkeyup="passConfirm()"> <span id="confirmMsg"></span></td>
 				</tr>
 				<tr>
-					<td><input type="email" name="userEmail" id="userEmail" placeholder="이메일">
-					</td>
+					<td><input type="email" name="userEmail" id="userEmail"
+						placeholder="이메일"></td>
 				</tr>
 			</table>
 			<input type="submit" value="회원가입"> <input type="reset"
