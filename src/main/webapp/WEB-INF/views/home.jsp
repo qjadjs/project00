@@ -39,7 +39,7 @@
 							<li><a class="dropdown-item" href="#!">1:1문의</a></li>
 							<li><a class="dropdown-item" href="#!">고객센터</a></li>
 						</ul>
-						</li> ㄴ
+						</li> 
 				</ul>
 				<form class="login-btn">
 					<button class="btn btn-outline-dark" type="submit" ><a href = "logins.jsp" style="text-decoration:none">로그인</button>
