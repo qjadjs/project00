@@ -42,7 +42,7 @@
 						</li> 
 				</ul>
 				<form class="login-btn">
-					<button class="btn btn-outline-dark" type="submit" ><a href = "logins.jsp" style="text-decoration:none">로그인</button>
+					<button class="btn btn-outline-dark" type="submit" ><a href = "/user/login" style="text-decoration:none">로그인</button>
 				</form>
 				<form class="register-btn">
 					<button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</button>
