@@ -81,6 +81,8 @@
 </head>
 <body>
 	<form action="/user/register" method="post" onsubmit="return checked()">
+<fieldset>
+<legend>회원가입</legend>
 		<table>
 			<tr>
 				<td><input type="text" name="userId" id="userId"
@@ -106,8 +108,9 @@
 					placeholder="이메일"></td>
 			</tr>
 		</table>
-		<input type="submit" value="회원가입"> <input type="reset"
-			value="리셋">
+		<input type="submit" value="회원가입"> 
+		<input type="reset" value="리셋">
+	</fieldset>
 	</form>
 </body>
 

@@ -11,7 +11,7 @@
 <meta name="author" content="" />
 <title>밸런스</title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
 <!-- Bootstrap icons-->
 
 <!-- Core theme CSS (includes Bootstrap)-->
@@ -39,7 +39,7 @@
 							<li><a class="dropdown-item" href="#!">1:1문의</a></li>
 							<li><a class="dropdown-item" href="#!">고객센터</a></li>
 						</ul>
-						</li>
+						</li> 
 				</ul>
 				<form class="login-btn">
 					<button class="btn btn-outline-dark" type="submit" ><a href = "logins.jsp" style="text-decoration:none">로그인</button>

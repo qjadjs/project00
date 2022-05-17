@@ -48,7 +48,8 @@
 			</div>
 		</div>
 	</form>
-
+	
+	
 
 
 
@@ -63,6 +64,17 @@
 	</form>
 </div>
 
+<div style="width: 50%; margin: auto;">
+			<div class="panel-body">
+				<!-- 댓글 시작 -->
+				<ul class="chat">
+					<!-- 댓글이 들어올 공간 -->
+				</ul>
+			</div>
+			<div class="panel-footer">
+				<!-- 페이지 버튼이 들어온다 -->
+			</div>
+</div>
 
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>		
@@ -85,21 +97,101 @@
 				fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 			  });
-		});
-		
-		function goWrite(frm) {
-			var title = frm.title.value;
-			var writer = frm.writer.value;
-			var content = frm.content.value;
 			
-			if (content.trim() == ''){
-				alert("내용을 입력해주세요");
-				return false;
-			}
-			frm.submit();
-		};
-		
+			
+			
+			
+			var bnoValue = '<c:out value="${board.bno}"/>';
+			var replyUL = $(".chat");
+			showList(1);
 
+			function showList(page) {
+				replyService.getList({
+					bno : bnoValue,
+					page : page || 1
+				},
+				function(replyCnt, list) {
+					console.log("replyCnt : " + replyCnt);
+					console.log("list : " + list);
+
+				if (page == -1) {
+					pageNum = Math.ceil(replyCnt / 10.0);
+					showList(pageNum);
+					return;
+				}
+
+				var comments = ""; // 여기에 html 코드를 조립
+				if (list == null || list.length == 0) {
+					replyUL.html("");
+					return; // 함수 바로 종료
+				}
+				for (let i = 0; i < list.length; i++) {
+					comments += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
+					comments += "<div>";
+					comments += "<div class='header'>";
+					comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
+					comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</small>";
+					comments += "</div>";
+					comments += "<p>" + list[i].reply + "</p>";
+					comments += "</div>";
+					comments += "</li>";
+				}
+				replyUL.html(comments);
+
+				showReplyPage(replyCnt);
+			});
+		}
+			
+		
+			var pageNum = 1;
+			var replyPageFooter = $(".panel-footer");
+
+			function showReplyPage(replyCnt) {
+				var endNum = Math.ceil(pageNum / 10.0) * 10;
+				var startNum = endNum - 9;
+
+				let prev = startNum != 1;
+				let next = false;
+
+				if (endNum * 10 >= replyCnt) {
+					endNum = Math.ceil(replyCnt / 10.0);
+				}
+				if (endNum * 10 < replyCnt) {
+					next = true;
+				}
+
+				let pageHtml = "<ul class='pagination pull-right'>";
+
+				if (prev) {
+					pageHtml += "<li class='page-item'>";
+					pageHtml += "<a class='page-link' href='"
+							+ (startNum - 1) + "'>";
+					pageHtml += "Prev</a></li>";
+				}
+
+				for (let i = startNum; i <= endNum; i++) {
+					// active : 현재 페이지 번호 표시
+					let active = pageNum == i ? "active" : "";
+					pageHtml += "<li class='page-item " + active + "'>";
+					pageHtml += "<a class='page-link' href='" + i + "'>";
+					pageHtml += i + "</a></li>";
+				}
+
+				if (next) {
+					pageHtml += "<li class='page-item'>";
+					pageHtml += "<a class='page-link' href='"
+							+ (endNum + 1) + "'>";
+					pageHtml += "Next</a></li>";
+				}
+
+				pageHtml += "</ul>";
+
+				replyPageFooter.html(pageHtml);
+				console.log(pageHtml);
+
+			}
+	});
+		
 </script>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -114,5 +206,6 @@
 			operForm.attr("action", "/board/list");
 			operForm.submit();
 		});
+		
 	})
 </script>
