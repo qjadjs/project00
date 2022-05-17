@@ -28,6 +28,5 @@
 	<p class="mb-0">
 		<a href="/user/register">신규가입하기</a>
 	</p>
-	</div>
 </body>
 </html>
