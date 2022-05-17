@@ -469,7 +469,6 @@ dl {
   color: #636e72;
   font-size:16px;
   height:25px;
-  background: none;
   padding: 10px 10px;
    border-bottom: 2px solid #adadad;
 }
@@ -485,7 +484,7 @@ dl {
   padding: 10px 10px;
    border-bottom: 2px solid #adadad;
 }
-.btn {
+.register-join {
   position:relative;
   left:40%;
   transform: translateX(-50%);
@@ -503,6 +502,27 @@ dl {
   display:inline;
 }
 
-.btn:hover {
+.register-join:hover {
   background-position: right;
+}
+.register-wndqhr {
+ display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-decoration-line: none;
 }

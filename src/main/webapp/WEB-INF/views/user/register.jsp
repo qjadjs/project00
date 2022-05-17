@@ -92,7 +92,7 @@
 		<div class="textForm">
 			<input type="text" name="userId" class="id" id="userId"
 				placeholder="아이디"> <input type="button"
-				onclick="idOverlap()" value="중복확인" /> <input type="text"
+				onclick="idOverlap()" value="중복확인" class="register-wndqhr"/> <input type="text"
 				name="userName" class="name" id="userName" placeholder="이름 ">
 
 			<input type="password" name="userPw" class="pw" id="password"
@@ -104,7 +104,7 @@
 
 		</div>
 		<div class="register-input">
-			<input type="submit" class="btn" value="J O I N"/>
+			<input type="submit" class="register-join" value="J O I N"/>
 		</div>
 	</form>
 
