@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
 .login-btn {
+<<<<<<< HEAD
    text-decoration-line: none;
+=======
+	text-decoration-line: none;
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 margin-right:5px
 }
 
