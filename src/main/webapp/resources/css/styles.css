@@ -688,8 +688,8 @@ font-weight: 400;
       }
     }
 
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
+
+.slideshow-container {font-family: Verdana, sans-serif; margin:0}
 .mySlides {display: none}
 img {vertical-align: middle;}
 
@@ -762,5 +762,5 @@ img {vertical-align: middle;}
   background-color: #717171;
 }
 
-/* Fading an 
+
     
