@@ -59,13 +59,50 @@
 	<!-- Header-->
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">밸런스 게임</h1>
-				<p class="lead fw-normal text-white-50 mb-0">
-					<marquee scrollamount=18 behavior=alternate>당신의 선택</marquee>
-				</p>
-			</div>
 		</div>
+		
+<div class="slideshow-container">
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
+  style="width:100% " height="300px">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq0blvA6B15GKfkb8zudaGhN2-avN5tJ8Mg&usqp=CAU" 
+ style="width:100% " height="300px">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="https://img2.quasarzone.com/editor/2020/09/21/40ac98d7cbe5010484cfa5acb3b02ded.jpg" 
+  style="width:100%" height="300px">
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="https://img.insight.co.kr/static/2021/05/23/700/img_20210523191929_qro3e7dd.webp" 
+  style="width:100%" height="300px">
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">5 / 5</div>
+  <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
+  style="width:100%" height="300px">
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+</div>
 	</header>
 	<!-- Section-->
 	<section class="py-5">
