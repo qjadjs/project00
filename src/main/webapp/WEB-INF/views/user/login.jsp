@@ -16,7 +16,7 @@
 		<div>
 			<input type="password" name="userpw" class="login-pw" placeholder="비밀번호">
 		</div>
-		<div>
+		<div class="login-remember">
 			<input type="checkbox" id="remember"> <label for="remember">
 				Remember Me </label>
 		</div>
