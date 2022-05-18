@@ -59,13 +59,38 @@
 	<!-- Header-->
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">밸런스 게임</h1>
-				<p class="lead fw-normal text-white-50 mb-0">
-					<marquee scrollamount=18 behavior=alternate>당신의 선택</marquee>
-				</p>
-			</div>
 		</div>
+		<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="https://www.techm.kr/news/photo/202104/82194_81452_4728.jpg" 
+  style="width:100% " height="300px">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="http://www.urbanbrush.net/web/wp-content/uploads/edd/2018/06/web-20180620010918369963.png" 
+ style="width:100% " height="300px">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
+  style="width:100%" height="300px">
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
 	</header>
 	<!-- Section-->
 	<section class="py-5">
