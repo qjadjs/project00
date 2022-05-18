@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 .login-btn {
-	 text-decoration-line: none;
 margin-right:5px
 }
 
@@ -439,7 +438,7 @@ dl {
 
 
 .id {
-  width: 100%;
+  width: 110%;
   border:none;
   outline:none;
   color: #636e72;
@@ -447,7 +446,6 @@ dl {
   height:25px;
   background: none;
    padding: 10px 10px;
-   border-bottom: 2px solid #adadad;
 }
 
 .pw {
@@ -507,25 +505,17 @@ dl {
   background-position: right;
 }
 .register-wndqhr {
- display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border-radius: 0.25rem;
+ position:relative;
+   width: 40%;
+  border: 2px solid #adadad;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  background: none;
+cursor: pointer;
+font-weight: 400;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  text-decoration-line: none;
+ border-radius: 5px;
 }
 
 .navbar-brand{
@@ -577,8 +567,8 @@ dl {
   font-size:16px;
   height:25px;
   background: none;
-  border-bottom: 2px solid #adadad;
   padding: 10px 10px;
+  border-bottom: 2px solid #adadad;
 }
 
 .login-pw {
@@ -596,3 +586,104 @@ dl {
 	padding-top: 50px;
 	padding-bottom: 40px;
 }
+.register-div {
+	display: flex;
+	position: right;
+	border-bottom: 2px solid #adadad;
+}
+.register-dn {
+  padding: 0px 17px 0px 0px;
+}
+.register-dpw {
+  padding: 0px 17px 0px 0px;
+}
+.register-dpwc {
+  padding: 0px 17px 0px 0px;
+}
+.register-de {
+  padding: 0px 17px 0px 0px;
+}
+
+.d-1 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-1 .7s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+  
+  @keyframes d-1 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-2 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-2 .8s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+ 
+  @keyframes d-2 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-3 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-3 .9s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+
+  
+  @keyframes d-3 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-4 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-3 .8s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+
+  
+  @keyframes d-4 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-5 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-3 .7s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+
+  
+  @keyframes d-5 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
