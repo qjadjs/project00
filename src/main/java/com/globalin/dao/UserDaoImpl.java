@@ -11,7 +11,7 @@ import com.globalin.domain.UserVO;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-	private static String NAMESPACE ="mappers.user.UserMapper";
+	private static final String NAMESPACE ="mappers.user.UserMapper";
 	
 	private SqlSession sqlSession;
 
