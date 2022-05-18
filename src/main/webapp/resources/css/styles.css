@@ -603,3 +603,87 @@ font-weight: 400;
 .register-de {
   padding: 0px 17px 0px 0px;
 }
+
+.d-1 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-1 .7s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+  
+  @keyframes d-1 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-2 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-2 .8s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+ 
+  @keyframes d-2 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-3 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-3 .9s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+
+  
+  @keyframes d-3 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-4 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-3 .8s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+
+  
+  @keyframes d-4 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }
+.d-5 {
+    display: inline-block;
+    margin: -3px;
+    animation: d-3 .7s infinite alternate;
+    font-size: 30px;
+    font-family:  'Courier New', Courier, monospace;
+  }
+
+  
+  @keyframes d-5 {
+    0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(7px);
+      }
+    }

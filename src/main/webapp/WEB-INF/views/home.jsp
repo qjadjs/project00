@@ -20,8 +20,14 @@
 <body>
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" onClick="window.location.reload()">밸런스</a>
+		<div class="container px-4 px-lg-5">	
+				<a class="navbar-brand" onClick="window.location.reload()">
+					<span class="d-1">밸</span>
+					<span class="d-2">런</span>
+					<span class="d-3">스</span>
+					<span class="d-4">게</span>
+					<span class="d-5">임</span>
+				</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -56,7 +62,7 @@
 			<div class="text-center text-white">
 				<h1 class="display-4 fw-bolder">밸런스 게임</h1>
 				<p class="lead fw-normal text-white-50 mb-0">
-					<marquee scrollamount=18 behavior=alternate>당신은 무엇을 고르겠는가</marquee>
+					<marquee scrollamount=18 behavior=alternate>당신의 선택</marquee>
 				</p>
 			</div>
 		</div>
