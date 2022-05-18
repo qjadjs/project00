@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 .login-btn {
-	text-decoration-line: none;
-	
+   text-decoration-line: none;
+margin-right:5px
 }
 
 :root {
@@ -397,9 +397,9 @@ dl {
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
 }
 .tb {
-	text-align: center;
-	align-items: center;
-	align-content: center;
+   text-align: center;
+   align-items: center;
+   align-content: center;
 }
 * {
   margin: 0px;
@@ -410,7 +410,7 @@ dl {
 }
 
 .register-body {
-  background-color:#212529;
+  background-color:black;
 }
 
 .joinForm {
@@ -529,5 +529,65 @@ dl {
 }
 
 .navbar-brand{
-	cursor: pointer;
+   cursor: pointer;
+}
+.login-body {
+	background-color:#212529;
+}
+.login-joinForm {
+	  position:absolute;
+  width:400px;
+  height:400px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+  align-content: center;
+}
+.login-join {
+  position:relative;
+  left:40%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:80%;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+.login-join:hover {
+  background-position: right;
+}
+.login-id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+  border-bottom: 2px solid #adadad;
+  padding: 10px 10px;
+}
+
+.login-pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+  border-bottom: 2px solid #adadad;
+  padding: 10px 10px;
 }

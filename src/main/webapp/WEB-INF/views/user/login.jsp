@@ -5,28 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>LOGIN PAGE</title>
+<link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
-<body>
-	<form action="/login" method="post">
+<body class="login-body">
+	<form class="login-joinForm" action="/login" method="post">
 		<div>
-			<input type="text" name="userid" placeholder="아아디">
+			<input type="text" name="userid" class="login-id" placeholder="아아디">
 		</div>
 		<div>
-			<input type="password" name="userpw" placeholder="비밀번호">
+			<input type="password" name="userpw" class="login-pw" placeholder="비밀번호">
 		</div>
 		<div>
 			<input type="checkbox" id="remember"> <label for="remember">
 				Remember Me </label>
 		</div>
-		<div>
-			<button type="submit">Login</button>
+		<div >
+			<input class="login-join" type="submit" value="login"/>
 		</div>
-	</form>
 	<p class="mb-1">
 		<a href="#">비밀번호가 기억나지 않습니다.</a>
 	</p>
 	<p class="mb-0">
 		<a href="/user/register">신규가입하기</a>
 	</p>
+	</form>
 </body>
+
 </html>
