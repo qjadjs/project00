@@ -2,7 +2,7 @@
 
 .login-btn {
 	text-decoration-line: none;
-	
+margin-right:5px
 }
 
 :root {
@@ -410,7 +410,7 @@ dl {
 }
 
 .register-body {
-  background-color:#212529;
+  background-color:black;
 }
 
 .joinForm {
