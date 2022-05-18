@@ -446,7 +446,6 @@ dl {
   height:25px;
   background: none;
    padding: 10px 10px;
-   border-bottom: 2px solid #adadad;
 }
 
 .pw {
@@ -513,7 +512,6 @@ dl {
   color: #636e72;
   font-size:16px;
   background: none;
-   border-bottom: 2px solid #adadad;
 cursor: pointer;
 font-weight: 400;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -569,8 +567,8 @@ font-weight: 400;
   font-size:16px;
   height:25px;
   background: none;
-  border-bottom: 2px solid #adadad;
   padding: 10px 10px;
+  border-bottom: 2px solid #adadad;
 }
 
 .login-pw {
@@ -591,4 +589,17 @@ font-weight: 400;
 .register-div {
 	display: flex;
 	position: right;
+	border-bottom: 2px solid #adadad;
+}
+.register-dn {
+  padding: 0px 17px 0px 0px;
+}
+.register-dpw {
+  padding: 0px 17px 0px 0px;
+}
+.register-dpwc {
+  padding: 0px 17px 0px 0px;
+}
+.register-de {
+  padding: 0px 17px 0px 0px;
 }

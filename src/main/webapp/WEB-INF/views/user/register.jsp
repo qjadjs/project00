@@ -94,16 +94,25 @@
 			<input type="text" name="userId" class="id" id="userId"
 				placeholder="아이디"> <input type="button"
 				onclick="idOverlap()" value="중복확인" class="register-wndqhr"/>
-				</div>
+		</div>
+		<div class="register-dn">
 				 <input type="text"
 				name="userName" class="name" id="userName" placeholder="이름 ">
-             
+         </div>  
+            <div class="register-dpw">
 			<input type="password" name="userPw" class="pw" id="password"
-				placeholder="비밀번호"> <input type="password"
+				placeholder="비밀번호">
+				</div> 
+				<div class="register-dpwc">
+				<input type="password"
 				name="passwordConfrim" class="pw" id="passwordConfirm"
 				placeholder="비밀번호  확인" onkeyup="passConfirm()"> <span
-				id="confirmMsg"></span> <input type="email" class="email"
+				id="confirmMsg"></span>
+				</div> 
+				<div class="register-de">
+				<input type="email" class="email"
 				name="userEmail" id="userEmail" placeholder="이메일">
+				</div>
 
 		</div>
 		<div class="register-input">
