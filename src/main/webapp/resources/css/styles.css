@@ -507,7 +507,7 @@ dl {
 }
 .register-wndqhr {
  position:relative;
-   width: 50%;
+   width: 40%;
   border: 2px solid #adadad;
   outline:none;
   color: #636e72;
@@ -517,7 +517,7 @@ dl {
 cursor: pointer;
 font-weight: 400;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
- 
+ border-radius: 5px;
 }
 
 .navbar-brand{
