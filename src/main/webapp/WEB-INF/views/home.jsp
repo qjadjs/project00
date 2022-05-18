@@ -34,7 +34,7 @@
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">Home</a>
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="#!">1:1문의</a></li>
 							<li><a class="dropdown-item" href="#!">고객센터</a></li>
@@ -42,10 +42,10 @@
 						</li> 
 				</ul>
 				<form class="login-btn">
-					<button class="btn btn-outline-dark" type="submit" ><a href = "/user/login" style="text-decoration:none">로그인</button>
+					<button class="btn btn-outline-dark" type="submit" ><a href = "/user/login" style="text-decoration:none">로그인</a></button>
 				</form>
 				<form class="register-btn">
-					<button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</button>
+					<button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
 				</form>
 			</div>
 		</div>
