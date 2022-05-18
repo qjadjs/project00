@@ -11,7 +11,7 @@
 	<form class="login-joinForm" action="/login" method="post">
 	<div class="login-div">
 		<div>
-			<input type="text" name="userid" class="login-id" placeholder="아아디">
+			<input type="text" name="userid" class="login-id" placeholder="아이디">
 		</div>
 		<div>
 			<input type="password" name="userpw" class="login-pw" placeholder="비밀번호">

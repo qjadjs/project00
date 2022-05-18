@@ -90,11 +90,14 @@
 		onsubmit="return checked()">
 		
 		<div class="textForm">
+		<div class="register-div">
 			<input type="text" name="userId" class="id" id="userId"
 				placeholder="아이디"> <input type="button"
-				onclick="idOverlap()" value="중복확인" class="register-wndqhr"/> <input type="text"
+				onclick="idOverlap()" value="중복확인" class="register-wndqhr"/>
+				</div>
+				 <input type="text"
 				name="userName" class="name" id="userName" placeholder="이름 ">
-
+             
 			<input type="password" name="userPw" class="pw" id="password"
 				placeholder="비밀번호"> <input type="password"
 				name="passwordConfrim" class="pw" id="passwordConfirm"
