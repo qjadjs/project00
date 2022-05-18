@@ -9,6 +9,7 @@
 </head>
 <body class="login-body">
 	<form class="login-joinForm" action="/login" method="post">
+	<div class="login-div">
 		<div>
 			<input type="text" name="userid" class="login-id" placeholder="아아디">
 		</div>
@@ -28,6 +29,7 @@
 	<p class="mb-0">
 		<a href="/user/register">신규가입하기</a>
 	</p>
+	</div>
 	</form>
 </body>
 

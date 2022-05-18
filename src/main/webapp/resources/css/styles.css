@@ -546,6 +546,7 @@ dl {
   transform: translate(-50%,-50%);
   border-radius: 15px;
   align-content: center;
+  text-align: center;
 }
 .login-join {
   position:relative;
@@ -569,7 +570,7 @@ dl {
   background-position: right;
 }
 .login-id {
-  width: 100%;
+  width: 83%;
   border:none;
   outline:none;
   color: #636e72;
@@ -581,7 +582,7 @@ dl {
 }
 
 .login-pw {
-  width: 100%;
+  width: 83%;
   border:none;
   outline:none;
   color: #636e72;
@@ -590,4 +591,8 @@ dl {
   background: none;
   border-bottom: 2px solid #adadad;
   padding: 10px 10px;
+}
+.login-div {
+	padding-top: 50px;
+	padding-bottom: 40px;
 }
