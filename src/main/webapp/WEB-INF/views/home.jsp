@@ -28,6 +28,7 @@
                <span class="d-4">게</span>
                <span class="d-5">임</span>
             </a>
+            <p>${login.userId }님 환영합니다</p>
          <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,6 +53,9 @@
             </form>
             <form class="register-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
+            </form>
+            <form class="register-btn">
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/profile" style="text-decoration:none">회원정보</a></button>
             </form>
          </div>
       </div>

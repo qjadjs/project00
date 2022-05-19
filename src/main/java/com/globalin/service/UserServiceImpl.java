@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.login(loginDTO);
 	}
+	//회원 정보 받아오기
+	@Override
+	public UserVO getUser(String userId) throws Exception {
+		return userDao.getUser(userId);
+	}
 	
 
 }

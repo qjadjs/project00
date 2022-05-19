@@ -10,4 +10,7 @@ public interface UserService {
 	
 	//로그인처리
 	UserVO login(LoginDTO loginDTO) throws Exception;
+	
+	//회원정보 가져오기
+	public UserVO getUser(String userId) throws Exception;
 }

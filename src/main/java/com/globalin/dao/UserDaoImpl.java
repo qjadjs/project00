@@ -1,19 +1,17 @@
 package com.globalin.dao;
 
-
-
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.globalin.domain.LoginDTO;
 import com.globalin.domain.UserVO;
+
 @Repository
 public class UserDaoImpl implements UserDao {
 
-	private static final String NAMESPACE ="mappers.user.UserMapper";
-	
+	private static final String NAMESPACE = "mappers.user.UserMapper";
+
 	private SqlSession sqlSession;
 
 	@Autowired
@@ -21,17 +19,23 @@ public class UserDaoImpl implements UserDao {
 		this.sqlSession = sqlSession;
 	}
 
-	
-	//회원가입 처리
+	// 회원가입 처리
 	@Override
 	public void register(UserVO userVO) throws Exception {
-		sqlSession.insert(NAMESPACE+".register", userVO);
+		sqlSession.insert(NAMESPACE + ".register", userVO);
 	}
 
-	//로그인처리
+	// 로그인처리
 	@Override
 	public UserVO login(LoginDTO loginDTO) throws Exception {
 
 		return sqlSession.selectOne(NAMESPACE + ".login", loginDTO);
 	}
+
+	// 회원 정보 보기
+	@Override
+	public UserVO getUser(String userId) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".getUser", userId);
+	}
+
 }
