@@ -104,7 +104,7 @@
 </section><!--pager }-->
 
 
-</div>
+
 <br>
 
 <div style="text-align:center" >
@@ -140,7 +140,7 @@
 
                   </div>
                </div>
-
+</div>
             </div>
          </div>
    </section>
