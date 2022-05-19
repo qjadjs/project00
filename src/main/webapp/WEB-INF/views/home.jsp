@@ -86,6 +86,10 @@
         <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
   weight="300px" height="300px">
     </article><!--4-->
+    <article class="slides">
+        <img src="https://t1.daumcdn.net/cfile/tistory/0119ED34507AC0E729" 
+  weight="300px" height="300px">
+    </article><!--4-->
     
     <div class="arrow prev" onclick = "prevNext(-1)">&#10096;</div>
 <div class="arrow next" onclick = "prevNext(1)">&#10097;</div> 
@@ -97,6 +101,7 @@
     <span class="dots" onclick="currentSlide(2)"></span>
     <span class="dots" onclick="currentSlide(3)"></span>
     <span class="dots" onclick="currentSlide(4)"></span>
+    <span class="dots" onclick="currentSlide(5)"></span>
     <div></div>
     <input class="slideStopStart" type="button" value="&#10074;" onclick="stopSlide()"/>
 <input class="slideStopStart" type="button" value="&#9654;" onclick="showSlides()"/>
