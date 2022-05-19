@@ -8,7 +8,7 @@ public class UserVO {
 	private String userPw;
 	private String userName;
 	private String userEmail;
-	private Date regDate;
+	private Date userJoinDate;
 	public String getUserId() {
 		return userId;
 	}
@@ -33,18 +33,19 @@ public class UserVO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getUserJoinDate() {
+		return userJoinDate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setUserJoinDate(Date userJoinDate) {
+		this.userJoinDate = userJoinDate;
 	}
 	@Override
 	public String toString() {
 		return "UserVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userEmail=" + userEmail
-				+ ", regDate=" + regDate + "]";
+				+ ", userJoinDate=" + userJoinDate + ", getUserId()=" + getUserId() + ", getUserPw()=" + getUserPw()
+				+ ", getUserName()=" + getUserName() + ", getUserEmail()=" + getUserEmail() + ", getUserJoinDate()="
+				+ getUserJoinDate() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
-	
 
-	
 }
