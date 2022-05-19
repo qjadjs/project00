@@ -48,7 +48,7 @@
                <span class="d-5">임</span>
             </a>
             <form class="login-btn">
-               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none" >로그인</a></button>
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
             </form>
             <form class="register-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
@@ -60,38 +60,45 @@
    <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
       </div>
-      
-<div class="slideshow-container">
-<div class="mySlides fade">
-  <div class="numbertext">1 / 5</div>
-  <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
-  style="width:100% " height="300px">
-</div>
+<!--container {-->
+<section id="container">
 
-<div class="mySlides fade">
-  <div class="numbertext">2 / 5</div>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq0blvA6B15GKfkb8zudaGhN2-avN5tJ8Mg&usqp=CAU" 
- style="width:100% " height="300px">
-</div>
+    <div class="slideNum">
+        <span id="thisSlide">0</span> / <span id="allSlide">0</span>
+    </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">3 / 5</div>
-  <img src="https://img2.quasarzone.com/editor/2020/09/21/40ac98d7cbe5010484cfa5acb3b02ded.jpg" 
-  style="width:100%" height="300px">
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">4 / 5</div>
-  <img src="https://img.insight.co.kr/static/2021/05/23/700/img_20210523191929_qro3e7dd.webp" 
-  style="width:100%" height="300px">
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">5 / 5</div>
-  <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
-  style="width:100%" height="300px">
-</div>
+    <article class="slides">
+        <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
+  weight="300px" height="300px">
+    </article><!--1-->
+    <article class="slides">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq0blvA6B15GKfkb8zudaGhN2-avN5tJ8Mg&usqp=CAU" 
+ weight="50%" height="300px">
+    </article><!--2-->
+    <article class="slides">
+        <img src="https://img.insight.co.kr/static/2021/05/23/700/img_20210523191929_qro3e7dd.webp" 
+  weight="300px" height="300px">
+    </article><!--3-->
+    <article class="slides">
+        <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
+  weight="300px" height="300px">
+    </article><!--4-->
+    
+    <div class="arrow prev" onclick = "prevNext(-1)">&#10096;</div>
+<div class="arrow next" onclick = "prevNext(1)">&#10097;</div> 
+</section><!-- } container-->
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+<!--pager {-->
+<section id="pager">
+    <span class="dots on" onclick="currentSlide(1)"></span>
+    <span class="dots" onclick="currentSlide(2)"></span>
+    <span class="dots" onclick="currentSlide(3)"></span>
+    <span class="dots" onclick="currentSlide(4)"></span>
+    <div></div>
+    <input class="slideStopStart" type="button" value="&#10074;" onclick="stopSlide()"/>
+<input class="slideStopStart" type="button" value="&#9654;" onclick="showSlides()"/>
+</section><!--pager }-->
+
 
 </div>
 <br>
