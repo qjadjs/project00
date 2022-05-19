@@ -21,14 +21,6 @@
    <!-- Navigation-->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">   
-            <a class="navbar-brand" onClick="window.location.reload()">
-               <span class="d-1">밸</span>
-               <span class="d-2">런</span>
-               <span class="d-3">스</span>
-               <span class="d-4">게</span>
-               <span class="d-5">임</span>
-            </a>
-            <p>${login.userId }님 환영합니다</p>
          <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -41,15 +33,23 @@
 
                <li class="nav-item dropdown"><a
                   class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">메뉴</a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <li><a class="dropdown-item" href="#!">1:1문의</a></li>
                      <li><a class="dropdown-item" href="#!">고객센터</a></li>
                   </ul>
                   </li> 
             </ul>
+            <a class="navbar-brand" onClick="window.location.reload()">
+               <span class="d-1">밸</span>
+               <span class="d-2">런</span>
+               <span class="d-3">스</span>
+               <span class="d-4">게</span>
+               <span class="d-5">임</span>
+            </a>
+             <p>${login.userId }님 환영합니다</p>
             <form class="login-btn">
-               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none" >로그인</a></button>
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
             </form>
             <form class="register-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
@@ -64,43 +64,50 @@
    <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
       </div>
-      
-<div class="slideshow-container">
-<div class="mySlides fade">
-  <div class="numbertext">1 / 5</div>
-  <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
-  style="width:100% " height="300px">
-</div>
+<!--container {-->
+<section id="container">
 
-<div class="mySlides fade">
-  <div class="numbertext">2 / 5</div>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq0blvA6B15GKfkb8zudaGhN2-avN5tJ8Mg&usqp=CAU" 
- style="width:100% " height="300px">
-</div>
+    <div class="slideNum">
+        <span id="thisSlide">0</span> / <span id="allSlide">0</span>
+    </div>
 
-<div class="mySlides fade">
-  <div class="numbertext">3 / 5</div>
-  <img src="https://img2.quasarzone.com/editor/2020/09/21/40ac98d7cbe5010484cfa5acb3b02ded.jpg" 
-  style="width:100%" height="300px">
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">4 / 5</div>
-  <img src="https://img.insight.co.kr/static/2021/05/23/700/img_20210523191929_qro3e7dd.webp" 
-  style="width:100%" height="300px">
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">5 / 5</div>
-  <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
-  style="width:100%" height="300px">
-</div>
+    <article class="slides">
+        <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
+  weight="300px" height="300px">
+    </article><!--1-->
+    <article class="slides">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq0blvA6B15GKfkb8zudaGhN2-avN5tJ8Mg&usqp=CAU" 
+ weight="50%" height="300px">
+    </article><!--2-->
+    <article class="slides">
+        <img src="https://img.insight.co.kr/static/2021/05/23/700/img_20210523191929_qro3e7dd.webp" 
+  weight="300px" height="300px">
+    </article><!--3-->
+    <article class="slides">
+        <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
+  weight="300px" height="300px">
+    </article><!--4-->
+    
+    <div class="arrow prev" onclick = "prevNext(-1)">&#10096;</div>
+<div class="arrow next" onclick = "prevNext(1)">&#10097;</div> 
+</section><!-- } container-->
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+<!--pager {-->
+<section id="pager">
+    <span class="dots on" onclick="currentSlide(1)"></span>
+    <span class="dots" onclick="currentSlide(2)"></span>
+    <span class="dots" onclick="currentSlide(3)"></span>
+    <span class="dots" onclick="currentSlide(4)"></span>
+    <div></div>
+    <input class="slideStopStart" type="button" value="&#10074;" onclick="stopSlide()"/>
+<input class="slideStopStart" type="button" value="&#9654;" onclick="showSlides()"/>
+</section><!--pager }-->
+
 
 </div>
 <br>
 
-<div style="text-align:center">
+<div style="text-align:center" >
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
@@ -119,9 +126,9 @@
                   <button type="button">
                      <a href="https://www.naver.com/" >
                         <!--예시 링크--> <img class="card-img-top"
-                        src="https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b650e9236ecd89043a73287f261a79511ddeb1e46b2f971b4bc98e572090524f272e4a333441ea96c35a9a74276df6d64d"
-                        onmouseover="this.src='https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b650e9236ecd89043a73287f261a79511ddeb1e46b2f971b4bc98e572090524f272e4a333441ea96c35a9a74246de1d14c'"
-                        onmouseout="this.src='https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b650e9236ecd89043a73287f261a79511ddeb1e46b2f971b4bc98e572090524f272e4a333441ea96c35a9a74276df6d64d'">
+                        src="resources/assets/q11.png"
+                        onmouseover="this.src='resources/assets/q12.gif'"
+                        onmouseout="this.src='resources/assets/q11.png'">
                      </a>
                   </button>
 
