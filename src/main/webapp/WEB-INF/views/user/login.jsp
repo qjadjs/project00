@@ -16,12 +16,12 @@
 		<div>
 			<input type="password" name="userPw" class="login-pw" placeholder="비밀번호">
 		</div>
-		<div>
+		<div class="login-remember">
 			<input type="checkbox" id="remember"> <label for="remember">
 				Remember Me </label>
 		</div>
 		<div >
-			<input class="login-join" type="submit" value="login"/>
+			<input class="login-join" type="submit" value="L O G I N"/>
 		</div>
 	<p class="mb-1">
 		<a href="#">비밀번호가 기억나지 않습니다.</a>
