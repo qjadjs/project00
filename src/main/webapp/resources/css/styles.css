@@ -731,7 +731,7 @@ font-weight: 400;
 .slides img{width:100%;height:100%;object-fit:cover;}
 
 /*=============*/
-#pager{position:relative;margin-top:2rem;text-align:center;}
+#pager{position:relative;margin-top:2rem; text-align:center;}
 
 #pager span{position:relative;display:inline-block;width:1rem;height:1rem;background-color:#666;border-radius:100%;cursor:pointer;transition:width 0.3s;}
 #pager span.on{width:5rem;border-radius:25px;background-color:crimson;}
