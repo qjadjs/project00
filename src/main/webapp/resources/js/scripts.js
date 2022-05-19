@@ -6,7 +6,6 @@ var slideIndex = 0;
 document.getElementById('allSlide').innerHTML = slides.length;
 
 
-
 var myVar;
 
 
