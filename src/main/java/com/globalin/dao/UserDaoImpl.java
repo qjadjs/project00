@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.globalin.domain.LoginDTO;
 import com.globalin.domain.UserVO;
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -22,7 +23,15 @@ public class UserDaoImpl implements UserDao {
 
 	
 	//회원가입 처리
+	@Override
 	public void register(UserVO userVO) throws Exception {
 		sqlSession.insert(NAMESPACE+".register", userVO);
+	}
+
+	//로그인처리
+	@Override
+	public UserVO login(LoginDTO loginDTO) throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE + ".login", loginDTO);
 	}
 }

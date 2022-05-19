@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.user.UserMapper">
+<resultMap id="userVOResultMap" type="com.globalin.domain.UserVO">
+        <id property="userId" column="user_id"/>
+        <result property="userPw" column="user_pw"/>
+        <result property="userName" column="user_name"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userJoinDate" column="user_join_date"/>
+    </resultMap>
 	
 	<insert id="register"> INSERT INTO tb_user ( user_id , user_pw , user_name, user_email ) 
 	VALUES ( #{userId} , #{userPw} , #{userName} , #{userEmail} ) 
 	</insert>
 
+	<select id="login" resultMap="userVOResultMap">
+	SELECT
+	*
+	FROM tb_user
+	WHERE user_id = #{userId}
+	</select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.globalin.controller;
 
+import javax.inject.Inject;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +20,13 @@ public class UserRegisterController {
 
 	private static Logger log = LoggerFactory.getLogger(UserRegisterController.class);
 
-	@Autowired
+
 	private UserService userService;
 
+	@Inject
+	public UserRegisterController(UserService userService) {
+		this.userService = userService;
+	}
 	// 회원가입 페이지
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerGET() throws Exception {
@@ -36,11 +42,6 @@ public class UserRegisterController {
 		userService.register(userVO);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		return "redirect:/user/login";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() throws Exception {
-		return "/user/login";
 	}
 
 }

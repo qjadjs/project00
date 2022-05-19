@@ -30,10 +30,19 @@
 
 	<context:component-scan
 		base-package="com.globalin.controller" />
-		
+
 	<context:component-scan
 		base-package="com.globalin.dao" />
-
+	
+	<beans:bean id="loginInterceptor"
+		class="com.globalin.commons.interceptor.LoginInterceptor" />
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost" />
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+	</interceptors>
 
 
 </beans:beans>
