@@ -122,9 +122,9 @@
                   <button type="button">
                      <a href="https://www.naver.com/" >
                         <!--예시 링크--> <img class="card-img-top"
-                        src="https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b650e9236ecd89043a73287f261a79511ddeb1e46b2f971b4bc98e572090524f272e4a333441ea96c35a9a74276df6d64d"
-                        onmouseover="this.src='https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b650e9236ecd89043a73287f261a79511ddeb1e46b2f971b4bc98e572090524f272e4a333441ea96c35a9a74246de1d14c'"
-                        onmouseout="this.src='https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b650e9236ecd89043a73287f261a79511ddeb1e46b2f971b4bc98e572090524f272e4a333441ea96c35a9a74276df6d64d'">
+                        src="resources/assets/q11.png"
+                        onmouseover="this.src='resources/assets/q12.gif'"
+                        onmouseout="this.src='resources/assets/q11.png'">
                      </a>
                   </button>
 
