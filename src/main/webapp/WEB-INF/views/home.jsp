@@ -47,7 +47,6 @@
                <span class="d-4">게</span>
                <span class="d-5">임</span>
             </a>
-             <p>${login.userId }님 환영합니다</p>
             <form class="login-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
             </form>
