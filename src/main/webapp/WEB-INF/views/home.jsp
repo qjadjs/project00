@@ -130,9 +130,9 @@
                   <button type="button">
                      <a href="https://www.naver.com/" >
                         <!--예시 링크--> <img class="card-img-top"
-                        src="resources/assets/q11.png"
+                        src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
-                        onmouseout="this.src='resources/assets/q11.png'">
+                        onmouseout="this.src='resources/assets/q11.jpg'">
                      </a>
                   </button>
 
