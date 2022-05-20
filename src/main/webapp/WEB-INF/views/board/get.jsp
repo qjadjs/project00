@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,64 +27,82 @@
 <body>
 	<form id="operForm" action="/board/modify" method="get">
 		<div>
-			<input type="hidden" id="bno" name="bno" value='<c:out value="${board.bno}"/>'>
-			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
-			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+			<input type="hidden" id="bno" name="bno"
+				value='<c:out value="${board.bno}"/>'> <input type="hidden"
+				name="pageNum" value='<c:out value="${cri.pageNum}"/>'> <input
+				type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 			<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
-			<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
+			<input type="hidden" name="keyword"
+				value='<c:out value="${cri.keyword}"/>'>
 		</div>
-		<div style="width: 70%; margin: auto; text-align: center; height: 110%;">
+		<div
+			style="width: 70%; margin: auto; text-align: center; height: 110%;">
 			<div>
-			<div style="width: 100%; font-size: 25px;" name="title" >
-			<c:out value="${board.title}"/>			
+				<div style="width: 100%; font-size: 25px;" name="title">
+					<c:out value="${board.title}" />
+				</div>
+				<br>
+				<div style="height: 100%; font-size: 10px; float: right;"
+					name="writer">
+					<c:out value="${board.writer}" />
+				</div>
 			</div>
 			<br>
-			<div style="height: 100%; font-size: 10px; float: right;" name="writer">
-			<c:out value="${board.writer}"/>
+			<div name="content"
+				style="white-space: pre; width: 100%; font-size: 15px; height: 300px; border-color: black;">
+				<c:out value="${board.content}" />
 			</div>
-			</div>
-			<br>
-			<div name="content" style="width: 100%; font-size: 15px; height: 300px; border-color: black;">
-			<c:out value="${board.content}"/>
-			</div>
-			</div>
+			<button data-oper="modify" class="btn btn-default">Modify</button>
+			<button data-oper="list" class="btn btn-info">List</button>
+			<form id="operForm" action="/board/modify" method="get">
+				<input type="hidden" id="bno" name="bno"
+					value='<c:out value="${board.bno}"/>'>
+				<!-- 보고있던 페이지 정보 숨겨놓기 -->
+				<input type="hidden" name="pageNum"
+					value='<c:out value="${cri.pageNum}"/>'> <input
+					type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+				<input type="hidden" name="type"
+					value='<c:out value="${cri.type}"/>'> <input type="hidden"
+					name="keyword" value='<c:out value="${cri.keyword}"/>'>
+			</form>
+		</div>
 		</div>
 	</form>
+
+
+
+
+	<div style="width: 50%; margin: auto;">
+		<form method="post" action="/write">
+			<input type="hidden" name="replyer" /> <br> <br>
+			<textarea id="summernote" name="reply"></textarea>
+			<input id="subBtn" type="button" value="댓글 작성" style="float: right;"
+				onclick="goWrite(this.form)" />
+		</form>
+	</div>
+
+	<div style="width: 50%; margin: auto;">
+		<div class="panel-body">
+			<!-- 댓글 시작 -->
+			<ul class="chat">
+				<!-- 댓글이 들어올 공간 -->
+			</ul>
+		</div>
+		<div class="panel-footer">
+			<!-- 페이지 버튼이 들어온다 -->
+		</div>
+	</div>
+
 	
-	
 
-
-
-<div style="width: 50%; margin: auto;">
-	<form method="post" action="/write">
-		<input type="hidden" name="replyer" />
-		<br> 
-		<br>
-		<textarea id="summernote" name="reply"></textarea>
-		<input id="subBtn" type="button" value="댓글 작성" style="float: right;"
-			onclick="goWrite(this.form)" />
-	</form>
-</div>
-
-<div style="width: 50%; margin: auto;">
-			<div class="panel-body">
-				<!-- 댓글 시작 -->
-				<ul class="chat">
-					<!-- 댓글이 들어올 공간 -->
-				</ul>
-			</div>
-			<div class="panel-footer">
-				<!-- 페이지 버튼이 들어온다 -->
-			</div>
-</div>
-
-<script type="text/javascript" src="/resources/js/reply.js"></script>
-<script>		
+	<script type="text/javascript" src="/resources/js/reply.js"></script>
+	<script>		
 		$(document).ready(function() {
 			$('#summernote').summernote({
 				placeholder: '내용을 입력하세요',
 		        tabsize: 2,
 		        height: 100,
+		        disableResizeEditor: true,
 				toolbar: [
 					['fontname', ['fontname']],
 					['fontsize', ['fontsize']],
@@ -96,10 +116,7 @@
 				],
 				fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-			  });
-			
-			
-			
+			  })
 			
 			var bnoValue = '<c:out value="${board.bno}"/>';
 			var replyUL = $(".chat");
@@ -190,6 +207,7 @@
 				console.log(pageHtml);
 
 			}
+
 	});
 		
 </script>
