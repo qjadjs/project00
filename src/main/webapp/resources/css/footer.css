@@ -1,20 +1,19 @@
 @charset "UTF-8";
 
 .text-center {
-  text-align: center !important;
+  text-align: center;
 }
 
 .text-white {
-  --bs-text-opacity: 1;
   color: white;
 }
 
 .container-bottom{
-	padding-top: 3rem !important;
-	  padding-bottom: 3rem !important;
+	padding-top: 3rem;
+	  padding-bottom: 3rem;
+	  weight:;
 }
 
 .bg-dark1{
- 	
   background-color: #212529;
 }	  
