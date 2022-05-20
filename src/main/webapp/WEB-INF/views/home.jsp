@@ -134,8 +134,7 @@
                         onmouseout="this.src='resources/assets/q11.jpg'">
                      </a>
                   </button>
-                  <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
-                  </div>
+                  
                </div>
                </div>
          </div>

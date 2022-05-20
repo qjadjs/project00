@@ -306,11 +306,10 @@ dl {
   border: 0;
   border-radius: 0.25rem;
   width: 400px;
-  height: 400px;
+  height: 0%;
   padding-top: 1px;
   padding-bottom: 1px;
   margin-top: auto;
-  margin-bottom: auto;
   
   left: 70%;
   transform: translateX(-50%);
@@ -320,7 +319,7 @@ dl {
 .card-img
 {
   width: 450px;
-  height: 380px;
+  height: 450px;
 }
 
 
@@ -742,8 +741,5 @@ font-weight: 400;
 .slideStopStart{position:relative;text-align:center; font-size:15px; font-weight:bold;background-color:#666;color:#fff;margin-bottom:5rem;cursor:pointer;}
     
 .cardbutton{
-	border:0;
-}
-.a{
 	border:0;
 }
