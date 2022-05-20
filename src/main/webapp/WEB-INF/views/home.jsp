@@ -121,13 +121,11 @@
    </header>
    <!-- Section-->
    <section class="py-5">
-      <div class="container px-4 px-lg-5 mt-5">
+      <div class="container">
          <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
-               <div class="card h-500">
                   <!-- Product image-->
-                  <button type="button">
+                  <button type="button" class="cardbutton">
                      <a href="https://www.naver.com/" >
                         <!--예시 링크--> <img class="card-img-top"
                         src="resources/assets/q11.jpg"
@@ -135,22 +133,14 @@
                         onmouseout="this.src='resources/assets/q11.jpg'">
                      </a>
                   </button>
-
-
-                  <!-- Product details-->
-
-                  <!-- Product actions-->
                   <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
-
                   </div>
                </div>
-</div>
-            </div>
          </div>
    </section>
    <!-- Footer-->
-   <footer class="py-5 bg-dark">
-      <div class="container">
+   <footer class="bg-dark">
+      <div class="container-bottom">
          <p class="m-0 text-center text-white">Globalin &copy; Your
             Website 2022</p>
       </div>
