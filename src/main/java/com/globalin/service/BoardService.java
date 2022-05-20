@@ -2,23 +2,29 @@ package com.globalin.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
 
 public interface BoardService {
+	void create(BoardVO board) throws Exception;
 
-	public void write(BoardVO board);
+	BoardVO read(int bno) throws Exception;
 
-	public BoardVO get(int bno);
+	boolean update(BoardVO board) throws Exception;
 
-	public boolean modify(BoardVO board);
+	boolean delete(int bno) throws Exception;
 
-	public boolean remove(int bno);
+	List<BoardVO> listAll() throws Exception;
 
-	public List<BoardVO> getList();
-	
-	public List<BoardVO> getList(Criteria cri);
-	
-	public int getTotal(Criteria cri);
+	void insertSelectKey(BoardVO board);
 
+	List<BoardVO> getList(Criteria cri);
+
+	int getTotalCount(Criteria cri);
+
+	void updateReplyCnt(@Param("bno") int bno, @Param("amount") int amount);
+
+	void updateViewCnt(int bno);
 }

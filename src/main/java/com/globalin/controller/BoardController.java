@@ -1,14 +1,16 @@
 package com.globalin.controller;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,45 +23,61 @@ import com.globalin.service.BoardService;
 @RequestMapping("/board/*")
 public class BoardController {
 
-	@Autowired
 	private BoardService service;
+
+	@Inject
+	public BoardController(BoardService service) {
+		this.service = service;
+	}
 
 	private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
-	@GetMapping("/list")
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Criteria cri, Model model) {
 		log.info("list : " + cri);
 		model.addAttribute("list", service.getList(cri));
-		int total = service.getTotal(cri);
+		int total = service.getTotalCount(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker", new Page(cri, total));
 	}
 
-	@PostMapping("/write")
-//	@PreAuthorize("isAuthenticated()")
-	public String write(BoardVO board, RedirectAttributes rttr) {
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String write(BoardVO board, RedirectAttributes rttr) throws Exception {
 		log.info("write : " + board);
-
-		service.write(board);
+		service.create(board);
 		rttr.addFlashAttribute("result", board.getBno());
 
 		return "redirect:/board/list";
 	}
 
-	@GetMapping({ "/get", "/modify" })
-	public void get(@RequestParam("bno") int bno, Criteria cri, Model model) {
+	@RequestMapping(value = "/get", method = RequestMethod.GET)
+	public String get(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
 		log.info(" get or modify : " + bno);
 		log.info("cri : " + cri);
-		BoardVO board = service.get(bno);
+		BoardVO board = service.read(bno);
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
+
+		return "/board/get";
+
 	}
 
-//	@PreAuthorize("principal.username == #board.writer")
-	@PostMapping("/modify")
-	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public String modifyGet(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
+		log.info(" get or modify : " + bno);
+		log.info("cri : " + cri);
+		BoardVO board = service.read(bno);
+		model.addAttribute("cri", cri);
+		model.addAttribute("board", board);
+
+		return "/board/modify";
+
+	}
+
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) throws Exception {
 		log.info("modify : " + board);
-		if (service.modify(board) == true) {
+		if (service.update(board) == true) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
@@ -67,12 +85,12 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-//	@PreAuthorize("principal.username == #writer")
-	@PostMapping("/remove")
-	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr, String writer) {
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr, String writer)
+			throws Exception {
 
 		log.info("remove : " + bno);
-		if (service.remove(bno) == true) {
+		if (service.delete(bno) == true) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
@@ -80,8 +98,9 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@GetMapping("/write")
-//	@PreAuthorize("isAuthenticated()")
-	public void write() {
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String writeGet() {
+		return "/board/write";
 	}
+
 }

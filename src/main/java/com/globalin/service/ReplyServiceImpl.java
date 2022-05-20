@@ -2,86 +2,67 @@ package com.globalin.service;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.globalin.dao.BoardDAO;
+import com.globalin.dao.ReplyDAO;
 import com.globalin.domain.Criteria;
 import com.globalin.domain.ReplyPage;
 import com.globalin.domain.ReplyVO;
-import com.globalin.mapper.BoardMapper;
-import com.globalin.mapper.ReplyMapper;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
 
-	@Autowired
-	private ReplyMapper mapper;
+	private final ReplyDAO replyDao;
 
-	private Logger log = LoggerFactory.getLogger(ReplyServiceImpl.class);
-	
-	@Autowired
-	private BoardMapper bMapper;
-	// 댓글 등록하는 부분
-	// tbl_reply 에 댓글 insert + tbl_board에 댓글 수 update
-	// 이 메소드를 두개의 sql을 묶어서 트랜잭션 처리
+	private final BoardDAO boardDao;
+
+	@Inject
+	public ReplyServiceImpl(ReplyDAO replyDao, BoardDAO boardDao) {
+		this.replyDao = replyDao;
+		this.boardDao = boardDao;
+	}
+
 	@Transactional
 	@Override
-	public int register(ReplyVO vo) {
-		log.info("register... : " + vo);
-		bMapper.updateReplyCnt(vo.getBno(), 1);
-
-		return mapper.insert(vo);
+	public void register(ReplyVO vo) {
+		replyDao.insert(vo);
+		boardDao.updateReplyCnt(vo.getBno(), 1);
 	}
 
 	@Override
-	public ReplyVO get(int rno) {
-		log.info("get... : " + rno);
-
-		return mapper.read(rno);
+	public List<ReplyVO> get(int rno) {
+		return (List<ReplyVO>) replyDao.read(rno);
 	}
 
 	@Override
-	public int modify(ReplyVO vo) {
-		log.info("modify... : " + vo);
-
-		return mapper.update(vo);
+	public void modify(ReplyVO vo) {
+		replyDao.update(vo);
 	}
-	
-	@Transactional
+
 	@Override
-	public int remove(int rno) {
-		log.info("remove... : " + rno);
-		
-		ReplyVO vo = mapper.read(rno);
-		
-		bMapper.updateReplyCnt(vo.getBno(), -1);
-		
-		return mapper.delete(rno);
+	public void remove(int rno) {
+		int bno = replyDao.getBno(rno);
+		replyDao.delete(rno);
+		boardDao.updateReplyCnt(bno, -1);
 	}
 
-	//댓글 리스트 가져오는 메소드
 	@Override
 	public List<ReplyVO> getList(Criteria cri, int bno) {
-		log.info("get reply list... : " + bno);
-		//이제 리스트가 아니라 replyPage를 가져다 주도록 변경
-		
-		return mapper.getListWithPaging(cri, bno);
+		return replyDao.getListWithPaging(cri, bno);
 	}
 
 	@Override
 	public ReplyPage getListPage(Criteria cri, int bno) {
 		ReplyPage page = new ReplyPage();
-		
-		log.info("cri : " + cri);
-		
-		//이 페이지 안에는 댓글 개수, 댓글 리스트가 들어가야된다.		
-		page.setReplyCnt(mapper.getCountByBno(bno));
-		page.setList(mapper.getListWithPaging(cri, bno));
-		
+
+		page.setReplyCnt(replyDao.getCountByBno(bno));
+		page.setList(replyDao.getListWithPaging(cri, bno));
+
 		return page;
-		
 	}
+
 }

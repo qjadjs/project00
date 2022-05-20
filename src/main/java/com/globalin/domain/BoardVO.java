@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno, replyCnt;
+	private int bno, replyCnt, viewCnt;
 	private String title, content, writer;
 	private Date regDate, updateDate;
 
@@ -64,10 +64,19 @@ public class BoardVO {
 		this.updateDate = updateDate;
 	}
 
+	public int getViewCnt() {
+		return viewCnt;
+	}
+
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
+
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", title=" + title + ", content=" + content
-				+ ", writer=" + writer + ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
+		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", title=" + title
+				+ ", content=" + content + ", writer=" + writer + ", regDate=" + regDate + ", updateDate=" + updateDate
+				+ "]";
 	}
 
 }

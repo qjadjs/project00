@@ -1,9 +1,10 @@
 package com.globalin.controller;
 
+import javax.inject.Inject;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,9 +19,13 @@ public class UserRegisterController {
 
 	private static Logger log = LoggerFactory.getLogger(UserRegisterController.class);
 
-	@Autowired
+
 	private UserService userService;
 
+	@Inject
+	public UserRegisterController(UserService userService) {
+		this.userService = userService;
+	}
 	// 회원가입 페이지
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerGET() throws Exception {
@@ -36,11 +41,6 @@ public class UserRegisterController {
 		userService.register(userVO);
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		return "redirect:/user/login";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() throws Exception {
-		return "/user/login";
 	}
 
 }

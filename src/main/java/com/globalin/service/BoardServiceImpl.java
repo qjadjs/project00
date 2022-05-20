@@ -2,67 +2,72 @@ package com.globalin.service;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.globalin.dao.BoardDAO;
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
-import com.globalin.mapper.BoardMapper;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	@Autowired
-	private BoardMapper mapper;
+	private final BoardDAO boardDao;
 
-	//
-	private Logger log = LoggerFactory.getLogger(BoardServiceImpl.class);
-
-	@Override
-	public void write(BoardVO board) {
-		log.info("게시물 등록 : " + board);
-		mapper.insertSelectKey(board);
+	public BoardServiceImpl(BoardDAO boardDao) {
+		this.boardDao = boardDao;
 	}
 
 	@Override
-	public BoardVO get(int bno) {
-		log.info("게시물 조회");
-		return mapper.read(bno);
+	public void create(BoardVO board) throws Exception {
+		boardDao.create(board);
+	}
+	
+	@Transactional
+	@Override
+	public BoardVO read(int bno) throws Exception {
+		boardDao.updateViewCnt(bno);
+		return boardDao.read(bno);
 	}
 
 	@Override
-	public boolean modify(BoardVO board) {
-		log.info("게시물 수정");
-		return mapper.update(board) == 1;
+	public boolean update(BoardVO board) throws Exception {
+		return boardDao.update(board);
 	}
 
 	@Override
-	public boolean remove(int bno) {
-		log.info("게시물 삭제");
-		return mapper.delete(bno) == 1;
+	public boolean delete(int bno) throws Exception {
+		return boardDao.delete(bno);
 	}
 
 	@Override
-	public List<BoardVO> getList() {
-		log.info("게시글 전체 조회");
+	public List<BoardVO> listAll() throws Exception {
+		return boardDao.listAll();
+	}
 
-		return mapper.getList();
+	@Override
+	public void insertSelectKey(BoardVO board) {
+		boardDao.insertSelectKey(board);
 	}
 
 	@Override
 	public List<BoardVO> getList(Criteria cri) {
-		log.info("게시글 페이지 조회 : " + cri);
-
-		return mapper.getListWithPaging(cri);
+		return boardDao.getListWithPaging(cri);
 	}
 
 	@Override
-	public int getTotal(Criteria cri) {
-		log.info("전체 게시글 개수 조회 : " + cri);
+	public int getTotalCount(Criteria cri) {
+		return boardDao.getTotalCount(cri);
+	}
 
-		return mapper.getTotalCount(cri);
+	@Override
+	public void updateReplyCnt(int bno, int amount) {
+		boardDao.updateReplyCnt(bno, amount);
+	}
+
+	@Override
+	public void updateViewCnt(int bno) {
+		boardDao.updateViewCnt(bno);
 	}
 
 }

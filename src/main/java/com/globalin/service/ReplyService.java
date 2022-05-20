@@ -7,16 +7,15 @@ import com.globalin.domain.ReplyPage;
 import com.globalin.domain.ReplyVO;
 
 public interface ReplyService {
-	public int register(ReplyVO vo);
+	void register(ReplyVO vo);
 
-	public ReplyVO get(int rno);
+	List<ReplyVO> get(int bno);
 
-	public int modify(ReplyVO vo);
+	void modify(ReplyVO vo);
 
-	public int remove(int rno);
+	void remove(int rno);
 
-	public List<ReplyVO> getList(Criteria cri, int bno);
-	
-	//리스트 + 총 게시
-	public ReplyPage getListPage(Criteria cri, int bno);
+	List<ReplyVO> getList(Criteria cri, int bno);
+
+	ReplyPage getListPage(Criteria cri, int bno);
 }
