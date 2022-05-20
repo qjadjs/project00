@@ -26,7 +26,8 @@
 <h1 style="text-align: center">게시물 입력</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/write" name="frm">
-			<input type="hidden" name="writer" value="${user.username}"/><br> 
+			<input type="text" name="writer" placeholder="작성자" />
+			<br> 
 			<input type="text" name="title"
 				style="width: 100%;" placeholder="제목" />
 			<br>
