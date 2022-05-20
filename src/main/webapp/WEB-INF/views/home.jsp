@@ -105,7 +105,7 @@
     <span class="dots" onclick="currentSlide(4)"></span>
     <span class="dots" onclick="currentSlide(5)"></span>
     <div></div>
-    <input class="slideStopStart" type="button" value="&#10074;" onclick="stopSlide()"/>
+    <input class="slideStopStart" type="button" value="STOP" onclick="stopSlide()"/>
 <input class="slideStopStart" type="button" value="&#9654;" onclick="showSlides()"/>
 </section><!--pager }-->
 
