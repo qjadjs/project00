@@ -125,6 +125,7 @@
          <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                   <!-- Product image-->
+                   <div class="card">
                   <button type="button" class="cardbutton">
                      <a href="https://www.naver.com/" >
                         <!--예시 링크--> <img class="card-img-top"
@@ -135,6 +136,7 @@
                   </button>
                   <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
                   </div>
+               </div>
                </div>
          </div>
    </section>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .login-btn {
-margin-right:5px;
+margin-right:5px
 }
 
 :root {
@@ -59,7 +59,11 @@ margin-right:5px;
 }
 
 
-
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
 
 body {
   margin: 0;
@@ -76,7 +80,37 @@ body {
 
 
 
-.container{
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+
+@media (min-width: 1200px) {
+  .display-4 {
+    font-size: 3.5rem;
+  }
+}
+
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
   width: 100%;
   padding-right: var(--bs-gutter-x, 0.75rem);
   padding-left: var(--bs-gutter-x, 0.75rem);
@@ -84,6 +118,11 @@ body {
   margin-left: auto;
 }
 
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px;
+  }
+}
 
 .btn {
   display: inline-block;
@@ -171,7 +210,7 @@ body {
 
 
 .nav-link {
-  display: inline-block;
+  display: block;
   padding: 0.5rem 1rem;
   color: #0d6efd;
   text-decoration: none;
@@ -256,15 +295,15 @@ body {
   color: rgba(0, 0, 0, 0.55);
 }
 
-
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  word-wrap: break-word; 
+  word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
+  border: 0;
   border-radius: 0.25rem;
   width: 400px;
   height: 400px;
@@ -272,17 +311,16 @@ body {
   padding-bottom: 1px;
   margin-top: auto;
   margin-bottom: auto;
-  margin-right: 30rem;
   
-  left: 50%;
+  left: 70%;
+  transform: translateX(-50%);
   
 }
 
-.card-img,
-.card-img-top,
-.card-img-bottom
+.card-img
 {
-  width: 100%;
+  width: 450px;
+  height: 380px;
 }
 
 
@@ -290,6 +328,14 @@ body {
 .justify-content-center {
   justify-content: center !important;
 }
+
+
+.my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+
 .mt-5 {
   margin-top: 3rem !important;
 }
@@ -312,11 +358,11 @@ body {
 .py-5 {
   padding-top: 3rem !important;
 }
-.container-bottom {
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
-}
 
+.container-bottom{
+	padding-top: 3rem !important;
+	  padding-bottom: 3rem !important;
+}
 .fw-light {
   font-weight: 300 !important;
 }
@@ -694,7 +740,10 @@ font-weight: 400;
 
 /*===============*/
 .slideStopStart{position:relative;text-align:center; font-size:15px; font-weight:bold;background-color:#666;color:#fff;margin-bottom:5rem;cursor:pointer;}
-   
+    
 .cardbutton{
-	border: 0px;
+	border:0;
+}
+.a{
+	border:0;
 }
