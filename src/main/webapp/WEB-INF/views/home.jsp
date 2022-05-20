@@ -15,8 +15,8 @@
 <!-- Bootstrap icons-->
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="resources/css/styles.css" rel="stylesheet" />
 <link href="resources/css/header.css" rel="stylesheet" />
+<link href="resources/css/styles.css" rel="stylesheet" />
 <link href="resources/css/footer.css" rel="stylesheet" />
 </head>
 <body>
