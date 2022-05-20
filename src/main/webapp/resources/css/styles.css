@@ -214,8 +214,9 @@ dl {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #212529;
 }
+
 .tb {
    text-align: center;
    align-items: center;
@@ -477,6 +478,7 @@ font-weight: 400;
 
 /*===============*/
 .slideStopStart{position:relative;text-align:center; font-size:15px; font-weight:bold;background-color:#666;color:#fff;cursor:pointer;}
+
     
 .cardbutton{
 	border:0;

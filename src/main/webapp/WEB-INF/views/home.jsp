@@ -129,7 +129,7 @@
                   <!-- Product image-->
                    <div class="card">
                   <button type="button" class="cardbutton">
-                     <a href="https://www.naver.com/" >
+                     <a href="http://localhost:9020/board/list" >
                         <!--예시 링크--> <img class="card-img-top"
                         src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
@@ -142,9 +142,9 @@
          </div>
    </section>
    <!-- Footer-->
-   <footer class="bg-dark">
+   <footer class="bg-dark1">
       <div class="container-bottom">
-         <p class="m-0 text-center text-white">Globalin &copy; Your
+         <p class="text-center text-white">Globalin &copy; Your
             Website 2022</p>
       </div>
    </footer>
