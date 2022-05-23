@@ -30,4 +30,7 @@ public interface UserDao {
 	
 	// 회원탈퇴
 	public void deleteMember(UserVO userVO) throws Exception;
+	
+	//아이디 중복체크
+	public LoginDTO idOverlap(String userid) throws Exception;
 }
