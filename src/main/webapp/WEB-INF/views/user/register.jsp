@@ -72,6 +72,9 @@
 						alert("이 아이디는 사용 가능합니다.");
 					}  else {
 						alert("이 아이디는 사용 불가능합니다.");
+						idtext.value = "";
+						idtext.focus();
+						return false;
 					}
 				},
 				error : function() {
@@ -112,10 +115,6 @@
 			//밑에 동일한 유효성 검사
 			{
 				alert("형식에 맞춰 ID를 입력하세요");
-				idtext.value = "";
-				idtext.focus();
-				return false;
-			} else if (idOverlap() != true) {
 				idtext.value = "";
 				idtext.focus();
 				return false;
