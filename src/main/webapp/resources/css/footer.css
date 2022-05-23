@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: white;
+}
+
+.container-bottom{
+	padding-top: 3rem;
+	  padding-bottom: 3rem;
+	  weight:;
+}
+
+.bg-dark1{
+  background-color: #212529;
+}	  

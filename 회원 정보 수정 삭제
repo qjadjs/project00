@@ -1,0 +1,4 @@
+      <input type="button" value="회원정보조회" class="btn" onclick="location.href='/user/info'">
+	<input type="button" value="회원정보수정" class="btn" onclick="location.href='/user/update'">
+	<input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
+	<input type="button" value="회원탈퇴" class="btn" onclick="location.href='/user/delete'">

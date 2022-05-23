@@ -39,7 +39,7 @@ var replyService = (function() {
 		// 페이지 정보가 있다면 그대로 쓰고
 		// 만약 페이지 정복 없다면 1로 세팅
 		var bno = param.bno;
-		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
+		$.getJSON("/replies/all/" + bno + "/" + page + ".json",
 				function(data) {
 					// 요청 처리 성공시 실행되는 함수
 

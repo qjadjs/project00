@@ -21,7 +21,7 @@
 <title>게시글 수정</title>
 </head>
 <body>
-<h1>게시물 수정</h1>
+<h1 style="text-align: center;">게시물 수정</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/modify" name="frm">
 			<input type="hidden" name="writer" value="${board.writer}" /><br> 
@@ -47,6 +47,7 @@ $(document).ready(function() {
 		placeholder: '${board.content}',
         tabsize: 2,
         height: 400,
+        disableResizeEditor: true,
 		toolbar: [
 			['fontname', ['fontname']],
 			['fontsize', ['fontsize']],
@@ -61,7 +62,10 @@ $(document).ready(function() {
 		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 	  });
+	
+
 });
+		$("#content").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
 	
 	function goWrite(frm) {
 		var title = frm.title.value;
@@ -76,6 +80,7 @@ $(document).ready(function() {
 			alert("내용을 입력해주세요");
 			return false;
 		}
+
 		frm.submit();
 		
 	};

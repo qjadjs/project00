@@ -26,7 +26,8 @@
 <h1 style="text-align: center">게시물 입력</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/write" name="frm">
-			<input type="hidden" name="writer" value="${user.username}"/><br> 
+			<input type="text" name="writer" placeholder="작성자"/>
+			<br> 
 			<input type="text" name="title"
 				style="width: 100%;" placeholder="제목" />
 			<br>
@@ -45,6 +46,7 @@
 			placeholder: '내용을 입력하세요',
 	        tabsize: 2,
 	        height: 400,
+	        disableResizeEditor: true,
 			toolbar: [
 				['fontname', ['fontname']],
 				['fontsize', ['fontsize']],
@@ -59,6 +61,8 @@
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 		  });
+		
+
 	});
 	
 	function goWrite(frm) {

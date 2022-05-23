@@ -7,8 +7,55 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록</title>
+<link href="../resources/css/header.css" rel="stylesheet" />
+<link href="../resources/css/board.css" rel="stylesheet" />
+<link href="../resources/css/footer.css" rel="stylesheet" />
 </head>
 <div class="row">
+<!-- 헤더-->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container px-4 px-lg-5">   
+         <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+
+
+               <li class="nav-item dropdown"><a
+                  class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">메뉴</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="#!">1:1문의</a></li>
+                     <li><a class="dropdown-item" href="#!">고객센터</a></li>
+                  </ul>
+                  </li> 
+            </ul>
+            <a class="navbar-brand" onClick="window.location.reload()">
+               <span class="d-1">밸</span>
+               <span class="d-2">런</span>
+               <span class="d-3">스</span>
+               <span class="d-4">게</span>
+               <span class="d-5">임</span>
+            </a>
+            <form class="login-btn">
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
+            </form>
+            <form class="register-btn">
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
+            </form>
+            <form class="register-btn">
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/profile" style="text-decoration:none">회원정보</a></button>
+            </form>
+         </div>
+      </div>
+   </nav>
+
+
+
 	<div class="col-lg-12">
 		<h1 class="page-header">Tables</h1>
 	</div>
@@ -29,6 +76,7 @@
 							<th>작성자</th>
 							<th>작성일</th>
 							<th>수정일</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
 					<!--  모든 등록된 board list 출력 -->
@@ -44,6 +92,7 @@
 									value="${board.regDate }" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.updateDate }" /></td>
+							<td><c:out value="${board.viewCnt}"/></td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -112,55 +161,33 @@
 
 				<!-- 알림 추가/ 지금까지 사용한 알림 방법-alert() : 브라우제에서 제공하는 기본 함수, 
 							 Modal : 커스터마이징한 창을 띄워서 알려준다 -->
-				<!-- Modal -->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-					aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">&times;</button>
-								<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-							</div>
-							<div class="modal-body">처리가 완료되었습니다</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save changes</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
+				
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	
+	
+ <!-- Footer-->
+   <footer class="bg-dark1">
+      <div class="container-bottom">
+         <p class="text-center text-white">Globalin &copy; Your
+            Website 2022</p>
+      </div>
+   </footer>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 		var result = "<c:out value = '${result}'/>";
-		checkModal(result);
+		
 
-		function checkModal(result) {
-			if (result == "") {
-				return;
-			}
-			if (result > 0) {
-				$(".modal-body").html(
-					"게시글" + parseInt(result) + "번이 등록되었습니다");
-			}
-			$("#myModal").modal("show");// 작성한 modal 창을 보여주는 함수
-		}
-
-						// 화면이동 버튼 이벤트 처리
+	
 		$("#regBtn").on("click", function() {
-							// controller 한테 get 방식으로 /board/register 요청
 			self.location = "/board/write";
 		})
 
-						// 페이지 버튼 처리
-						// 숨김처리 해놨던 form 가져오기
 		var actionForm = $("#actionForm")
 
 		$(".paginate_button a").on("click",function(e) {

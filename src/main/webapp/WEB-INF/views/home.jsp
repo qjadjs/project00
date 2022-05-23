@@ -15,7 +15,9 @@
 <!-- Bootstrap icons-->
 
 <!-- Core theme CSS (includes Bootstrap)-->
+<link href="resources/css/header.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
+<link href="resources/css/footer.css" rel="stylesheet" />
 </head>
 <body>
    <!-- Navigation-->
@@ -61,10 +63,6 @@
             </form>
          </div>
       </div>
-      <input type="button" value="회원정보조회" class="btn" onclick="location.href='/user/info'">
-	<input type="button" value="회원정보수정" class="btn" onclick="location.href='/user/update'">
-	<input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
-	<input type="button" value="회원탈퇴" class="btn" onclick="location.href='/user/delete'">
    </nav>
    <!-- Header-->
    <header class="bg-dark py-5">
@@ -110,7 +108,7 @@
     <span class="dots" onclick="currentSlide(4)"></span>
     <span class="dots" onclick="currentSlide(5)"></span>
     <div></div>
-    <input class="slideStopStart" type="button" value="&#10074;" onclick="stopSlide()"/>
+    <input class="slideStopStart" type="button" value="STOP" onclick="stopSlide()"/>
 <input class="slideStopStart" type="button" value="&#9654;" onclick="showSlides()"/>
 </section><!--pager }-->
 
@@ -128,37 +126,28 @@
    </header>
    <!-- Section-->
    <section class="py-5">
-      <div class="container px-4 px-lg-5 mt-5">
+      <div class="container">
          <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
-               <div class="card h-500">
                   <!-- Product image-->
-                  <button type="button">
-                     <a href="https://www.naver.com/" >
+                   <div class="card">
+                  <button type="button" class="cardbutton">
+                     <a href="http://localhost:9020/board/list" >
                         <!--예시 링크--> <img class="card-img-top"
                         src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
                         onmouseout="this.src='resources/assets/q11.jpg'">
                      </a>
                   </button>
-
-
-                  <!-- Product details-->
-
-                  <!-- Product actions-->
-                  <div class="card-footer p-4 pt-0 border-top-1 bg-transparent">
-
-                  </div>
+                  
                </div>
-</div>
-            </div>
+               </div>
          </div>
    </section>
    <!-- Footer-->
-   <footer class="py-5 bg-dark">
-      <div class="container">
-         <p class="m-0 text-center text-white">Globalin &copy; Your
+   <footer class="bg-dark1">
+      <div class="container-bottom">
+         <p class="text-center text-white">Globalin &copy; Your
             Website 2022</p>
       </div>
    </footer>
