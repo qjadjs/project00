@@ -70,7 +70,7 @@ public class UserInfoController {
 		log.info("C: 회원정보수정 입력페이지 POST");
 		userService.updateMember(userVO);
 		log.info("회원정보 수정 " + userVO);
-		return "redirect:/";
+		return "/user/info";
 	}
 
 	/* 회원정보삭제 */

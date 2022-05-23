@@ -59,7 +59,7 @@
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
             </form>
             <form class="register-btn">
-               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/profile" style="text-decoration:none">회원정보</a></button>
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/info" style="text-decoration:none">회원정보</a></button>
             </form>
          </div>
       </div>
