@@ -1,1 +1,45 @@
 @charset "UTF-8";
+
+
+.page-header{
+	background-color: #212529;
+	color:white;
+	text-align: center;
+}
+
+#regBtn{
+	position:relative;
+	float: right;
+	border: solid 1px;
+	
+}
+#regBtn:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  text-decoration-line: none;
+}
+
+
+.btn-default{
+	position:absolute;
+	float: right;
+	border: solid 1px;
+	box-sizing: 1px;
+	font-size: 1px;
+}
+.btn-default:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  text-decoration-line: none;
+}
+
+
+
+.panel-body{
+	 text-align: center;
+	 }
+
+
+

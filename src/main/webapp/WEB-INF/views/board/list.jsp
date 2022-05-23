@@ -57,7 +57,7 @@
 
 
 	<div class="col-lg-12">
-		<h1 class="page-header">Tables</h1>
+		<h1 class="page-header">게시판</h1>
 	</div>
 </div>
 <div class="row">
@@ -65,7 +65,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Board List Page
-				<button id="regBtn" type="button" class="btn btn-xs pull-right">Register New Board</button>
+				<button id="regBtn" type="button" class="btn btn-xs pull-right">글쓰기</button>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
