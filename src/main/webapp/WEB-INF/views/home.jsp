@@ -50,6 +50,9 @@
             <form class="login-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
             </form>
+            <form class="login-btn">
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/logout"  style="text-decoration:none">로그아웃</a></button>
+            </form>
             <form class="register-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
             </form>
@@ -58,6 +61,10 @@
             </form>
          </div>
       </div>
+      <input type="button" value="회원정보조회" class="btn" onclick="location.href='/user/info'">
+	<input type="button" value="회원정보수정" class="btn" onclick="location.href='/user/update'">
+	<input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
+	<input type="button" value="회원탈퇴" class="btn" onclick="location.href='/user/delete'">
    </nav>
    <!-- Header-->
    <header class="bg-dark py-5">

@@ -38,6 +38,10 @@
 		class="com.globalin.commons.interceptor.LoginInterceptor" />
 	<beans:bean id="authInterceptor"
 		class="com.globalin.commons.interceptor.AuthInterceptor" />
+	<beans:bean id="rememberMeInterceptor"
+		class="com.globalin.commons.interceptor.RememberMeInterceptor" />
+	<beans:bean id="LoginAfterInterceptor"
+		class="com.globalin.commons.interceptor.LoginAfterInterceptor" />
 
 	<interceptors>
 		<interceptor>
@@ -52,6 +56,16 @@
 			<mapping path="/user/profile" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/**/" />
+			<beans:ref bean="rememberMeInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/user/login" />
+			<mapping path="/user/register" />
+			<beans:ref bean="LoginAfterInterceptor" />
+		</interceptor>
+
 	</interceptors>
 
 

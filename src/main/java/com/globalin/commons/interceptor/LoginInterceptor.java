@@ -1,5 +1,6 @@
 package com.globalin.commons.interceptor;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,13 +22,24 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession httpSession = request.getSession();
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object userVO = modelMap.get("user");
+
 		if (userVO != null) {
 			log.info("new login success");
 			httpSession.setAttribute(LOGIN, userVO);
+		
+			if (request.getParameter("useCookie") != null) {
+				log.info("remember me...");
+				// 쿠키 생성
+				Cookie loginCookie = new Cookie("loginCookie", httpSession.getId());
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(60 * 60 * 24 * 7); 
+				// 전송
+				response.addCookie(loginCookie);
+			}
 			Object destination = httpSession.getAttribute("destination");
 			response.sendRedirect(destination != null ? (String) destination : "/");
 		}
-	}
+		}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
