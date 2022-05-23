@@ -14,7 +14,7 @@
 <!-- 헤더-->
 <body>
  
- <!-- 헤더jsp -->
+ <!-- 헤더jsp  -->
   <%@include file ="Header.jsp" %>
    
 <div class="row">
