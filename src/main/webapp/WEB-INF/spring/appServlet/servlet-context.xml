@@ -53,7 +53,6 @@
 			<mapping path="/article/paging/search/modify" />
 			<mapping path="/article/paging/search/remove" />
 			<mapping path="/user/info" />
-			<mapping path="/user/profile" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 		<interceptor>

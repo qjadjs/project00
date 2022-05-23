@@ -21,6 +21,9 @@
 						${user.userLoginDate} </li>
 						</ul>
 		<input type="button" class="btn" value="메인으로" onclick="location.href='/'">
+		<input type="button" value="회원정보수정" class="btn" onclick="location.href='/user/update'">
+	<input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
+	<input type="button" value="회원탈퇴" class="btn" onclick="location.href='/user/delete'">
 </form>
 </fieldset>
 </body>
