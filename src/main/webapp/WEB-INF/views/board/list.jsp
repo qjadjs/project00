@@ -11,9 +11,10 @@
 <link href="../resources/css/board.css" rel="stylesheet" />
 <link href="../resources/css/footer.css" rel="stylesheet" />
 </head>
+<body>
 <div class="row">
 <!-- 헤더-->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">   
          <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -44,6 +45,9 @@
             <form class="login-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
             </form>
+            <form class="login-btn">
+               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/logout"  style="text-decoration:none">로그아웃</a></button>
+            </form>
             <form class="register-btn">
                <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
             </form>
@@ -64,7 +68,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Board List Page
+				전체글
 				<button id="regBtn" type="button" class="btn btn-xs pull-right">글쓰기</button>
 			</div>
 			<div class="panel-body">

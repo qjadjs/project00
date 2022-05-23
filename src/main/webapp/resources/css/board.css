@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
-
 .page-header{
 	background-color: #212529;
 	color:white;
 	text-align: center;
+}
+.panel-heading{
+	padding: auto;
+	font-size: 20px;
 }
 
 #regBtn{
@@ -35,11 +38,168 @@
   text-decoration-line: none;
 }
 
-
-
 .panel-body{
 	 text-align: center;
 	 }
 
+li {
+	list-style-type: none; 
+	float: left;
+	right:-20%;
+margin-left: 20px;
+}
+
+
+
+html{
+
+    height:100%;
+
+}
+
+.body{
+
+    margin: 0px;
+
+    height:100%;
+
+}
+
+.main{
+
+    height:100%;
+
+    width: 100%;
+
+}
+
+
+
+ 
+
+.board{
+
+    width: 1200px;
+
+    height: 100%;
+
+    margin: auto;
+
+}
+
+ 
+
+.table{
+
+    font-size :20px;
+
+    border-collapse: collapse;
+
+    width: 100%;
+
+    margin-top:30px;
+
+    border: 1px solid gray;    
+
+    text-align: center;
+
+    font-family:  'GangwonEdu_OTFBoldA';
+
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+.thead td {
+
+    background: #B2B2B2;
+
+}
+
+ 
+
+td{
+
+    height: 40px;
+
+    border-bottom:1px solid black;
+
+}
+
+th{
+	background-color: #c0c0c0;
+}
+
+tr td:nth-child(2){
+
+    width: 750px;
+
+}
+
+
+
+.pagination li{ 
+
+    list-style: none;
+
+} 
+
+ 
+
+.pagination  {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top:20px;
+
+}
+
+ 
+
+.pagination a {
+
+    display:block;
+
+    margin:0 3px;
+
+    float:left;
+
+    border:1px solid #e6e6e6;
+
+    width:28px;
+
+    height:28px;
+
+    line-height:28px;
+
+    text-align:center;
+
+    background-color:#fff;
+
+    font-size:13px;
+
+    color:black;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+.pagination a:hover{
+
+    background-color:gray;
+
+    color:white;
+
+}
 
 
