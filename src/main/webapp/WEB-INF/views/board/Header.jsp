@@ -35,13 +35,17 @@
                <span class="d-4">게</span>
                <span class="d-5">임</span>
             </a>
+           
+            <div class="register-header">
            <c:choose>
-					<c:when test="${empty login.userId }">
+					<c:when test="${empty login.userId }">				
 						<form class="login-btn">
 							<button class="btn btn-outline-dark" type="submit">
 								<a href="/user/login" style="text-decoration: none">로그인</a>
 							</button>
 						</form>
+					
+						
 						<form class="register-btn">
 							<button class="btn btn-outline-dark" type="submit">
 								<a href="/user/register" style="text-decoration: none">회원가입</a>
@@ -54,15 +58,17 @@
 								<a href="/user/info" style="text-decoration: none">회원정보</a>
 							</button>
 						</form>
-							<form class="login-btn">
+							<form class="logout-btn">
 							<button class="btn btn-outline-dark" type="submit">
 								<a href="/user/logout" style="text-decoration: none">로그아웃</a>
 							</button>
 						</form>
+						
 					</c:otherwise>
 				</c:choose>
+				</div>
+				</div>	
          </div>
-      </div>
    </nav>
 </body>
 </html>
