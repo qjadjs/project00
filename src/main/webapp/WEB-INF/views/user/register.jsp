@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>REGISTER PAGE</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
 <body class="register-body">
@@ -47,8 +46,20 @@
 <script type="text/javascript">
 		//아이디 중복체크
 		function idOverlap() {
+			var idtext = document.getElementById("userId");
+			var id = idtext.value;
+			var regExp1 = /^[a-zA-Z0-9]{4,12}$/;
 			console.log("idOverlap 호출")
 			console.log("아이디 입력 값 : " + register.userId.value)
+			if(id == null || id =="") {
+				alert("아이디를 입력해주세요");
+				return false;
+			} else if (!regExp1.test(id)){
+				alert("형식에 맞춰 ID를 입력하세요");
+				idtext.value = "";
+				idtext.focus();
+				return false;
+			}
 			$.ajax({
 				type : "post",/* 전송 방식 */
 				url : "idOverlap", /* 컨트롤러 사용할 때. 내가 보낼 데이터의 주소. */
@@ -56,12 +67,14 @@
 					"userId" : register.userId.value
 				},
 				dataType : "text",
-				  contentType : 'text/plain; charset=utf-8;',
 				success : function(data) {
 					if (data == "1") {
 						alert("이 아이디는 사용 가능합니다.");
-					} else { //ajax가 제대로 안됐을 때 .
-						alert("이 아이디는 사용  불가능합니다.");
+					}  else {
+						alert("이 아이디는 사용 불가능합니다.");
+						idtext.value = "";
+						idtext.focus();
+						return false;
 					}
 				},
 				error : function() {
