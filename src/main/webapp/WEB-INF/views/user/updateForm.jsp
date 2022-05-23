@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <fieldset>
-<legend>È¸¿øÁ¤º¸¼öÁ¤</legend>
+<legend>íšŒì›ì •ë³´ìˆ˜ì •</legend>
 	<form action="/user/update" method="post">
-		¾ÆÀÌµð <input type="text" name="userId" value="${user.userId }" readonly><br>
-		ºñ¹Ð¹øÈ£ <input type="password" name="userPw" value="${user.userPw }" ><br>
-		ÀÌ¸§ <input type="text" name="userName" value="${user.userName } "><br>
-		ÀÌ¸ÞÀÏ <input type="text" name="userEmail" value="${user.userEmail }"><br>
-		<input type="submit" class="btn" value="È¸¿øÁ¤º¸¼öÁ¤ÇÏ±â">
-		<input type="button" class="btn" value="¸ÞÀÎÀ¸·Î" onclick="location.href='/'">
+		ì•„ì´ë”” <input type="text" name="userId" value="${user.userId }" readonly><br>
+		ë¹„ë°€ë²ˆí˜¸ <input type="password" name="userPw" value="${user.userPw }" ><br>
+		ì´ë¦„ <input type="text" name="userName" value="${user.userName } "><br>
+		ì´ë©”ì¼ <input type="text" name="userEmail" value="${user.userEmail }"><br>
+		<input type="submit" class="btn" value="íšŒì›ì •ë³´ìˆ˜ì •í•˜ê¸°">
+		<input type="button" class="btn" value="ë©”ì¸ìœ¼ë¡œ" onclick="location.href='/'">
 	</form>
 </fieldset>
 </body>
