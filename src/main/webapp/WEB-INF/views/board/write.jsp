@@ -23,20 +23,16 @@
 <title>게시글 작성</title>
 </head>
 <body>
-<h1 style="text-align: center">게시물 입력</h1>
+	<h1 style="text-align: center">게시물 입력</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/write" name="frm">
-			<input type="text" name="writer" placeholder="작성자"/>
-			<br> 
-			<input type="text" name="title"
-				style="width: 100%;" placeholder="제목" />
-			<br>
+			<input type="text" name="writer" placeholder="작성자" /> <br> <input
+				type="text" name="title" style="width: 100%;" placeholder="제목" /> <br>
 			<br>
 			<textarea id="summernote" name="content"></textarea>
-			<br>
-			<input id="subBtn" type="button" value="글 작성" style="float: center;"
-				onclick="goWrite(this.form)" />
-			<input type="button" value="목록으로" onclick="location.href='/board/list'" />
+			<br> <input id="subBtn" type="button" value="글 작성"
+				style="float: center;" onclick="goWrite(this.form)" /> <input
+				type="button" value="목록으로" onclick="location.href='/board/list'" />
 		</form>
 	</div>
 </body>
@@ -59,11 +55,38 @@
 				['view', ['fullscreen', 'help']]
 			],
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-		  });
+			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+			callbacks : { 
+            	onImageUpload : function(files, editor, welEditable) {
+            	// 파일 업로드(다중업로드를 위해 반복문 사용)
+            		for (var i = files.length - 1; i >= 0; i--) {
+            		uploadSummernoteImageFile(files[i], this);
+            		}
+         		}
+            }
+		})
+	        
+	});	
+	
+	
+	function uploadSummernoteImageFile(file, el) {
+		data = new FormData();
+		data.append("file", file);
+		$.ajax({
+			data : data,
+			type : "POST",
+			url : "/board/uploadSummernoteImageFile",
+			contentType : false,
+			enctype : 'multipart/form-data',
+			processData : false,
+			success : function(data) {
+				$(el).summernote('editor.insertImage', data.url);
+			}
+		});
+	}
 		
-
-	});
+		
+		
 	
 	function goWrite(frm) {
 		var title = frm.title.value;

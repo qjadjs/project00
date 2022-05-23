@@ -117,7 +117,7 @@ public class ReplyController {
 	}
 
 
-	@RequestMapping(value = "/pages/{bno}/{page}", produces = {
+	@RequestMapping(value = "/all/{bno}/{page}", produces = {
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, method = RequestMethod.GET)
 	public ResponseEntity<ReplyPage> getList(@PathVariable("page") int page, @PathVariable("bno") int bno) {
 
