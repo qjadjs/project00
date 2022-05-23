@@ -93,9 +93,9 @@ public class UserServiceImpl implements UserService {
 	//로그인 중복여부
 	@Override
 	public void idOverlap(String userId, HttpServletResponse response) throws Exception{
-		LoginDTO UserVO = new LoginDTO();
-			UserVO = userDao.idOverlap(userId);
-		if(UserVO == null) {
+		UserVO userVO = new UserVO();
+		userVO = userDao.idOverlap(userId);
+		if(userVO == null) {
 			//dao에서 select이 되지 않아야 true
 			//id가 없어야 true(사용 가능)
 			response.getWriter().print("1");
