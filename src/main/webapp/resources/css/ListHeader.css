@@ -294,62 +294,6 @@ dl {
 }
 
 
-@media (min-width: 1200px) {
-  .display-4 {
-    font-size: 3.5rem;
-  }
-}
-
-
-.container,
-.container-fluid,
-.container-xxl,
-.container-xl,
-.container-lg,
-.container-md,
-.container-sm {
-  width: 100%;
-  padding-right: var(--bs-gutter-x, 0.75rem);
-  padding-left: var(--bs-gutter-x, 0.75rem);
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1320px;
-  }
-}
-
-
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 0;
-  border-radius: 0.25rem;
-  width: 400px;
-  height: 0%;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-top: auto;
-  
-  left: 70%;
-  transform: translateX(-50%);
-  
-}
-
-.card-img
-{
-  width: 450px;
-  height: 450px;
-}
-
 
 
 .justify-content-center {

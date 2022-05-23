@@ -105,13 +105,11 @@
                </div>
          </div>
    </section>
-   <!-- Footer-->
-   <footer class="bg-dark1">
-      <div class="container-bottom">
-         <p class="text-center text-white">Globalin &copy; Your
-            Website 2022</p>
-      </div>
-   </footer>
+   
+   
+  <!-- 푸터jsp -->
+  <%@include file ="../views/board/Footer.jsp" %>
+  
    <!-- Bootstrap core JS-->
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

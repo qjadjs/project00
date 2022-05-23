@@ -130,14 +130,8 @@
 	</div>
 	
 	
- <!-- Footer-->
-   <footer class="bg-dark1">
-      <div class="container-bottom">
-         <p class="text-center text-white">Globalin &copy; Your
-            Website 2022</p>
-      </div>
-   </footer>
-
+  <!-- 푸터jsp -->
+  <%@include file ="Footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
