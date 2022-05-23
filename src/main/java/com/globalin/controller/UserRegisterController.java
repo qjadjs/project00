@@ -1,6 +1,9 @@
 package com.globalin.controller;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
@@ -8,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.globalin.domain.UserVO;
@@ -29,7 +33,7 @@ public class UserRegisterController {
 	// 회원가입 페이지
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerGET() throws Exception {
-		log.info("/register : ");
+		log.info("/register : 1" );
 		return "/user/register";
 	}
 
@@ -42,5 +46,10 @@ public class UserRegisterController {
 		redirectAttributes.addFlashAttribute("msg", "REGISTERED");
 		return "redirect:/user/login";
 	}
-
+	//아이디 중복확인 처리
+		@RequestMapping(value="/idOverlap", method=RequestMethod.POST)
+		public void idOverlap(HttpServletResponse response, @RequestParam("userId") String userId) throws Exception {
+			//@RequestParam는 요청의 특정 파라미터 값을 찾아낼 때 사용하는 어노테이션
+			userService.idOverlap(userId, response);	//서비스에 있는 idOverlap 호출.
+		}
 }

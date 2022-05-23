@@ -80,4 +80,10 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public LoginDTO idOverlap(String userId) throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+".idOverlap", userId);
+	}
+
 }

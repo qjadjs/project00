@@ -1,6 +1,9 @@
 package com.globalin.service;
 
+import java.io.IOException;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
 
 import com.globalin.domain.LoginDTO;
 import com.globalin.domain.UserVO;
@@ -27,5 +30,6 @@ public interface UserService {
 	//회원정보 삭제
 	public void deleteMember(UserVO userVO);
 
+	public void idOverlap(String userId, HttpServletResponse response) throws Exception;
 
 }
