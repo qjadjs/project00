@@ -72,12 +72,16 @@
 
 
 
-	<div style="width: 50%; margin: auto;">
+	<div style="width: 55%; margin: auto;">
 		<form method="post" action="/write">
-			<input type="hidden" name="replyer" /> <br> <br>
+			<input type="hidden" name="replyer" value="${board.writer }"/> <br> <br>
+			<input class="form-control input-sm" id="newReplyer"
+			 type="text" placeholder="이름">
+
 			<textarea id="summernote" name="reply"></textarea>
-			<input id="subBtn" type="button" value="댓글 작성" style="float: right;"
-				onclick="goWrite(this.form)" />
+			<button type="button" class="btn btn-primary btn-sm btn-block replyAddBtn"
+			 > 댓글작성
+			</button>
 		</form>
 	</div>
 
@@ -96,7 +100,10 @@
 	
 
 	<script type="text/javascript" src="/resources/js/reply.js"></script>
-	<script>		
+	<script>	
+	
+	
+	
 		$(document).ready(function() {
 			$('#summernote').summernote({
 				placeholder: '내용을 입력하세요',
@@ -159,6 +166,7 @@
 			});
 		}
 			
+			
 		
 			var pageNum = 1;
 			var replyPageFooter = $(".panel-footer");
@@ -209,6 +217,64 @@
 			}
 
 	});
+		
+			//댓글 등록 이벤트
+			
+			$(".replyAddBtn").on("click" , function() {
+				
+				var replyer = $("#newReplyer");
+				var reply_text = $("#summernote");
+				
+				var replyerVal = replyer.val();
+				var reply_textVal = reply_text.val();
+				
+				$.ajax({
+					
+				type : "post",
+				url : "/replies/new",
+				contentType : "application/json; charset=utf-8",
+				dataType : "text",
+				data : JSON.stringify({
+					bno : bno,
+					replyer : replyerVal,
+					reply_text : reply_textVal
+				}),
+				
+				success : function (result) {
+					//성공적인 댓글 등록 처리 알림
+					if(result == "regSuccess") {
+						alert("댓글등록 완료")
+					};
+					getReplis();
+					replyer.val("");
+					reply_text.val("");
+				}
+				
+				});
+				
+				
+			});
+		/*
+		function goWrite(frm) {
+			var title = frm.title.value;
+			var writer = frm.writer.value;
+			var content = frm.content.value;
+			
+			if (title.trim() == ''){
+				alert("제목을 입력해주세요");
+				return false;
+			}
+			if (writer.trim() == ''){
+				alert("작성자를 입력해주세요");
+				return false;
+			}
+			if (content.trim() == ''){
+				alert("내용을 입력해주세요");
+				return false;
+			}
+			frm.submit();
+		};
+		*/
 		
 </script>
 	<script type="text/javascript">

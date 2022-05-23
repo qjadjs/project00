@@ -22,7 +22,7 @@ public class ReplyPage {
 	}
 	@Override
 	public String toString() {
-		return "BeplyPage [replyCnt=" + replyCnt + ", list=" + list + "]";
+		return "ReplyPage [replyCnt=" + replyCnt + ", list=" + list + "]";
 	}
 	
 }
