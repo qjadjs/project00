@@ -10,8 +10,7 @@
 <!-- Footer-->
    <footer class="bg-dark1">
       <div class="container-bottom">
-         <p class="text-center text-white">Globalin &copy; Your
-            Website 2022</p>
+         <p class="text-center text-white">Globalin &copy; 밸런스게임</p>
       </div>
    </footer>
 </body>
