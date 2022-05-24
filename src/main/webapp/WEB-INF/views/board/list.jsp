@@ -10,10 +10,13 @@
 <link href="../resources/css/header.css" rel="stylesheet" />
 <link href="../resources/css/board.css" rel="stylesheet" />
 <link href="../resources/css/footer.css" rel="stylesheet" />
+<link href="../resources/css/animation.css" rel="stylesheet" />
 </head>
 <!-- 헤더-->
 <body>
- 
+ <div id="page2" class="slide-in">
+      <h1>Balance GAME!</h1>
+    </div>
  <!-- 헤더jsp  -->
   <%@include file ="Header.jsp" %>
    
