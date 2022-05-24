@@ -9,7 +9,7 @@ import com.globalin.domain.ReplyVO;
 public interface ReplyService {
 	void register(ReplyVO vo);
 
-	List<ReplyVO> get(int bno);
+	List<ReplyVO> get(int rno);
 
 	void modify(ReplyVO vo);
 

@@ -102,8 +102,6 @@
 	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>	
 	
-	
-	
 		$(document).ready(function() {
 			$('#summernote').summernote({
 				placeholder: '내용을 입력하세요',
@@ -218,42 +216,45 @@
 
 	});
 		
-			//댓글 등록 이벤트
+		//댓글 등록 이벤트
+		
+		$(".replyAddBtn").on("click" , function() {
 			
-			$(".replyAddBtn").on("click" , function() {
+			var replyer = $("#newReplyer");
+			var reply_text = $("#summernote");
+			
+			var replyerVal = replyer.val();
+			var reply_textVal = reply_text.val();
+			
+			
+			$.ajax({
 				
-				var replyer = $("#newReplyer");
-				var reply_text = $("#summernote");
-				
-				var replyerVal = replyer.val();
-				var reply_textVal = reply_text.val();
-				
-				$.ajax({
-					
-				type : "post",
-				url : "/replies/new",
-				contentType : "application/json; charset=utf-8",
-				dataType : "text",
-				data : JSON.stringify({
-					bno : bno,
-					replyer : replyerVal,
-					reply_text : reply_textVal
-				}),
-				
-				success : function (result) {
-					//성공적인 댓글 등록 처리 알림
-					if(result == "regSuccess") {
-						alert("댓글등록 완료")
-					};
-					getReplis();
-					replyer.val("");
-					reply_text.val("");
-				}
-				
-				});
-				
-				
+			type : "post",
+			url : "/replies/new",
+			contentType : "application/json; charset=utf-8",
+			dataType : "text",
+			data : JSON.stringify({
+				bno : bno,
+				replyer : replyerVal,
+				reply_text : reply_textVal
+			}),
+			
+			success : function (result) {
+				//성공적인 댓글 등록 처리 알림
+				if(result == "regSuccess") {
+					alert("댓글등록 완료")
+				};
+				getReplis();
+				replyer.val("");
+				reply_text.val("");
+			}
+			
 			});
+			
+			
+		});
+			
+
 		/*
 		function goWrite(frm) {
 			var title = frm.title.value;
@@ -289,6 +290,8 @@
 			operForm.find("#bno").remove();
 			operForm.attr("action", "/board/list");
 			operForm.submit();
+			
+			
 		});
 		
 	})
