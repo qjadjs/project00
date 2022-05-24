@@ -34,8 +34,7 @@
 			<br>
 			<textarea id="summernote" name="content"></textarea>
 			<br>
-			<input id="subBtn" type="button" value="작성"
-				onclick="goWrite(this.form)" />
+			<input id="subBtn" type="button" value="작성" onclick="goWrite(this.form)" />
 			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
 		</form>
 	</div>

@@ -10,36 +10,43 @@
 	background-color: #212529;
 }
 
-
-#t1{
+.hh1{
+	margin-top:3rem;
 	text-align: center;
 	color: white;
 	font-family: 'GangwonEdu_OTFBoldA';
 	font-size: 60px;
-	margin-top:3rem;
-	padding:0 0 0 0;
 }
 
-#title1{
-    margin-top: 5rem; 
+
+
+#t3{
+	text-align: center;
 }
 
-#title2{
-	white-space: pre-wrap;
+#title3{
 	word-break:break-all;
-	background-color:white;
-    border-radius: 20px;
-    width: 100%;
-    height: 300px;
-    font-size: 15px;
-    border-color: black;
+	background-color: white;
+	width: 70%;
+	height: 150%;
+	display: inline-block
 }
+#t4{
+	background-color: white;
+	width: 10%;
+	text-align: center;
+	border: 4px solid white;
+    border-radius: 20px;
+    float: right;
+    margin-bottom:-2rem;
+}
+
 #subBtn {
 	border: 4px solid white;
     border-radius: 20px;
     padding: 0 10px 0 10px;
-     float: left;
-     margin-top:-1rem;
+    float: right;
+    margin-top: 2rem;
 }
 
 #subBtn:hover {
@@ -52,8 +59,7 @@
 	border: 4px solid white;
     border-radius: 20px;
     padding: 0 10px 0 10px;
-    float: right;
-     margin-top:-1rem;
+    margin-top: 2rem;
 }
 
 #subBtn2:hover {
@@ -63,30 +69,13 @@
   text-decoration-line: none;
 }
 
-#d1{
-	text-align: center;
-	margin-top: 3rem;
+.btn-default{
+	margin-top: 1rem;
+	border-radius: 20px;
 }
-#bb1{
-   margin:1rem;
-}	
-
-#btn-default {
-	border: 4px solid white;
-    border-radius: 20px;
-    padding: 0 10px 0 10px;
-}
-
-#btn-default:hover {
+.btn-default:hover {
   color: #fff;
   background-color: #212529;
   border-color: #ffffff;
   text-decoration-line: none;
 }
-
-
-#dd1{
-	text-align:center;
-    padding: 0 10px 0 10px;
-}
-
