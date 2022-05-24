@@ -27,8 +27,8 @@
 <h1 class="hh1">게시글 작성</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/write" name="frm">
-			<div id="title">
-			<input id="title1" type="text" name="title" placeholder="제목" />
+			<div id="title1">
+			<input id="title2" type="text" name="title" placeholder="제목" />
 			</div>
 			<br>
 			<br>

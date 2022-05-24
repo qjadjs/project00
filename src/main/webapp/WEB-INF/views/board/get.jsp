@@ -22,8 +22,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
-<title>게시글</title>
 <link href="../resources/css/get.css" rel="stylesheet" />
+<title>게시글</title>
 </head>
 <body class="b1">
 	<form id="operForm" action="/board/modify" method="get">
@@ -38,8 +38,8 @@
 		</div>
 		<div
 			style="width: 70%; margin: auto; text-align: center; height: 110%;">
-			<div id="title1">
-				<div id="t1" name="title">
+			<div>
+				<div style="width: 100%; font-size: 25px;" name="title">
 					<c:out value="${board.title}" />
 				</div>
 				<br>
@@ -49,12 +49,12 @@
 				</div>
 			</div>
 			<br>
-			<div id="title2" name="content">
+			<div name="content"
+				style="white-space: pre; width: 100%; font-size: 15px; height: 300px; border-color: black;">
 				<c:out value="${board.content}" />
 			</div>
-			<div id="bb1">
-			<button data-oper="modify" class="btn-default">수정</button>
-			</div>
+			<button data-oper="modify" class="btn btn-default">Modify</button>
+			<button data-oper="list" class="btn btn-info">List</button>
 			<form id="operForm" action="/board/modify" method="get">
 				<input type="hidden" id="bno" name="bno"
 					value='<c:out value="${board.bno}"/>'>
@@ -67,20 +67,18 @@
 					name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			</form>
 		</div>
+		</div>
 	</form>
 
 
 
 
-	<div>
-		<form id="dd1" method="post" action="/write">
+	<div style="width: 50%; margin: auto;">
+		<form method="post" action="/write">
 			<input type="hidden" name="replyer" /> <br> <br>
 			<textarea id="summernote" name="reply"></textarea>
-			<div id="d1">
-			<input id="subBtn" type="button" value="목록" onclick="location.href='/board/list'" />
-			<input id="subBtn2" type="button" value="댓글 작성"
+			<input id="subBtn" type="button" value="댓글 작성" style="float: right;"
 				onclick="goWrite(this.form)" />
-			</div>
 		</form>
 	</div>
 
