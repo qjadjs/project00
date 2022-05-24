@@ -6,19 +6,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 목록</title>
+<title>게시글</title>
+<link href="../resources/css/header.css" rel="stylesheet" />
+<link href="../resources/css/board.css" rel="stylesheet" />
+<link href="../resources/css/footer.css" rel="stylesheet" />
 </head>
+<!-- 헤더-->
+<body>
+ 
+ <!-- 헤더jsp  -->
+  <%@include file ="Header.jsp" %>
+   
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Tables</h1>
+		<h1 class="page-header">게시판</h1>
 	</div>
 </div>
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Board List Page
-				<button id="regBtn" type="button" class="btn btn-xs pull-right">Register New Board</button>
+				전체글
+				<button id="regBtn" type="button" class="btn btn-xs pull-right">글쓰기</button>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
@@ -119,7 +128,11 @@
 			</div>
 		</div>
 	</div>
-</div>
+	
+	
+  <!-- 푸터jsp -->
+  <%@include file ="Footer.jsp" %>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {

@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.info-form{
+   border: 2px solid #C4C4C4;
+  border-radius: 15px; /*단 위 꼭 쓰기 */
+ position:absolute;
+  width:600px;
+  height:500px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  
+}
+.info-body {
+   background-color:#212529;
+}
+.info-hr {
+   width : 500px;
+    border-bottom: 2px solid black;
+   
+}
+.info-div1,
+.info-div2,
+.info-div3,
+.info-div4 {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+   padding: 10px 10px;
+}
+.info-id {
+ width: 200px;
+ height: 25px;
+ border : 1px solid #636e72;
+ 
+}
+.info-pw {
+ width: 200px;
+ height: 25px;   
+ border : 1px solid #636e72;
+}
+.info-name {
+ width: 200px;
+ height: 25px;    
+ border : 1px solid #636e72;
+}
+.info-email {
+ width: 200px;
+ height: 25px;   
+ border : 1px solid #636e72;
+}
+.info-div {
+   
+}
+.btn {
+   margin-top:15px;
+   width:100px;
+   height:40px;
+   cursor:pointer;
+   font-size:14px;
+   color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    border-radius: 5px;
+}
+.form-control {
+	height: 25px;
+    width: 400px;
+    margin-top : 5px;
+    margin-bottom: 7px;
+    border: 1px solid grey;
+}
+}

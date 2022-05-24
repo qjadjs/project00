@@ -19,7 +19,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-
+	<resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -42,6 +42,10 @@
 		class="com.globalin.commons.interceptor.LoginInterceptor" />
 	<beans:bean id="authInterceptor"
 		class="com.globalin.commons.interceptor.AuthInterceptor" />
+	<beans:bean id="rememberMeInterceptor"
+		class="com.globalin.commons.interceptor.RememberMeInterceptor" />
+	<beans:bean id="LoginAfterInterceptor"
+		class="com.globalin.commons.interceptor.LoginAfterInterceptor" />
 
 
 
@@ -55,9 +59,18 @@
 			<mapping path="/article/paging/search/modify" />
 			<mapping path="/article/paging/search/remove" />
 			<mapping path="/user/info" />
-			<mapping path="/user/profile" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
+		<interceptor>
+			<mapping path="/**/" />
+			<beans:ref bean="rememberMeInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/user/login" />
+			<mapping path="/user/register" />
+			<beans:ref bean="LoginAfterInterceptor" />
+		</interceptor>
+
 	</interceptors>
 
 </beans:beans>

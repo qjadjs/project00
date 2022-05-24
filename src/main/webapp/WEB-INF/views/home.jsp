@@ -15,50 +15,17 @@
 <!-- Bootstrap icons-->
 
 <!-- Core theme CSS (includes Bootstrap)-->
+<link href="resources/css/header.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
+<link href="resources/css/footer.css" rel="stylesheet" />
+
 </head>
 <body>
-   <!-- Navigation-->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container px-4 px-lg-5">   
-         <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 
-
-               <li class="nav-item dropdown"><a
-                  class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false">메뉴</a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <li><a class="dropdown-item" href="#!">1:1문의</a></li>
-                     <li><a class="dropdown-item" href="#!">고객센터</a></li>
-                  </ul>
-                  </li> 
-            </ul>
-            <a class="navbar-brand" onClick="window.location.reload()">
-               <span class="d-1">밸</span>
-               <span class="d-2">런</span>
-               <span class="d-3">스</span>
-               <span class="d-4">게</span>
-               <span class="d-5">임</span>
-            </a>
-            <form class="login-btn">
-               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/login"  style="text-decoration:none">로그인</a></button>
-            </form>
-            <form class="register-btn">
-               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/register" style="text-decoration:none">회원가입</a></button>
-            </form>
-            <form class="register-btn">
-               <button class="btn btn-outline-dark" type="submit" ><a href = "/user/profile" style="text-decoration:none">회원정보</a></button>
-            </form>
-         </div>
-      </div>
-   </nav>
+<!-- 헤더jsp -->
+  <%@include file ="../views/board/Header.jsp" %>
+  
+  
    <!-- Header-->
    <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
@@ -103,7 +70,7 @@
     <span class="dots" onclick="currentSlide(4)"></span>
     <span class="dots" onclick="currentSlide(5)"></span>
     <div></div>
-    <input class="slideStopStart" type="button" value="&#10074;" onclick="stopSlide()"/>
+    <input class="slideStopStart" type="button" value="STOP" onclick="stopSlide()"/>
 <input class="slideStopStart" type="button" value="&#9654;" onclick="showSlides()"/>
 </section><!--pager }-->
 
@@ -127,7 +94,7 @@
                   <!-- Product image-->
                    <div class="card">
                   <button type="button" class="cardbutton">
-                     <a href="https://www.naver.com/" >
+                     <a href="board/list" >
                         <!--예시 링크--> <img class="card-img-top"
                         src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
@@ -139,19 +106,17 @@
                </div>
          </div>
    </section>
-   <!-- Footer-->
-   <footer class="bg-dark">
-      <div class="container-bottom">
-         <p class="m-0 text-center text-white">Globalin &copy; Your
-            Website 2022</p>
-      </div>
-   </footer>
+   
+   
+  <!-- 푸터jsp -->
+  <%@include file ="../views/board/Footer.jsp" %>
+  
    <!-- Bootstrap core JS-->
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
 
    <script src="resources/js/scripts.js"></script>
-
+   <script src="resources/js/animation.js"></script>
 </body>
 </html>

@@ -14,9 +14,10 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet"> 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
+<link href="../resources/css/get.css" rel="stylesheet" />
 <title>게시글</title>
 </head>
-<body>
+<body class="b1">
 	<form id="operForm" action="/board/modify" method="get">
 		<div>
 			<input type="hidden" id="bno" name="bno"
@@ -27,25 +28,21 @@
 			<input type="hidden" name="keyword"
 				value='<c:out value="${cri.keyword}"/>'>
 		</div>
-		<div
-			style="width: 70%; margin: auto; text-align: center; height: 110%;">
-			<div>
-				<div style="width: 100%; font-size: 25px;" name="title">
+				<div class="hh1" name="title">
 					<c:out value="${board.title}" />
 				</div>
 				<br>
-				<div style="height: 100%; font-size: 10px; float: right;"
-					name="writer">
+			<div id="t3">
+				<div id="t4">
 					<c:out value="${board.writer}" />
 				</div>
-			</div>
 			<br>
-			<div name="content"
-				style="width: 100%; font-size: 15px; height: 300px; border-color: black;">
+			
+			<div id="title3" name="content">
 				<c:out value="${board.content}" escapeXml="false" /> 
 			</div>
-			<button data-oper="modify" class="btn btn-default">Modify</button>
-			<button data-oper="list" class="btn btn-info">List</button>
+			</div>
+			<button data-oper="modify" class="btn-default">수정</button>
 			<form id="operForm" action="/board/modify" method="get">
 				<input type="hidden" id="bno" name="bno"
 					value='<c:out value="${board.bno}"/>'>
@@ -58,17 +55,15 @@
 					name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			</form>
 		</div>
-		</div>
 	</form>
-
-
 
 
 	<div style="width: 50%; margin: auto;">
 		<form method="post" action="/write">
 			<input type="hidden" name="replyer" /> <br> <br>
 			<textarea id="summernote" name="reply"></textarea>
-			<input id="subBtn" type="button" value="댓글 작성" style="float: right;"
+			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
+			<input id="subBtn" type="button" value="댓글 작성" 
 				onclick="goWrite(this.form)" />
 		</form>
 	</div>

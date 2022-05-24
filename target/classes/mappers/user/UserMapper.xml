@@ -8,23 +8,20 @@
 		<result property="userName" column="user_name" />
 		<result property="userEmail" column="user_email" />
 		<result property="userJoinDate" column="user_join_date" />
+		<result property="userLoginDate" column="user_login_date" />
+		<result property="userSignature" column="user_signature" />
+		<result property="userImg" column="user_img" />
+		<result property="userPoint" column="user_point" />
 	</resultMap>
 
+	<!-- 회원가입 -->
 	<insert id="register"> INSERT INTO tb_user ( user_id , user_pw , user_name,
 		user_email )
 		VALUES ( #{userId} , #{userPw} , #{userName} ,
 		#{userEmail} )
 	</insert>
-
+	<!-- 로그인 -->
 	<select id="login" resultMap="userVOResultMap">
-		SELECT
-		*
-		FROM tb_user
-		WHERE
-		user_id = #{userId}
-	</select>
-
-	<select id="getUser" resultMap="userVOResultMap">
 		SELECT
 		*
 		FROM tb_user
@@ -32,6 +29,40 @@
 		user_id =
 		#{userId}
 	</select>
+	<!-- 로그인 정보 유지 -->
+	<update id="keepLogin">
+		UPDATE tb_user SET session_key = #{sessionId} ,
+		session_limit =
+		#{sessionLimit} WHERE user_id = #{userId}
+	</update>
+	<!-- 세션키 검증 -->
+	<select id="checkUserWithSessionKey" resultMap="userVOResultMap">
+		SELECT * FROM
+		tb_user WHERE session_key = #{value}
+	</select>
 
-
+	<!--회원 정보 수정 -->
+	<update id="updateMember"> UPDATE tb_user SET user_name = #{userName} ,
+		user_email = #{userEmail} WHERE user_id = #{userId}
+	</update>
+	<!--회원 정보 보기 -->
+	<select id="readMember" resultMap="userVOResultMap"> SELECT * FROM tb_user WHERE
+		user_id = #{userId}
+	</select>
+	<!--회원비밀번호 수정 -->
+	<update id="updatePw"> UPDATE tb_user SET user_pw = #{userPw} WHERE user_id
+		= #{userId}
+	</update>
+	<!--회원 프로필 이미지 변경 -->
+	<update id="updateUimage"> UPDATE tb_user SET user_img =
+		#{userImg} WHERE
+		user_id = #{userId}
+	</update>
+	<delete id="deleteMember">
+		delete from tb_user where user_id=#{userId} and user_pw=#{userPw}
+	</delete>
+	<!-- 아이디 중복 확인하기  -->
+<select resultMap="userVOResultMap" id="idOverlap">
+	SELECT * FROM tb_user where user_id = #{userId}
+</select>
 </mapper>

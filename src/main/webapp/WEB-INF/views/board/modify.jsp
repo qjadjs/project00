@@ -13,25 +13,28 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <title>게시글 수정</title>
+<link href="../resources/css/modify.css" rel="stylesheet" />
 </head>
-<body>
-<h1 style="text-align: center;">게시물 수정</h1>
+<body class="b1">
+<h1 class="hh1">게시물 수정</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/modify" name="frm">
-			<input type="hidden" name="writer" value="${board.writer}" /><br> 
-			<input type="hidden" name="bno" value="${board.bno}"/> 
-			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
-			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'> 
-			<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
-			<input type="text" name="title" style="width: 100%;" value="${board.title}"  />
+	<div id="title1">
+			<input id="title2"  type="text" name="title"  value="${board.title}"  />
+			</div>
+			<input id="title2" type="hidden" name="writer" value="${board.writer}" /><br> 
+			<input id="title2" type="hidden" name="bno" value="${board.bno}"/> 
+			<input id="title2" type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> 
+			<input id="title2" type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+			<input id="title2" type="hidden" name="type" value='<c:out value="${cri.type}"/>'> 
+			<input id="title2" type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			<br>
 			<br>
 			<textarea id="summernote" name="content">${board.content}</textarea>
 			<br>
-			<input id="subBtn" type="button" value="수정" style="float: center;"
+			<input id="subBtn" type="button" value="수정"
 				onclick="goWrite(this.form)" />
-			<input type="button" value="목록으로" onclick="location.href='/board/list'" />
+			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
 		</form>
 	</div>
 </body>
