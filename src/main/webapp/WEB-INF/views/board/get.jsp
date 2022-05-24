@@ -40,10 +40,10 @@
 					<c:out value="${board.title}" />
 				</div>
 				<br>
+			<div id="t3">
 				<div id="t4">
 					<c:out value="${board.writer}" />
 				</div>
-			<div id="t3">
 			<br>
 			<div>
 			<div id="title3" name="content">
@@ -64,8 +64,6 @@
 			</form>
 		</div>
 	</form>
-
-
 
 
 	<div style="width: 50%; margin: auto;">
