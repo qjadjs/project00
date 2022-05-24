@@ -155,6 +155,7 @@ public class BoardController {
 		}
 
 		BoardVO board = service.read(bno);
+		board.setContent(board.getContent().replaceAll(System.getProperty("line.separator"), " "));
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
 
@@ -162,19 +163,14 @@ public class BoardController {
 
 	}
 
-	
-	
 	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
 		JsonObject jsonObject = new JsonObject();
 		
-        /*
-		 * String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때.
-		 */
-		
-		// 내부경로로 저장
-		String fileRoot = "C:\\temp\\";
+
+		String fileRoot = "C:\\temp\\"; // 외부경로로 저장을 희망할때.
+
 		
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
@@ -184,7 +180,7 @@ public class BoardController {
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "C:/temp/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
+			jsonObject.addProperty("url", "C://temp/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
 			jsonObject.addProperty("responseCode", "success");
 				
 		} catch (IOException e) {
@@ -195,7 +191,6 @@ public class BoardController {
 		String a = jsonObject.toString();
 		return a;
 	}
-	
 	
 	
 }

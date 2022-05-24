@@ -5,21 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-	rel="stylesheet">
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- include summernote css/js-->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-<!-- include summernote-ko-KR -->
+<!-- include libraries(jQuery, bootstrap) --> 
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<!-- include summernote css/js--> 
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet"> 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
+<script>
+
+
+</script>
 <title>게시글 작성</title>
 </head>
 <body>
@@ -58,24 +55,23 @@
 			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 			callbacks : { 
             	onImageUpload : function(files, editor, welEditable) {
-            	// 파일 업로드(다중업로드를 위해 반복문 사용)
-            		for (var i = files.length - 1; i >= 0; i--) {
-            		uploadSummernoteImageFile(files[i], this);
+            // 파일 업로드(다중업로드를 위해 반복문 사용)
+            for (var i = files.length - 1; i >= 0; i--) {
+            uploadSummernoteImageFile(files[i], this);
             		}
-         		}
+            	}
             }
-		})
-	        
-	});	
-	
-	
+		});
+	});
+	</script>
+	<script>	
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
 		data.append("file", file);
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/board/uploadSummernoteImageFile",
+			url : "uploadSummernoteImageFile",
 			contentType : false,
 			enctype : 'multipart/form-data',
 			processData : false,
@@ -84,9 +80,6 @@
 			}
 		});
 	}
-		
-		
-		
 	
 	function goWrite(frm) {
 		var title = frm.title.value;
