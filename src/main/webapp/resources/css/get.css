@@ -1,1 +1,92 @@
 @charset "UTF-8";
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.b1{
+	background-color: #212529;
+}
+
+
+#t1{
+	text-align: center;
+	color: white;
+	font-family: 'GangwonEdu_OTFBoldA';
+	font-size: 60px;
+	margin-top:3rem;
+	padding:0 0 0 0;
+}
+
+#title1{
+    margin-top: 5rem; 
+}
+
+#title2{
+	white-space: pre-wrap;
+	word-break:break-all;
+	background-color:white;
+    border-radius: 20px;
+    width: 100%;
+    height: 300px;
+    font-size: 15px;
+    border-color: black;
+}
+#subBtn {
+	border: 4px solid white;
+    border-radius: 20px;
+    padding: 0 10px 0 10px;
+     float: left;
+     margin-top:-1rem;
+}
+
+#subBtn:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #ffffff;
+  text-decoration-line: none;
+}
+#subBtn2 {
+	border: 4px solid white;
+    border-radius: 20px;
+    padding: 0 10px 0 10px;
+    float: right;
+     margin-top:-1rem;
+}
+
+#subBtn2:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #ffffff;
+  text-decoration-line: none;
+}
+
+#d1{
+	text-align: center;
+	margin-top: 3rem;
+}
+#bb1{
+   margin:1rem;
+}	
+
+#btn-default {
+	border: 4px solid white;
+    border-radius: 20px;
+    padding: 0 10px 0 10px;
+}
+
+#btn-default:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #ffffff;
+  text-decoration-line: none;
+}
+
+
+#dd1{
+	text-align:center;
+    padding: 0 10px 0 10px;
+}
+

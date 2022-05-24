@@ -23,8 +23,9 @@
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <title>게시글</title>
+<link href="../resources/css/get.css" rel="stylesheet" />
 </head>
-<body>
+<body class="b1">
 	<form id="operForm" action="/board/modify" method="get">
 		<div>
 			<input type="hidden" id="bno" name="bno"
@@ -37,8 +38,8 @@
 		</div>
 		<div
 			style="width: 70%; margin: auto; text-align: center; height: 110%;">
-			<div>
-				<div style="width: 100%; font-size: 25px;" name="title">
+			<div id="title1">
+				<div id="t1" name="title">
 					<c:out value="${board.title}" />
 				</div>
 				<br>
@@ -48,12 +49,12 @@
 				</div>
 			</div>
 			<br>
-			<div name="content"
-				style="white-space: pre; width: 100%; font-size: 15px; height: 300px; border-color: black;">
+			<div id="title2" name="content">
 				<c:out value="${board.content}" />
 			</div>
-			<button data-oper="modify" class="btn btn-default">Modify</button>
-			<button data-oper="list" class="btn btn-info">List</button>
+			<div id="bb1">
+			<button data-oper="modify" class="btn-default">수정</button>
+			</div>
 			<form id="operForm" action="/board/modify" method="get">
 				<input type="hidden" id="bno" name="bno"
 					value='<c:out value="${board.bno}"/>'>
@@ -66,18 +67,20 @@
 					name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			</form>
 		</div>
-		</div>
 	</form>
 
 
 
 
-	<div style="width: 50%; margin: auto;">
-		<form method="post" action="/write">
+	<div>
+		<form id="dd1" method="post" action="/write">
 			<input type="hidden" name="replyer" /> <br> <br>
 			<textarea id="summernote" name="reply"></textarea>
-			<input id="subBtn" type="button" value="댓글 작성" style="float: right;"
+			<div id="d1">
+			<input id="subBtn" type="button" value="목록" onclick="location.href='/board/list'" />
+			<input id="subBtn2" type="button" value="댓글 작성"
 				onclick="goWrite(this.form)" />
+			</div>
 		</form>
 	</div>
 
