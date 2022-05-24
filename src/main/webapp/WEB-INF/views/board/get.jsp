@@ -22,9 +22,10 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
+<link href="../resources/css/get.css" rel="stylesheet" />
 <title>게시글</title>
 </head>
-<body>
+<body class="b1">
 	<form id="operForm" action="/board/modify" method="get">
 		<div>
 			<input type="hidden" id="bno" name="bno"
@@ -35,25 +36,21 @@
 			<input type="hidden" name="keyword"
 				value='<c:out value="${cri.keyword}"/>'>
 		</div>
-		<div
-			style="width: 70%; margin: auto; text-align: center; height: 110%;">
-			<div>
-				<div style="width: 100%; font-size: 25px;" name="title">
+				<div class="hh1" name="title">
 					<c:out value="${board.title}" />
 				</div>
 				<br>
-				<div style="height: 100%; font-size: 10px; float: right;"
-					name="writer">
+				<div id="t4">
 					<c:out value="${board.writer}" />
 				</div>
-			</div>
+			<div id="t3">
 			<br>
-			<div name="content"
-				style="white-space: pre; width: 100%; font-size: 15px; height: 300px; border-color: black;">
+			<div>
+			<div id="title3" name="content">
 				<c:out value="${board.content}" />
 			</div>
-			<button data-oper="modify" class="btn btn-default">Modify</button>
-			<button data-oper="list" class="btn btn-info">List</button>
+			</div>
+			<button data-oper="modify" class="btn-default">수정</button>
 			<form id="operForm" action="/board/modify" method="get">
 				<input type="hidden" id="bno" name="bno"
 					value='<c:out value="${board.bno}"/>'>
@@ -65,7 +62,6 @@
 					value='<c:out value="${cri.type}"/>'> <input type="hidden"
 					name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			</form>
-		</div>
 		</div>
 	</form>
 
@@ -79,9 +75,15 @@
 			 type="text" placeholder="이름">
 
 			<textarea id="summernote" name="reply"></textarea>
+<<<<<<< HEAD
 			<button type="button" class="btn btn-primary btn-sm btn-block replyAddBtn"
 			 > 댓글작성
 			</button>
+=======
+			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
+			<input id="subBtn" type="button" value="댓글 작성" 
+				onclick="goWrite(this.form)" />
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 		</form>
 	</div>
 

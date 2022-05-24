@@ -1,9 +1,18 @@
 @charset "UTF-8";
 
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
 .page-header{
 	background-color: #212529;
 	color:white;
 	text-align: center;
+	font-family:  'GangwonEdu_OTFBoldA';
+	font-size:35px;
 }
 .panel-heading{
 	padding: auto;
