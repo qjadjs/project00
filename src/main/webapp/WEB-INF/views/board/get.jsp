@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <!DOCTYPE html>
@@ -75,25 +76,32 @@
 			 type="text" placeholder="이름">
 
 			<textarea id="summernote" name="reply"></textarea>
-<<<<<<< HEAD
+
+			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
 			<button type="button" class="btn btn-primary btn-sm btn-block replyAddBtn"
 			 > 댓글작성
 			</button>
-=======
-			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
-			<input id="subBtn" type="button" value="댓글 작성" 
-				onclick="goWrite(this.form)" />
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
+
+
 		</form>
 	</div>
 
-	<div style="width: 50%; margin: auto;">
-		<div class="panel-body">
-			<!-- 댓글 시작 -->
-			<ul class="chat">
-				<!-- 댓글이 들어올 공간 -->
-			</ul>
-		</div>
+<!-- 댓글 -->
+<div id="reply">
+  <ol class="replyList">
+    <c:forEach items="${replyList}" var="replyList">
+      <li>
+        <p>
+          작성자 : ${replyList.replyer}<br />
+          작성 날짜 :  <fmt:formatDate pattern="yyyy-MM-dd"
+          	   value="${replyList.replyDate }" />
+        </p>
+
+        <p>${replyList.reply}</p> <hr/>
+      </li>
+    </c:forEach>   
+  </ol>
+</div>
 		<div class="panel-footer">
 			<!-- 페이지 버튼이 들어온다 -->
 		</div>
@@ -125,6 +133,7 @@
 				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 			  })
 			
+			  
 			var bnoValue = '<c:out value="${board.bno}"/>';
 			var replyUL = $(".chat");
 			showList(1);
@@ -257,28 +266,6 @@
 		});
 			
 
-		/*
-		function goWrite(frm) {
-			var title = frm.title.value;
-			var writer = frm.writer.value;
-			var content = frm.content.value;
-			
-			if (title.trim() == ''){
-				alert("제목을 입력해주세요");
-				return false;
-			}
-			if (writer.trim() == ''){
-				alert("작성자를 입력해주세요");
-				return false;
-			}
-			if (content.trim() == ''){
-				alert("내용을 입력해주세요");
-				return false;
-			}
-			frm.submit();
-		};
-		*/
-		
 </script>
 	<script type="text/javascript">
 	$(document).ready(function() {

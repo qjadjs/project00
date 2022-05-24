@@ -12,7 +12,7 @@ public interface ReplyDAO {
 
 	void insert(ReplyVO vo);
 
-	ReplyVO read(int bno);
+	public List<ReplyVO> read(int bno)throws Exception;
 
 	void delete(int rno);
 

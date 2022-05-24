@@ -1,5 +1,7 @@
 package com.globalin.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -17,20 +19,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
+import com.globalin.domain.ReplyVO;
 import com.globalin.service.BoardService;
+import com.globalin.service.ReplyService;
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-
 	private BoardService service;
+
+	private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
 	@Inject
 	public BoardController(BoardService service) {
 		this.service = service;
 	}
+	@Inject
+	ReplyService replyService;
 
-	private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Criteria cri, Model model) {
@@ -58,6 +64,9 @@ public class BoardController {
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
 
+		List<ReplyVO> replyList = replyService.get(bno);
+		model.addAttribute("replyList", replyList);
+		
 		return "/board/get";
 
 	}
