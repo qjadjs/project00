@@ -41,8 +41,8 @@
 			</div>
 			<br>
 			<div name="content"
-				style="white-space: pre; width: 100%; font-size: 15px; height: 300px; border-color: black;">
-				<c:out value="${board.content}" />
+				style="width: 100%; font-size: 15px; height: 300px; border-color: black;">
+				<c:out value="${board.content}" escapeXml="false" /> 
 			</div>
 			<button data-oper="modify" class="btn btn-default">Modify</button>
 			<button data-oper="list" class="btn btn-info">List</button>
@@ -216,6 +216,6 @@
 			operForm.attr("action", "/board/list");
 			operForm.submit();
 		});
-		
+
 	})
 </script>
