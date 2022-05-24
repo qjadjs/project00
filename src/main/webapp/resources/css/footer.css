@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 .text-center {
+	padding-top:1rem;
   text-align: center;
 }
 
@@ -10,7 +11,7 @@
 
 .container-bottom{
 	padding-top: 3rem;
-	  padding-bottom: 3rem;
+	  padding-bottom: 6rem;
 	 
 }
 
