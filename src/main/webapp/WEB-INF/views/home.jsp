@@ -18,6 +18,7 @@
 <link href="resources/css/header.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
 <link href="resources/css/footer.css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -93,7 +94,7 @@
                   <!-- Product image-->
                    <div class="card">
                   <button type="button" class="cardbutton">
-                     <a href="http://localhost:9020/board/list" >
+                     <a href="board/list" >
                         <!--예시 링크--> <img class="card-img-top"
                         src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
@@ -110,8 +111,12 @@
   <!-- 푸터jsp -->
   <%@include file ="../views/board/Footer.jsp" %>
   
+   <!-- Bootstrap core JS-->
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
 
    <script src="resources/js/scripts.js"></script>
-
+   <script src="resources/js/animation.js"></script>
 </body>
 </html>
