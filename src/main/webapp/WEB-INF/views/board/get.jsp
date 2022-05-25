@@ -55,12 +55,12 @@
 					value='<c:out value="${cri.type}"/>'> <input type="hidden"
 					name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			</form>
-		</div>
+		
 	</form>
 
 	<form name="replyForm" method="post">
-		<input type="hidden" id="bno" name="bno" value="${read.bno }"/>
-		<input type="hidden" id="pageNum" name="pageNum" value="${scri.getPageNum }"/>
+		<input type="hidden" id="bno" name="bno" value="${read.bno }" />
+		<input type="hidden" id="pageNum" name="pageNum" value="${scri.getPageNum }">
 		<input type="hidden" id="amount" name="amonut" value="${scri.getAmount}"> 
   		<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
   		<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
