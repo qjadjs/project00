@@ -22,7 +22,6 @@
 <title>게시글 작성</title>
 <link href="../resources/css/write.css" rel="stylesheet" />
 </head>
-
 <body class="b1">
 <h1 class="hh1">게시글 작성</h1>
    <div style="width: 60%; margin: auto;">

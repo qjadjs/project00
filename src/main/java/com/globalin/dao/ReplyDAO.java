@@ -10,13 +10,13 @@ import com.globalin.domain.ReplyVO;
 
 public interface ReplyDAO {
 
-	public void insert(ReplyVO vo)throws Exception;
+	void insert(ReplyVO vo) throws Exception;
 
-	public List<ReplyVO> read(int bno)throws Exception;
+	ReplyVO read(int bno) throws Exception;
 
-	void delete(int rno);
+	void delete(int rno) throws Exception;
 
-	void update(ReplyVO vo);
+	void update(ReplyVO vo) throws Exception;
 
 	List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("bno") int bno);
 
