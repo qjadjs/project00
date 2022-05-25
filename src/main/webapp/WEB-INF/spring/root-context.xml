@@ -14,14 +14,8 @@
 			value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-<<<<<<< HEAD
 		<property name="username" value="junjun"></property>
 		<property name="password" value="12345"></property>
-=======
-		<property name="username" value="system"></property>
-		<property name="password" value="1234"></property>
-
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	</bean>
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
