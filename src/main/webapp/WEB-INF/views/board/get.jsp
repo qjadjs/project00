@@ -62,17 +62,16 @@
 
 
 	<div style="width: 50%; margin: auto;">
-		<form method="post" action="/write">
-			<input type="hidden" name="replyer" /> <br> <br>
+		<form method="post" action="/new">
+			<input type="hidden" name="replyer" value="${login.userName }"/> <br> <br>
 			<textarea id="summernote" name="reply"></textarea>
 			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
-			<input id="subBtn" type="button" value="댓글 작성" 
-				onclick="goWrite(this.form)" />
+			<input id="subBtn" type="button" value="댓글 작성"  />
 		</form>
 	</div>
 
 	<div style="width: 50%; margin: auto;">
-		<div class="panel-body">
+		<div class="panel-body" style="background-color: white;">
 			<!-- 댓글 시작 -->
 			<ul class="chat">
 				<!-- 댓글이 들어올 공간 -->
@@ -85,7 +84,7 @@
 
 	
 
-	<script type="text/javascript" src="/resources/js/reply.js"></script>
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>		
 		$(document).ready(function() {
 			$('#summernote').summernote({
@@ -199,7 +198,33 @@
 			}
 
 	});
-		
+</script>
+<script>
+$(document).ready(function() {
+var sreply = $("#summernote");
+var sreplyer = "${login.userName}";
+var sbnoVal = '<c:out value="${board.bno}"/>';
+
+$("#subBtn").on("click", function(e) {
+	// name 속성이 reply인 input 찾아오기 : 댓글 내용
+	// name 속성이 replyer 인 input 찾아아기 : 작성자
+	// 게시글 번호 bno 가져와서 reply 객체 만든 뒤에 댓글 달기 기능 실행
+	var reply = {
+		reply : sreply.val(),
+		replyer : sreplyer,
+		bno : sbnoVal
+	}
+	
+	
+	// add(reply, callback)
+	replyService.add(reply, function(result) {
+		alert(result);
+
+		showList(-1);
+	})
+})
+
+})
 </script>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -229,7 +254,7 @@
 		            dataType : "json",   
 		            data : {'bno' : bno, 'userId' : userId},
 		            error : function(){
-		               alert("통신 에러");
+		               alert("로그인 후 이용 가능합니다");
 		            },
 		            success : function(likeCheck) {
 		                
@@ -245,5 +270,5 @@
 		                }
 		            }
 		        });
-		 };
+		 }
 </script>

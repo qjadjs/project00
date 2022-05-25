@@ -3,7 +3,7 @@
 <mapper namespace="mappers.reply.replyMapper">
 	<insert id="insert">
 		insert into tbl_reply (rno, bno, reply, replyer)
-		values(seq_reply.nextval,#{bno}, #{reply}, #{replyer})
+		values(seq_reply.nextval, #{bno}, #{reply}, #{replyer})
 	</insert>
 	<select id="read" resultType="com.globalin.domain.ReplyVO">
 		select * from tbl_reply where rno =

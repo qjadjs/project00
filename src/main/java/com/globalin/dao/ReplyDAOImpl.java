@@ -27,23 +27,23 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public void insert(ReplyVO vo) {
+	public void insert(ReplyVO vo) throws Exception {
 
-		sqlSession.insert(NameSpace + ".", vo);
+		sqlSession.insert(NameSpace + ".insert", vo);
 	}
 
 	@Override
-	public ReplyVO read(int bno) {
+	public ReplyVO read(int bno) throws Exception {
 		return sqlSession.selectOne(NameSpace + ".read", bno);
 	}
 
 	@Override
-	public void delete(int rno) {
+	public void delete(int rno) throws Exception {
 		sqlSession.delete(NameSpace + ".delete", rno);
 	}
 
 	@Override
-	public void update(ReplyVO vo) {
+	public void update(ReplyVO vo) throws Exception {
 		sqlSession.update(NameSpace + ".update", vo);
 	}
 

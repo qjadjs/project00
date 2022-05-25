@@ -28,23 +28,23 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Transactional
 	@Override
-	public void register(ReplyVO vo) {
+	public void register(ReplyVO vo) throws Exception {
 		replyDao.insert(vo);
 		boardDao.updateReplyCnt(vo.getBno(), 1);
 	}
 
 	@Override
-	public List<ReplyVO> get(int rno) {
+	public List<ReplyVO> get(int rno) throws Exception {
 		return (List<ReplyVO>) replyDao.read(rno);
 	}
 
 	@Override
-	public void modify(ReplyVO vo) {
+	public void modify(ReplyVO vo) throws Exception {
 		replyDao.update(vo);
 	}
 
 	@Override
-	public void remove(int rno) {
+	public void remove(int rno) throws Exception {
 		int bno = replyDao.getBno(rno);
 		replyDao.delete(rno);
 		boardDao.updateReplyCnt(bno, -1);
