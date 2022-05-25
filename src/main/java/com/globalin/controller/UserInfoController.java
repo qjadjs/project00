@@ -66,10 +66,12 @@ public class UserInfoController {
 	}
 
 	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public String updatePOST(UserVO userVO ,HttpSession session) throws Exception{
+	public String updatePOST(UserVO userVO ,HttpSession session, Model model) throws Exception{
 		log.info("C: 회원정보수정 입력페이지 POST");
 		userService.updateMember(userVO);
 		log.info("회원정보 수정 " + userVO);
+		model.addAttribute("user", userVO);
+		log.info("C: 회원정보보기 GET의 VO "+ userVO);
 		return "/user/info";
 	}
 
