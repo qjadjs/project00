@@ -78,13 +78,12 @@
 									<c:out value="${pageMaker.cri.type eq 'W'? 'selected' : '' }"/>>작성자</option>
 								<option value="TC"
 									<c:out value="${pageMaker.cri.type eq 'TC'? 'selected' : '' }"/>>제목
-									or 내용</option>
+									+ 내용</option>
 								<option value="TW"
 									<c:out value="${pageMaker.cri.type eq 'TW'? 'selected' : '' }"/>>제목
-									or 작성자</option>
+									+ 작성자</option>
 								<option value="TWC"
-									<c:out value="${pageMaker.cri.type eq 'TWC'? 'selected' : '' }"/>>제목
-									or 내용 or 작성자</option>
+									<c:out value="${pageMaker.cri.type eq 'TWC'? 'selected' : '' }"/>>모든조건</option>
 							</select> 
 							<input type="text" name="keyword" style="width: 230px; height: 27px; value="<c:out value='${pageMaker.cri.keyword }'/>" />
 							<!-- 페이지 정보 포함 -->
