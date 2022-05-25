@@ -26,13 +26,13 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	
 	
-
+//댓글 작성
 	@Override
-	public void insert(ReplyVO vo) {
+	public void insert(ReplyVO vo) throws Exception {
 
-		sql.insert(NameSpace + ".", vo);
+		sql.insert(NameSpace + ".insert", vo);
 	}
-
+//댓글 조회
 	@Override
 	public List<ReplyVO> read(int bno) throws Exception {
 		return sql.selectList(NameSpace + ".read", bno);

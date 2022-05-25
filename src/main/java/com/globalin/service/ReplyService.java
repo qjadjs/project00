@@ -7,7 +7,8 @@ import com.globalin.domain.ReplyPage;
 import com.globalin.domain.ReplyVO;
 
 public interface ReplyService {
-	void register(ReplyVO vo);
+	
+	public void register(ReplyVO vo)throws Exception;
 
 	public List<ReplyVO> get(int bno) throws Exception;
 

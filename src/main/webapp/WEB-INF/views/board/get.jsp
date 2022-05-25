@@ -66,13 +66,18 @@
 		</div>
 	</form>
 
+	<form name="replyForm" method="post">
+		<input type="hidden" id="bno" name="bno" value="${read.bno }"/>
+		<input type="hidden" id="pageNum" name="pageNum" value="${scri.getPageNum }"/>
+		<input type="hidden" id="amount" name="amonut" value="${scri.getAmount}"> 
+  		<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+  		<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
 
 
 	<div style="width: 55%; margin: auto;">
-		<form method="post" action="/write">
-			<input type="hidden" name="replyer" value="${board.writer }"/> <br> <br>
+		
 			<input class="form-control input-sm" id="newReplyer"
-			 type="text" placeholder="이름">
+			name="rpelyer" type="text" placeholder="댓글 작성자">
 
 			<textarea id="summernote" name="reply"></textarea>
 
@@ -81,9 +86,12 @@
 			 > 댓글작성
 			</button>
 
-
-		</form>
 	</div>
+
+	</form>
+		
+
+
 
 <!-- 댓글 -->
 <div id="reply">
@@ -100,7 +108,8 @@
       </li>
     </c:forEach>   
   </ol>
-</div>
+</div> <!-- 댓글 끝 -->
+
 		<div class="panel-footer">
 			<!-- 페이지 버튼이 들어온다 -->
 		</div>
@@ -228,6 +237,12 @@
 		
 		//댓글 등록 이벤트
 		
+		$(".replyAddBtn").on("click", function() {
+			var formObj = $("form[name='replyForm']");
+			formObj.attr("action", "/board/new");
+			formObj.submit();
+		});
+		/*
 		$(".replyAddBtn").on("click" , function() {
 			
 			var replyer = $("#newReplyer");
@@ -263,7 +278,7 @@
 			
 			
 		});
-			
+			*/
 
 </script>
 	<script type="text/javascript">

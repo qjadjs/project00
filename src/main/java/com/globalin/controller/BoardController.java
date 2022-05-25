@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
 import com.globalin.domain.ReplyVO;
+import com.globalin.domain.SearchCriteria;
 import com.globalin.service.BoardService;
 import com.globalin.service.ReplyService;
 
@@ -31,11 +33,12 @@ public class BoardController {
 	private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
 	@Inject
-	public BoardController(BoardService service) {
+	public BoardController(BoardService service,ReplyService replyService) {
 		this.service = service;
+		this.replyService =replyService;
 	}
-	@Inject
-	ReplyService replyService;
+	
+	private ReplyService replyService; 
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -110,6 +113,22 @@ public class BoardController {
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String writeGet() {
 		return "/board/write";
+	}
+	
+	// 댓글 작성
+	@RequestMapping(value = "/new", method = RequestMethod.POST) 
+	public String register(ReplyVO replyVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception { 
+		log.info("reply");
+		
+		replyService.register(replyVO);
+		
+		rttr.addAttribute("bno", replyVO.getBno());
+		rttr.addAttribute("pageNum", scri.getPageNum());
+		rttr.addAttribute("amount", scri.getAmount());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		return "redirect:/board/get";
 	}
 
 }

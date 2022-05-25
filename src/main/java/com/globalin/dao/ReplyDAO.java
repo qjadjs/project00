@@ -10,7 +10,7 @@ import com.globalin.domain.ReplyVO;
 
 public interface ReplyDAO {
 
-	void insert(ReplyVO vo);
+	public void insert(ReplyVO vo)throws Exception;
 
 	public List<ReplyVO> read(int bno)throws Exception;
 

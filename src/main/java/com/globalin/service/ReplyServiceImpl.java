@@ -28,7 +28,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Transactional
 	@Override
-	public void register(ReplyVO vo) {
+	public void register(ReplyVO vo) throws Exception {
 		replyDao.insert(vo);
 		boardDao.updateReplyCnt(vo.getBno(), 1);
 	}
