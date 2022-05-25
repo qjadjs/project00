@@ -39,9 +39,9 @@ public class ReplyController {
 	}
 
 	//Reply Register
-	/*
+	
 	@RequestMapping(value = "/new", method = RequestMethod.POST) 
-	public String register(@RequestBody ReplyVO replyVO) { 
+	public ResponseEntity<String> register(@RequestBody ReplyVO replyVO) { 
 		ResponseEntity<String> entity = null; 
 		
 		try { 
@@ -52,10 +52,10 @@ public class ReplyController {
 		} catch (Exception e) { e.printStackTrace(); 
 		
 		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); 
-		} return entity; 
+		} return entity;
 		
 	}
-*/
+
 	
 	//Reply Get 
 	@RequestMapping(value = "/{bno}", method = RequestMethod.GET) 
