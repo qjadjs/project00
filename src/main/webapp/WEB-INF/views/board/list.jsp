@@ -15,11 +15,11 @@
 <!-- 헤더-->
 <body>
 <div class="slide-in">
-
+<%@include file ="../board/ListHeader.jsp" %>
    
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">게시판</h1>
+		<h1 class="page-header"></h1>
 	</div>
 </div>
 <div class="row">
