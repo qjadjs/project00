@@ -101,6 +101,8 @@ public class UserInfoController {
 		// 2. 전달받은 정보를 가지고 삭제 동작 처리이동
 		// 3. service 객체 - 동작
 		userService.deleteMember(userVO);
+		//4. 세션 초기화
+		session.invalidate();
 		// 5. 페이지 이동
 		return "redirect:/";			
 	}

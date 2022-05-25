@@ -44,7 +44,7 @@
 
 	<!--회원 정보 수정 -->
 	<update id="updateMember"> UPDATE tb_user SET user_name = #{userName} ,
-		user_email = #{userEmail} WHERE user_id = #{userId}
+		user_email = #{userEmail}, user_pw=#{userPw} WHERE user_id = #{userId}
 	</update>
 	<!--회원 정보 보기 -->
 	<select id="readMember" resultMap="userVOResultMap"> SELECT * FROM tb_user WHERE

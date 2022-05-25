@@ -49,7 +49,10 @@ public class UserLoginController {
 	public void loginPOST(LoginDTO loginDTO, HttpSession httpSession ,Model model) throws Exception {
 		log.info(loginDTO.toString());
 		UserVO userVO = userService.login(loginDTO);
+		
 		if(userVO == null) return;
+		
+		httpSession.setAttribute("userId", userVO.getUserId());
 			
 		model.addAttribute("user", userVO);
 
