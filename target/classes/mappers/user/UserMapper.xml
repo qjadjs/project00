@@ -28,6 +28,7 @@
 		WHERE
 		user_id =
 		#{userId}
+		and user_pw= #{userPw}
 	</select>
 	<!-- 로그인 정보 유지 -->
 	<update id="keepLogin">
