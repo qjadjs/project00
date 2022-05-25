@@ -30,10 +30,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.globalin.dao.BoardDAO;
+import com.globalin.dao.LikeDAO;
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
 import com.globalin.service.BoardService;
+import com.globalin.service.LikeService;
 import com.google.gson.JsonObject;
 
 @Controller
@@ -43,11 +45,17 @@ public class BoardController {
 	private BoardService service;
 
 	private BoardDAO dao;
+	
+	private LikeDAO Ldao;
+	
+	private LikeService Lservice;
 
 	@Inject
 	public BoardController(BoardService service, BoardDAO dao) {
 		this.service = service;
 		this.dao = dao;
+		this.Ldao = Ldao;
+		this.Lservice = Lservice;
 	}
 
 	private static Logger log = LoggerFactory.getLogger(BoardController.class);
@@ -162,6 +170,31 @@ public class BoardController {
 		return "/board/get";
 
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateLike" , method = RequestMethod.POST)
+	public int updateLike(int bno, String userId)throws Exception{
+		
+			int likeCheck = Lservice.likeCheck(bno, userId);
+			if(likeCheck == 0) {
+				//좋아요 처음누름
+				Lservice.insertLike(bno, userId); //like테이블 삽입
+				Lservice.updateLike(bno);	//게시판테이블 +1
+				Lservice.updateLikeCheck(bno, userId);//like테이블 구분자 1
+			}else if(likeCheck == 1) {
+				Lservice.updateLikeCheckCancel(bno, userId); //like테이블 구분자0
+                Lservice.updateLikeCancel(bno); //게시판테이블 - 1
+				Lservice.deleteLike(bno, userId); //like테이블 삭제
+			}
+			return likeCheck;
+	}
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody

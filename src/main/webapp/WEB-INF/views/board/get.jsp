@@ -55,6 +55,10 @@
 					name="keyword" value='<c:out value="${cri.keyword}"/>'>
 			</form>
 		</div>
+		<div  style="margin-right:1px;">
+	<button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
+	<button type="button" class="btn btn-danger" id="hate_btn">비추천</button>
+</div>
 	</form>
 
 
@@ -213,4 +217,32 @@
 		});
 
 	})
+	var bno = ${read.bno};
+		var memberId = ${login.memberId};
+		var writerId = ${read.id};
+		
+		 function updateLike(){ 
+		     $.ajax({
+		            type : "POST",  
+		            url : "/board/updateLike",       
+		            dataType : "json",   
+		            data : {'bno' : bno, 'userId' : userId},
+		            error : function(){
+		               alert("통신 에러");
+		            },
+		            success : function(likeCheck) {
+		                
+		                    if(likeCheck == 0){
+		                    	alert("추천완료.");
+		                    	location.reload();
+		                    }
+		                    else if (likeCheck == 1){
+		                     alert("추천취소");
+		                    	location.reload();
+
+		                    
+		                }
+		            }
+		        });
+		 }
 </script>
