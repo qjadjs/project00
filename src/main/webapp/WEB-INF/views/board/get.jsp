@@ -74,9 +74,7 @@
 			<textarea id="summernote" name="reply"></textarea>
 
 			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
-			<button type="button" class="btn btn-primary btn-sm btn-block replyAddBtn"
-			 > 댓글작성
-			</button>
+			<input id="subBtn" type="button" value="댓글 작성" class="replyAddBtn" />
 
 	</div>
 
@@ -105,7 +103,7 @@
 		<div class="panel-footer">
 			<!-- 페이지 버튼이 들어온다 -->
 		</div>
-	</div>
+
 
 	
 

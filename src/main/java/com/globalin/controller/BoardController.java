@@ -54,25 +54,20 @@ import com.google.gson.JsonObject;
 public class BoardController {
 	private BoardService service;
 
+	private ReplyService replyService; 
 
 	private BoardDAO dao;
 
 	@Inject
-	public BoardController(BoardService service, BoardDAO dao) {
+	public BoardController(BoardService service, BoardDAO dao, ReplyService replyService) {
 		this.service = service;
 		this.dao = dao;
+		this.replyService =replyService;
 	}
 
 
 	private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
-	@Inject
-	public BoardController(BoardService service,ReplyService replyService) {
-		this.service = service;
-		this.replyService =replyService;
-	}
-	
-	private ReplyService replyService; 
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -153,6 +148,7 @@ public class BoardController {
 		return "redirect:/board/get";
 	}
 
+	/*
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public String get(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
 		log.info(" get or modify : " + bno);
@@ -165,8 +161,8 @@ public class BoardController {
 		model.addAttribute("replyList", replyList);
 		
 		return "/board/get";
-
 	}
+*/
 	
 	
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
@@ -174,6 +170,7 @@ public class BoardController {
 			Model model) throws Exception {
 		log.info(" get : " + bno);
 		log.info("cri : " + cri);
+		
 
 		Cookie cookies[] = req.getCookies();
 		Map mapCookie = new HashMap();
@@ -204,6 +201,9 @@ public class BoardController {
 		board.setContent(board.getContent().replaceAll(System.getProperty("line.separator"), " "));
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
+		
+		List<ReplyVO> replyList = replyService.get(bno);
+		model.addAttribute("replyList", replyList);
 
 		return "/board/get";
 
