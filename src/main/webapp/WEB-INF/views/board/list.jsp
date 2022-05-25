@@ -14,9 +14,7 @@
 </head>
 <!-- 헤더-->
 <body>
- <div id="page2" class="slide-in">
-      <h1>Balance GAME!</h1>
-    </div>
+<div class="slide-in">
  <!-- 헤더jsp  -->
   <%@include file ="Header.jsp" %>
    
@@ -132,7 +130,7 @@
 		</div>
 	</div>
 	
-	
+	</div>
   <!-- 푸터jsp -->
   <%@include file ="Footer.jsp" %>
 
