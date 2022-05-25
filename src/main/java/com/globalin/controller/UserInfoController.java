@@ -66,10 +66,12 @@ public class UserInfoController {
 	}
 
 	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public String updatePOST(UserVO userVO ,HttpSession session) throws Exception{
+	public String updatePOST(UserVO userVO ,HttpSession session, Model model) throws Exception{
 		log.info("C: 회원정보수정 입력페이지 POST");
 		userService.updateMember(userVO);
 		log.info("회원정보 수정 " + userVO);
+		model.addAttribute("user", userVO);
+		log.info("C: 회원정보보기 GET의 VO "+ userVO);
 		return "/user/info";
 	}
 
@@ -101,6 +103,8 @@ public class UserInfoController {
 		// 2. 전달받은 정보를 가지고 삭제 동작 처리이동
 		// 3. service 객체 - 동작
 		userService.deleteMember(userVO);
+		//4. 세션 초기화
+		session.invalidate();
 		// 5. 페이지 이동
 		return "redirect:/";			
 	}

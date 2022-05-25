@@ -32,6 +32,7 @@ public class UserDaoImpl implements UserDao {
 	// 로그인처리
 	@Override
 	public UserVO login(LoginDTO loginDTO) throws Exception {
+		System.out.println("DAOloginVO" + loginDTO.getUserPw());
 		return sqlSession.selectOne(NAMESPACE + ".login", loginDTO);
 	}
 

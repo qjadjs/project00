@@ -10,9 +10,17 @@ import com.globalin.domain.ReplyVO;
 
 public interface ReplyDAO {
 
+<<<<<<< HEAD
 	void insert(ReplyVO vo) throws Exception;
+=======
+	public void insert(ReplyVO vo)throws Exception;
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
+<<<<<<< HEAD
 	ReplyVO read(int bno) throws Exception;
+=======
+	public List<ReplyVO> read(int bno)throws Exception;
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
 	void delete(int rno) throws Exception;
 

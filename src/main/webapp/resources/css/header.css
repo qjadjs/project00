@@ -268,3 +268,7 @@ margin-left:5px;
 .register-header {
    display: flex;
  }
+ .container-bottom {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+ }

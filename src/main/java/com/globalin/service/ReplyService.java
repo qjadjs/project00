@@ -7,9 +7,18 @@ import com.globalin.domain.ReplyPage;
 import com.globalin.domain.ReplyVO;
 
 public interface ReplyService {
+<<<<<<< HEAD
 	void register(ReplyVO vo) throws Exception;
+=======
+	
+	public void register(ReplyVO vo)throws Exception;
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
+<<<<<<< HEAD
 	List<ReplyVO> get(int bno) throws Exception;
+=======
+	public List<ReplyVO> get(int bno) throws Exception;
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
 	void modify(ReplyVO vo) throws Exception;
 

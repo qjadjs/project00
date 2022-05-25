@@ -34,8 +34,13 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<ReplyVO> get(int rno) throws Exception {
 		return (List<ReplyVO>) replyDao.read(rno);
+=======
+	public List<ReplyVO> get(int bno) throws Exception {
+		return replyDao.read(bno);
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	}
 
 	@Override

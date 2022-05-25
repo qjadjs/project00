@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,31 +22,49 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	private Logger log = LoggerFactory.getLogger(ReplyDAOImpl.class);
 
-	private final SqlSession sqlSession;
+	@Inject SqlSession sql;
 
-	public ReplyDAOImpl(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
-	}
-
+	
+	
+//댓글 작성
 	@Override
 	public void insert(ReplyVO vo) throws Exception {
 
+<<<<<<< HEAD
 		sqlSession.insert(NameSpace + ".insert", vo);
+=======
+		sql.insert(NameSpace + ".insert", vo);
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	}
-
+//댓글 조회
 	@Override
+<<<<<<< HEAD
 	public ReplyVO read(int bno) throws Exception {
 		return sqlSession.selectOne(NameSpace + ".read", bno);
+=======
+	public List<ReplyVO> read(int bno) throws Exception {
+		return sql.selectList(NameSpace + ".read", bno);
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void delete(int rno) throws Exception {
 		sqlSession.delete(NameSpace + ".delete", rno);
+=======
+	public void delete(int rno) {
+		sql.delete(NameSpace + ".delete", rno);
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void update(ReplyVO vo) throws Exception {
 		sqlSession.update(NameSpace + ".update", vo);
+=======
+	public void update(ReplyVO vo) {
+		sql.update(NameSpace + ".update", vo);
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	}
 
 	@Override
@@ -54,16 +74,17 @@ public class ReplyDAOImpl implements ReplyDAO {
 		paramMap.put("cri", cri);
 		log.info("cri : " + cri);
 		paramMap.put("bno", bno);
-		return sqlSession.selectList(NameSpace + ".getListWithPaging", paramMap);
+		return sql.selectList(NameSpace + ".getListWithPaging", paramMap);
 	}
 
 	@Override
 	public int getCountByBno(int bno) {
-		return sqlSession.selectOne(NameSpace + ".getCountByBno", bno);
+		return sql.selectOne(NameSpace + ".getCountByBno", bno);
 	}
 	
 	@Override
 	public int getBno(int rno) {
-		return sqlSession.selectOne(NameSpace + ".getBno", rno);
+		return sql.selectOne(NameSpace + ".getBno", rno);
 	}
+	
 }

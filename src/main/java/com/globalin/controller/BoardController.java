@@ -1,11 +1,17 @@
 package com.globalin.controller;
 
+
+import java.util.List;
+
+import javax.inject.Inject;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -22,6 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,14 +41,16 @@ import com.globalin.dao.LikeDAO;
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
+import com.globalin.domain.ReplyVO;
+import com.globalin.domain.SearchCriteria;
 import com.globalin.service.BoardService;
 import com.globalin.service.LikeService;
 import com.google.gson.JsonObject;
 
+
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-
 	private BoardService service;
 
 	private BoardDAO dao;
@@ -58,7 +67,10 @@ public class BoardController {
 		this.Lservice = Lservice;
 	}
 
+
 	private static Logger log = LoggerFactory.getLogger(BoardController.class);
+
+
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Criteria cri, Model model) {
@@ -78,17 +90,8 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-//	@RequestMapping(value = "/get", method = RequestMethod.GET)
-//	public String get(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
-//		log.info(" get : " + bno);
-//		log.info("cri : " + cri);
-//		BoardVO board = service.read(bno);
-//		model.addAttribute("cri", cri);
-//		model.addAttribute("board", board);
-//
-//		return "/board/get";
-//
-//	}
+
+
 
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modifyGet(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
@@ -130,12 +133,46 @@ public class BoardController {
 	public String writeGet() {
 		return "/board/write";
 	}
+	
+//	// 댓글 작성
+//	@RequestMapping(value = "/new", method = RequestMethod.POST) 
+//	public String register(ReplyVO replyVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception { 
+//		log.info("reply");
+//		
+//		replyService.register(replyVO);
+//		
+//		rttr.addAttribute("bno", replyVO.getBno());
+//		rttr.addAttribute("pageNum", scri.getPageNum());
+//		rttr.addAttribute("amount", scri.getAmount());
+//		rttr.addAttribute("searchType", scri.getSearchType());
+//		rttr.addAttribute("keyword", scri.getKeyword());
+//		
+//		return "redirect:/board/get";
+//	}
 
+	/*
+	@RequestMapping(value = "/get", method = RequestMethod.GET)
+	public String get(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
+		log.info(" get or modify : " + bno);
+		log.info("cri : " + cri);
+		BoardVO board = service.read(bno);
+		model.addAttribute("cri", cri);
+		model.addAttribute("board", board);
+
+		List<ReplyVO> replyList = replyService.get(bno);
+		model.addAttribute("replyList", replyList);
+		
+		return "/board/get";
+	}
+*/
+	
+	
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public String get(HttpServletRequest req, HttpServletResponse resp, @RequestParam("bno") int bno, Criteria cri,
 			Model model) throws Exception {
 		log.info(" get : " + bno);
 		log.info("cri : " + cri);
+		
 
 		Cookie cookies[] = req.getCookies();
 		Map mapCookie = new HashMap();

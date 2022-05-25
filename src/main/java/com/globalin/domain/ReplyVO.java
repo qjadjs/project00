@@ -7,6 +7,7 @@ public class ReplyVO {
 	private int rno, bno;
 	private String reply, replyer;
 	private Date replyDate, updateDate;
+	
 	public int getRno() {
 		return rno;
 	}

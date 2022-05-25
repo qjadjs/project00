@@ -49,14 +49,15 @@ public class UserLoginController {
 	public void loginPOST(LoginDTO loginDTO, HttpSession httpSession ,Model model) throws Exception {
 		log.info(loginDTO.toString());
 		UserVO userVO = userService.login(loginDTO);
-		httpSession.setAttribute("userId" , userVO.getUserId());
-//		if (userVO == null || !BCrypt.checkpw(loginDTO.getUserPw(), userVO.getUserPw())) {
-//			return;
-//		} 
+		
+		if(userVO == null) return;
+		
+		httpSession.setAttribute("userId", userVO.getUserId());
+			
 		model.addAttribute("user", userVO);
 
 		// 로그인 유지를 선택할경우
-		if (loginDTO.isUseCookie()) {
+		 if (loginDTO.isUseCookie()) {
 			int amount = 60 * 60 * 24 * 7; // 7일
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount)); // 로그인 유지기간 설정
 			userService.keepLogin(userVO.getUserId(), httpSession.getId(), sessionLimit);
