@@ -8,16 +8,16 @@ import com.globalin.domain.UserVO;
 public interface UserDao {
 
 	// 회원가입처리
-	void register(UserVO userVO) throws Exception;
+	public void register(UserVO userVO) throws Exception;
 
 	// 로그인 처리
-	UserVO login(LoginDTO loginDTO) throws Exception;
+	public UserVO login(LoginDTO loginDTO) throws Exception;
 
 	// 로그인 유지 처리
-	void keepLogin(String userId, String sessionId, Date sessionLimit) throws Exception;
+	public void keepLogin(String userId, String sessionId, Date sessionLimit) throws Exception;
 
 	// 세션키 검증
-	UserVO checkUserWithSessionKey(String value) throws Exception;
+	public UserVO checkUserWithSessionKey(String value) throws Exception;
 
 	//R: 회원 정보 조회 - 사용자 ID 해당하는 정보 가져오기
 		public UserVO readMember(String userid) throws Exception;

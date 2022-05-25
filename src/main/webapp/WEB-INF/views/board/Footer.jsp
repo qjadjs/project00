@@ -10,7 +10,7 @@
 <!-- Footer-->
    <footer class="bg-dark1">
       <div class="container-bottom">
-         <p class="text-center text-white">Globalin &copy; 밸런스게임</p>
+         <p class="text-center text-white" style="font-weight: normal;">VALANCE GAME</p>
       </div>
    </footer>
 </body>

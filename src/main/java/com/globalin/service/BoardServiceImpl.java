@@ -26,7 +26,6 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		boardDao.updateViewCnt(bno);
 		return boardDao.read(bno);
 	}
 

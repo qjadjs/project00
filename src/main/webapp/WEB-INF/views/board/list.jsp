@@ -10,16 +10,16 @@
 <link href="../resources/css/header.css" rel="stylesheet" />
 <link href="../resources/css/board.css" rel="stylesheet" />
 <link href="../resources/css/footer.css" rel="stylesheet" />
+<link href="../resources/css/animation.css" rel="stylesheet" />
 </head>
 <!-- 헤더-->
 <body>
- 
- <!-- 헤더jsp  -->
-  <%@include file ="Header.jsp" %>
+<div class="slide-in">
+<%@include file ="../board/ListHeader.jsp" %>
    
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">게시판</h1>
+		<h1 class="page-header"></h1>
 	</div>
 </div>
 <div class="row">
@@ -27,7 +27,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				전체글
-				<button id="regBtn" type="button" class="btn btn-xs pull-right">글쓰기</button>
+				
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
@@ -63,8 +63,8 @@
 				<!-- 화면에서 검색을 하면 새로 검색을 한다는 의미 -> 1페이지로 이동 -->
 				<div class="row">
 					<div class="col-la-12">
-						<form id="searchForm" action="/board/list" method="get">
-							<select name="type">
+						<form id="searchForm" action="/board/list" method="get" style="margin-top : 5px;" >
+							<select name="type" style="width: 100px; height: 30px;">
 								<option value=""
 									<c:out value="${pageMaker.cri.type == null? 'selected' : '' }"/>>--</option>
 								<option value="T"
@@ -75,20 +75,21 @@
 									<c:out value="${pageMaker.cri.type eq 'W'? 'selected' : '' }"/>>작성자</option>
 								<option value="TC"
 									<c:out value="${pageMaker.cri.type eq 'TC'? 'selected' : '' }"/>>제목
-									or 내용</option>
+									+ 내용</option>
 								<option value="TW"
 									<c:out value="${pageMaker.cri.type eq 'TW'? 'selected' : '' }"/>>제목
-									or 작성자</option>
+									+ 작성자</option>
 								<option value="TWC"
-									<c:out value="${pageMaker.cri.type eq 'TWC'? 'selected' : '' }"/>>제목
-									or 내용 or 작성자</option>
+									<c:out value="${pageMaker.cri.type eq 'TWC'? 'selected' : '' }"/>>모든조건</option>
 							</select> 
-							<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword }'/>" />
+							<input type="text" name="keyword" style="width: 230px; height: 27px; value="<c:out value='${pageMaker.cri.keyword }'/>" />
 							<!-- 페이지 정보 포함 -->
 							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }" /> 
 							<input type="hidden" name="amount" value="${pageMaker.cri.amount }" />
-							<button class="btn btn-default">검색</button>
+							<button class="btn-search">검색</button>
+							<input id="writeBtn" type="button" class="btn btn-xs pull-right" value=글쓰기>
 						</form>
+							
 					</div>
 				</div>
 
@@ -129,7 +130,7 @@
 		</div>
 	</div>
 	
-	
+	</div>
   <!-- 푸터jsp -->
   <%@include file ="Footer.jsp" %>
 
@@ -140,7 +141,7 @@
 		
 
 	
-		$("#regBtn").on("click", function() {
+		$("#writeBtn").on("click", function() {
 			self.location = "/board/write";
 		})
 

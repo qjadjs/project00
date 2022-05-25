@@ -28,6 +28,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="100000000" />
+	</beans:bean>
 	<context:component-scan
 		base-package="com.globalin.controller" />
 
@@ -42,6 +46,8 @@
 		class="com.globalin.commons.interceptor.RememberMeInterceptor" />
 	<beans:bean id="LoginAfterInterceptor"
 		class="com.globalin.commons.interceptor.LoginAfterInterceptor" />
+
+
 
 	<interceptors>
 		<interceptor>
@@ -66,6 +72,5 @@
 		</interceptor>
 
 	</interceptors>
-
 
 </beans:beans>
