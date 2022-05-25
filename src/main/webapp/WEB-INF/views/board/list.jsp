@@ -15,8 +15,7 @@
 <!-- 헤더-->
 <body>
 <div class="slide-in">
- <!-- 헤더jsp  -->
-  <%@include file ="Header.jsp" %>
+
    
 <div class="row">
 	<div class="col-lg-12">
@@ -64,7 +63,7 @@
 				<!-- 화면에서 검색을 하면 새로 검색을 한다는 의미 -> 1페이지로 이동 -->
 				<div class="row">
 					<div class="col-la-12">
-						<form id="searchForm" action="/board/list" method="get" style="margin-top : 4px;" >
+						<form id="searchForm" action="/board/list" method="get" style="margin-top : 5px;" >
 							<select name="type" style="width: 100px; height: 30px;">
 								<option value=""
 									<c:out value="${pageMaker.cri.type == null? 'selected' : '' }"/>>--</option>
@@ -88,8 +87,9 @@
 							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }" /> 
 							<input type="hidden" name="amount" value="${pageMaker.cri.amount }" />
 							<button class="btn-search">검색</button>
-							<input id="writeBtn" type="button" class="btn btn-xs pull-right" value="글쓰기">
-						</form>							
+							<input id="writeBtn" type="button" class="btn btn-xs pull-right" value=글쓰기>
+						</form>
+							
 					</div>
 				</div>
 
@@ -141,7 +141,7 @@
 		
 
 	
-		$("#regBtn").on("click", function() {
+		$("#writeBtn").on("click", function() {
 			self.location = "/board/write";
 		})
 
