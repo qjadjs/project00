@@ -57,7 +57,6 @@
 		</div>
 		<div  style="margin-right:1px;">
 	<button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
-	<button type="button" class="btn btn-danger" id="hate_btn">비추천</button>
 </div>
 	</form>
 
@@ -217,9 +216,11 @@
 		});
 
 	})
-	var bno = ${read.bno};
-		var memberId = ${login.memberId};
-		var writerId = ${read.id};
+	</script>
+	<script>
+	
+		var bno = ${board.bno};
+		var userId = "${login.userId}";
 		
 		 function updateLike(){ 
 		     $.ajax({
@@ -244,5 +245,5 @@
 		                }
 		            }
 		        });
-		 }
+		 };
 </script>

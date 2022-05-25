@@ -141,7 +141,7 @@
 		
 
 	
-		$("#regBtn").on("click", function() {
+		$("#writeBtn").on("click", function() {
 			self.location = "/board/write";
 		})
 

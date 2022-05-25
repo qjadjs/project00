@@ -5,7 +5,7 @@
 <!-- 게시글 추천수 -->
 <update id="updateLike" parameterType="int">
 update tbl_board set 
-likecnt = likkecnt +1
+likecnt = likecnt +1
 where BNO = #{bno}
 </update>
 

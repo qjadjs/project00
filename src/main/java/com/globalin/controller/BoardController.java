@@ -51,7 +51,7 @@ public class BoardController {
 	private LikeService Lservice;
 
 	@Inject
-	public BoardController(BoardService service, BoardDAO dao) {
+	public BoardController(BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice) {
 		this.service = service;
 		this.dao = dao;
 		this.Ldao = Ldao;

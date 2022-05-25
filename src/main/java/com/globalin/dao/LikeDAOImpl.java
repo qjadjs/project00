@@ -20,22 +20,22 @@ public class LikeDAOImpl implements LikeDAO{
 	private final SqlSession sqlSession;
 
 	@Inject
-	public LikeDAOImpl(SqlSession sqlSession) {
+	public LikeDAOImpl(SqlSession sqlSession){
 		this.sqlSession = sqlSession;
 	}
 
 	@Override
-	public void updateLike(int bno) {
+	public void updateLike(int bno) throws Exception {
 		sqlSession.update(NameSpace + ".updateLike" , bno);
 	}
 
 	@Override
-	public void updateLikeCancel(int bno) {
+	public void updateLikeCancel(int bno) throws Exception {
 		sqlSession.update(NameSpace + ".updateLikeCancel", bno);
 	}
 
 	@Override
-	public void insertLike(int bno, String userId) {
+	public void insertLike(int bno, String userId) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("userId", userId);
 		map.put("bno", bno);
@@ -43,7 +43,7 @@ public class LikeDAOImpl implements LikeDAO{
 	}
 
 	@Override
-	public void deleteLike(int bno, String userId) {
+	public void deleteLike(int bno, String userId) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("userId", userId);
 		map.put("bno", bno);
@@ -51,7 +51,7 @@ public class LikeDAOImpl implements LikeDAO{
 	}
 
 	@Override
-	public int likeCheck(int bno, String userId) {
+	public int likeCheck(int bno, String userId) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("userId", userId);
 		map.put("bno", bno);
@@ -59,7 +59,7 @@ public class LikeDAOImpl implements LikeDAO{
 	}
 
 	@Override
-	public void updateLikeCheck(int bno, String userId) {
+	public void updateLikeCheck(int bno, String userId) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("userId", userId);
 		map.put("bno", bno);
@@ -67,7 +67,7 @@ public class LikeDAOImpl implements LikeDAO{
 	}
 
 	@Override
-	public void updateLikeCheckCancel(int bno, String userId) {
+	public void updateLikeCheckCancel(int bno, String userId) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("userId", userId);
 		map.put("bno", bno);
