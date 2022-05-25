@@ -22,12 +22,20 @@
 <title>게시글 작성</title>
 <link href="../resources/css/write.css" rel="stylesheet" />
 </head>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 <body class="b1">
 <h1 class="hh1">게시글 작성</h1>
    <div style="width: 60%; margin: auto;">
       <form method="post" action="/board/write" name="frm">
+<<<<<<< HEAD
       <input type="text" name="writer" placeholder="작성자"/>
       <input type="text" value="${user.user_name }"/> 
+=======
+      <input id="c1" type="text" name="writer" value="${login.userName }"/>
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
          <div id="title1">
          <input id="title2" type="text" name="title" placeholder="제목" />
          </div>

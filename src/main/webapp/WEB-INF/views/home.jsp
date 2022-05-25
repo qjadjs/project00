@@ -19,9 +19,9 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 <link href="resources/css/footer.css" rel="stylesheet" />
 
+
 </head>
 <body>
-
 <!-- 헤더jsp -->
   <%@include file ="../views/board/Header.jsp" %>
   
@@ -94,15 +94,18 @@
                   <!-- Product image-->
                    <div class="card">
                   <button type="button" class="cardbutton">
+                  <div id="page1" class="slide-in">
                      <a href="board/list" >
                         <!--예시 링크--> <img class="card-img-top"
                         src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
                         onmouseout="this.src='resources/assets/q11.jpg'">
                      </a>
+                     </div>
                   </button>
                   
                </div>
+
                </div>
          </div>
    </section>
