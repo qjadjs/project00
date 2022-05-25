@@ -8,7 +8,10 @@
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color : #212529;">
-      <div class="container px-4 px-lg-5">   
+      <div class="container px-4 px-lg-5">
+      <a href="/">
+      <img class="list-img"src="https://o.remove.bg/downloads/f88a2e2d-335e-4bf4-942c-ff40f649fa8a/719795-middle-removebg-preview.png" style="width:50px; height:50px;">   
+         </a>
          <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"

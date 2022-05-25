@@ -16,7 +16,6 @@
 			value="jdbc:oracle:thin:@localhost:1521:XE"></property>
 		<property name="username" value="system"></property>
 		<property name="password" value="1234"></property>
-
 	</bean>
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">

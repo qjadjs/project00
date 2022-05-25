@@ -34,17 +34,17 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> get(int bno) throws Exception {
-		return replyDao.read(bno);
+	public List<ReplyVO> get(int rno) throws Exception {
+		return (List<ReplyVO>) replyDao.read(rno);
 	}
 
 	@Override
-	public void modify(ReplyVO vo) {
+	public void modify(ReplyVO vo) throws Exception {
 		replyDao.update(vo);
 	}
 
 	@Override
-	public void remove(int rno) {
+	public void remove(int rno) throws Exception {
 		int bno = replyDao.getBno(rno);
 		replyDao.delete(rno);
 		boardDao.updateReplyCnt(bno, -1);
