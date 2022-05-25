@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	//로그인 처리
 	@Override
 	public UserVO login(LoginDTO loginDTO) throws Exception {
-		// TODO Auto-generated method stub
+		userDao.updateLoginDate(loginDTO.getUserId());
 		return userDao.login(loginDTO);
 	}
 	

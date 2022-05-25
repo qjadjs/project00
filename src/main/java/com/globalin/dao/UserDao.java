@@ -18,6 +18,9 @@ public interface UserDao {
 
 	// 세션키 검증
 	public UserVO checkUserWithSessionKey(String value) throws Exception;
+	
+	// 로그인 일자 갱신
+	public void updateLoginDate(String userId) throws Exception;
 
 	//R: 회원 정보 조회 - 사용자 ID 해당하는 정보 가져오기
 		public UserVO readMember(String userid) throws Exception;

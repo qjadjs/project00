@@ -60,10 +60,17 @@
 		user_id = #{userId}
 	</update>
 	<delete id="deleteMember">
-		delete from tb_user where user_id=#{userId} and user_pw=#{userPw}
+		delete from tb_user where user_id=#{userId} and
+		user_pw=#{userPw}
 	</delete>
-	<!-- 아이디 중복 확인하기  -->
-<select resultMap="userVOResultMap" id="idOverlap">
-	SELECT * FROM tb_user where user_id = #{userId}
-</select>
+	<!-- 아이디 중복 확인하기 -->
+	<select resultMap="userVOResultMap" id="idOverlap">
+		SELECT * FROM tb_user where user_id = #{userId}
+	</select>
+
+	<update id="updateLoginDate">
+		UPDATE tb_user
+		SET user_login_date = sysdate
+		WHERE user_id = #{userId}
+	</update>
 </mapper>

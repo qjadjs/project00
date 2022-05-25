@@ -87,4 +87,10 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.selectOne(NAMESPACE+".idOverlap", userId);	
 	}
 
+	@Override
+	public void updateLoginDate(String userId) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateLoginDate", userId);
+		
+	}
+
 }

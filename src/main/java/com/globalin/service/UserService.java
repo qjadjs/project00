@@ -17,10 +17,10 @@ public interface UserService {
 	public UserVO login(LoginDTO loginDTO) throws Exception;
 
 	//로그인정보 유지
-	public void keepLogin(String userId, String sessionId, Date sessionLimit) throws Exception;
+	void keepLogin(String userId, String sessionId, Date sessionLimit) throws Exception;
 	
 	//세션키 검증
-	public UserVO checkLoginBefore(String value) throws Exception;
+	UserVO checkLoginBefore(String value) throws Exception;
 	
 	//회원정보 보기
 	public UserVO readMember(String userId);
