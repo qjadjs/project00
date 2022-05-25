@@ -14,9 +14,7 @@
 </head>
 <!-- 헤더-->
 <body>
- <div id="page2" class="slide-in">
-      <h1>Balance GAME!</h1>
-    </div>
+<div class="slide-in">
  <!-- 헤더jsp  -->
   <%@include file ="Header.jsp" %>
    
@@ -78,12 +76,13 @@
 									<c:out value="${pageMaker.cri.type eq 'W'? 'selected' : '' }"/>>작성자</option>
 								<option value="TC"
 									<c:out value="${pageMaker.cri.type eq 'TC'? 'selected' : '' }"/>>제목
-									+ 내용</option>
+									or 내용</option>
 								<option value="TW"
 									<c:out value="${pageMaker.cri.type eq 'TW'? 'selected' : '' }"/>>제목
-									+ 작성자</option>
+									or 작성자</option>
 								<option value="TWC"
-									<c:out value="${pageMaker.cri.type eq 'TWC'? 'selected' : '' }"/>>모든조건</option>
+									<c:out value="${pageMaker.cri.type eq 'TWC'? 'selected' : '' }"/>>제목
+									or 내용 or 작성자</option>
 							</select> 
 							<input type="text" name="keyword" style="width: 230px; height: 27px; value="<c:out value='${pageMaker.cri.keyword }'/>" />
 							<!-- 페이지 정보 포함 -->
@@ -131,7 +130,7 @@
 		</div>
 	</div>
 	
-	
+	</div>
   <!-- 푸터jsp -->
   <%@include file ="Footer.jsp" %>
 
