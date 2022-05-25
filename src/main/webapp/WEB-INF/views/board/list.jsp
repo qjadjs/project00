@@ -39,6 +39,7 @@
 							<th>작성일</th>
 							<th>수정일</th>
 							<th>조회수</th>
+							<th>추천수</th>
 						</tr>
 					</thead>
 					<!--  모든 등록된 board list 출력 -->
@@ -55,6 +56,7 @@
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.updateDate }" /></td>
 							<td><c:out value="${board.viewCnt}"/></td>
+							<td><c:out value="${board.likeCnt}"/></td>
 						</tr>
 					</c:forEach>
 				</table>

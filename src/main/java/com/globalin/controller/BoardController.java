@@ -37,15 +37,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.globalin.dao.BoardDAO;
+import com.globalin.dao.LikeDAO;
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
 import com.globalin.domain.ReplyVO;
 import com.globalin.domain.SearchCriteria;
 import com.globalin.service.BoardService;
-
-import com.globalin.service.ReplyService;
-
+import com.globalin.service.LikeService;
 import com.google.gson.JsonObject;
 
 
@@ -54,15 +53,18 @@ import com.google.gson.JsonObject;
 public class BoardController {
 	private BoardService service;
 
-	private ReplyService replyService; 
-
 	private BoardDAO dao;
+	
+	private LikeDAO Ldao;
+	
+	private LikeService Lservice;
 
 	@Inject
-	public BoardController(BoardService service, BoardDAO dao, ReplyService replyService) {
+	public BoardController(BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice) {
 		this.service = service;
 		this.dao = dao;
-		this.replyService =replyService;
+		this.Ldao = Ldao;
+		this.Lservice = Lservice;
 	}
 
 
@@ -132,21 +134,21 @@ public class BoardController {
 		return "/board/write";
 	}
 	
-	// 댓글 작성
-	@RequestMapping(value = "/new", method = RequestMethod.POST) 
-	public String register(ReplyVO replyVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception { 
-		log.info("reply");
-		
-		replyService.register(replyVO);
-		
-		rttr.addAttribute("bno", replyVO.getBno());
-		rttr.addAttribute("pageNum", scri.getPageNum());
-		rttr.addAttribute("amount", scri.getAmount());
-		rttr.addAttribute("searchType", scri.getSearchType());
-		rttr.addAttribute("keyword", scri.getKeyword());
-		
-		return "redirect:/board/get";
-	}
+//	// 댓글 작성
+//	@RequestMapping(value = "/new", method = RequestMethod.POST) 
+//	public String register(ReplyVO replyVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception { 
+//		log.info("reply");
+//		
+//		replyService.register(replyVO);
+//		
+//		rttr.addAttribute("bno", replyVO.getBno());
+//		rttr.addAttribute("pageNum", scri.getPageNum());
+//		rttr.addAttribute("amount", scri.getAmount());
+//		rttr.addAttribute("searchType", scri.getSearchType());
+//		rttr.addAttribute("keyword", scri.getKeyword());
+//		
+//		return "redirect:/board/get";
+//	}
 
 	/*
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
@@ -201,13 +203,35 @@ public class BoardController {
 		board.setContent(board.getContent().replaceAll(System.getProperty("line.separator"), " "));
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
-		
-		List<ReplyVO> replyList = replyService.get(bno);
-		model.addAttribute("replyList", replyList);
 
 		return "/board/get";
 
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateLike" , method = RequestMethod.POST)
+	public int updateLike(int bno, String userId)throws Exception{
+		
+			int likeCheck = Lservice.likeCheck(bno, userId);
+			if(likeCheck == 0) {
+				//좋아요 처음누름
+				Lservice.insertLike(bno, userId); //like테이블 삽입
+				Lservice.updateLike(bno);	//게시판테이블 +1
+				Lservice.updateLikeCheck(bno, userId);//like테이블 구분자 1
+			}else if(likeCheck == 1) {
+				Lservice.updateLikeCheckCancel(bno, userId); //like테이블 구분자0
+                Lservice.updateLikeCancel(bno); //게시판테이블 - 1
+				Lservice.deleteLike(bno, userId); //like테이블 삭제
+			}
+			return likeCheck;
+	}
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody

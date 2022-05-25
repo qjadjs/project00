@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.like.likeMapper">
+
+<!-- 게시글 추천수 -->
+<update id="updateLike" parameterType="int">
+update tbl_board set 
+likecnt = likecnt +1
+where BNO = #{bno}
+</update>
+
+<!-- 게시글 추천수취소 -->
+<update id="updateLikeCancel" parameterType="int">
+update tbl_board set 
+likecnt = likecnt - 1
+where BNO = #{bno}
+</update>
+
+<!-- 게시글 추천 시 Like 테이블에 insert -->
+<insert id="insertLike">
+insert into tbl_like(LIKENO , BNO , user_id) 
+values((SELECT NVL(MAX(likeno), 0) + 1 FROM tbl_LIKE) ,#{bno} ,#{userId})
+</insert>
+
+<!-- 게시글 추천취소 시 delete -->
+<delete id="deleteLike">
+delete from tbl_like where BNO = #{bno} and user_id = #{userId}
+</delete>
+
+<!-- 게시글 추천 시 Check를 1로 만들어서 중복방지-->
+<update id="updateLikeCheck">
+update tbl_like set LIKECHECK = 1
+where BNO = #{bno} and user_id = #{userId}
+</update>
+
+<!-- 게시글 추천취소 시 다시 0  -->
+<update id="updateLikeCheckCancel">
+update tbl_like set LIKECHECK = 0
+where BNO = #{bno} and user_id = #{userId}
+</update>
+
+<!-- 게시글 추천 중복방지 select문 -->
+<select id="likeCheck" resultType="int">
+select count(*) from tbl_like where BNO = #{bno} and user_id = #{userId} 
+</select>
+
+
+</mapper>

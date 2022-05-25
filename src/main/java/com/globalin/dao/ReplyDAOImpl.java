@@ -22,30 +22,31 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	private Logger log = LoggerFactory.getLogger(ReplyDAOImpl.class);
 
-	@Inject SqlSession sql;
+	private final SqlSession sqlSession;
+	
+	public ReplyDAOImpl(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
 
-	
-	
 //댓글 작성
 	@Override
 	public void insert(ReplyVO vo) throws Exception {
-
-		sql.insert(NameSpace + ".insert", vo);
+		sqlSession.insert(NameSpace + ".insert", vo);
 	}
 //댓글 조회
 	@Override
-	public List<ReplyVO> read(int bno) throws Exception {
-		return sql.selectList(NameSpace + ".read", bno);
+	public ReplyVO read(int bno) throws Exception {
+		return sqlSession.selectOne(NameSpace + ".read", bno);
 	}
 
 	@Override
-	public void delete(int rno) {
-		sql.delete(NameSpace + ".delete", rno);
+	public void delete(int rno) throws Exception {
+		sqlSession.delete(NameSpace + ".delete", rno);
 	}
 
 	@Override
-	public void update(ReplyVO vo) {
-		sql.update(NameSpace + ".update", vo);
+	public void update(ReplyVO vo) throws Exception {
+		sqlSession.update(NameSpace + ".update", vo);
 	}
 
 	@Override
@@ -55,17 +56,17 @@ public class ReplyDAOImpl implements ReplyDAO {
 		paramMap.put("cri", cri);
 		log.info("cri : " + cri);
 		paramMap.put("bno", bno);
-		return sql.selectList(NameSpace + ".getListWithPaging", paramMap);
+		return sqlSession.selectList(NameSpace + ".getListWithPaging", paramMap);
 	}
 
 	@Override
 	public int getCountByBno(int bno) {
-		return sql.selectOne(NameSpace + ".getCountByBno", bno);
+		return sqlSession.selectOne(NameSpace + ".getCountByBno", bno);
 	}
 	
 	@Override
 	public int getBno(int rno) {
-		return sql.selectOne(NameSpace + ".getBno", rno);
+		return sqlSession.selectOne(NameSpace + ".getBno", rno);
 	}
 	
 }
