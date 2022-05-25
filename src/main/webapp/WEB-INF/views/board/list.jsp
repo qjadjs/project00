@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글</title>
-<link href="../resources/css/header.css" rel="stylesheet" />
+<link href="../resources/css/list.css" rel="stylesheet" />
 <link href="../resources/css/board.css" rel="stylesheet" />
 <link href="../resources/css/footer.css" rel="stylesheet" />
 <link href="../resources/css/animation.css" rel="stylesheet" />
