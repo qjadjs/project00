@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <!DOCTYPE html>
@@ -61,38 +60,16 @@
 </div>
 	</form>
 
-	<form name="replyForm" method="post">
-		<input type="hidden" id="bno" name="bno" value="${read.bno }"/>
-		<input type="hidden" id="pageNum" name="pageNum" value="${scri.getPageNum }"/>
-		<input type="hidden" id="amount" name="amonut" value="${scri.getAmount}"> 
-  		<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
-  		<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
 
-<<<<<<< HEAD
 	<div style="width: 50%; margin: auto;">
 		<form method="post" action="/new">
 			<input type="hidden" name="replyer" value="${login.userName }"/> <br> <br>
-=======
-
-	<div style="width: 55%; margin: auto;">
-		
-			<input class="form-control input-sm" id="newReplyer"
-			name="rpelyer" type="text" placeholder="댓글 작성자">
-
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 			<textarea id="summernote" name="reply"></textarea>
-
 			<input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
-<<<<<<< HEAD
 			<input id="subBtn" type="button" value="댓글 작성"  />
 		</form>
-=======
-			<input id="subBtn" type="button" value="댓글 작성" class="replyAddBtn" />
-
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	</div>
 
-<<<<<<< HEAD
 	<div style="width: 50%; margin: auto;">
 		<div class="panel-body" style="background-color: white;">
 			<!-- 댓글 시작 -->
@@ -100,45 +77,15 @@
 				<!-- 댓글이 들어올 공간 -->
 			</ul>
 		</div>
-=======
-	</form>
-		
-
-
-
-<!-- 댓글 -->
-<div id="reply">
-  <ol class="replyList">
-    <c:forEach items="${replyList}" var="replyList">
-      <li>
-        <p>
-          작성자 : ${replyList.replyer}<br />
-          작성 날짜 :  <fmt:formatDate pattern="yyyy-MM-dd"
-          	   value="${replyList.replyDate }" />
-        </p>
-
-        <p>${replyList.reply}</p> <hr/>
-      </li>
-    </c:forEach>   
-  </ol>
-</div> <!-- 댓글 끝 -->
-
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 		<div class="panel-footer">
 			<!-- 페이지 버튼이 들어온다 -->
 		</div>
-
+	</div>
 
 	
 
-<<<<<<< HEAD
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>		
-=======
-	<script type="text/javascript" src="/resources/js/reply.js"></script>
-	<script>	
-	
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 		$(document).ready(function() {
 			$('#summernote').summernote({
 				placeholder: '내용을 입력하세요',
@@ -160,7 +107,6 @@
 				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 			  })
 			
-			  
 			var bnoValue = '<c:out value="${board.bno}"/>';
 			var replyUL = $(".chat");
 			showList(1);
@@ -201,7 +147,6 @@
 				showReplyPage(replyCnt);
 			});
 		}
-			
 			
 		
 			var pageNum = 1;
@@ -253,7 +198,6 @@
 			}
 
 	});
-<<<<<<< HEAD
 </script>
 <script>
 $(document).ready(function() {
@@ -278,57 +222,9 @@ $("#subBtn").on("click", function(e) {
 
 		showList(-1);
 	})
-})
+});
 
 })
-=======
-		
-		//댓글 등록 이벤트
-		
-		$(".replyAddBtn").on("click", function() {
-			var formObj = $("form[name='replyForm']");
-			formObj.attr("action", "/board/new");
-			formObj.submit();
-		});
-		/*
-		$(".replyAddBtn").on("click" , function() {
-			
-			var replyer = $("#newReplyer");
-			var reply_text = $("#summernote");
-			
-			var replyerVal = replyer.val();
-			var reply_textVal = reply_text.val();
-			
-			
-			$.ajax({
-				
-			type : "post",
-			url : "/replies/new",
-			contentType : "application/json; charset=utf-8",
-			dataType : "text",
-			data : JSON.stringify({
-				bno : bno,
-				replyer : replyerVal,
-				reply_text : reply_textVal
-			}),
-			
-			success : function (result) {
-				//성공적인 댓글 등록 처리 알림
-				if(result == "regSuccess") {
-					alert("댓글등록 완료")
-				};
-				getReplis();
-				replyer.val("");
-				reply_text.val("");
-			}
-			
-			});
-			
-			
-		});
-			*/
-
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 </script>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -342,8 +238,6 @@ $("#subBtn").on("click", function(e) {
 			operForm.find("#bno").remove();
 			operForm.attr("action", "/board/list");
 			operForm.submit();
-			
-			
 		});
 
 	})
