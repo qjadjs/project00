@@ -22,26 +22,12 @@
 <title>게시글 작성</title>
 <link href="../resources/css/write.css" rel="stylesheet" />
 </head>
-<<<<<<< HEAD
-<body>
-	<h1 style="text-align: center">게시물 입력</h1>
-	<div style="width: 60%; margin: auto;">
-		<form method="post" action="/board/write" name="frm">
-			<input type="text" name="writer" placeholder="작성자" /> <br> <input
-				type="text" name="title" style="width: 100%;" placeholder="제목" /> <br>
-			<br>
-			<textarea id="summernote" name="content"></textarea>
-			<br> <input id="subBtn" type="button" value="글 작성"
-				style="float: center;" onclick="goWrite(this.form)" /> <input
-				type="button" value="목록으로" onclick="location.href='/board/list'" />
-		</form>
-	</div>
-=======
+
 <body class="b1">
 <h1 class="hh1">게시글 작성</h1>
    <div style="width: 60%; margin: auto;">
       <form method="post" action="/board/write" name="frm">
-      <input type="text" name="writer" placeholder="작성자"/>
+      <input type="text" name="writer" value="${login.userName }"/>
          <div id="title1">
          <input id="title2" type="text" name="title" placeholder="제목" />
          </div>
@@ -53,7 +39,6 @@
          <input id="subBtn2" type="button" value="목록" onclick="location.href='/board/list'" />
       </form>
    </div>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 </body>
 <script>
 	$(document).ready(function() {
