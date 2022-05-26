@@ -153,7 +153,7 @@
             comments += "<div>";
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
+            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></small>";
             comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -247,7 +247,7 @@
 
       });
       
-      replyUL.on("click", "span .delete", function(e){
+      replyUL.on("click", ".delete", function(e){
          e.preventDefault();
          let rno = $(this).attr("rno");
          replyService.remove(rno, originalReplyer, function(result) {
