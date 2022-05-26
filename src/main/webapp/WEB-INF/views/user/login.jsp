@@ -17,8 +17,9 @@
 			<input type="password" name="userPw" class="login-pw" placeholder="비밀번호">
 		</div>
 		<div class="login-remember">
-			<input type="checkbox" id="remember"> <label for="remember">
-				Remember Me </label>
+		<label>
+			<input type="checkbox" id="remember" name="useCookie">
+		Remember Me </label>
 		</div>
 		<div >
 			<input class="login-join" type="submit" value="L O G I N"/>

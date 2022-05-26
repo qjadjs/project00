@@ -16,7 +16,7 @@
 		아이디 : <input type="text" name="userId" value="${user.userId }" readonly><br>
 		비밀번호 : <input type="password" name="userPw"><br>
 		<input type="submit" class="btn" value="탈퇴하기">
-		<input type="button" class="btn" value="뒤로가기" onclick="location.href='/'">
+		<input type="button" class="btn" value="뒤로가기" onclick="location.href='/user/info'">
 	</form>
 </fieldset>
 </body>

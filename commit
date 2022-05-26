@@ -9,6 +9,7 @@
 커밋밋
 개병신씨발프로그램1ㅇㄹㄴㄹ
 ㄴㄷㅌ
+ㅇㅇ
 
 create table tbl_like(
 LIKENO NUMBER NOT NULL PRIMARY KEY ,

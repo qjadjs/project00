@@ -55,7 +55,7 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/article/paging/search/write" />
+			<mapping path="/board/write" />
 			<mapping path="/article/paging/search/modify" />
 			<mapping path="/article/paging/search/remove" />
 			<mapping path="/user/info" />

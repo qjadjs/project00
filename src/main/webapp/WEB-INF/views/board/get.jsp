@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+   prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,49 +25,54 @@
 <title>게시글</title>
 </head>
 <body class="b1">
-	<form id="operForm" action="/board/modify" method="get">
-		<div>
-			<input type="hidden" id="bno" name="bno"
-				value='<c:out value="${board.bno}"/>'> <input type="hidden"
-				name="pageNum" value='<c:out value="${cri.pageNum}"/>'> <input
-				type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
-			<input type="hidden" name="keyword"
-				value='<c:out value="${cri.keyword}"/>'>
-		</div>
-		<div class="hh1" name="title">
-			<c:out value="${board.title}" />
-		</div>
-		<br>
-		<div id="t3">
-			<div id="t4">
-				<c:out value="${board.writer}" />
-			</div>
-			<br>
 
-			<div id="title3" name="content">
-				<c:out value="${board.content}" escapeXml="false" />
-			</div>
-		</div>
-		<button data-oper="modify" class="btn-default">수정</button>
-		<form id="operForm" action="/board/modify" method="get">
-			<input type="hidden" id="bno" name="bno"
-				value='<c:out value="${board.bno}"/>'>
-			<!-- 보고있던 페이지 정보 숨겨놓기 -->
-			<input type="hidden" name="pageNum"
-				value='<c:out value="${cri.pageNum}"/>'> <input
-				type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
-			<input type="hidden" name="keyword"
-				value='<c:out value="${cri.keyword}"/>'>
-		</form>
-		</div>
-		<div style="margin-right: 1px;">
-			<button type="button" class="btn btn-warning " id="like_btn"
-				onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
-		</div>
-	</form>
-
+   <form id="operForm" action="/board/modify" method="get">
+      <div>
+         <input type="hidden" id="bno" name="bno"
+            value='<c:out value="${board.bno}"/>'> <input type="hidden"
+            name="pageNum" value='<c:out value="${cri.pageNum}"/>'> <input
+            type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+         <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
+         <input type="hidden" name="keyword"
+            value='<c:out value="${cri.keyword}"/>'>
+      </div>
+            <div class="hh1" name="title">
+               <c:out value="${board.title}" />
+            </div>
+            <br>
+         <div id="t3">
+            <div id="t4">
+               <c:out value="${board.writer}" />
+            </div>
+         <br>
+         
+         <div id="title3" name="content">
+            <c:out value="${board.content}" escapeXml="false" /> 
+         </div>
+         </div>
+         
+         <c:choose>
+         <c:when test="${login.userName == board.writer}">   
+         <form id="operForm" action="/board/modify" method="get">
+         <button data-oper="modify" class="btn-default">수정</button>
+            <input type="hidden" id="bno" name="bno"
+               value='<c:out value="${board.bno}"/>'>
+            <!-- 보고있던 페이지 정보 숨겨놓기 -->
+            <input type="hidden" name="pageNum"
+               value='<c:out value="${cri.pageNum}"/>'> <input
+               type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+            <input type="hidden" name="type"
+               value='<c:out value="${cri.type}"/>'> <input type="hidden"
+               name="keyword" value='<c:out value="${cri.keyword}"/>'>
+         </form>
+         </c:when>
+         <c:otherwise>
+         </c:otherwise>
+         </c:choose>
+      <div  style="margin-right:1px;">
+   <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
+</div>
+   </form>
 
 	<div style="width: 50%; margin: auto;">
 		<form method="post" action="/new">
@@ -80,17 +85,18 @@
 		</form>
 	</div>
 
-	<div style="width: 50%; margin: auto;">
-		<div class="panel-body" style="background-color: white;">
-			<!-- 댓글 시작 -->
-			<ul class="chat">
-				<!-- 댓글이 들어올 공간 -->
-			</ul>
-		</div>
-		<div class="panel-footer">
-			<!-- 페이지 버튼이 들어온다 -->
-		</div>
-	</div>
+
+   <div style="width: 50%; margin: auto;">
+      <div class="panel-body" style="background-color: white;">
+         <!-- 댓글 시작 -->
+         <ul class="chat">
+            <!-- 댓글이 들어올 공간 -->
+         </ul>
+      </div>
+      <div class="panel-footer">
+         <!-- 페이지 버튼이 들어온다 -->
+      </div>
+   </div>
 
 
 
@@ -131,12 +137,11 @@
 			function(replyCnt, list) {
 				console.log("replyCnt : " + replyCnt);
 				console.log("list : " + list);
-
-				if (page == -1) {
-					pageNum = Math.ceil(replyCnt / 10.0);
-					showList(pageNum);
-					return;
-				}
+            if (page == -1) {
+               pageNum = Math.ceil(replyCnt / 10.0);
+               showList(pageNum);
+               return;
+            }
 
 			var comments = ""; // 여기에 html 코드를 조립
 			if (list == null || list.length == 0) {
@@ -250,18 +255,15 @@
 				showList(pageNum);
 			})
 		})
-
-	});
+   });
 </script>
 
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var operForm = $("#operForm");
-
-		$("button[data-oper='modify']").on("click", function() {
-			operForm.submit();
-		});
-
+      $("button[data-oper='modify']").on("click", function() {
+         operForm.submit();
+      });
 		$("button[data-oper='list']").on("click", function() {
 			operForm.find("#bno").remove();
 			operForm.attr("action", "/board/list");
@@ -293,10 +295,8 @@
 		                    else if (likeCheck == 1){
 		                     alert("추천취소");
 		                    	location.reload();
-
-		                    
-		                }
-		            }
-		        });
-		 }
+                      }
+                  }
+              });
+       }
 </script>
