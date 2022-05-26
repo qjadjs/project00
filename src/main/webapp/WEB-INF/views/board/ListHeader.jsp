@@ -10,7 +10,7 @@
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color : #212529;">
       <div class="container px-4 px-lg-5">
       <a href="/">
-      <img class="list-img"src="https://o.remove.bg/downloads/f88a2e2d-335e-4bf4-942c-ff40f649fa8a/719795-middle-removebg-preview.png" style="width:50px; height:50px;">   
+      <img class="list-img"src="https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b65ce32d6e65e714e848ae41bc91315a71418163400b6306535fa937047d583cf00dfe6b5e3816d38f431c50" style="width:50px; height:50px;">   
          </a>
          <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -23,28 +23,28 @@
             <div class="register-header">
            <c:choose>
 					<c:when test="${empty login.userId }">				
-						<form class="login-btn">
-							<button class="btn btn-outline-dark" type="submit">
-								<a href="/user/login" style="text-decoration: none">로그인</a>
+						<form class="list-login-btn">
+							<button class="btn btn-outline-dark" type="submit" style="color: black; border-color:white; ">
+								<a href="/user/login" style="text-decoration: none; color: white; ">로그인</a>
 							</button>
 						</form>
 					
 						
-						<form class="register-btn">
-							<button class="btn btn-outline-dark" type="submit">
-								<a href="/user/register" style="text-decoration: none">회원가입</a>
+						<form class="list-register-btn">
+							<button class="btn btn-outline-dark" type="submit" style="margin-left:5px;" >
+								<a href="/user/register" style="text-decoration: none ; color: white;"  >회원가입</a>
 							</button>
 						</form>
 					</c:when>
 					<c:otherwise>
-						<form class="register-btn">
+							<form class="list-logout-btn">
 							<button class="btn btn-outline-dark" type="submit">
-								<a href="/user/info" style="text-decoration: none">회원정보</a>
+								<a href="/user/logout" style="text-decoration: none; color: white;">로그아웃</a>
 							</button>
 						</form>
-							<form class="logout-btn">
-							<button class="btn btn-outline-dark" type="submit">
-								<a href="/user/logout" style="text-decoration: none">로그아웃</a>
+						<form class="list-register-btn">
+							<button class="btn btn-outline-dark" type="submit" style="margin-left:5px;">
+								<a href="/user/info" style="text-decoration: none; color: white;">회원정보</a>
 							</button>
 						</form>
 						

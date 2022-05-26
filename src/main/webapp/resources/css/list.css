@@ -2,6 +2,7 @@
 
 .login-btn {
 margin-right:5px;
+
 }
 .logout-btn {
 margin-left:5px;
@@ -32,8 +33,8 @@ margin-left:5px;
 
 
 .btn-outline-dark {
-  color: #212529;
-  border-color: #212529;
+  color: #f8f9fa;
+    border-color: #f8f9fa;
   text-decoration-line: none;
 }
 .btn-outline-dark:hover {
@@ -147,7 +148,6 @@ margin-left:5px;
 
 .navbar-collapse {
   flex-basis: 100%;
-  flex-grow: 1;
   align-items: center;
   
 }
@@ -276,9 +276,5 @@ margin-left:5px;
  .list-img {
  padding-left : 30px;
  }
-
  .list-login-btn{
  }
-s
-a:visited {color:blue}
-
