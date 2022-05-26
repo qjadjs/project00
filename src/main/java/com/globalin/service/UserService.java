@@ -32,4 +32,9 @@ public interface UserService {
 
 	public void idOverlap(String userId, HttpServletResponse response) throws Exception;
 
+	UserVO findId(UserVO userVO) throws Exception;
+	
+	UserVO findPassword(UserVO userVO) throws Exception;
+	
+	void updatePassword(UserVO userVO) throws Exception;
 }

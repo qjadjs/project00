@@ -93,4 +93,18 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	public UserVO findId(UserVO userVO) throws Exception {
+		System.out.println("==> Mybatis로 findId() 기능 처리");
+		return sqlSession.selectOne(NAMESPACE+".findId", userVO);
+	}
+
+	public UserVO findPassword(UserVO userVO) throws Exception {
+		System.out.println("==> Mybatis로 findPassword() 기능 처리");
+		return sqlSession.selectOne(NAMESPACE+".findPassword", userVO);
+	}
+
+	public void updatePassword(UserVO userVO) throws Exception {
+		System.out.println("==> Mybatis로 updatePassword() 기능 처리");
+		sqlSession.update(NAMESPACE+"updatePassword", userVO);
+	}
 }

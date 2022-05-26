@@ -24,6 +24,7 @@
 		<div >
 			<input class="login-join" type="submit" value="L O G I N"/>
 		</div>
+		  <input type="button" value="회원정보찾기" class="btn" onclick="location.href='/user/findId'">
 	<p class="mb-1">
 		<a href="#">비밀번호가 기억나지 않습니다.</a>
 	</p>

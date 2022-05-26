@@ -108,5 +108,44 @@ public class UserInfoController {
 		// 5. 페이지 이동
 		return "redirect:/";			
 	}
-
+	// 아이디 찾기 페이지 이동
+		@RequestMapping(value="/findId", method = RequestMethod.GET)
+		public String findIdView() {
+			return "user/findId";
+		}
+		// 아이디 찾기 실행
+		@RequestMapping(value="find_id", method=RequestMethod.POST)
+		public String findIdAction(UserVO userVO, Model model) throws Exception {
+			UserVO user = userService.findId(userVO);
+			
+			if(user == null) { 
+				model.addAttribute("check", 1);
+			} else { 
+				model.addAttribute("check", 0);
+				model.addAttribute("user", user.getUserId());
+			}
+			
+			return "user/findId";
+		}
+		
+		  // 비밀번호 찾기 페이지로 이동
+		@RequestMapping(value="findPassword", method = RequestMethod.GET)
+		public String findPasswordView() {
+			return "user/findPassword";
+		}
+		
+	    // 비밀번호 찾기 실행
+		@RequestMapping(value="find_password", method=RequestMethod.POST)
+		public String findPasswordAction(UserVO vo, Model model) throws Exception {
+			UserVO user = userService.findPassword(vo);
+			
+			if(user == null) { 
+				model.addAttribute("check", 1);
+			} else { 
+				model.addAttribute("check", 0);
+				model.addAttribute("updateid", user.getUserId());
+			}
+			
+			return "user/findPassword";
+		}
 }

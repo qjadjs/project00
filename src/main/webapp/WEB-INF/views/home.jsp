@@ -24,7 +24,7 @@
 <body>
 <!-- 헤더jsp -->
   <%@include file ="../views/board/Header.jsp" %>
-  
+        <input type="button" value="회원정보찾기" class="btn" onclick="location.href='/user/findId'">
   
    <!-- Header-->
    <header class="bg-dark py-5">
