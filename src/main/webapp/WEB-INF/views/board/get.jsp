@@ -25,6 +25,7 @@
 <title>게시글</title>
 </head>
 <body class="b1">
+
    <form id="operForm" action="/board/modify" method="get">
       <div>
          <input type="hidden" id="bno" name="bno"
@@ -35,45 +36,46 @@
          <input type="hidden" name="keyword"
             value='<c:out value="${cri.keyword}"/>'>
       </div>
-
-      <div class="hh1" name="title">
-         <c:out value="${board.title}" />
-      </div>
-      <br>
-      <div id="t3">
-         <div id="t4">
-            <c:out value="${board.writer}" />
-         </div>
+            <div class="hh1" name="title">
+               <c:out value="${board.title}" />
+            </div>
+            <br>
+         <div id="t3">
+            <div id="t4">
+               <c:out value="${board.writer}" />
+            </div>
          <br>
-
+         
          <div id="title3" name="content">
-            <c:out value="${board.content}" escapeXml="false" />
+            <c:out value="${board.content}" escapeXml="false" /> 
          </div>
-      </div>
-      <button data-oper="modify" class="btn-default">수정</button>
-      <form id="operForm" action="/board/modify" method="get">
-         <input type="hidden" id="bno" name="bno"
-            value='<c:out value="${board.bno}"/>'>
-         <!-- 보고있던 페이지 정보 숨겨놓기 -->
-         <input type="hidden" name="pageNum"
-            value='<c:out value="${cri.pageNum}"/>'> <input
-            type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-         <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
-         <input type="hidden" name="keyword"
-            value='<c:out value="${cri.keyword}"/>'>
-      </form>
-      </div>
-      <div style="margin-right: 1px;">
-         <button type="button" class="btn btn-warning " id="like_btn"
-            onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
-      </div>
-
+         </div>
+         
+         <c:choose>
+         <c:when test="${login.userName == board.writer}">   
+         <form id="operForm" action="/board/modify" method="get">
+         <button data-oper="modify" class="btn-default">수정</button>
+            <input type="hidden" id="bno" name="bno"
+               value='<c:out value="${board.bno}"/>'>
+            <!-- 보고있던 페이지 정보 숨겨놓기 -->
+            <input type="hidden" name="pageNum"
+               value='<c:out value="${cri.pageNum}"/>'> <input
+               type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+            <input type="hidden" name="type"
+               value='<c:out value="${cri.type}"/>'> <input type="hidden"
+               name="keyword" value='<c:out value="${cri.keyword}"/>'>
+         </form>
+         </c:when>
+         <c:otherwise>
+         </c:otherwise>
+         </c:choose>
+      <div  style="margin-right:1px;">
+   <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
+</div>
    </form>
-
 
    <div style="width: 50%; margin: auto;">
       <form method="post" action="/new">
-
          <input type="hidden" name="replyer" value="${login.userName }" /> <br>
          <br>
          <textarea id="summernote" name="reply"></textarea>
@@ -82,6 +84,7 @@
             type="button" value="댓글 작성" />
       </form>
    </div>
+
 
    <div style="width: 50%; margin: auto;">
       <div class="panel-body" style="background-color: white;">
@@ -94,6 +97,8 @@
          <!-- 페이지 버튼이 들어온다 -->
       </div>
    </div>
+
+
 
    <script type="text/javascript" src="/resources/js/reply.js"></script>
    <script>
@@ -124,24 +129,20 @@
          
       showList(1);
 
-         function showList(page) {
-            replyService.getList({
-               bno : bnoValue,
-               page : page || 1
-            },
-            function(replyCnt, list) {
-               console.log("replyCnt : " + replyCnt);
-               console.log("list : " + list);
-
-
-
+      function showList(page) {
+         replyService.getList({
+            bno : bnoValue,
+            page : page || 1
+         },
+         function(replyCnt, list) {
+            console.log("replyCnt : " + replyCnt);
+            console.log("list : " + list);
             if (page == -1) {
                pageNum = Math.ceil(replyCnt / 10.0);
                showList(pageNum);
                return;
             }
 
-            
          var comments = ""; // 여기에 html 코드를 조립
          if (list == null || list.length == 0) {
             replyUL.html("");
@@ -152,9 +153,7 @@
             comments += "<div>";
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-            comments += " <small class='pull-right text-muted'>" 
-            + replyService .displayTime(list[i].replyDate) 
-            + "</br><span class='btn mini' id='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn mini'id='delete'>삭제</span></small>";
+            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
             comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -170,52 +169,49 @@
       var pageNum = 1;
       var replyPageFooter = $(".panel-footer");
 
-         function showReplyPage(replyCnt) {
-            var endNum = Math.ceil(pageNum / 10.0) * 10;
-            var startNum = endNum - 9;
+      function showReplyPage(replyCnt) {
+         var endNum = Math.ceil(pageNum / 10.0) * 10;
+         var startNum = endNum - 9;
 
-            let prev = startNum != 1;
-            let next = false;
+         let prev = startNum != 1;
+         let next = false;
 
-            if (endNum * 10 >= replyCnt) {
-               endNum = Math.ceil(replyCnt / 10.0);
-            }
-            if (endNum * 10 < replyCnt) {
-               next = true;
-            }
-
-            let pageHtml = "<ul class='pagination pull-right'>";
-
-
-            if (prev) {
-               pageHtml += "<li class='page-item'>";
-               pageHtml += "<a class='page-link' href='"
-                     + (startNum - 1) + "'>";
-               pageHtml += "Prev</a></li>";
-            }
-
-            for (let i = startNum; i <= endNum; i++) {
-               // active : 현재 페이지 번호 표시
-               let active = pageNum == i ? "active" : "";
-               pageHtml += "<li class='page-item " + active + "'>";
-               pageHtml += "<a class='page-link' href='" + i + "'>";
-               pageHtml += i + "</a></li>";
-            }
-
-            if (next) {
-               pageHtml += "<li class='page-item'>";
-               pageHtml += "<a class='page-link' href='"
-                     + (endNum + 1) + "'>";
-               pageHtml += "Next</a></li>";
-            }
-
-            pageHtml += "</ul>";
-
-            replyPageFooter.html(pageHtml);
-            console.log(pageHtml);
-
+         if (endNum * 10 >= replyCnt) {
+            endNum = Math.ceil(replyCnt / 10.0);
+         }
+         if (endNum * 10 < replyCnt) {
+            next = true;
          }
 
+         let pageHtml = "<ul class='pagination pull-right'>";
+
+         if (prev) {
+            pageHtml += "<li class='page-item'>";
+            pageHtml += "<a class='page-link' href='" + (startNum - 1) + "'>";
+            pageHtml += "Prev</a></li>";
+         }
+
+         for (let i = startNum; i <= endNum; i++) {
+            // active : 현재 페이지 번호 표시
+            let active = pageNum == i ? "active" : "";
+            pageHtml += "<li class='page-item " + active + "'>";
+            pageHtml += "<a class='page-link' href='" + i + "'>";
+            pageHtml += i + "</a></li>";
+         }
+
+         if (next) {
+            pageHtml += "<li class='page-item'>";
+            pageHtml += "<a class='page-link' href='" + (endNum + 1) + "'>";
+            pageHtml += "Next</a></li>";
+         }
+
+         pageHtml += "</ul>";
+
+         replyPageFooter.html(pageHtml);
+         console.log(pageHtml);
+
+      }
+      
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';
@@ -229,6 +225,7 @@
             replyer : sreplyer,
             bno : sbnoVal
          };
+         
          
          // add(reply, callback)
          replyService.add(reply, function(result) {
@@ -247,37 +244,35 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
+
       });
       
-      //댓글 수정 버튼
-      
-      
-      
-      //댓글 삭제
-      $("#delete").on("click", function(e){
-
-    	  e.preventDefault();
-    	  let rno =$(this).attr("href");
-    	  $.ajax({
-  			data : {
-  				rno : rno
-  			},
-  			url : '/reply/:rno',
-  			type : 'POST',
-  			success : function(result){
-
-  			}
-  		});	
-})
+      replyUL.on("click", "span .delete", function(e){
+         e.preventDefault();
+         let rno = $(this).attr("rno");
+         replyService.remove(rno, originalReplyer, function(result) {
+            alert(result);
+            showList(pageNum);
+         })
+      })
+   });
 </script>
+
    <script type="text/javascript">
    $(document).ready(function() {
       var operForm = $("#operForm");
-
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
-
+      $("button[data-oper='list']").on("click", function() {
+         operForm.find("#bno").remove();
+         operForm.attr("action", "/board/list");
+         operForm.submit();
+      });
+      
+   })
+   </script>
+   <script>
    
       var bno = ${board.bno};
       var userId = "${login.userId}";
@@ -300,8 +295,6 @@
                           else if (likeCheck == 1){
                            alert("추천취소");
                              location.reload();
-
-                          
                       }
                   }
               });
