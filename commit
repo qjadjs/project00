@@ -2,13 +2,18 @@
 에휴
 커밋함(
 ㅇㄴㄴㅇ
-커밋
+커밋fsd
 ㅇㅇㅇㅇㅇㅇ5ㅇㄹㄴㄹㄴㅇㄹㅇㄴㄹ
 =======fs
 대공사11
 커밋밋
+<<<<<<< HEAD
 개병신씨발프로그램1ㅇㄹㄴㄹ
 ㄴㄷㅌㅋㄴ
+=======
+개병신씨발프로그램1ㅇ
+ㄴㄷㅌ
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 ㅇㅇdd
 dd
 create table tbl_like(

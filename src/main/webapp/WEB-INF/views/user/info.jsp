@@ -54,9 +54,22 @@
                   <form class="info-button">
                   
       <input type="button" class="btn" value="메인으로" onclick="location.href='/'">
-      <input type="button" value="회원정보수정" class="btn" onclick="location.href='/user/update'">
+      <input type="button" value="회원정보수정" class="btn" onclick="updateId()">
    <input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
-   <input type="button" value="회원탈퇴" class="btn" onclick="location.href='/user/delete'">
+   <input type="button" value="회원탈퇴" class="btn" onclick="deleteId()">
+    <script type="text/javascript">
+  function deleteId(){
+		var url="/user/delete";
+		
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+	}
+  
+  function updateId(){
+	  var url="/user/update";
+	  
+	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+  }
+  </script>
    </form>
 
 </form>

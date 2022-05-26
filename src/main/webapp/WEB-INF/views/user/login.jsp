@@ -24,14 +24,27 @@
 		<div >
 			<input class="login-join" type="submit" value="L O G I N"/>
 		</div>
-		  <input type="button" value="회원정보찾기" class="btn" onclick="location.href='/user/findId'">
 	<p class="mb-1">
-		<a href="#">비밀번호가 기억나지 않습니다.</a>
+	 <a href="javascript:void(0)" onclick="findid()">아이디</a> / 
+              				<a href="javascript:void(0)" onclick="findpassword()">비밀번호</a>가 기억나지 않습니다.
 	</p>
 	<p class="mb-0">
 		<a href="/user/register">신규가입하기</a>
 	</p>
 	</div>
+	  <script type="text/javascript">
+  function findid(){
+		var url="find_id_form";
+		
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+	}
+  
+  function findpassword(){
+	  var url="find_password_form";
+	  
+	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+  }
+  </script>
 	</form>
 </body>
 </html>
