@@ -483,3 +483,9 @@ font-weight: 400;
 }
 
 a:visited {color:blue}
+
+html,
+body{
+width:100%;
+overflow-x:hidden;
+}

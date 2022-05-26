@@ -220,4 +220,8 @@ tr td:nth-child(2){
 	margin-top:-3rem;
 }
 
-
+html,
+body{
+width:100%;
+overflow-x:hidden;
+}
