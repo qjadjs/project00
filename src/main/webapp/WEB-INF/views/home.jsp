@@ -19,7 +19,6 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 <link href="resources/css/footer.css" rel="stylesheet" />
 
-
 </head>
 <body>
 <!-- 헤더jsp -->
