@@ -36,4 +36,10 @@ public interface UserDao {
 	
 	//아이디 중복체크
 	public UserVO idOverlap(String userId) throws Exception;
+	
+	public UserVO findId(UserVO userVO) throws Exception;
+	
+	public UserVO findPassword(UserVO userVO) throws Exception;
+	
+	public void updatePassword(UserVO userVO) throws Exception;
 }

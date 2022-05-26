@@ -105,5 +105,23 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+
+	@Override
+	public UserVO findId(UserVO userVO) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.findId(userVO);
+	}
+
+	@Override
+	public UserVO findPassword(UserVO userVO) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.findPassword(userVO);
+	}
+
+	@Override
+	public void updatePassword(UserVO userVO) throws Exception {
+		// TODO Auto-generated method stub
+		userDao.updatePassword(userVO);
+	}
 		
 }
