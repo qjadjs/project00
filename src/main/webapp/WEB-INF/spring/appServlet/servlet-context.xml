@@ -55,9 +55,9 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/article/paging/search/write" />
-			<mapping path="/article/paging/search/modify" />
-			<mapping path="/article/paging/search/remove" />
+			<mapping path="/board/write" />
+			<mapping path="/board/modify" />
+			<mapping path="/user/updateForm" />
 			<mapping path="/user/info" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
