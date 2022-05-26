@@ -57,7 +57,6 @@
 		<interceptor>
 			<mapping path="/board/write" />
 			<mapping path="/board/modify" />
-			<mapping path="/user/updateForm" />
 			<mapping path="/user/info" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>

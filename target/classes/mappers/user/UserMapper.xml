@@ -50,10 +50,7 @@
 	<select id="readMember" resultMap="userVOResultMap"> SELECT * FROM tb_user WHERE
 		user_id = #{userId}
 	</select>
-	<!--회원비밀번호 수정 -->
-	<update id="updatePw"> UPDATE tb_user SET user_pw = #{userPw} WHERE user_id
-		= #{userId}
-	</update>
+
 	<!--회원 프로필 이미지 변경 -->
 	<update id="updateUimage"> UPDATE tb_user SET user_img =
 		#{userImg} WHERE
@@ -81,8 +78,8 @@
 	<select id="findPassword" resultMap="userVOResultMap">
 		select * from tb_user where user_id = #{userId} and user_email = #{userEmail}
 	</select>
-	<!-- 아이디 찾기 -->
+	<!-- 비밀번호 변경 -->
 	<update id="updatePassword">
-		update tb_user set user_pw=#{userPw} where user_id = #{userId}
+		UPDATE tb_user SET user_pw= #{userPw} WHERE user_id = #{userId}
 	</update>
 </mapper>
