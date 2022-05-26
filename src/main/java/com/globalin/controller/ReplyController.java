@@ -39,7 +39,7 @@ public class ReplyController {
 	}
 
 	//Reply Register
-	
+
 	@RequestMapping(value = "/new", method = RequestMethod.POST) 
 	public ResponseEntity<String> register(@RequestBody ReplyVO replyVO) { 
 		ResponseEntity<String> entity = null; 

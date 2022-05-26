@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link
+<<<<<<< HEAD
    href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
    rel="stylesheet">
 <script
@@ -20,6 +21,20 @@
    rel="stylesheet">
 <script
    src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+=======
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <link href="../resources/css/get.css" rel="stylesheet" />
 <title>게시글</title>
@@ -74,6 +89,7 @@
 </div>
    </form>
 
+<<<<<<< HEAD
    <div style="width: 50%; margin: auto;">
       <form method="post" action="/new">
          <input type="hidden" name="replyer" value="${login.userName }" /> <br>
@@ -84,6 +100,19 @@
             type="button" value="댓글 작성" />
       </form>
    </div>
+=======
+	<div style="width: 50%; margin: auto;">
+		<form method="post" action="/new">
+			<input type="hidden" name="replyer" value="${login.userName }" /> <br>
+			<br>
+			<textarea id="summernote" name="reply"></textarea>
+			<input id="subBtn2" type="button" value="목록"
+				onclick="location.href='/board/list'" /> <input id="subBtn"
+				type="button" value="댓글 작성" />
+		</form>
+	</div>
+
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
 
    <div style="width: 50%; margin: auto;">
@@ -99,6 +128,7 @@
    </div>
 
 
+<<<<<<< HEAD
 
    <script type="text/javascript" src="/resources/js/reply.js"></script>
    <script>
@@ -128,7 +158,10 @@
       $('#summernote').summernote(setting);
          
       showList(1);
+=======
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
+<<<<<<< HEAD
       function showList(page) {
          replyService.getList({
             bno : bnoValue,
@@ -137,12 +170,50 @@
          function(replyCnt, list) {
             console.log("replyCnt : " + replyCnt);
             console.log("list : " + list);
+=======
+	<script type="text/javascript" src="/resources/js/reply.js"></script>
+	<script>
+	
+	var setting = {placeholder: '내용을 입력하세요',
+	        tabsize: 1,
+	        height: 100,
+	        disableResizeEditor: true,
+			toolbar: [
+				['fontname', ['fontname']],
+				['fontsize', ['fontsize']],
+				['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+				['color', ['forecolor','color']],
+				['para', ['ul', 'ol', 'paragraph']],
+				['height', ['height']],
+				['insert',['link']],
+			],
+			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']}
+	
+			var bnoValue = '<c:out value="${board.bno}"/>';
+			var replyUL = $(".chat");
+			
+	$(document).ready(function() {
+		$('#summernote').summernote(setting);
+			
+		showList(1);
+
+		function showList(page) {
+			replyService.getList({
+				bno : bnoValue,
+				page : page || 1
+			},
+			function(replyCnt, list) {
+				console.log("replyCnt : " + replyCnt);
+				console.log("list : " + list);
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             if (page == -1) {
                pageNum = Math.ceil(replyCnt / 10.0);
                showList(pageNum);
                return;
             }
 
+<<<<<<< HEAD
          var comments = ""; // 여기에 html 코드를 조립
          if (list == null || list.length == 0) {
             replyUL.html("");
@@ -160,28 +231,79 @@
             comments += "</li>";
          }
          replyUL.html(comments);
+=======
+			var comments = ""; // 여기에 html 코드를 조립
+			if (list == null || list.length == 0) {
+				replyUL.html("");
+				return; // 함수 바로 종료
+			}
+			for (let i = 0; i < list.length; i++) {
+				comments += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
+				comments += "<div>";
+				comments += "<div class='header'>";
+				comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
+				comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
+				comments += "</div>";
+				comments += "<p>" + list[i].reply + "</p>";
+				comments += "</div>";
+				comments += "</li>";
+			}
+			replyUL.html(comments);
 
-         showReplyPage(replyCnt);
-      });
-      }
-         
-      
-      var pageNum = 1;
-      var replyPageFooter = $(".panel-footer");
+			showReplyPage(replyCnt);
+		});
+		}
+			
+		
+		var pageNum = 1;
+		var replyPageFooter = $(".panel-footer");
 
-      function showReplyPage(replyCnt) {
-         var endNum = Math.ceil(pageNum / 10.0) * 10;
-         var startNum = endNum - 9;
+		function showReplyPage(replyCnt) {
+			var endNum = Math.ceil(pageNum / 10.0) * 10;
+			var startNum = endNum - 9;
 
-         let prev = startNum != 1;
-         let next = false;
+			let prev = startNum != 1;
+			let next = false;
 
-         if (endNum * 10 >= replyCnt) {
-            endNum = Math.ceil(replyCnt / 10.0);
-         }
-         if (endNum * 10 < replyCnt) {
-            next = true;
-         }
+			if (endNum * 10 >= replyCnt) {
+				endNum = Math.ceil(replyCnt / 10.0);
+			}
+			if (endNum * 10 < replyCnt) {
+				next = true;
+			}
+
+			let pageHtml = "<ul class='pagination pull-right'>";
+
+			if (prev) {
+				pageHtml += "<li class='page-item'>";
+				pageHtml += "<a class='page-link' href='" + (startNum - 1) + "'>";
+				pageHtml += "Prev</a></li>";
+			}
+
+			for (let i = startNum; i <= endNum; i++) {
+				// active : 현재 페이지 번호 표시
+				let active = pageNum == i ? "active" : "";
+				pageHtml += "<li class='page-item " + active + "'>";
+				pageHtml += "<a class='page-link' href='" + i + "'>";
+				pageHtml += i + "</a></li>";
+			}
+
+			if (next) {
+				pageHtml += "<li class='page-item'>";
+				pageHtml += "<a class='page-link' href='" + (endNum + 1) + "'>";
+				pageHtml += "Next</a></li>";
+			}
+
+			pageHtml += "</ul>";
+
+			replyPageFooter.html(pageHtml);
+			console.log(pageHtml);
+
+		}
+		
+		var sreply = $("#summernote");
+		var sreplyer = "${login.userName}";
+		var sbnoVal = '<c:out value="${board.bno}"/>';
 
          let pageHtml = "<ul class='pagination pull-right'>";
 
@@ -256,46 +378,49 @@
          })
       })
       */
+
    });
 </script>
 
-   <script type="text/javascript">
-   $(document).ready(function() {
-      var operForm = $("#operForm");
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var operForm = $("#operForm");
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
-      $("button[data-oper='list']").on("click", function() {
-         operForm.find("#bno").remove();
-         operForm.attr("action", "/board/list");
-         operForm.submit();
-      });
       
-   })
-   </script>
-   <script>
-   
-      var bno = ${board.bno};
-      var userId = "${login.userId}";
-      
-       function updateLike(){ 
-           $.ajax({
-                  type : "POST",  
-                  url : "/board/updateLike",       
-                  dataType : "json",   
-                  data : {'bno' : bno, 'userId' : userId},
-                  error : function(){
-                     alert("로그인 후 이용 가능합니다");
-                  },
-                  success : function(likeCheck) {
-                      
-                          if(likeCheck == 0){
-                             alert("추천완료.");
-                             location.reload();
-                          }
-                          else if (likeCheck == 1){
-                           alert("추천취소");
-                             location.reload();
+		$("button[data-oper='list']").on("click", function() {
+			operForm.find("#bno").remove();
+			operForm.attr("action", "/board/list");
+			operForm.submit();
+		});
+		
+	})
+	</script>
+	<script>
+	
+		var bno = ${board.bno};
+		var userId = "${login.userId}";
+		
+		 function updateLike(){ 
+		     $.ajax({
+		            type : "POST",  
+		            url : "/board/updateLike",       
+		            dataType : "json",   
+		            data : {'bno' : bno, 'userId' : userId},
+		            error : function(){
+		               alert("로그인 후 이용 가능합니다");
+		            },
+		            success : function(likeCheck) {
+		                
+		                    if(likeCheck == 0){
+		                    	alert("추천완료.");
+		                    	location.reload();
+		                    }
+		                    else if (likeCheck == 1){
+		                     alert("추천취소");
+		                    	location.reload();
                       }
                   }
               });
