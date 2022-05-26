@@ -5,23 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/footer2.css" rel="stylesheet" />
-<style>
-.bg-dark1 {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: -1rem;
-        height: 6rem;
-      }
-
-      .container-bottom {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom:-1.8rem;
-      }
-</style>
+<link href="../resources/css/footer3.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Footer-->

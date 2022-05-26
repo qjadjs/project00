@@ -26,7 +26,6 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				전체글
-				
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
@@ -133,7 +132,7 @@
 	
 	</div>
   <!-- 푸터jsp -->
-  <%@include file ="../board/Footer.jsp" %>
+  <%@include file ="../board/Footer3.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>

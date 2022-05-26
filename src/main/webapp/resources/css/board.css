@@ -15,7 +15,6 @@
 	font-size:35px;
 }
 .panel-heading{
-	padding: auto;
 	font-size: 20px;
 }
 
@@ -58,6 +57,7 @@
 
 .panel-body{
 	 text-align: center;
+	 margin-top:-1.7rem;
 	 }
 
 li {

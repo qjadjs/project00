@@ -98,7 +98,8 @@
       </div>
    </div>
 
-
+<!-- 푸터 -->
+<%@include file ="../board/Footer3.jsp" %>
 
 	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>
