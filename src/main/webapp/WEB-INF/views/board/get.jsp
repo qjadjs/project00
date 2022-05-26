@@ -35,6 +35,7 @@
          <input type="hidden" name="keyword"
             value='<c:out value="${cri.keyword}"/>'>
       </div>
+
       <div class="hh1" name="title">
          <c:out value="${board.title}" />
       </div>
@@ -66,11 +67,13 @@
          <button type="button" class="btn btn-warning " id="like_btn"
             onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
       </div>
+
    </form>
 
 
    <div style="width: 50%; margin: auto;">
       <form method="post" action="/new">
+
          <input type="hidden" name="replyer" value="${login.userName }" /> <br>
          <br>
          <textarea id="summernote" name="reply"></textarea>
@@ -91,8 +94,6 @@
          <!-- 페이지 버튼이 들어온다 -->
       </div>
    </div>
-
-
 
    <script type="text/javascript" src="/resources/js/reply.js"></script>
    <script>
@@ -123,14 +124,16 @@
          
       showList(1);
 
-      function showList(page) {
-         replyService.getList({
-            bno : bnoValue,
-            page : page || 1
-         },
-         function(replyCnt, list) {
-            console.log("replyCnt : " + replyCnt);
-            console.log("list : " + list);
+         function showList(page) {
+            replyService.getList({
+               bno : bnoValue,
+               page : page || 1
+            },
+            function(replyCnt, list) {
+               console.log("replyCnt : " + replyCnt);
+               console.log("list : " + list);
+
+
 
             if (page == -1) {
                pageNum = Math.ceil(replyCnt / 10.0);
@@ -138,6 +141,7 @@
                return;
             }
 
+            
          var comments = ""; // 여기에 html 코드를 조립
          if (list == null || list.length == 0) {
             replyUL.html("");
@@ -166,49 +170,52 @@
       var pageNum = 1;
       var replyPageFooter = $(".panel-footer");
 
-      function showReplyPage(replyCnt) {
-         var endNum = Math.ceil(pageNum / 10.0) * 10;
-         var startNum = endNum - 9;
+         function showReplyPage(replyCnt) {
+            var endNum = Math.ceil(pageNum / 10.0) * 10;
+            var startNum = endNum - 9;
 
-         let prev = startNum != 1;
-         let next = false;
+            let prev = startNum != 1;
+            let next = false;
 
-         if (endNum * 10 >= replyCnt) {
-            endNum = Math.ceil(replyCnt / 10.0);
+            if (endNum * 10 >= replyCnt) {
+               endNum = Math.ceil(replyCnt / 10.0);
+            }
+            if (endNum * 10 < replyCnt) {
+               next = true;
+            }
+
+            let pageHtml = "<ul class='pagination pull-right'>";
+
+
+            if (prev) {
+               pageHtml += "<li class='page-item'>";
+               pageHtml += "<a class='page-link' href='"
+                     + (startNum - 1) + "'>";
+               pageHtml += "Prev</a></li>";
+            }
+
+            for (let i = startNum; i <= endNum; i++) {
+               // active : 현재 페이지 번호 표시
+               let active = pageNum == i ? "active" : "";
+               pageHtml += "<li class='page-item " + active + "'>";
+               pageHtml += "<a class='page-link' href='" + i + "'>";
+               pageHtml += i + "</a></li>";
+            }
+
+            if (next) {
+               pageHtml += "<li class='page-item'>";
+               pageHtml += "<a class='page-link' href='"
+                     + (endNum + 1) + "'>";
+               pageHtml += "Next</a></li>";
+            }
+
+            pageHtml += "</ul>";
+
+            replyPageFooter.html(pageHtml);
+            console.log(pageHtml);
+
          }
-         if (endNum * 10 < replyCnt) {
-            next = true;
-         }
 
-         let pageHtml = "<ul class='pagination pull-right'>";
-
-         if (prev) {
-            pageHtml += "<li class='page-item'>";
-            pageHtml += "<a class='page-link' href='" + (startNum - 1) + "'>";
-            pageHtml += "Prev</a></li>";
-         }
-
-         for (let i = startNum; i <= endNum; i++) {
-            // active : 현재 페이지 번호 표시
-            let active = pageNum == i ? "active" : "";
-            pageHtml += "<li class='page-item " + active + "'>";
-            pageHtml += "<a class='page-link' href='" + i + "'>";
-            pageHtml += i + "</a></li>";
-         }
-
-         if (next) {
-            pageHtml += "<li class='page-item'>";
-            pageHtml += "<a class='page-link' href='" + (endNum + 1) + "'>";
-            pageHtml += "Next</a></li>";
-         }
-
-         pageHtml += "</ul>";
-
-         replyPageFooter.html(pageHtml);
-         console.log(pageHtml);
-
-      }
-      
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';
@@ -222,7 +229,6 @@
             replyer : sreplyer,
             bno : sbnoVal
          };
-         
          
          // add(reply, callback)
          replyService.add(reply, function(result) {
@@ -241,9 +247,7 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
-
       });
-      
       
       //댓글 수정 버튼
       
@@ -264,9 +268,8 @@
 
   			}
   		});	
-   });
+})
 </script>
-
    <script type="text/javascript">
    $(document).ready(function() {
       var operForm = $("#operForm");
@@ -275,15 +278,6 @@
          operForm.submit();
       });
 
-      $("button[data-oper='list']").on("click", function() {
-         operForm.find("#bno").remove();
-         operForm.attr("action", "/board/list");
-         operForm.submit();
-      });
-
-   })
-   </script>
-   <script>
    
       var bno = ${board.bno};
       var userId = "${login.userId}";
