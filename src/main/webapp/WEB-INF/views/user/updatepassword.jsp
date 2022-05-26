@@ -42,6 +42,7 @@
 				document.findform.userPw.focus();
 			} else if(document.findform.userPw.value != document.findform.passwordConfrim.value){
 				alert("비밀번호가 일치하지 않습니다.");
+				document.findform.passwordConfrim.value = "";
 				document.findform.passwordConfrim.focus();
 			} else {
 				document.findform.action="update_password";
