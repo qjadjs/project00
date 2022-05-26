@@ -105,6 +105,6 @@ public class UserDaoImpl implements UserDao {
 
 	public void updatePassword(UserVO userVO) throws Exception {
 		System.out.println("==> Mybatis로 updatePassword() 기능 처리");
-		sqlSession.update(NAMESPACE+"updatePassword", userVO);
+		sqlSession.update(NAMESPACE+".updatePassword", userVO);
 	}
 }

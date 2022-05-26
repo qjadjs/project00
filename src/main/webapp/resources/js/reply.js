@@ -7,7 +7,7 @@ console.log("Reply module......");
 var replyService = (function() {
 
 	function add(reply, callback, error) {
-		
+
 		console.log("add reply")
 
 		$.ajax({
@@ -39,18 +39,17 @@ var replyService = (function() {
 		// 페이지 정보가 있다면 그대로 쓰고
 		// 만약 페이지 정복 없다면 1로 세팅
 		var bno = param.bno;
-		$.getJSON("/replies/all/" + bno + "/" + page + ".json",
-				function(data) {
-					// 요청 처리 성공시 실행되는 함수
+		$.getJSON("/replies/all/" + bno + "/" + page + ".json", function(data) {
+			// 요청 처리 성공시 실행되는 함수
 
-					// 롤백 함수가 있으면 롤백함수를 실행
-					if (callback) {
-						// callback(data);
-						// data 자리에 list가 온다
-						callback(data.replyCnt, data.list);
-					}
+			// 롤백 함수가 있으면 롤백함수를 실행
+			if (callback) {
+				// callback(data);
+				// data 자리에 list가 온다
+				callback(data.replyCnt, data.list);
+			}
 
-				}).fail(function(xhr, status, err) {
+		}).fail(function(xhr, status, err) {
 			// 요청 처리 실패시 실행되는 함수
 
 			// 에러처리 함수가 있으면 에러 함수를 실행
@@ -152,8 +151,8 @@ var replyService = (function() {
 			// 09시
 			// 현재 시간이 9보다 크면 앞에 아무것도 붙이지 않고
 			// 9 이하면 앞에 0을 붙여준다
-			str = [ (hh > 9 ? '' : '0') + hh, ':', (mi > 9 ? '' : 0), ':',
-					(ss > 9 ? '' : '0') + ss ].join("");
+			str += (hh > 9 ? '' : '0') + hh + ':' + (mi > 9 ? '' : '0') + mi + ':' +
+					(ss > 9 ? '' : '0') + ss;
 			// 배열 안에 원소들이 이어붙여진다
 		} else {
 			// 24간 이전에 작성한 댓글
@@ -163,8 +162,7 @@ var replyService = (function() {
 			// 월
 			var mm = dateObj.getMonth() + 1; // 컴퓨터는 달을 0부터 센다
 			// 일
-			var dd
-			-dateObj.getDate();
+			var dd = dateObj.getDate();
 			// 한자리로 된 수자는 0을 붙여준다
 
 			str += yy + "/" + (mm > 9 ? '' : '0') + mm + "/"

@@ -109,7 +109,7 @@ public class UserInfoController {
 		return "redirect:/";			
 	}
 	// 아이디 찾기 페이지 이동
-		@RequestMapping(value="/findId", method = RequestMethod.GET)
+		@RequestMapping(value="find_id_form")
 		public String findIdView() {
 			return "user/findId";
 		}
@@ -129,7 +129,7 @@ public class UserInfoController {
 		}
 		
 		  // 비밀번호 찾기 페이지로 이동
-		@RequestMapping(value="findPassword", method = RequestMethod.GET)
+		@RequestMapping(value="find_password_form")
 		public String findPasswordView() {
 			return "user/findPassword";
 		}
@@ -141,11 +141,23 @@ public class UserInfoController {
 			
 			if(user == null) { 
 				model.addAttribute("check", 1);
+				return "user/findPassword";
 			} else { 
 				model.addAttribute("check", 0);
-				model.addAttribute("updateid", user.getUserId());
+				model.addAttribute("userId", user.getUserId());
 			}
 			
-			return "user/findPassword";
+			return "user/updatepassword";
 		}
-}
+		// 비밀번호 바꾸기 실행
+			@RequestMapping(value="update_password", method = RequestMethod.POST)
+			public String updatePasswordAction(UserVO userVO ,HttpSession session, Model model) throws Exception{
+			String id = (String) session.getAttribute("userId");
+			System.out.println(userVO);
+			userService.updatePassword(userVO);
+			model.addAttribute("user", userVO);
+			return "user/findPasswordConfirm";
+		}
+		
+		}
+	
