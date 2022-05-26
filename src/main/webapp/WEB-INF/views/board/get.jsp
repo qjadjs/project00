@@ -150,7 +150,7 @@
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
             comments += " <small class='pull-right text-muted'>" 
             + replyService .displayTime(list[i].replyDate) 
-            + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
+            + "</br><span class='btn mini' id='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn mini'id='delete'>삭제</span></small>";
             comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -250,10 +250,20 @@
       
       
       //댓글 삭제
-      $(".delete").on("click", function(e){
-    	  
-      }
+      $("#delete").on("click", function(e){
 
+    	  e.preventDefault();
+    	  let rno =$(this).attr("href");
+    	  $.ajax({
+  			data : {
+  				rno : rno
+  			},
+  			url : '/reply/:rno',
+  			type : 'POST',
+  			success : function(result){
+
+  			}
+  		});	
    });
 </script>
 
