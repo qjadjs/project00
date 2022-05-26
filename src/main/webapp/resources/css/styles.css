@@ -481,3 +481,5 @@ font-weight: 400;
 	height: 360px;
 	margin-bottom: 3rem;
 }
+
+a:visited {color:blue}
