@@ -47,7 +47,7 @@ public class ReplyController {
 		try { 
 			service.register (replyVO); 
 		
-		entity = new ResponseEntity<String>("댓글이 작성되었습니다.", HttpStatus.OK); 
+		entity = new ResponseEntity<String>("regSuccess.", HttpStatus.OK); 
 		
 		} catch (Exception e) { e.printStackTrace(); 
 		
