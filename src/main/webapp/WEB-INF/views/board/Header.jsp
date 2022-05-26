@@ -29,11 +29,13 @@
                   </li> 
             </ul>
             <a class="navbar-brand" onClick="window.location.reload()">
-               <span class="d-1">밸</span>
-               <span class="d-2">런</span>
-               <span class="d-3">스</span>
-               <span class="d-4">게</span>
-               <span class="d-5">임</span>
+               <h1>
+               <span>밸</span>
+               <span>런</span>
+               <span>스</span>
+               <span>게</span>
+               <span>임</span>
+               </h1>
             </a>
            
             <div class="register-header">

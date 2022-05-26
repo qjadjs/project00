@@ -9,8 +9,8 @@
 <title>게시글</title>
 <link href="../resources/css/list.css" rel="stylesheet" />
 <link href="../resources/css/board.css" rel="stylesheet" />
-<link href="../resources/css/footer.css" rel="stylesheet" />
 <link href="../resources/css/animation.css" rel="stylesheet" />
+<link href="../resources/css/footer2.css" rel="stylesheet" />
 </head>
 <!-- 헤더-->
 <body>
@@ -134,7 +134,7 @@
 	
 	</div>
   <!-- 푸터jsp -->
-  <%@include file ="Footer.jsp" %>
+  <%@include file ="../board/Footer.jsp" %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
