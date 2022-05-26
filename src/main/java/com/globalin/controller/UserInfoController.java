@@ -72,7 +72,7 @@ public class UserInfoController {
 		log.info("회원정보 수정 " + userVO);
 		model.addAttribute("user", userVO);
 		log.info("C: 회원정보보기 GET의 VO "+ userVO);
-		return "/user/info";
+		return "/user/updatePost";
 	}
 
 	/* 회원정보삭제 */
@@ -106,7 +106,7 @@ public class UserInfoController {
 		//4. 세션 초기화
 		session.invalidate();
 		// 5. 페이지 이동
-		return "redirect:/";			
+		return "/user/deletePost";			
 	}
 	// 아이디 찾기 페이지 이동
 		@RequestMapping(value="find_id_form")
