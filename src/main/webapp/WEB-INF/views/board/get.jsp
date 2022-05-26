@@ -246,7 +246,7 @@
          showList(pageNum);
 
       });
-      
+      /* 댓글 삭제 이벤트 수정중
       replyUL.on("click", ".delete", function(e){
          e.preventDefault();
          let rno = $(this).attr("rno");
@@ -255,6 +255,7 @@
             showList(pageNum);
          })
       })
+      */
    });
 </script>
 
