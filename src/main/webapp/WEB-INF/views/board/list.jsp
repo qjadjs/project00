@@ -10,7 +10,6 @@
 <link href="../resources/css/list.css" rel="stylesheet" />
 <link href="../resources/css/board.css" rel="stylesheet" />
 <link href="../resources/css/animation.css" rel="stylesheet" />
-<link href="../resources/css/footer2.css" rel="stylesheet" />
 </head>
 <!-- 헤더-->
 <body>

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="resources/css/footer2.css" rel="stylesheet" />
+<link href="../resources/css/footer2.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Footer-->
