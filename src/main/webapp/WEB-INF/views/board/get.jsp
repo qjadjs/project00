@@ -22,10 +22,11 @@
    src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <link href="../resources/css/get.css" rel="stylesheet" />
+<link href="../resources/css/getHeader.css" rel="stylesheet" />
 <title>게시글</title>
 </head>
 <body class="b1">
-
+<%@include file ="../board/Header2.jsp" %>
    <form id="operForm" action="/board/modify" method="get">
       <div>
          <input type="hidden" id="bno" name="bno"
