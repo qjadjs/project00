@@ -6,12 +6,13 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger log = LoggerFactory.getLogger(AuthInterceptor.class);
 
+	
+	
 	// 페이지 요청 정보 저장
 	private void saveDestination(HttpServletRequest request) {
 		String uri = request.getRequestURI();

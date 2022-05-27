@@ -39,8 +39,10 @@ public class UserLoginController {
 
 	// 로그인 페이지
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginGET(@ModelAttribute("loginDTO") LoginDTO loginDTO) {
+	public String loginGET(@ModelAttribute("loginDTO") LoginDTO loginDTO,HttpServletRequest request) {
 		log.info(loginDTO.toString());
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("redirectURI", referer);
 		return "/user/login";
 	}
 
@@ -62,6 +64,7 @@ public class UserLoginController {
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount)); // 로그인 유지기간 설정
 			userService.keepLogin(userVO.getUserId(), httpSession.getId(), sessionLimit);
 		}
+		 
 	}
 
 	// 로그아웃기능
