@@ -232,6 +232,7 @@
 
             showList(-1);
          })
+            sreply.val("");
       });
       
       replyPageFooter.on("click", "li a", function(e) {
@@ -249,10 +250,20 @@
       replyUL.on("click", ".delete", function(e){
          e.preventDefault();
          let rno = $(this).attr("rno");
-         replyService.remove(rno, originalReplyer, function(result) {
-            alert(result);
-            showList(pageNum);
-         })
+         
+         $.ajax({
+        	 url: "replies/:rno"
+        	 , data : 'rno'
+        	 , type : 'DELETE'
+        	 , dataType : 'text'
+        	 , success: function(result){
+        		 showList(PageNum);
+        		 }
+        	 , error: function(error){
+        		 console.log("에러 : " + error);
+        		 }
+        	 });
+        
       });
       
    });
@@ -296,7 +307,7 @@
 		                    else if (likeCheck == 1){
 		                     alert("추천취소");
 		                    	location.reload();
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
+
                       }
                   }
               });
