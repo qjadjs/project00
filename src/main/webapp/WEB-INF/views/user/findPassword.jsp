@@ -31,10 +31,10 @@
 		<!-- 정보가 일치하지 않을 때-->
 		<c:if test="${check == 1}">
 			<script>
+			alert("일치하는 정보가 존재하지 않습니다.");
 			opener.document.findform.userId.value = "";
 			opener.document.findform.userEmail.value = "";
 			</script>
-			<label>일치하는 정보가 존재하지 않습니다.</label>
 		</c:if>
 		</form>
 		</fieldset>
