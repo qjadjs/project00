@@ -159,7 +159,7 @@
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
             comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate)
-						+ "</br> <c:choose><c:when test='${login.userName == reply.replyer}'><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise>어쩌라는겨</c:otherwise></c:choose></small>";
+						+ "</br> <c:choose><c:when test='${login.userName == reply.replyer}'><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise></c:otherwise></c:choose></small>";
 			comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -243,41 +243,7 @@
             $('#summernote').summernote('reset');
          })
       });
-     
 		
-		
-      replyPageFooter.on("click", "li a", function(e) {
-         e.preventDefault(); // a 태그 기본 동작 제거
-         console.log("page click");
-         // 이동할 페이지 번호
-         // href 속성에 페이지 번호를 저장해놨기에 꺼내 쓴다
-         let target = $(this).attr("href");
-         console.log("target page : " + target);
-         pageNum = target;
-         showList(pageNum);
-
-<<<<<<< HEAD
-		$("#subBtn").on("click", function(e) {
-			// name 속성이 reply인 input 찾아오기 : 댓글 내용
-			// name 속성이 replyer 인 input 찾아아기 : 작성자
-			// 게시글 번호 bno 가져와서 reply 객체 만든 뒤에 댓글 달기 기능 실행
-			var reply = {
-				reply : sreply.val(),
-				replyer : sreplyer,
-				bno : sbnoVal
-			};
-			
-			
-			// add(reply, callback)
-			replyService.add(reply, function(result) {
-				alert(result);
-
-				showList(-1);
-			})
-		});
-		
-		
-	})
 		
 		replyPageFooter.on("click", "li a", function(e) {
 			e.preventDefault(); // a 태그 기본 동작 제거
@@ -299,8 +265,7 @@
 				showList(pageNum);
 			})
 		})
-=======
-      });
+     
       
       replyUL.on("click", ".delete", function(e){
          e.preventDefault();
@@ -322,7 +287,6 @@
       });
       
    });
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 </script>
 
 
@@ -332,7 +296,6 @@
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
-<<<<<<< HEAD
       var operForm2 = $("#operForm2");
       $("button[data-oper='delete']").on("click", function(e) {
     	  e.preventDefault();
@@ -342,22 +305,7 @@
         	  return;
           }
       });
-=======
-
-		$("button[data-oper='list']").on("click", function() {
-			operForm.find("#bno").remove();
-			operForm.attr("action", "/board/list");
-			operForm.submit();
-		});
-		
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	})
-<<<<<<< HEAD
-
-		
-=======
-	
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	</script>
 	<script>
 	
