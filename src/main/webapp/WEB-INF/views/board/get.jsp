@@ -153,7 +153,7 @@
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
             comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate)
-						+ "</br> <c:choose><c:when test='${login.userName == reply.replyer}'><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></c:when><c:otherwise>어쩌라는겨</c:otherwise></c:choose></small>";
+						+ "</br> <c:choose><c:when test='${login.userName == login.userName}'><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise>어쩌라는겨</c:otherwise></c:choose></small>";
 			comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -246,7 +246,7 @@
          showList(pageNum);
 
       });
-      /* 댓글 삭제 수정중
+      
       replyUL.on("click", ".delete", function(e){
          e.preventDefault();
          let rno = $(this).attr("rno");
@@ -254,8 +254,8 @@
             alert(result);
             showList(pageNum);
          })
-      })
-      */
+      });
+      
    });
 </script>
 

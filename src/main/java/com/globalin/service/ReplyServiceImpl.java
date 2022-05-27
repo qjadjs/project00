@@ -43,11 +43,13 @@ public class ReplyServiceImpl implements ReplyService {
 		replyDao.update(vo);
 	}
 
+	@Transactional
 	@Override
 	public void remove(int rno) throws Exception {
 		int bno = replyDao.getBno(rno);
 		replyDao.delete(rno);
 		boardDao.updateReplyCnt(bno, -1);
+		
 	}
 
 	@Override
