@@ -99,7 +99,7 @@
    </div>
 
 <!-- 푸터 -->
-<%@include file ="../board/Footer2.jsp" %>
+<%@include file ="../board/Footer.jsp" %>
 
 	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>
