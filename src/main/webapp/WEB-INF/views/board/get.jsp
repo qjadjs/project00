@@ -159,7 +159,7 @@
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
             comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate)
-						+ "</br> <c:choose><c:when test='${login.userName == reply.replyer}'><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise></c:otherwise></c:choose></small>";
+						+ "</br> <c:choose><c:when test='${reply.replyer != login.userName}'><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise></c:otherwise></c:choose></small>";
 			comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -260,31 +260,14 @@
 		replyUL.on("click", "span .delete", function(e){
 			e.preventDefault();
 			let rno = $(this).attr("rno");
-			replyService.remove(rno, originalReplyer, function(result) {
+			replyService.remove(rno, function(result) {
 				alert(result);
-				showList(pageNum);
+				showList(-1);
 			})
 		})
      
       
-      replyUL.on("click", ".delete", function(e){
-         e.preventDefault();
-         let rno = $(this).attr("rno");
-         
-         $.ajax({
-        	 url: "replies/{rno}"
-        	 , data : 'rno'
-        	 , type : 'DELETE'
-        	 , dataType : 'text'
-        	 , success: function(result){
-        		 showList(PageNum);
-        		 }
-        	 , error: function(error){
-        		 console.log("에러 : " + error);
-        		 }
-        	 });
-        
-      });
+      
       
    });
 </script>
