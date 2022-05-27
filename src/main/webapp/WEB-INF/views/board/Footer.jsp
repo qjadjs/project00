@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/footer2.css" rel="stylesheet" />
+<link href="../resources/css/footer.css" rel="stylesheet" />
 <style>
 .bg-dark1 {
         position: fixed;
@@ -27,8 +27,8 @@
 <!-- Footer-->
    <footer class="bg-dark1">
       <div class="container-bottom">
-         <div class="neon">BALANCE </div>
-  <div class="flux">GAME </div>
+         <div class="neon">BALANCE</div>
+  <div class="flux">GAME</div>
       </div>
    </footer>
 </body>
