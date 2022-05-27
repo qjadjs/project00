@@ -44,7 +44,7 @@
 		</form>
 	</div>
 	
-	<%@include file ="../board/Footer3.jsp" %>
+	<%@include file ="../board/Footer.jsp" %> 
 </body>
 <script>
 	var setting = {

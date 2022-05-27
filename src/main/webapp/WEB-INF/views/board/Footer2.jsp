@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/footer3.css" rel="stylesheet" />
+<link href="../resources/css/footer2.css" rel="stylesheet" />
 </head>
 <body>
 <!-- Footer-->
    <footer class="bg-dark1">
       <div class="container-bottom">
-         <div class="neon">BALANCE </div>
-  <div class="flux">GAME </div>
+         <div class="neon">BALANCE</div>
+  <div class="flux">GAME</div>
       </div>
    </footer>
 </body>

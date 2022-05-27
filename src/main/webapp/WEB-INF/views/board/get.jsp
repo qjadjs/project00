@@ -81,7 +81,7 @@
 			<textarea id="summernote" name="reply"></textarea>
 			<input id="subBtn2" type="button" value="목록"
 				onclick="location.href='/board/list'" /> <input id="subBtn"
-				type="button" value="댓글 작성" />
+				type="button" value="등록" />
 		</form>
 	</div>
 
@@ -99,7 +99,7 @@
    </div>
 
 <!-- 푸터 -->
-<%@include file ="../board/Footer3.jsp" %>
+<%@include file ="../board/Footer.jsp" %>
 
 	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>
@@ -288,7 +288,7 @@
 		            success : function(likeCheck) {
 		                
 		                    if(likeCheck == 0){
-		                    	alert("추천완료.");
+		                    	alert("추천완료");
 		                    	location.reload();
 		                    }
 		                    else if (likeCheck == 1){
