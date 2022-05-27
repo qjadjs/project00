@@ -75,19 +75,28 @@
    </form>
 	<div style="width: 50%; margin: auto;">
 		<form method="post" action="/new">
+			 <c:choose>
+         <c:when test="${login.userName != null}">
 			<input type="hidden" name="replyer" value="${login.userName }" /> <br>
 			<br>
 			<textarea id="summernote" name="reply"></textarea>
 			<input id="subBtn2" type="button" value="목록"
 				onclick="location.href='/board/list'" /> <input id="subBtn"
 				type="button" value="등록" />
+				</c:when>
+				<c:otherwise>
+				<input value="댓글 기능은 로그인후 이용 가능합니다"/> 
+				<input id="subBtn2" type="button" value="목록"
+				onclick="location.href='/board/list'" />
+				</c:otherwise>
+				</c:choose>
 		</form>
 	</div>
 
    <div style="width: 50%; margin: auto;">
       <div class="panel-body" style="background-color: white;">
          <!-- 댓글 시작 -->
-         <ul class="chat">
+           <ul class="chat">
             <!-- 댓글이 들어올 공간 -->
          </ul>
       </div>

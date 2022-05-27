@@ -19,6 +19,6 @@
 		<input type="submit" class="btn" value="회원정보수정하기"> 
 		</div>
 	</form>
-</fieldset  class=b1>
+</fieldset>
 </body>
 </html>
