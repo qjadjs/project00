@@ -46,7 +46,6 @@
     color: #212529;
     padding: 0.375rem 0.75rem;
     cursor: pointer;
-   
 }
 .btn-search:hover {
   color: #fff;
@@ -173,7 +172,7 @@ tr td:nth-child(2){
     align-items: center;
 
     margin-top:7px;
-    margin-bottom:20px;
+    margin-bottom:7rem;
     margin-left:40px;
 }
 

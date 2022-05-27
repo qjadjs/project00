@@ -6,40 +6,6 @@
     font-weight: normal;
     font-style: normal;
 }
-.b1{
-	background-color: #212529;
-}
-
-.hh1{
-	margin-top:3rem;
-	text-align: center;
-	color: white;
-	font-family: 'GangwonEdu_OTFBoldA';
-	font-size: 60px;
-}
-
-
-
-#t3{
-	text-align: center;
-}
-
-#title3{
-	word-break:break-all;
-	background-color: white;
-	width: 70%;
-	height: 150%;
-	display: inline-block
-}
-#t4{
-	background-color: white;
-	width: 10%;
-	text-align: center;
-	border: 4px solid white;
-    border-radius: 20px;
-    margin-bottom:-2rem;
-    float:left;
-}
 
 #subBtn {
 	border: 4px solid white;

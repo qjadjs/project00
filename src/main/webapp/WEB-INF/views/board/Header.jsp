@@ -30,8 +30,18 @@
             </ul>
             <a class="navbar-brand" onClick="window.location.reload()">
                <h1>
-               <span>BALANCE</span>
-               <span>GAME</span>
+               <span id="o1">B</span>
+               <span id="o1">A</span>
+               <span id="o1">L</span>
+               <span id="o1">A</span>
+               <span id="o1">N</span>
+               <span id="o1">C</span>
+               <span id="o1">E</span>
+               <span id="o1"></span>
+               <span id="o1">G</span>
+               <span id="o1">A</span>
+               <span id="o1">M</span>
+               <span id="o1">E</span>
                </h1>
             </a>
            
