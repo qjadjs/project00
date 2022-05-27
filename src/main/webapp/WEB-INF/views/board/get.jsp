@@ -264,39 +264,7 @@
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
-<<<<<<< HEAD
-      $("button[data-oper='list']").on("click", function() {
-         operForm.find("#bno").remove();
-         operForm.attr("action", "/board/list");
-         operForm.submit();
-      });
-      
-   })
-   </script>
-   <script>
-   
-      var bno = ${board.bno};
-      var userId = "${login.userId}";
-      
-       function updateLike(){ 
-           $.ajax({
-                  type : "POST",  
-                  url : "/board/updateLike",       
-                  dataType : "json",   
-                  data : {'bno' : bno, 'userId' : userId},
-                  error : function(){
-                     alert("로그인 후 이용 가능합니다");
-                  },
-                  success : function(likeCheck) {
-                      
-                          if(likeCheck == 0){
-                             alert("추천완료.");
-                             location.reload();
-                          }
-                          else if (likeCheck == 1){
-                           alert("추천취소");
-                             location.reload();
-=======
+
 		$("button[data-oper='list']").on("click", function() {
 			operForm.find("#bno").remove();
 			operForm.attr("action", "/board/list");
