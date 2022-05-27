@@ -6,18 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Find ID</title>
-
+<link href="/resources/css/findid.css" rel="stylesheet" />
 </head>
 <body>
+<fieldset class=b1>
+<legend class=c1>아이디 찾기</legend>
 <form method="post" class="form-signin" action="find_id" name="findform">
 		<div class="form-label-group">
-			<label for="userEmail">이메일</label>
+
+			<div class=d1>이메일을 입력하세요</div>
 			<input type="text" id="userEmail" name="userEmail" class="form-control"/>
 		</div>
 
 		<div class="form-label-group">
 			<input class="btn btn-lg btn-secondary btn-block text-uppercase"
-				type="submit" value="check">
+				type="submit" value="검색">
 		</div>
 
 		<!-- 이름과 전화번호가 일치하지 않을 때-->
@@ -33,11 +36,12 @@
 		<label>찾으시는 아이디는"${user}"입니다.</label>
 		<div class="form-label-group">
 				<input class="btn btn-lg btn-secondary btn-block text-uppercase"
-					type="button" value="OK" onclick="closethewindow()">
+					type="button" value="확인" onclick="closethewindow()">
 			</div>
 		</c:if>
 
 	</form>
+</fieldset>
 	
 	<script type="text/javascript">
 		function closethewindow(){
