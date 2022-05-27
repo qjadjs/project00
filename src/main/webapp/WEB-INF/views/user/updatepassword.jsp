@@ -18,13 +18,13 @@
 		<div class="form-label-group">
 		<input type="hidden" id="userId" name="userId" value="${userId }">
 		
+			<label for="password">비밀번호</label>
 			<input type="password" id="userPw" name="userPw" class="form-control"/>
-			<label for="password">password</label>
 		</div>
 		
 		<div class="form-label-group">
+			<label for="confirmpassword">비밀번호  확인</label>
 			<input type="password" id="passwordConfrim" name="passwordConfrim" class="form-control"/>
-			<label for="confirmpassword">confirm password</label>
 		</div>
 		
 		<div class="form-label-group">

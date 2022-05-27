@@ -10,13 +10,13 @@
 <body>
 <form method="post" class="form-signin" action="find_password" name="findform">
 <div class="form-label-group">
+			<label for="userId">아이디</label>
 			<input type="text" id="userId" name="userId" class="form-control"/>
-			<label for="id">ID</label>
 		</div>
 		
 		<div class="form-label-group">
+			<label for="userEmail">이메일</label>
 			<input type="text" id="userEmail" name="userEmail" class="form-control"/>
-			<label for="name">Email</label>
 		</div>
 		
 		<div class="form-label-group">

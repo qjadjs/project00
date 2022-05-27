@@ -11,8 +11,8 @@
 <body>
 <form method="post" class="form-signin" action="find_id" name="findform">
 		<div class="form-label-group">
+			<label for="userEmail">이메일</label>
 			<input type="text" id="userEmail" name="userEmail" class="form-control"/>
-			<label for="name">Email</label>
 		</div>
 
 		<div class="form-label-group">
