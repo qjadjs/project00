@@ -223,18 +223,22 @@
             reply : sreply.val(),
             replyer : sreplyer,
             bno : sbnoVal
+           
          };
-            sreply.val("");
          
          
          // add(reply, callback)
          replyService.add(reply, function(result) {
             alert(result);
-
+            
+           
             showList(-1);
+            $('#summernote').summernote('reset');
          })
       });
-      
+     
+		
+		
       replyPageFooter.on("click", "li a", function(e) {
          e.preventDefault(); // a 태그 기본 동작 제거
          console.log("page click");
@@ -252,7 +256,7 @@
          let rno = $(this).attr("rno");
          
          $.ajax({
-        	 url: "replies/:rno"
+        	 url: "replies/{rno}"
         	 , data : 'rno'
         	 , type : 'DELETE'
         	 , dataType : 'text'
@@ -269,6 +273,7 @@
    });
 </script>
 
+
    <script type="text/javascript">
    $(document).ready(function() {
       var operForm = $("#operForm");
@@ -283,6 +288,7 @@
 		});
 		
 	})
+	
 	</script>
 	<script>
 	
