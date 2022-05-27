@@ -224,6 +224,7 @@
             replyer : sreplyer,
             bno : sbnoVal
          };
+            sreply.val("");
          
          
          // add(reply, callback)
@@ -232,7 +233,6 @@
 
             showList(-1);
          })
-            sreply.val("");
       });
       
       replyPageFooter.on("click", "li a", function(e) {
