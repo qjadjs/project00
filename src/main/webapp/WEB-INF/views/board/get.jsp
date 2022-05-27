@@ -8,18 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-	rel="stylesheet">
+   href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+   rel="stylesheet">
 <script
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+   src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+   src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <!-- include summernote css/js-->
 <link
-	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
-	rel="stylesheet">
+   href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
+   rel="stylesheet">
 <script
-	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+   src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
 <link href="../resources/css/get.css" rel="stylesheet" />
 <title>게시글</title>
@@ -79,7 +79,6 @@
    <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
 </div>
    </form>
-
 	<div style="width: 50%; margin: auto;">
 		<form method="post" action="/new">
 			<input type="hidden" name="replyer" value="${login.userName }" /> <br>
@@ -91,7 +90,6 @@
 		</form>
 	
 	</div>
-
 
    <div style="width: 50%; margin: auto;">
       <div class="panel-body" style="background-color: white;">
@@ -108,9 +106,8 @@
 <!-- 푸터 -->
 <%@include file ="../board/Footer.jsp" %>
 
-	<script type="text/javascript" src="/resources/js/reply.js"></script>
-	<script>
-	
+<script type="text/javascript" src="/resources/js/reply.js"></script>
+	<script>	
 	var setting = {placeholder: '내용을 입력하세요',
 	        tabsize: 1,
 	        height: 100,
@@ -129,99 +126,137 @@
 	
 			var bnoValue = '<c:out value="${board.bno}"/>';
 			var replyUL = $(".chat");
-			
-	$(document).ready(function() {
-		$('#summernote').summernote(setting);
-			
-		showList(1);
+         
+   $(document).ready(function() {
+      $('#summernote').summernote(setting);
+         
+      showList(1);
 
-		function showList(page) {
-			replyService.getList({
-				bno : bnoValue,
-				page : page || 1
-			},
-			function(replyCnt, list) {
-				console.log("replyCnt : " + replyCnt);
-				console.log("list : " + list);
+      function showList(page) {
+         replyService.getList({
+            bno : bnoValue,
+            page : page || 1
+         },
+         function(replyCnt, list) {
+            console.log("replyCnt : " + replyCnt);
+            console.log("list : " + list);
             if (page == -1) {
                pageNum = Math.ceil(replyCnt / 10.0);
                showList(pageNum);
                return;
             }
 
-			var comments = ""; // 여기에 html 코드를 조립
-			if (list == null || list.length == 0) {
-				replyUL.html("");
-				return; // 함수 바로 종료
-			}
-			for (let i = 0; i < list.length; i++) {
-				comments += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
-				comments += "<div>";
-				comments += "<div class='header'>";
-				comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-				comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
-				comments += "</div>";
-				comments += "<p>" + list[i].reply + "</p>";
-				comments += "</div>";
-				comments += "</li>";
-			}
-			replyUL.html(comments);
+         var comments = ""; // 여기에 html 코드를 조립
+         if (list == null || list.length == 0) {
+            replyUL.html("");
+            return; // 함수 바로 종료
+         }
+         
+         
+         for (let i = 0; i < list.length; i++) {
+            comments += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
+            comments += "<div>";
+            comments += "<div class='header'>";
+            comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
+            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate)
+						+ "</br> <c:choose><c:when test='${login.userName == reply.replyer}'><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise>어쩌라는겨</c:otherwise></c:choose></small>";
+			comments += "</div>";
+            comments += "<p>" + list[i].reply + "</p>";
+            comments += "</div>";
+            comments += "</li>";
+         }
+         replyUL.html(comments);
 
-			showReplyPage(replyCnt);
-		});
-		}
-			
+         showReplyPage(replyCnt);
+      });
+      }
+         
+      
+      var pageNum = 1;
+      var replyPageFooter = $(".panel-footer");
+
+      function showReplyPage(replyCnt) {
+         var endNum = Math.ceil(pageNum / 10.0) * 10;
+         var startNum = endNum - 9;
+
+         let prev = startNum != 1;
+         let next = false;
+
+         if (endNum * 10 >= replyCnt) {
+            endNum = Math.ceil(replyCnt / 10.0);
+         }
+         if (endNum * 10 < replyCnt) {
+            next = true;
+         }
+
+         let pageHtml = "<ul class='pagination pull-right'>";
+
+         if (prev) {
+            pageHtml += "<li class='page-item'>";
+            pageHtml += "<a class='page-link' href='" + (startNum - 1) + "'>";
+            pageHtml += "Prev</a></li>";
+         }
+
+         for (let i = startNum; i <= endNum; i++) {
+            // active : 현재 페이지 번호 표시
+            let active = pageNum == i ? "active" : "";
+            pageHtml += "<li class='page-item " + active + "'>";
+            pageHtml += "<a class='page-link' href='" + i + "'>";
+            pageHtml += i + "</a></li>";
+         }
+
+         if (next) {
+            pageHtml += "<li class='page-item'>";
+            pageHtml += "<a class='page-link' href='" + (endNum + 1) + "'>";
+            pageHtml += "Next</a></li>";
+         }
+
+         pageHtml += "</ul>";
+
+         replyPageFooter.html(pageHtml);
+         console.log(pageHtml);
+
+      }
+      
+      var sreply = $("#summernote");
+      var sreplyer = "${login.userName}";
+      var sbnoVal = '<c:out value="${board.bno}"/>';
+
+      $("#subBtn").on("click", function(e) {
+         // name 속성이 reply인 input 찾아오기 : 댓글 내용
+         // name 속성이 replyer 인 input 찾아아기 : 작성자
+         // 게시글 번호 bno 가져와서 reply 객체 만든 뒤에 댓글 달기 기능 실행
+         var reply = {
+            reply : sreply.val(),
+            replyer : sreplyer,
+            bno : sbnoVal
+           
+         };
+         
+         
+         // add(reply, callback)
+         replyService.add(reply, function(result) {
+            alert(result);
+            
+           
+            showList(-1);
+            $('#summernote').summernote('reset');
+         })
+      });
+     
 		
-		var pageNum = 1;
-		var replyPageFooter = $(".panel-footer");
-
-		function showReplyPage(replyCnt) {
-			var endNum = Math.ceil(pageNum / 10.0) * 10;
-			var startNum = endNum - 9;
-
-			let prev = startNum != 1;
-			let next = false;
-
-			if (endNum * 10 >= replyCnt) {
-				endNum = Math.ceil(replyCnt / 10.0);
-			}
-			if (endNum * 10 < replyCnt) {
-				next = true;
-			}
-
-			let pageHtml = "<ul class='pagination pull-right'>";
-
-			if (prev) {
-				pageHtml += "<li class='page-item'>";
-				pageHtml += "<a class='page-link' href='" + (startNum - 1) + "'>";
-				pageHtml += "Prev</a></li>";
-			}
-
-			for (let i = startNum; i <= endNum; i++) {
-				// active : 현재 페이지 번호 표시
-				let active = pageNum == i ? "active" : "";
-				pageHtml += "<li class='page-item " + active + "'>";
-				pageHtml += "<a class='page-link' href='" + i + "'>";
-				pageHtml += i + "</a></li>";
-			}
-
-			if (next) {
-				pageHtml += "<li class='page-item'>";
-				pageHtml += "<a class='page-link' href='" + (endNum + 1) + "'>";
-				pageHtml += "Next</a></li>";
-			}
-
-			pageHtml += "</ul>";
-
-			replyPageFooter.html(pageHtml);
-			console.log(pageHtml);
-
-		}
 		
-		var sreply = $("#summernote");
-		var sreplyer = "${login.userName}";
-		var sbnoVal = '<c:out value="${board.bno}"/>';
+      replyPageFooter.on("click", "li a", function(e) {
+         e.preventDefault(); // a 태그 기본 동작 제거
+         console.log("page click");
+         // 이동할 페이지 번호
+         // href 속성에 페이지 번호를 저장해놨기에 꺼내 쓴다
+         let target = $(this).attr("href");
+         console.log("target page : " + target);
+         pageNum = target;
+         showList(pageNum);
 
+<<<<<<< HEAD
 		$("#subBtn").on("click", function(e) {
 			// name 속성이 reply인 input 찾아오기 : 댓글 내용
 			// name 속성이 replyer 인 input 찾아아기 : 작성자
@@ -264,14 +299,40 @@
 				showList(pageNum);
 			})
 		})
+=======
+      });
+      
+      replyUL.on("click", ".delete", function(e){
+         e.preventDefault();
+         let rno = $(this).attr("rno");
+         
+         $.ajax({
+        	 url: "replies/{rno}"
+        	 , data : 'rno'
+        	 , type : 'DELETE'
+        	 , dataType : 'text'
+        	 , success: function(result){
+        		 showList(PageNum);
+        		 }
+        	 , error: function(error){
+        		 console.log("에러 : " + error);
+        		 }
+        	 });
+        
+      });
+      
+   });
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 </script>
 
-	<script type="text/javascript">
-	$(document).ready(function() {
-		var operForm = $("#operForm");
+
+   <script type="text/javascript">
+   $(document).ready(function() {
+      var operForm = $("#operForm");
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
+<<<<<<< HEAD
       var operForm2 = $("#operForm2");
       $("button[data-oper='delete']").on("click", function(e) {
     	  e.preventDefault();
@@ -281,9 +342,22 @@
         	  return;
           }
       });
+=======
+
+		$("button[data-oper='list']").on("click", function() {
+			operForm.find("#bno").remove();
+			operForm.attr("action", "/board/list");
+			operForm.submit();
+		});
+		
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	})
+<<<<<<< HEAD
 
 		
+=======
+	
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	</script>
 	<script>
 	
@@ -308,8 +382,10 @@
 		                    else if (likeCheck == 1){
 		                     alert("추천취소");
 		                    	location.reload();
+
                       }
                   }
               });
        }
+       
 </script>

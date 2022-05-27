@@ -47,12 +47,12 @@ public class ReplyController {
 		try { 
 			service.register (replyVO); 
 		
-		entity = new ResponseEntity<String>("regSuccess", HttpStatus.OK); 
+		entity = new ResponseEntity<String>("regSuccess.", HttpStatus.OK); 
 		
 		} catch (Exception e) { e.printStackTrace(); 
 		
 		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); 
-		} return entity; 
+		} return entity;
 		
 	}
 

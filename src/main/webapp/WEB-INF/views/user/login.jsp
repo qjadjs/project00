@@ -8,7 +8,7 @@
 <link href="/resources/css/styles.css" rel="stylesheet" />
 </head>
 <body class="login-body">
-	<form class="login-joinForm" action="/user/loginPost" method="post">
+	<form class="login-joinForm" action="/user/loginPost" method="post" >
 	<div class="login-div">
 		<div>
 			<input type="text" name="userId" class="login-id" placeholder="아이디">
@@ -44,6 +44,7 @@
 	  
 	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
   }
+
   </script>
 	</form>
 </body>
