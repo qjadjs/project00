@@ -44,6 +44,8 @@
 				value="목록" onclick="location.href='/board/list'" />
 		</form>
 	</div>
+	
+	<%@include file ="../board/Footer2.jsp" %>
 </body>
 <script>
 	var setting = {

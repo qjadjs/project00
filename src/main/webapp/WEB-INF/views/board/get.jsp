@@ -74,6 +74,7 @@
 </div>
    </form>
 
+<<<<<<< HEAD
    <div style="width: 50%; margin: auto;">
       <form method="post" action="/new">
          <input type="hidden" name="replyer" value="${login.userName }" /> <br>
@@ -84,6 +85,18 @@
             type="button" value="댓글 작성" />
       </form>
    </div>
+=======
+	<div style="width: 50%; margin: auto;">
+		<form method="post" action="/new">
+			<input type="hidden" name="replyer" value="${login.userName }" /> <br>
+			<br>
+			<textarea id="summernote" name="reply"></textarea>
+			<input id="subBtn2" type="button" value="목록"
+				onclick="location.href='/board/list'" /> <input id="subBtn"
+				type="button" value="등록" />
+		</form>
+	</div>
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 
 
    <div style="width: 50%; margin: auto;">
@@ -98,7 +111,8 @@
       </div>
    </div>
 
-
+<!-- 푸터 -->
+<%@include file ="../board/Footer.jsp" %>
 
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script>	
@@ -265,6 +279,7 @@
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
+<<<<<<< HEAD
       $("button[data-oper='list']").on("click", function() {
          operForm.find("#bno").remove();
          operForm.attr("action", "/board/list");
@@ -296,6 +311,39 @@
                           else if (likeCheck == 1){
                            alert("추천취소");
                              location.reload();
+=======
+		$("button[data-oper='list']").on("click", function() {
+			operForm.find("#bno").remove();
+			operForm.attr("action", "/board/list");
+			operForm.submit();
+		});
+		
+	})
+	</script>
+	<script>
+	
+		var bno = ${board.bno};
+		var userId = "${login.userId}";
+		
+		 function updateLike(){ 
+		     $.ajax({
+		            type : "POST",  
+		            url : "/board/updateLike",       
+		            dataType : "json",   
+		            data : {'bno' : bno, 'userId' : userId},
+		            error : function(){
+		               alert("로그인 후 이용 가능합니다");
+		            },
+		            success : function(likeCheck) {
+		                
+		                    if(likeCheck == 0){
+		                    	alert("추천완료");
+		                    	location.reload();
+		                    }
+		                    else if (likeCheck == 1){
+		                     alert("추천취소");
+		                    	location.reload();
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
                       }
                   }
               });

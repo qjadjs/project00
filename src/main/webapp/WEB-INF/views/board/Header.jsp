@@ -30,11 +30,8 @@
             </ul>
             <a class="navbar-brand" onClick="window.location.reload()">
                <h1>
-               <span>밸</span>
-               <span>런</span>
-               <span>스</span>
-               <span>게</span>
-               <span>임</span>
+               <span>BALANCE</span>
+               <span>GAME</span>
                </h1>
             </a>
            
