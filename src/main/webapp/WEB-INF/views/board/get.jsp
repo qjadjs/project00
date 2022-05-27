@@ -73,19 +73,6 @@
    <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
 </div>
    </form>
-
-<<<<<<< HEAD
-   <div style="width: 50%; margin: auto;">
-      <form method="post" action="/new">
-         <input type="hidden" name="replyer" value="${login.userName }" /> <br>
-         <br>
-         <textarea id="summernote" name="reply"></textarea>
-         <input id="subBtn2" type="button" value="목록"
-            onclick="location.href='/board/list'" /> <input id="subBtn"
-            type="button" value="댓글 작성" />
-      </form>
-   </div>
-=======
 	<div style="width: 50%; margin: auto;">
 		<form method="post" action="/new">
 			<input type="hidden" name="replyer" value="${login.userName }" /> <br>
@@ -96,8 +83,6 @@
 				type="button" value="등록" />
 		</form>
 	</div>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
-
 
    <div style="width: 50%; margin: auto;">
       <div class="panel-body" style="background-color: white;">
