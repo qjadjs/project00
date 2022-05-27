@@ -434,7 +434,7 @@ font-weight: 400;
 
 /*pager*/
 .arrow{
-    position:absolute;z-index:200;box-sizing:border-box;
+    position:absolute;box-sizing:border-box;
     bottom:0;
     padding:0.5rem 1rem ;
     background-color:rgba(0,0,0,0.5);

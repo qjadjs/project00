@@ -8,6 +8,7 @@
 }
 .b1{
 	background-color: #212529;
+	margin-bottom: 8rem; 
 }
 
 .hh1{
@@ -53,4 +54,11 @@
   background-color: #212529;
   border-color: #ffffff;
   text-decoration-line: none;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+     z-index: 0;
+}
+html {
+     font-size: 16px; 
 }

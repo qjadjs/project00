@@ -17,7 +17,7 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="resources/css/header2.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
-
+<link href="resources/css/footer2.css" rel="stylesheet" />
 
 </head>
 <body>

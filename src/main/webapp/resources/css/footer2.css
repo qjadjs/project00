@@ -3,8 +3,8 @@
 
 
 .container-bottom{
-	padding-top: 3rem;
-	  padding-bottom: 3rem;
+	padding-top: 1.22rem;
+	  padding-bottom: 1.22rem;
 	  text-align: center;
 	 
 }
@@ -21,16 +21,16 @@
 .neon {
   font-family: neon;
   color: #FB4264;
-  font-size: 25px;
-  line-height: 10px;
+  font-size: 20px;
+  line-height: 15px;
   text-shadow: 0 0 3vw #F40A35;
 }
 
 .flux {
-	margin-top:1.5rem;
+	margin-top:1rem;
   font-family: neon;
   color: #426DFB;
-  font-size: 25px;
+  font-size: 18px;
   line-height: 10px;
   text-shadow: 0 0 3vw #2356FF;
 }
@@ -70,4 +70,4 @@
     text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
     color: #146C80;
   }
-}
+
