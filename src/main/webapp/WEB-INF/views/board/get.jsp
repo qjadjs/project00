@@ -65,6 +65,12 @@
                value='<c:out value="${cri.type}"/>'> <input type="hidden"
                name="keyword" value='<c:out value="${cri.keyword}"/>'>
          </form>
+		<form method="post" action="/board/remove" id="operForm2">
+		<input type="hidden" id="bno" name="bno"
+               value='<c:out value="${board.bno}"/>'>
+		<button data-oper="delete" class="btn-danger">삭제</button>
+		</form>
+               
          </c:when>
          <c:otherwise>
          </c:otherwise>
@@ -83,6 +89,7 @@
 				onclick="location.href='/board/list'" /> <input id="subBtn"
 				type="button" value="댓글 작성" />
 		</form>
+	
 	</div>
 
 
@@ -233,6 +240,9 @@
 			})
 		});
 		
+		
+	})
+		
 		replyPageFooter.on("click", "li a", function(e) {
 			e.preventDefault(); // a 태그 기본 동작 제거
 			console.log("page click");
@@ -253,7 +263,6 @@
 				showList(pageNum);
 			})
 		})
-   });
 </script>
 
 	<script type="text/javascript">
@@ -262,13 +271,18 @@
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
-		$("button[data-oper='list']").on("click", function() {
-			operForm.find("#bno").remove();
-			operForm.attr("action", "/board/list");
-			operForm.submit();
-		});
-		
+      var operForm2 = $("#operForm2");
+      $("button[data-oper='delete']").on("click", function(e) {
+    	  e.preventDefault();
+    	  if (confirm("게시글을 삭제하시겠습니까?")) {
+    		  operForm2.submit();
+          } else {
+        	  return;
+          }
+      });
 	})
+
+		
 	</script>
 	<script>
 	
