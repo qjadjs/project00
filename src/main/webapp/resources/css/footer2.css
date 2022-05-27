@@ -3,9 +3,10 @@
 
 
 .container-bottom{
-	padding-top: 3rem;
-	  padding-bottom: 3rem;
+	padding-top: 1.22rem;
+	  padding-bottom: 1.22rem;
 	  text-align: center;
+	 
 }
 
 .bg-dark1{
@@ -20,7 +21,7 @@
 .neon {
   font-family: neon;
   color: #FB4264;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 15px;
   text-shadow: 0 0 3vw #F40A35;
 }
@@ -29,7 +30,7 @@
 	margin-top:1rem;
   font-family: neon;
   color: #426DFB;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 10px;
   text-shadow: 0 0 3vw #2356FF;
 }
