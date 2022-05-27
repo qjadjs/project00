@@ -16,7 +16,7 @@
 		이름 <input type="text" name="userName" class="name" placeholder="${user.userName} "><br>
 		이메일 <input type="text" name="userEmail" class="email" placeholder="${user.userEmail}"><br>
 		<div class=btn-div>
-		<input type="submit" class="btn" value="회원정보수정하기">
+		<input type="submit" class="btn" value="회원정보수정하기"> 
 		</div>
 	</form>
 </fieldset  class=b1>
