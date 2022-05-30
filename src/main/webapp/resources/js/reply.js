@@ -62,11 +62,7 @@ var replyService = (function() {
 	// 댓글 지우기
 	// 댓글 지울 떄 필요한 값 : 댓글의 번호(rno)
 	function remove(rno, callback, error) {
-
 		console.log(rno);
-
-		console.log(replyer);
-
 		$.ajax({
 			type : "delete",
 			url : "/replies/" + rno,
