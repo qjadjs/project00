@@ -102,17 +102,26 @@
    </div>
 
 
-   <div style="width: 70%; margin: auto;">
+<div style="width: 70%; margin: auto;">
       <form method="post" action="/new" class="get-replyform" style="padding-bottom : 100px;">
+          <c:choose>
+         <c:when test="${login.userName != null}">
          <input type="hidden" name="replyer" value="${login.userName }" /> <br>
          <br>
          <textarea id="summernote" name="reply"></textarea>
          <input id="subBtn2" type="button" value="목록"
             onclick="location.href='/board/list'" /> <input id="subBtn"
-            type="button" value="댓글 작성" />
+            type="button" value="등록" />
+            </c:when>
+            <c:otherwise>
+            <br> <br>
+            <input value="댓글 기능은 로그인후 이용 가능합니다"/> <br>
+            <input id="subBtn2" type="button" value="목록"
+            onclick="location.href='/board/list'" />
+            </c:otherwise>
+            </c:choose>
       </form>
    </div>
-
 
 
 <!-- 푸터 -->
