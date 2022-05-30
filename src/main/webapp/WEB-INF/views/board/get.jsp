@@ -21,6 +21,8 @@
 <script
    src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
+
+
 <link href="../resources/css/get.css" rel="stylesheet" />
 <link href="../resources/css/getHeader.css" rel="stylesheet" />
 
@@ -142,6 +144,7 @@
          var bnoValue = '<c:out value="${board.bno}"/>';
          var replyUL = $(".chat");
          
+         
    $(document).ready(function() {
       $('#summernote').summernote(setting);
          
@@ -171,7 +174,7 @@
             comments += "<div>";
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
+            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></small>";
             comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -265,16 +268,19 @@
 
       });
       
-      replyUL.on("click", "span .delete", function(e){
-         e.preventDefault();
+      
+      replyUL.on("click", ".delete", function(e){
+    	  e.preventDefault();
          let rno = $(this).attr("rno");
-         replyService.remove(rno, originalReplyer, function(result) {
+		var reply_no = $(this).parent().parent().find("#rno").val();
+         replyService.remove(rno, function(result) {
             alert(result);
-            showList(pageNum);
-         })
-      })
+           showList(pageNum);
+        	});
+    	});
    });
 </script>
+
 
    <script type="text/javascript">
    $(document).ready(function() {

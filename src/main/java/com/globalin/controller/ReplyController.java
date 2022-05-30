@@ -77,10 +77,12 @@ public class ReplyController {
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 */
+	
 	//Reply Delete 
 	@RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> remove(@PathVariable("rno") int rno) { 
-		ResponseEntity<String> entity = null; try { service.remove(rno); 
+		ResponseEntity<String> entity = null; 
+		try { service.remove(rno); 
 		
 		entity = new ResponseEntity<String>("delSuccess", HttpStatus.OK);
 		
