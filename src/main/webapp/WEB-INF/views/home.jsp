@@ -89,7 +89,7 @@
          <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                   <!-- Product image-->
-                  <a href="board.list">
+                  <a href="board/list">
                   <button type="button" class="cardbutton">
                         <img id="img1"
                         src="resources/assets/q11.jpg"
