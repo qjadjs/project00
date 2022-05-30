@@ -266,7 +266,7 @@
             alert(result);
 			
             showList(-1);
-            $('#summernote').summernote('reset');
+            $('#summernote').summernote('reset'); //댓글 등록시 텍스트 초기화
          })
       });
 
