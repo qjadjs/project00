@@ -89,19 +89,14 @@
          <div
             class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                   <!-- Product image-->
-                   <div class="card">
+                  <a href="board.list">
                   <button type="button" class="cardbutton">
-                  <div id="page1" class="slide-in">
-                     <a href="board/list" >
-                        <!--예시 링크--> <img class="card-img-top"
+                        <img id="img1"
                         src="resources/assets/q11.jpg"
                         onmouseover="this.src='resources/assets/q12.gif'"
                         onmouseout="this.src='resources/assets/q11.jpg'">
-                     </a>
-                     </div>
                   </button>
-                  
-               </div>
+                  </a>
 
                </div>
          </div>
