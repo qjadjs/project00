@@ -5,7 +5,7 @@ import java.util.Date;
 public class BoardVO {
 
 	private int bno, replyCnt, viewCnt, likeCnt;
-	private String title, content, writer;
+	private String title, content, writer, userId;
 	private Date regDate, updateDate;
 
 	public int getReplyCnt() {
@@ -80,11 +80,19 @@ public class BoardVO {
 		this.likeCnt = likeCnt;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", title=" + title + ", content=" + content + ", writer=" + writer + ", regDate=" + regDate
-				+ ", updateDate=" + updateDate + "]";
+				+ ", title=" + title + ", content=" + content + ", writer=" + writer + ", userId=" + userId
+				+ ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
 	}
 
 }

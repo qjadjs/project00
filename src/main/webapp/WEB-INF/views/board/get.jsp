@@ -75,6 +75,12 @@
                value='<c:out value="${cri.type}"/>'> <input type="hidden"
                name="keyword" value='<c:out value="${cri.keyword}"/>'>
          </form>
+		<form method="post" action="/board/remove" id="operForm2">
+		<input type="hidden" id="bno" name="bno"
+               value='<c:out value="${board.bno}"/>'>
+		<button data-oper="delete" class="btn-danger">삭제</button>
+		</form>
+               
          </c:when>
          <c:otherwise>
          </c:otherwise>
@@ -83,6 +89,7 @@
    <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
 </div>
    </form>
+
 
   <div style="width: 70%; margin: auto;">
       <div class="panel-body-top" style="background-color: white;">
@@ -255,6 +262,7 @@
             showList(-1);
          })
       });
+
       
       replyPageFooter.on("click", "li a", function(e) {
          e.preventDefault(); // a 태그 기본 동작 제거
@@ -265,8 +273,17 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
-
-      });
+		});
+		
+		replyUL.on("click", "span .delete", function(e){
+			e.preventDefault();
+			let rno = $(this).attr("rno");
+			replyService.remove(rno, function(result) {
+				alert(result);
+				showList(-1);
+			})
+		})
+     
       
       
       replyUL.on("click", ".delete", function(e){

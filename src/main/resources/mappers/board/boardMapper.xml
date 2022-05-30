@@ -20,9 +20,9 @@
 		</trim>
 	</sql>
 	<insert id="create">
-		insert into tbl_board (bno, title, content, writer)
+		insert into tbl_board (bno, title, content, writer, user_id)
 		values
-		(seq_board.nextval,#{title},#{content},#{writer})
+		(seq_board.nextval,#{title},#{content},#{writer},#{userId})
 	</insert>
 	<insert id="insertSelectKey">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
@@ -53,9 +53,9 @@
 	<select id="getListWithPaging"
 		resultType="com.globalin.domain.BoardVO">
 	<![CDATA[
-	select bno, title, content, writer, regdate, updatedate, replycnt, viewcnt, likecnt
+	select bno, title, content, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id
 				from (select /*+INDEX_DESC(tbl_board pk_board) */
-				rownum rn, bno, title, content, writer, regdate, updatedate, replycnt, viewcnt, likecnt
+				rownum rn, bno, title, content, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id
 				from tbl_board
 				where 
 				]]>

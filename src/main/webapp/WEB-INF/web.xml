@@ -57,6 +57,7 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
 		<!-- 파일 업로드를 위한 설정 -->
 		<multipart-config>
 		<!-- 파일 업로드 위치 -->
@@ -75,5 +76,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	
 
 </web-app>
