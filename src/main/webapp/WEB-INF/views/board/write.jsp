@@ -33,6 +33,7 @@
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/write" name="frm">
 			<input id="c1" type="text" name="writer" value="${login.userName }" />
+			<input type="hidden" name="userId" value="${login.userId}">
 			<div id="title1">
 				<input id="title2" type="text" name="title" placeholder="제목" />
 			</div>

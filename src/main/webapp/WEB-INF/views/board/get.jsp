@@ -87,20 +87,7 @@
    <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
 </div>
    </form>
-<<<<<<< HEAD
-	<div style="width: 50%; margin: auto;">
-		<form method="post" action="/new">
-			<input type="hidden" name="replyer" value="${login.userName }" /> <br>
-			<br>
-			<textarea id="summernote" name="reply"></textarea>
-			<input id="subBtn2" type="button" value="목록"
-				onclick="location.href='/board/list'" /> <input id="subBtn"
-				type="button" value="등록" />
-		</form>
-	
-	</div>
-=======
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
+
 
   <div style="width: 70%; margin: auto;">
       <div class="panel-body-top" style="background-color: white;">
@@ -182,14 +169,8 @@
             comments += "<div>";
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-<<<<<<< HEAD
-            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate)
-						+ "</br> <c:choose><c:when test='${reply.replyer != login.userName}'><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></c:when><c:otherwise></c:otherwise></c:choose></small>";
-			comments += "</div>";
-=======
             comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
             comments += "</div>";
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
             comments += "</li>";
@@ -269,19 +250,7 @@
             showList(-1);
          })
       });
-<<<<<<< HEAD
-		
-		
-		replyPageFooter.on("click", "li a", function(e) {
-			e.preventDefault(); // a 태그 기본 동작 제거
-			console.log("page click");
-			// 이동할 페이지 번호
-			// href 속성에 페이지 번호를 저장해놨기에 꺼내 쓴다
-			let target = $(this).attr("href");
-			console.log("target page : " + target);
-			pageNum = target;
-			showList(pageNum);
-=======
+
       
       replyPageFooter.on("click", "li a", function(e) {
          e.preventDefault(); // a 태그 기본 동작 제거
@@ -292,8 +261,6 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
-
 		});
 		
 		replyUL.on("click", "span .delete", function(e){
@@ -306,10 +273,6 @@
 		})
      
       
-<<<<<<< HEAD
-      
-      
-=======
       replyUL.on("click", "span .delete", function(e){
          e.preventDefault();
          let rno = $(this).attr("rno");
@@ -318,7 +281,6 @@
             showList(pageNum);
          })
       })
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
    });
 </script>
 
@@ -328,43 +290,6 @@
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
-<<<<<<< HEAD
-      var operForm2 = $("#operForm2");
-      $("button[data-oper='delete']").on("click", function(e) {
-    	  e.preventDefault();
-    	  if (confirm("게시글을 삭제하시겠습니까?")) {
-    		  operForm2.submit();
-          } else {
-        	  return;
-          }
-      });
-	})
-	</script>
-	<script>
-	
-		var bno = ${board.bno};
-		var userId = "${login.userId}";
-		
-		 function updateLike(){ 
-		     $.ajax({
-		            type : "POST",  
-		            url : "/board/updateLike",       
-		            dataType : "json",   
-		            data : {'bno' : bno, 'userId' : userId},
-		            error : function(){
-		               alert("로그인 후 이용 가능합니다");
-		            },
-		            success : function(likeCheck) {
-		                
-		                    if(likeCheck == 0){
-		                    	alert("추천완료");
-		                    	location.reload();
-		                    }
-		                    else if (likeCheck == 1){
-		                     alert("추천취소");
-		                    	location.reload();
-
-=======
       $("button[data-oper='list']").on("click", function() {
          operForm.find("#bno").remove();
          operForm.attr("action", "/board/list");
@@ -396,7 +321,6 @@
                           else if (likeCheck == 1){
                            alert("추천취소");
                              location.reload();
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
                       }
                   }
               });

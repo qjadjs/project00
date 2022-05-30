@@ -13,6 +13,9 @@
 </head>
 <!-- 헤더-->
 <body>
+<form action="/chat" method="get">
+<button>채팅</button>
+</form>
 <div class="slide-in">
 <%@include file ="../board/ListHeader.jsp" %>
    
