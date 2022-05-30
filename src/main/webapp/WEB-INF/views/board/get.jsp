@@ -50,7 +50,7 @@
           
             
             <br>
-         <div id="t3" style="min-height : 250px; max-height : 1000px;">
+         <div id="t3" style="min-height:250px; max-height:1000px;">
           
          <br>
          
