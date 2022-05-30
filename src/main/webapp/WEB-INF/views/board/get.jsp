@@ -95,8 +95,7 @@
         </div>
       <div class="panel-body-top" style="background-color: white;">
          <!-- 댓글 시작 -->
-         <ul class="chat" style="list-style : none; list-style: decimal-leading-zero;
-    list-style-position: inside; padding-inline-start:0;">
+         <ul class="chat" style="list-style : none;  padding-inline-start:0;">
             <!-- 댓글이 들어올 공간 -->
          </ul>
       </div>
@@ -104,7 +103,7 @@
          <!-- 페이지 버튼이 들어온다 -->
       </div>
       <div class="reply_write">
-            <h4>댓글쓰기</h4>
+            <h4>댓글작성</h4>
         </div>
    </div>
 
