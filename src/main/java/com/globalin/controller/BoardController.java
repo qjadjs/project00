@@ -47,7 +47,6 @@ import com.globalin.service.BoardService;
 import com.globalin.service.LikeService;
 import com.google.gson.JsonObject;
 
-
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
