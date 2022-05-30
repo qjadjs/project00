@@ -258,8 +258,9 @@
          // add(reply, callback)
          replyService.add(reply, function(result) {
             alert(result);
-
+			
             showList(-1);
+            $('#summernote').summernote('reset');
          })
       });
 
@@ -274,7 +275,7 @@
          pageNum = target;
          showList(pageNum);
 		});
-		
+	/*	
 		replyUL.on("click", "span .delete", function(e){
 			e.preventDefault();
 			let rno = $(this).attr("rno");
@@ -283,13 +284,13 @@
 				showList(-1);
 			})
 		})
-     
+*/     
       
       
       replyUL.on("click", ".delete", function(e){
     	  e.preventDefault();
          let rno = $(this).attr("rno");
-		var reply_no = $(this).parent().parent().find("#rno").val();
+		//var reply_no = $(this).parent().parent().find("#rno").val();
          replyService.remove(rno, function(result) {
             alert(result);
            showList(pageNum);

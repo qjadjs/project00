@@ -61,12 +61,12 @@ var replyService = (function() {
 
 	// 댓글 지우기
 	// 댓글 지울 떄 필요한 값 : 댓글의 번호(rno)
-	function remove(rno, callback, error) {
+	function remove(rno, replyer, callback, error) {
 		console.log(rno); //현재 undefined
 		$.ajax({
 			type : "delete",
 			url : "/replies/" + rno,
-			data : JSON.stringify(rno),
+			data : JSON.stringify({rno : rno, replyer : replyer}),
 			contentType : "application/json; charset = utf-8",
 			success : function(result, status, xhr) {
 				// 성공하면 callback 함수 호출
