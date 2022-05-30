@@ -9,6 +9,7 @@ margin-left:5px;
 
 
 .btn {
+	width: 100%;
   display: inline-block;
   font-weight: 400%;
   line-height: ;
@@ -213,13 +214,13 @@ h1 {
  font-size:30px;
 }
 
-h1 span { display:inline-block; animation:float .2s ease-in-out infinite; }
+h1 span { display:inline-block; animation:float 0.3s ease-in-out infinite; }
  @keyframes float {
   0%,100%{ transform:none; }
   33%{ transform:translateY(-1px) rotate(-2deg); }
   66%{ transform:translateY(1px) rotate(2deg); }
 }
-h1:hover span { animation:bounce .5s; }
+div:hover span { animation:bounce .5s; }
 @keyframes bounce {
   0%,100%{ transform:translate(0); }
   25%{ transform:rotateX(20deg) translateY(2px) rotate(-3deg); }

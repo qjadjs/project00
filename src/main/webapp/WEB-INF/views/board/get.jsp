@@ -29,7 +29,7 @@
 <body class="b1">
   <%@include file ="../board/Header2.jsp" %>
   
-   <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; border:1px solid gray; background-color:white;">
+   <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
          <input type="hidden" id="bno" name="bno"
             value='<c:out value="${board.bno}"/>'> <input type="hidden"
@@ -43,14 +43,14 @@
             <div class="hh1" name="title" class="get-title">
               <h3 style="padding-top:20px; padding-bottom:20px;"><c:out value="${board.title}" /></h3>
             </div>
-            <hr/>
+            
               <div id="t4">
                <c:out value="${board.writer}" />
             </div>
-            <hr/>
+          
             
             <br>
-         <div id="t3">
+         <div id="t3" style="min-height:250px; max-height:1000px;">
           
          <br>
          
@@ -90,15 +90,22 @@
 
 
   <div style="width: 70%; margin: auto;">
+  <div class="reply_title">
+            <h4>댓글<span style="color:#f68400;">${board.replyCnt}</span></h4>
+        </div>
       <div class="panel-body-top" style="background-color: white;">
          <!-- 댓글 시작 -->
-         <ul class="chat" style="list-style : none;">
+         <ul class="chat" style="list-style : none; list-style: decimal-leading-zero;
+    list-style-position: inside; padding-inline-start:0;">
             <!-- 댓글이 들어올 공간 -->
          </ul>
       </div>
-      <div class="panel-footer">
+      <div class="panel-footer" style="height:100px; background:white; border-top : 0;">
          <!-- 페이지 버튼이 들어온다 -->
       </div>
+      <div class="reply_write">
+            <h4>댓글쓰기</h4>
+        </div>
    </div>
 
 
