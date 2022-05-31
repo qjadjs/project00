@@ -52,6 +52,7 @@
           
             
             <br>
+            
          <div id="t3" style="min-height:250px; max-height:1000px;">
           
          <br>
@@ -59,8 +60,18 @@
          <div id="title3" name="content" class="get-content">
             <c:out value="${board.content}" escapeXml="false" /> 
          </div>
-         </div>
+         <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
+         <div  style="margin-right:1px;">
+   <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
+</div>
+<div  style="margin-right:1px;">
+   <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
+</div>
+</div>
          
+         </div>
+        
+        <div class="modify-remove-div">
          <c:choose>
          <c:when test="${login.userName == board.writer}">   
          <form id="operForm" action="/board/modify" method="get">
@@ -84,14 +95,10 @@
          </c:when>
          <c:otherwise>
          </c:otherwise>
-         </c:choose>
-      <div  style="margin-right:1px;">
-   <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
-</div>
-<div  style="margin-right:1px;">
-   <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
-</div>
+         </c:choose>  
+         </div> 
    </form>
+   
 
 
   <div style="width: 70%; margin: auto;">

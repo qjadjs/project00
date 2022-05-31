@@ -17,6 +17,8 @@
 >>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 ㅇㅇdd
 dd
+
+------------------개추------------------------
 create table tbl_like(
 LIKENO NUMBER NOT NULL PRIMARY KEY ,
 BNO NUMBER,
@@ -28,7 +30,7 @@ FOREIGN KEY (BNO) REFERENCES tbl_BOARD (BNO) ON DELETE CASCADE
 );
 
 
-
+----------------------비추--------------------
 create table tbl_dislike(
 DISLIKENO NUMBER NOT NULL PRIMARY KEY ,
 BNO NUMBER,
