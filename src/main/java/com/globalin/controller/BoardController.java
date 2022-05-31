@@ -44,9 +44,9 @@ import com.globalin.domain.Page;
 import com.globalin.domain.ReplyVO;
 import com.globalin.domain.SearchCriteria;
 import com.globalin.service.BoardService;
+import com.globalin.service.DisLikeService;
 import com.globalin.service.LikeService;
 import com.google.gson.JsonObject;
-
 
 @Controller
 @RequestMapping("/board/*")
@@ -58,13 +58,16 @@ public class BoardController {
 	private LikeDAO Ldao;
 	
 	private LikeService Lservice;
+	
+	private DisLikeService Dservice;
 
 	@Inject
-	public BoardController(BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice) {
+	public BoardController(BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice) {
 		this.service = service;
 		this.dao = dao;
 		this.Ldao = Ldao;
 		this.Lservice = Lservice;
+		this.Dservice = Dservice;
 	}
 
 
@@ -214,7 +217,8 @@ public class BoardController {
 	public int updateLike(int bno, String userId)throws Exception{
 		
 			int likeCheck = Lservice.likeCheck(bno, userId);
-			if(likeCheck == 0) {
+			int dislikeCheck = Dservice.DislikeCheck(bno, userId);
+			if(likeCheck == 0 && dislikeCheck != 1) {
 				//좋아요 처음누름
 				Lservice.insertLike(bno, userId); //like테이블 삽입
 				Lservice.updateLike(bno);	//게시판테이블 +1
@@ -225,6 +229,25 @@ public class BoardController {
 				Lservice.deleteLike(bno, userId); //like테이블 삭제
 			}
 			return likeCheck;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateDisLike" , method = RequestMethod.POST)
+	public int updateDisLike(int bno, String userId)throws Exception{
+		
+			int likeCheck = Lservice.likeCheck(bno, userId);
+			int dislikeCheck = Dservice.DislikeCheck(bno, userId);
+			if(dislikeCheck == 0 && likeCheck != 1) {
+				//좋아요 처음누름
+				Dservice.insertDisLike(bno, userId); //like테이블 삽입
+				Dservice.updateDisLike(bno);	//게시판테이블 +1
+				Dservice.updateDisLikeCheck(bno, userId);//like테이블 구분자 1
+			}else if(dislikeCheck == 1) {
+				Dservice.updateDisLikeCheckCancel(bno, userId); //like테이블 구분자0
+                Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
+				Dservice.deleteDisLike(bno, userId); //like테이블 삭제
+			}
+			return dislikeCheck;
 	}
 	
 	

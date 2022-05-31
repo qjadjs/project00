@@ -9,8 +9,8 @@
 <body>
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color : #212529;">
       <div class="container px-4 px-lg-5">
-      <a href="/">
-      <img class="list-img"src="https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b65ce32d6e65e714e848ae41bc91315a71418163400b6306535fa937047d583cf00dfe6b5e3816d38f431c50" style="width:50px; height:50px;">   
+      <a href="/"> 
+      <img class="list-img" src="/resources/assets/t11.png" style="width:70px; height:60px;">   
          </a>
          <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

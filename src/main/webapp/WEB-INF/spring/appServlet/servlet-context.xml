@@ -53,13 +53,6 @@
 	<beans:bean id="LoginAfterInterceptor"
 		class="com.globalin.commons.interceptor.LoginAfterInterceptor" />
 
-	<websocket:handlers>
-		<websocket:mapping handler="chattingHandler"
-			path="/chatting" />
-		<websocket:sockjs></websocket:sockjs>
-	</websocket:handlers>
-
-	<beans:bean id="chattingHandler" class="com.globalin.controller.ChattingHandler"/>
 
 	<interceptors>
 		<interceptor>

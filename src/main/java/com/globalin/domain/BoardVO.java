@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno, replyCnt, viewCnt, likeCnt;
+	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt;
 	private String title, content, writer, userId;
 	private Date regDate, updateDate;
 
@@ -88,11 +88,20 @@ public class BoardVO {
 		this.userId = userId;
 	}
 
+
+	public int getDislikeCnt() {
+		return dislikeCnt;
+	}
+
+	public void setDislikeCnt(int dislikeCnt) {
+		this.dislikeCnt = dislikeCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", title=" + title + ", content=" + content + ", writer=" + writer + ", userId=" + userId
-				+ ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
+				+ ", dislikeCnt=" + dislikeCnt + ", title=" + title + ", content=" + content + ", writer=" + writer
+				+ ", userId=" + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
 	}
 
 }
