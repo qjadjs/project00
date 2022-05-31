@@ -103,3 +103,14 @@ html {
     border-top: 1px solid #e3e3e3;
     background-color: #f9f9f9;
 }
+#t3 {
+  border-bottom:1px solid #7e7e7e;
+}
+
+#t3-div {
+	margin-bottom:30px;
+}
+.modify-remove-div {
+	justify-content: end;
+	display:flex;
+}
