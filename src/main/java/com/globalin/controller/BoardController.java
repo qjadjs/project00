@@ -217,7 +217,8 @@ public class BoardController {
 	public int updateLike(int bno, String userId)throws Exception{
 		
 			int likeCheck = Lservice.likeCheck(bno, userId);
-			if(likeCheck == 0) {
+			int dislikeCheck = Dservice.DislikeCheck(bno, userId);
+			if(likeCheck == 0 && dislikeCheck != 1) {
 				//좋아요 처음누름
 				Lservice.insertLike(bno, userId); //like테이블 삽입
 				Lservice.updateLike(bno);	//게시판테이블 +1
@@ -234,18 +235,19 @@ public class BoardController {
 	@RequestMapping(value = "/updateDisLike" , method = RequestMethod.POST)
 	public int updateDisLike(int bno, String userId)throws Exception{
 		
-			int likeCheck = Dservice.DislikeCheck(bno, userId);
-			if(likeCheck == 0) {
+			int likeCheck = Lservice.likeCheck(bno, userId);
+			int dislikeCheck = Dservice.DislikeCheck(bno, userId);
+			if(dislikeCheck == 0 && likeCheck != 1) {
 				//좋아요 처음누름
 				Dservice.insertDisLike(bno, userId); //like테이블 삽입
 				Dservice.updateDisLike(bno);	//게시판테이블 +1
 				Dservice.updateDisLikeCheck(bno, userId);//like테이블 구분자 1
-			}else if(likeCheck == 1) {
+			}else if(dislikeCheck == 1) {
 				Dservice.updateDisLikeCheckCancel(bno, userId); //like테이블 구분자0
                 Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
 				Dservice.deleteDisLike(bno, userId); //like테이블 삭제
 			}
-			return likeCheck;
+			return dislikeCheck;
 	}
 	
 	

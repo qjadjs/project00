@@ -338,7 +338,7 @@
                   dataType : "json",   
                   data : {'bno' : bno, 'userId' : userId},
                   error : function(){
-                     alert("로그인 후 이용 가능합니다");
+                          alert("로그인 후 이용 가능합니다");
                   },
                   success : function(likeCheck) {
                       
@@ -363,13 +363,13 @@
                   error : function(){
                      alert("로그인 후 이용 가능합니다");
                   },
-                  success : function(likeCheck) {
+                  success : function(dislikeCheck) {
                       
-                          if(likeCheck == 0){
+                          if(dislikeCheck == 0){
                              alert("비추 완료.");
                              location.reload();
                           }
-                          else if (likeCheck == 1){
+                          else if (dislikeCheck == 1){
                            alert("비추 취소");
                              location.reload();
                       }
