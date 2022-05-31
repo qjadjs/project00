@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -56,8 +57,11 @@
       <input type="button" class="btn" value="메인으로" onclick="location.href='/'">
       <input type="button" value="회원정보수정" class="btn" onclick="updateId()">
    <input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
-   <input type="button" value="회원탈퇴" class="btn" onclick="deleteId()">
-    <script type="text/javascript">
+   <input type="button" value="회원탈퇴" class="btn" onclick="deleteId()"><br>
+   <input type="button" value="내가 쓴 게시글" class="btn" onclick="MyBoard()">
+
+				
+   <script type="text/javascript">
   function deleteId(){
 		var url="/user/delete";
 		
@@ -66,6 +70,11 @@
   
   function updateId(){
 	  var url="/user/update";
+	  
+	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+  }
+  function MyBoard(){
+	  var url="/user/MyBoard";
 	  
 	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
   }

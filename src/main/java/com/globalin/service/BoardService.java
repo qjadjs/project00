@@ -27,4 +27,6 @@ public interface BoardService {
 	void updateReplyCnt(@Param("bno") int bno, @Param("amount") int amount);
 
 	void updateViewCnt(int bno);
+	
+	List<BoardVO> userBoaardList(String userId) throws Exception;
 }

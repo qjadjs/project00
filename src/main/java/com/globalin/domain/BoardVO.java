@@ -7,7 +7,8 @@ public class BoardVO {
 	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt;
 	private String title, content, writer, userId;
 	private Date regDate, updateDate;
-
+	private UserVO userVO;
+	
 	public int getReplyCnt() {
 		return replyCnt;
 	}
@@ -97,11 +98,20 @@ public class BoardVO {
 		this.dislikeCnt = dislikeCnt;
 	}
 
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+	
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
 				+ ", dislikeCnt=" + dislikeCnt + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", userId=" + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + "]";
+				+ ", userId=" + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO=" + userVO
+				+ "]";
 	}
 
 }

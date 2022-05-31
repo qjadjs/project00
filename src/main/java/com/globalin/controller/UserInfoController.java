@@ -1,5 +1,8 @@
 package com.globalin.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -14,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.globalin.domain.BoardVO;
 import com.globalin.domain.LoginDTO;
 import com.globalin.domain.UserVO;
+import com.globalin.service.BoardService;
 import com.globalin.service.UserService;
 
 @Controller
@@ -26,6 +31,9 @@ public class UserInfoController {
 
 	@Autowired
 	private UserService userService;
+	
+	 @Inject
+	  private BoardService boardService;
 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String infoGET(HttpSession session, Model model) throws Exception{
@@ -38,11 +46,12 @@ public class UserInfoController {
 		}
 		//서비스안의 회원정보보기 메서드 호출
 		UserVO userVO = userService.readMember(id);
-
+		List<BoardVO> userBoardList = boardService.userBoaardList(id);
 		//정보저장 후 페이지 이동
 		model.addAttribute("user", userVO);
 		log.info("C: 회원정보보기 GET의 VO "+ userVO);
-		
+		model.addAttribute("userBoardList", userBoardList);
+		log.info("C: 회원정보보기 GET의 userBoardList "+ userBoardList);
 		return "/user/info";	
 	}
 	/* 회원정보 수정 */
@@ -73,6 +82,24 @@ public class UserInfoController {
 		model.addAttribute("user", userVO);
 		log.info("C: 회원정보보기 GET의 VO "+ userVO);
 		return "/user/updatePost";
+	}
+	/* 회원정보 수정 */
+	@RequestMapping(value="/MyBoard", method = RequestMethod.GET)
+	public String MyBoardGET(HttpSession session, Model model) throws Exception{
+
+		//세션 객체 안에 있는 ID정보 저장ser
+				String id = (String) session.getAttribute("userId");
+				log.info("C: 회원정보보기 GET의 아이디 "+ id);
+				if(id == null) {
+					return "redirect:/";
+				}
+				//서비스안의 회원정보보기 메서드 호출
+				List<BoardVO> userBoardList = boardService.userBoaardList(id);
+				//정보저장 후 페이지 이동
+				model.addAttribute("userBoardList", userBoardList);
+				log.info("C: 회원정보보기 GET의 userBoardList "+ userBoardList);	
+				
+		return "/user/myboardList";
 	}
 
 	/* 회원정보삭제 */

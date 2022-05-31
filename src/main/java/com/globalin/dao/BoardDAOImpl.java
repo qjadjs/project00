@@ -93,4 +93,9 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update(NameSpace + ".updateViewCnt", bno);
 	}
 
+	@Override
+	public List<BoardVO> userBoardList(String userId) throws Exception {
+		return sqlSession.selectList(NameSpace +".userBoardList", userId);
+	}
+
 }

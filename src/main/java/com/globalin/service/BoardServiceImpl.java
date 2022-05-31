@@ -69,4 +69,10 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.updateViewCnt(bno);
 	}
 
+	@Override
+	public List<BoardVO> userBoaardList(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return boardDao.userBoardList(userId);
+	}
+
 }

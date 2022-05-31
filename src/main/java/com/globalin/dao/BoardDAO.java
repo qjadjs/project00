@@ -30,4 +30,6 @@ public interface BoardDAO {
 	
 	void updateViewCnt(int bno);
 	
+	List<BoardVO> userBoardList(String userId) throws Exception;
+	
 }

@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.board.boardMapper">
+	
+	<resultMap id="BoardVOResultMap" type="com.globalin.domain.BoardVO">
+  <id property="bno" column="bno"/>
+  <result property="title" column="title" />
+  <result property="content" column="content" />
+  <result property="writer" column="writer" />
+  <result property="regDate" column="regdate" />
+  <result property="updateDate" column="updateDate" />
+  <result property="replyCnt" column="replycnt" />
+  <result property="viewCnt" column="viewcnt" />
+  <result property="likeCnt" column="likeCnt" />
+  <result property="userId" column="user_id" />
+  <result property="dislikeCnt" column="dislikeCnt" />
+  <association property="userVO" resultMap="userVOResultMap"/>
+</resultMap>
+<resultMap id="userVOResultMap"
+		type="com.globalin.domain.UserVO">
+		<id property="userId" column="user_id" />
+		<result property="userPw" column="user_pw" />
+		<result property="userName" column="user_name" />
+		<result property="userEmail" column="user_email" />
+		<result property="userJoinDate" column="user_join_date" />
+		<result property="userLoginDate" column="user_login_date" />
+		<result property="userSignature" column="user_signature" />
+		<result property="userImg" column="user_img" />
+		<result property="userPoint" column="user_point" />
+	</resultMap>
+
+<select id="userBoardList" resultType="com.globalin.domain.BoardVO">
+SELECT
+  *
+  FROM tbl_board
+  WHERE user_id = #{userId}
+  ORDER BY bno DESC, regdate DESC
+</select>
+	
 	<sql id="criteria">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 			<foreach item="type" collection="typeArr">
