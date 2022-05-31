@@ -86,6 +86,9 @@
       <div  style="margin-right:1px;">
    <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
 </div>
+<div  style="margin-right:1px;">
+   <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
+</div>
    </form>
 
 
@@ -303,6 +306,7 @@
    <script type="text/javascript">
    $(document).ready(function() {
       var operForm = $("#operForm");
+      var operForm2 = $("#operForm2");
       $("button[data-oper='modify']").on("click", function() {
          operForm.submit();
       });
@@ -310,6 +314,14 @@
          operForm.find("#bno").remove();
          operForm.attr("action", "/board/list");
          operForm.submit();
+      });
+      $("button[data-oper='delete']").on("click",function(e){
+    	  e.preventDefault();
+    	  if(confirm("게시글을 삭제하시겠습니까?")){
+    		 operForm2.submit();
+    	  }else{
+    		  return;
+    	  }
       });
       
    })
@@ -336,6 +348,29 @@
                           }
                           else if (likeCheck == 1){
                            alert("추천취소");
+                             location.reload();
+                      }
+                  }
+              });
+       }
+       
+       function updateDisLike(){ 
+           $.ajax({
+                  type : "POST",  
+                  url : "/board/updateDisLike",       
+                  dataType : "json",   
+                  data : {'bno' : bno, 'userId' : userId},
+                  error : function(){
+                     alert("로그인 후 이용 가능합니다");
+                  },
+                  success : function(likeCheck) {
+                      
+                          if(likeCheck == 0){
+                             alert("비추 완료.");
+                             location.reload();
+                          }
+                          else if (likeCheck == 1){
+                           alert("비추 취소");
                              location.reload();
                       }
                   }
