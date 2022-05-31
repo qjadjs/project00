@@ -28,23 +28,24 @@
 <title>게시글 작성</title>
 <link href="../resources/css/write.css" rel="stylesheet" />
 </head>
-<body class="b1">
+<body>
+<%@include file ="../board/Header2.jsp" %>
 	<h1 class="hh1">게시글 작성</h1>
-	<div style="width: 60%; margin: auto;">
-		<form method="post" action="/board/write" name="frm">
-			<input id="c1" type="text" name="writer" value="${login.userName }" />
+		<form method="post" action="/board/write" name="frm" style="width: 70%; margin:auto; height:auto; background-color:white;">
+			<input id="t4" type="text" name="writer" value="${login.userName }" readonly="readonly"/>
 			<input type="hidden" name="userId" value="${login.userId}">
-			<div id="title1">
-				<input id="title2" type="text" name="title" placeholder="제목" />
-			</div>
-			<br> <br>
+				<input class="h1" type="text" name="title" placeholder="제목">
 			<textarea id="summernote" name="content"></textarea>
-			<br> <input id="subBtn" type="button" value="작성"
+			<input id="subBtn" type="button" value="작성"
 				onclick="goWrite(this.form)" /> <input id="subBtn2" type="button"
 				value="목록" onclick="location.href='/board/list'" />
 		</form>
-	</div>
-	
+          
+            
+            
+         <div id="t3" style="min-height:150px; max-height:1000px;">
+          
+         </div>
 	<%@include file ="../board/Footer.jsp" %> 
 </body>
 <script>
