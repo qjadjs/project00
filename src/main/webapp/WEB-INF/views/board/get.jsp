@@ -62,7 +62,7 @@
          </div>
          <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
          <div  style="margin-right:1px;">
-   <button type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;">추천 ${board.likeCnt}</button>
+   <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
 </div>
 <div  style="margin-right:1px;">
    <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
@@ -75,7 +75,7 @@
          <c:choose>
          <c:when test="${login.userName == board.writer}">   
          <form id="operForm" action="/board/modify" method="get">
-         <button data-oper="modify" class="btn-default">수정</button>
+         <button data-oper="modify" class="modify-btn">수정</button>
             <input type="hidden" id="bno" name="bno"
                value='<c:out value="${board.bno}"/>'>
             <!-- 보고있던 페이지 정보 숨겨놓기 -->
@@ -89,7 +89,7 @@
 		<form method="post" action="/board/remove" id="operForm2">
 		<input type="hidden" id="bno" name="bno"
                value='<c:out value="${board.bno}"/>'>
-		<button data-oper="delete" class="btn-danger">삭제</button>
+		<button data-oper="delete" class="delete-btn">삭제</button>
 		</form>
                
          </c:when>
