@@ -22,12 +22,13 @@
 <title>게시글 수정</title>
 <link href="../resources/css/modify.css" rel="stylesheet" />
 </head>
-<body class="b1">
+<body>
+<%@include file ="../board/Header2.jsp" %>
 	<h1 class="hh1">게시물 수정</h1>
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/board/modify" name="frm">
-			<div id="title1">
-				<input id="title2" type="text" name="title" value="${board.title}" />
+			<div id="hh1">
+				<input id="h1" type="text" name="title" value="${board.title}"  />
 			</div>
 			<input id="title2" type="hidden" name="writer"
 				value="${board.writer}" /><br> <input id="title2"
@@ -44,7 +45,9 @@
 				value="목록" onclick="location.href='/board/list'" />
 		</form>
 	</div>
-	
+	<div id="t3" style="min-height:150px; max-height:1000px;">
+          
+         </div>
 	<%@include file ="../board/Footer.jsp" %>
 </body>
 <script>
