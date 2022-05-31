@@ -21,6 +21,8 @@
 <script
    src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 <script src="/resources/js/summernote-ko-KR.js"></script>
+
+
 <link href="../resources/css/get.css" rel="stylesheet" />
 <link href="../resources/css/getHeader.css" rel="stylesheet" />
 
@@ -98,8 +100,7 @@
         </div>
       <div class="panel-body-top" style="background-color: white;">
          <!-- 댓글 시작 -->
-         <ul class="chat" style="list-style : none; list-style: decimal-leading-zero;
-    list-style-position: inside; padding-inline-start:0;">
+         <ul class="chat" style="list-style : none;  padding-inline-start:0;">
             <!-- 댓글이 들어올 공간 -->
          </ul>
       </div>
@@ -107,7 +108,7 @@
          <!-- 페이지 버튼이 들어온다 -->
       </div>
       <div class="reply_write">
-            <h4>댓글쓰기</h4>
+            <h4>댓글작성</h4>
         </div>
    </div>
 
@@ -159,6 +160,7 @@
          var bnoValue = '<c:out value="${board.bno}"/>';
          var replyUL = $(".chat");
          
+         
    $(document).ready(function() {
       $('#summernote').summernote(setting);
          
@@ -188,7 +190,7 @@
             comments += "<div>";
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='delete'>삭제</span></small>";
+            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></small>";
             comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -265,8 +267,9 @@
          // add(reply, callback)
          replyService.add(reply, function(result) {
             alert(result);
-
+			
             showList(-1);
+            $('#summernote').summernote('reset'); //댓글 등록시 텍스트 초기화
          })
       });
 
@@ -281,7 +284,7 @@
          pageNum = target;
          showList(pageNum);
 		});
-		
+	/*	
 		replyUL.on("click", "span .delete", function(e){
 			e.preventDefault();
 			let rno = $(this).attr("rno");
@@ -290,18 +293,21 @@
 				showList(-1);
 			})
 		})
-     
+*/     
       
-      replyUL.on("click", "span .delete", function(e){
-         e.preventDefault();
+      
+      replyUL.on("click", ".delete", function(e){
+    	  e.preventDefault();
          let rno = $(this).attr("rno");
-         replyService.remove(rno, originalReplyer, function(result) {
+		//var reply_no = $(this).parent().parent().find("#rno").val();
+         replyService.remove(rno, function(result) {
             alert(result);
-            showList(pageNum);
-         })
-      })
+           showList(pageNum);
+        	});
+    	});
    });
 </script>
+
 
    <script type="text/javascript">
    $(document).ready(function() {

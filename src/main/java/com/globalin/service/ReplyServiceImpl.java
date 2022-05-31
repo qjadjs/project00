@@ -43,7 +43,7 @@ public class ReplyServiceImpl implements ReplyService {
 		replyDao.update(vo);
 	}
 
-	@Transactional
+	//@Transactional
 	@Override
 	public void remove(int rno) throws Exception {
 		int bno = replyDao.getBno(rno);
