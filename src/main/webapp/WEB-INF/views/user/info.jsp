@@ -58,7 +58,7 @@
       <input type="button" value="회원정보수정" class="btn" onclick="updateId()">
    <input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
    <input type="button" value="회원탈퇴" class="btn" onclick="deleteId()"><br>
-   <input type="button" value="내가 쓴 게시글" class="btn" onclick="MyBoard()">
+   <input type="button" value="내가 쓴 게시글" class="btn" onclick="MyBoard()" style="font-size:12px;">
 
 				
    <script type="text/javascript">
