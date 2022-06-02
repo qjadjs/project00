@@ -193,11 +193,12 @@
             return; // 함수 바로 종료
          }
          for (let i = 0; i < list.length; i++) {
-            comments += "<li class='left clearfix' data-rno='" + list[i].rno + "'>";
+            comments += "<li class='left_clearfix' data-rno='" + list[i].rno + "'>";
             comments += "<div>";
             comments += "<div class='header'>";
             comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><span class='btn update'>수정</span>&nbsp;&nbsp;&nbsp;<span class='btn delete'>삭제</span></small>";
+            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><input type='button' class='UpdateBtn' value='수정' data-rno='${left_clearfix.rno}'>&nbsp;&nbsp;&nbsp;"
+					 + "</br><input type='button' class='deleteBtn' value='삭제' data-rno='list[i].rno'></small>";
             comments += "</div>";
             comments += "<p>" + list[i].reply + "</p>";
             comments += "</div>";
@@ -280,6 +281,27 @@
          })
       });
 
+      //댓글 수정view
+      //$(".UpdateBtn").on("click", function(e)
+    	replyUL.on("click",".UpdateBtn", function() {
+    	  location.href = "/board/replyUpdaeView?${board.bno}"
+      					  + "&pageNum=${cri.pageNum}"
+      					  + "&amount=${cri.amount}"
+      					  + "&type=${cri.type}"
+      					  + "&keyword=${cri.keyword}"
+      					  + "&rno="+$(this).attr("data-rno")
+      });
+      
+      replyUL.on("click",".deleteBtn", function(e) {
+      	  e.preventDefault();
+           let rno = $(this).attr("rno");
+    		//var rno = $(this).parent().parent().find("rno").val();
+           replyService.remove(rno, function(result) {
+              alert(result);
+             showList(pageNum);
+          	});
+      	});
+      
       
       replyPageFooter.on("click", "li a", function(e) {
          e.preventDefault(); // a 태그 기본 동작 제거
@@ -290,28 +312,7 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
-		});
-	/*	
-		replyUL.on("click", "span .delete", function(e){
-			e.preventDefault();
-			let rno = $(this).attr("rno");
-			replyService.remove(rno, function(result) {
-				alert(result);
-				showList(-1);
-			})
-		})
-*/     
-      
-      
-      replyUL.on("click", ".delete", function(e){
-    	  e.preventDefault();
-         let rno = $(this).attr("rno");
-		//var reply_no = $(this).parent().parent().find("#rno").val();
-         replyService.remove(rno, function(result) {
-            alert(result);
-           showList(pageNum);
-        	});
-    	});
+		});  
    });
 </script>
 

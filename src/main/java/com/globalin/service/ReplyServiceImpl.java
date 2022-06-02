@@ -33,9 +33,10 @@ public class ReplyServiceImpl implements ReplyService {
 		boardDao.updateReplyCnt(vo.getBno(), 1);
 	}
 
+	//선택된 댓글 조회
 	@Override
-	public List<ReplyVO> get(int rno) throws Exception {
-		return (List<ReplyVO>) replyDao.read(rno);
+	public ReplyVO get(int rno) throws Exception {
+		return replyDao.read(rno);
 	}
 
 	@Override

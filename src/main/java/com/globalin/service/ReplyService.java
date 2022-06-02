@@ -9,7 +9,8 @@ import com.globalin.domain.ReplyVO;
 public interface ReplyService {
 	void register(ReplyVO vo) throws Exception;
 	
-	List<ReplyVO> get(int bno) throws Exception;
+	// 선택된 댓글 조회 
+	ReplyVO get(int rno) throws Exception;
 
 	void modify(ReplyVO vo) throws Exception;
 

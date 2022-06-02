@@ -6,10 +6,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.globalin.domain.Criteria;
 import com.globalin.domain.ReplyPage;
 import com.globalin.domain.ReplyVO;
+import com.globalin.service.BoardService;
 import com.globalin.service.ReplyService;
 
 
@@ -31,6 +36,11 @@ import com.globalin.service.ReplyService;
 @RequestMapping("/replies/")
 public class ReplyController {
 
+	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
+	
+	
+	@Autowired
+	private BoardController boardService;
 	private ReplyService service;
 
 	@Inject
@@ -57,28 +67,48 @@ public class ReplyController {
 	}
 
 	
-	//Reply Get 
-	@RequestMapping(value = "/{bno}", method = RequestMethod.GET) 
-	public ResponseEntity<List<ReplyVO>> get(@PathVariable("bno") int bno) { 
-		ResponseEntity<List<ReplyVO>> entity = null; 
-		try { 
-			entity = new ResponseEntity<List<ReplyVO>>(service.get(bno), HttpStatus.OK);
-			
-		} catch (Exception e) { e.printStackTrace();
-		entity = new ResponseEntity<List<ReplyVO>>(HttpStatus.BAD_REQUEST); 
-		} return entity; 
+	//댓글 수정 Get 
+	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET) 
+	public String replyUpdateView(ReplyVO replyVO,Criteria cri, Model model) throws Exception {
+		logger.info("reply");
 		
+		model.addAttribute("replyUpdate", service.get(replyVO.getRno()));
+		model.addAttribute("cri", cri);
+		return "board/replyUpdateView";
+			
 	}
 
-/*
-	@RequestMapping(value = "/{rno}", produces = { MediaType.TEXT_PLAIN_VALUE }, method = RequestMethod.DELETE)
-	public ResponseEntity<String> remove(@RequestBody ReplyVO vo, @PathVariable("rno") int rno) {
-		return service.remove(rno) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK)
-				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	//댓글 수정 POST
+	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO replyVO,Criteria cri, RedirectAttributes rttr) throws Exception {
+		
+		service.modify(replyVO);
+		
+		rttr.addAttribute("bno", replyVO.getBno());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("Type", cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
+		
+		return "redirect:/board/get";
 	}
-*/
 	
 	//Reply Delete 
+	@RequestMapping(value="/remove", method = RequestMethod.POST)
+	public String remove(int rno, ReplyVO replyVO, Criteria cri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply");
+		
+		service.remove(rno);
+		
+		rttr.addAttribute("bno", replyVO.getBno());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
+		
+		return "redirect:/board/get";
+	}
+/*	
 	@RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> remove(@PathVariable("rno") int rno) { 
 		ResponseEntity<String> entity = null; 
@@ -92,7 +122,7 @@ public class ReplyController {
 		
 		} return entity; 
 	} 
-	
+*/	
 
 	/*
 	@RequestMapping(value = "/{rno}", consumes = "application/json", produces = {
@@ -105,7 +135,8 @@ public class ReplyController {
 	}
 	*/
 	
-	//Reply Modify 
+	/*
+	//Reply Modify Ge
 	@RequestMapping(value = "/{rno}", method = {RequestMethod.PUT, RequestMethod.PATCH}) 
 	public ResponseEntity<String> update(@PathVariable("rno") int rno, 
 			@RequestBody ReplyVO replyVO) { ResponseEntity<String> entity = null; try { 
@@ -118,8 +149,9 @@ public class ReplyController {
 					
 		} return entity; 
 	}
+*/
 
-
+	// 페이지 처리된 리스트 GET
 	@RequestMapping(value = "/all/{bno}/{page}", produces = {
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, method = RequestMethod.GET)
 	public ResponseEntity<ReplyPage> getList(@PathVariable("page") int page, @PathVariable("bno") int bno) {

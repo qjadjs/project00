@@ -61,6 +61,7 @@ var replyService = (function() {
 
 	// 댓글 지우기
 	// 댓글 지울 떄 필요한 값 : 댓글의 번호(rno)
+	/*
 	function remove(rno, replyer, callback, error) {
 		console.log(rno); //현재 undefined
 		$.ajax({
@@ -118,6 +119,7 @@ var replyService = (function() {
 			}
 		})
 	} // get 함수 끝
+	*/
 
 	function displayTime(timeValue) {
 		// 오늘 작성한 댓글
@@ -173,9 +175,9 @@ var replyService = (function() {
 	return {
 		add : add,
 		getList : getList,
-		remove : remove,
-		update : update,
-		get : get,
+		//remove : remove,
+		//update : update,
+		//get : get,
 		displayTime : displayTime
 	};
 	// replyservice() 함수를 부르고 나서 그 결과값에 객체가 들어오는데

@@ -136,6 +136,7 @@ public class BoardController {
 	public String writeGet() {
 		return "/board/write";
 	}
+
 	
 //	// 댓글 작성
 //	@RequestMapping(value = "/new", method = RequestMethod.POST) 
