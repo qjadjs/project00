@@ -24,4 +24,6 @@ public interface ReplyDAO {
 	
 	int getBno(int rno);
 	
+	List<ReplyVO> userReplyList(String userId) throws Exception;
+	
 }

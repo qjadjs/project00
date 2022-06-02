@@ -12,7 +12,7 @@
 <body>
 <fieldset  class=b1>
 <legend class=c1>내가 작성한 게시글</legend>
-	<form class=d1 action="/user/update" method="post" onsubmit="return checked()">
+	<form>
 		<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>

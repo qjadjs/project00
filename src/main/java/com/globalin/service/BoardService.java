@@ -28,5 +28,5 @@ public interface BoardService {
 
 	void updateViewCnt(int bno);
 	
-	List<BoardVO> userBoaardList(String userId) throws Exception;
+	List<BoardVO> userBoardList(String userId) throws Exception;
 }

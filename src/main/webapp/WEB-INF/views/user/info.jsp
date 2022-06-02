@@ -59,6 +59,7 @@
    <input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
    <input type="button" value="회원탈퇴" class="btn" onclick="deleteId()"><br>
    <input type="button" value="내가 쓴 게시글" class="btn" onclick="MyBoard()">
+   <input type="button" value="내가 쓴 댓글" class="btn" onclick="MyReply()">
 
 				
    <script type="text/javascript">
@@ -75,6 +76,11 @@
   }
   function MyBoard(){
 	  var url="/user/MyBoard";
+	  
+	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+  }
+  function MyReply(){
+	  var url="/user/MyReply";
 	  
 	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
   }
