@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>My Board List</title>
-<link href="/resources/css/updateForm.css" rel="stylesheet" />
+<link href="/resources/css/myboardList.css" rel="stylesheet" />
 </head>
 <body>
 <fieldset  class=b1>
 <legend class=c1>내가 작성한 게시글</legend>
-	<form class=d1 action="/user/update" method="post" onsubmit="return checked()">
+	<form>
 		<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
@@ -22,14 +22,14 @@
 							<th>작성일</th>
 							<th>수정일</th>
 							<th>조회수</th>
-							<th>추천수</th>
+							<th id="v1">추천수</th>
 						</tr>
 					</thead>
 					<!--  모든 등록된 board list 출력 -->
 					<c:forEach items="${userBoardList }" var="board">
 						<tr>
 							<td><c:out value="${board.bno }" /></td>
-							<td><a class="move" href="<c:out value='${board.bno}'/>"><c:out
+							<td><a class="btn" href="<c:out value='${board.bno}'/>"><c:out
 										value="${board.title }" /><b>[<c:out
 											value="${board.replyCnt }" />]
 								</b></a></td>
@@ -38,8 +38,8 @@
 									value="${board.regDate }" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.updateDate }" /></td>
-							<td><c:out value="${board.viewCnt}"/></td>
-							<td><c:out value="${board.likeCnt}"/></td>
+							<td id="j1"><c:out value="${board.viewCnt}"/></td>
+							<td id="v2"><c:out value="${board.likeCnt}"/></td>
 						</tr>
 					</c:forEach>
 				</table>

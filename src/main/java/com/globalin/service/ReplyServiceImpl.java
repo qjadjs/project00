@@ -68,4 +68,9 @@ public class ReplyServiceImpl implements ReplyService {
 		return page;
 	}
 
+	@Override
+	public List<ReplyVO> userReplyList(String userId) throws Exception {
+		return replyDao.userReplyList(userId);
+	}
+
 }

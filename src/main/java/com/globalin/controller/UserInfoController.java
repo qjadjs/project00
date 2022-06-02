@@ -19,8 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.globalin.domain.BoardVO;
 import com.globalin.domain.LoginDTO;
+import com.globalin.domain.ReplyVO;
 import com.globalin.domain.UserVO;
 import com.globalin.service.BoardService;
+import com.globalin.service.ReplyService;
 import com.globalin.service.UserService;
 
 @Controller
@@ -29,11 +31,16 @@ public class UserInfoController {
 
 	private static Logger log = LoggerFactory.getLogger(UserLoginController.class);
 
-	@Autowired
 	private UserService userService;
+	private BoardService boardService;
+	private ReplyService replyService;
 	
-	 @Inject
-	  private BoardService boardService;
+	@Inject
+	public UserInfoController(UserService userService, BoardService boardService,ReplyService replyService) {
+		this.boardService = boardService;
+		this.replyService = replyService;
+		this.userService = userService;
+	}
 
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String infoGET(HttpSession session, Model model) throws Exception{
@@ -46,12 +53,15 @@ public class UserInfoController {
 		}
 		//서비스안의 회원정보보기 메서드 호출
 		UserVO userVO = userService.readMember(id);
-		List<BoardVO> userBoardList = boardService.userBoaardList(id);
+		List<BoardVO> userBoardList = boardService.userBoardList(id);
+		List<ReplyVO> userReplyList = replyService.userReplyList(id);
 		//정보저장 후 페이지 이동
 		model.addAttribute("user", userVO);
 		log.info("C: 회원정보보기 GET의 VO "+ userVO);
 		model.addAttribute("userBoardList", userBoardList);
 		log.info("C: 회원정보보기 GET의 userBoardList "+ userBoardList);
+		model.addAttribute("userReplyList", userReplyList);
+		log.info("C: 회원정보보기 GET의 userReplyList "+ userReplyList);
 		return "/user/info";	
 	}
 	/* 회원정보 수정 */
@@ -83,7 +93,7 @@ public class UserInfoController {
 		log.info("C: 회원정보보기 GET의 VO "+ userVO);
 		return "/user/updatePost";
 	}
-	/* 회원정보 수정 */
+	/* 내가 쓴 개시물 보기 */
 	@RequestMapping(value="/MyBoard", method = RequestMethod.GET)
 	public String MyBoardGET(HttpSession session, Model model) throws Exception{
 
@@ -94,12 +104,34 @@ public class UserInfoController {
 					return "redirect:/";
 				}
 				//서비스안의 회원정보보기 메서드 호출
-				List<BoardVO> userBoardList = boardService.userBoaardList(id);
+				List<BoardVO> userBoardList = boardService.userBoardList(id);
 				//정보저장 후 페이지 이동
 				model.addAttribute("userBoardList", userBoardList);
 				log.info("C: 회원정보보기 GET의 userBoardList "+ userBoardList);	
 				
 		return "/user/myboardList";
+	}
+	@RequestMapping(value="/MyReply", method = RequestMethod.GET)
+	public String MyReplyGET(HttpSession session, Model model) throws Exception{
+
+		//세션 객체 안에 있는 ID정보 저장ser
+				String id = (String) session.getAttribute("userId");
+				log.info("C: 회원정보보기 GET의 아이디 "+ id);
+				if(id == null) {
+					return "redirect:/";
+				}
+				//서비스안의 회원정보보기 메서드 호출
+				List<ReplyVO> userReplyList = replyService.userReplyList(id);
+				//정보저장 후 페이지 이동
+				model.addAttribute("userReplyList", userReplyList);
+				log.info("C: 회원정보보기 GET의 userReplyList "+ userReplyList);
+				//서비스안의 회원정보보기 메서드 호출
+				List<BoardVO> userBoardList = boardService.userBoardList(id);
+				//정보저장 후 페이지 이동
+				model.addAttribute("userBoardList", userBoardList);
+				log.info("C: 회원정보보기 GET의 userBoardList "+ userBoardList);	
+				
+		return "/user/myreplyList";
 	}
 
 	/* 회원정보삭제 */

@@ -68,5 +68,10 @@ public class ReplyDAOImpl implements ReplyDAO {
 	public int getBno(int rno) {
 		return sqlSession.selectOne(NameSpace + ".getBno", rno);
 	}
+
+	@Override
+	public List<ReplyVO> userReplyList(String userId) throws Exception {
+		return sqlSession.selectList(NameSpace +".userReplyList", userId);
+	}
 	
 }

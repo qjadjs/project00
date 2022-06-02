@@ -7,6 +7,8 @@ public class ReplyVO {
 	private int rno, bno;
 	private String reply, replyer;
 	private Date replyDate, updateDate;
+	private UserVO userVO;
+	private BoardVO boardVO;
 	
 	public int getRno() {
 		return rno;
@@ -44,10 +46,23 @@ public class ReplyVO {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+	public BoardVO getBoardVO() {
+		return boardVO;
+	}
+	public void setBoardVO(BoardVO boardVO) {
+		this.boardVO = boardVO;
+	}
 	@Override
 	public String toString() {
 		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", reply=" + reply + ", replyer=" + replyer + ", replyDate="
-				+ replyDate + ", updateDate=" + updateDate + "]";
+				+ replyDate + ", updateDate=" + updateDate + ", userVO=" + userVO + ", boardVO=" + boardVO + "]";
 	}
 	
 }

@@ -70,7 +70,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> userBoaardList(String userId) throws Exception {
+	public List<BoardVO> userBoardList(String userId) throws Exception {
 		// TODO Auto-generated method stub
 		return boardDao.userBoardList(userId);
 	}

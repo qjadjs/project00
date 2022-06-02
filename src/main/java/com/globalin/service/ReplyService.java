@@ -19,4 +19,6 @@ public interface ReplyService {
 	List<ReplyVO> getList(Criteria cri, int bno);
 
 	ReplyPage getListPage(Criteria cri, int bno);
+	
+	List<ReplyVO> userReplyList(String userId) throws Exception;
 }
