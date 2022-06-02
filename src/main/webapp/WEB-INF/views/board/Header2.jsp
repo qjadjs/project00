@@ -4,23 +4,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="../resources/css/getHeader.css" rel="stylesheet" />
+
 <title>작성</title>
 </head>
 <body>
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color : #212529; padding:3rem;
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color : #212529; 
  border-radius:0">
-      <div class="container px-4 px-lg-5">
-      <a href="/board/list">
-      <img class="list-img"src="https://dcimg5.dcinside.com/dccon.php?no=62b5df2be09d3ca567b1c5bc12d46b394aa3b1058c6e4d0ca41648b65ce32d6e65e714e848ae41bc91315a71418163400b6306535fa937047d583cf00dfe6b5e3816d38f431c50" style="width:50px; height:50px;">   
+      <div class="container px-4 px-lg-5" style= "justify-content:space-between; width:100%;">
+      <a href="/board/list" style="align-self:center;">
+      <img class="list-img" src="/resources/assets/t11.png" style="width:70px; height:60px; margin-left:30px; margin-top:30px;">   
          </a>
         
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding : 3rem; float:right;">
     
-            <div class="register-header">
+            <div class="register-header" style="display:flex;">
+           <c:choose>
+					<c:when test="${empty login.userId }">				
+						<form class="list-login-btn">
+							<button class="btn btn-outline-dark" type="submit" style="color: black; border-color:white; background:#212529;  ">
+								<a href="/user/login" style="text-decoration: none; color: white; ">로그인</a>
+							</button>
+						</form>
+					
+						
+						<form class="list-register-btn">
+							<button class="btn btn-outline-dark" type="submit" style="margin-left:5px; background:#212529; border-color:white;" >
+								<a href="/user/register" style="text-decoration: none ; color: white; "  >회원가입</a>
+							</button>
+						</form>
+					</c:when>
+					<c:otherwise>
+							<form class="list-logout-btn">
+							<button class="btn btn-outline-dark" type="submit" style=" background:#212529; border-color:white;">
+								<a href="/user/logout" style="text-decoration: none; color: white;">로그아웃</a>
+							</button>
+						</form>
+						<form class="list-register-btn">
+							<button class="btn btn-outline-dark" type="submit" style="margin-left:5px;  background:#212529; border-color:white;">
+								<a href="/user/info" style="text-decoration: none; color: white;">회원정보</a>
+							</button>
+						</form>
+						
+					</c:otherwise>
+				</c:choose>
+				</div>
+				</div>
            
 				</div>
-				</div>	
-         </div>
+			
    </nav>
       <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
