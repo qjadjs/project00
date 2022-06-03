@@ -2,6 +2,12 @@
    pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+  <%
+response.setHeader("Pragma", "no-cache"); 
+response.setHeader("Cache-Control", "no-cache"); 
+response.setHeader("Cache-Control", "no-store"); 
+response.setDateHeader("Expires", 0L); 
+%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -365,11 +365,9 @@
                   success : function(likeCheck) {
                       
                           if(likeCheck == 0){
-                             alert("추천완료.");
                              location.reload();
                           }
                           else if (likeCheck == 1){
-                           alert("추천취소");
                              location.reload();
                       }
                   }
@@ -388,11 +386,9 @@
                   success : function(dislikeCheck) {
                       
                           if(dislikeCheck == 0){
-                             alert("비추 완료.");
                              location.reload();
                           }
                           else if (dislikeCheck == 1){
-                           alert("비추 취소");
                              location.reload();
                       }
                   }

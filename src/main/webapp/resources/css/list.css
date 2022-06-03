@@ -269,8 +269,18 @@ margin-left:5px;
 .register-header {
    display: flex;
  }
- .list-img {
+.list-img {
  padding-left : 30px;
  }
- .list-login-btn{
- }
+
+.list-login-btn {
+  color: #f8f9fa;
+    border-color: #f8f9fa;
+  text-decoration-line: none;
+}
+.list-login-btn:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  text-decoration-line: none;
+}

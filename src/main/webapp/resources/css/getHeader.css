@@ -184,3 +184,14 @@
  }
  .list-login-btn{
  }
+ .btn-outline-dark {
+  color: #212529;
+  border-color: #212529;
+  text-decoration-line: none;
+}
+.btn-outline-dark:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  text-decoration-line: none;
+}
