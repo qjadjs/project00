@@ -9,7 +9,7 @@
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>밸런스</title>
+<title>BALANCE GAME</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
 <!-- Bootstrap icons-->
@@ -39,19 +39,19 @@
   weight="300px" height="300px">
     </article><!--1-->
     <article class="slides">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEq0blvA6B15GKfkb8zudaGhN2-avN5tJ8Mg&usqp=CAU" 
+        <img src="https://cdn.imweb.me/upload/S20190621aa2b1db4ac0c4/ec22f1b09b457.png" 
  weight="50%" height="300px">
     </article><!--2-->
     <article class="slides">
-        <img src="https://img.insight.co.kr/static/2021/05/23/700/img_20210523191929_qro3e7dd.webp" 
+        <img src="https://cdn.imweb.me/upload/S20190621aa2b1db4ac0c4/1b3382a2f8456.png" 
   weight="300px" height="300px">
     </article><!--3-->
     <article class="slides">
-        <img src="https://i.ytimg.com/vi/hitdMH59wIE/maxresdefault.jpg" 
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7nqxR48QMxB1sufUyNnCioU9cGNlovgfdow&usqp=CAU" 
   weight="300px" height="300px">
     </article><!--4-->
     <article class="slides">
-        <img src="https://t1.daumcdn.net/cfile/tistory/0119ED34507AC0E729" 
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFLuKNSvms9Y8bhZhbrvLZVRF-3Cl5BwyiJQ&usqp=CAU" 
   weight="300px" height="300px">
     </article><!--4-->
     
