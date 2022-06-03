@@ -40,8 +40,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public void delete(int rno) throws Exception {
-		sqlSession.delete(NameSpace + ".delete", rno);
+	public void delete(ReplyVO vo) throws Exception {
+		sqlSession.delete(NameSpace + ".delete", vo);
 	}
 
 	@Override

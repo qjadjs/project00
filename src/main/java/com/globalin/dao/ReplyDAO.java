@@ -14,7 +14,7 @@ public interface ReplyDAO {
 
 	List<ReplyVO> read(int bno) throws Exception;
 
-	void delete(int rno) throws Exception;
+	void delete(ReplyVO vo) throws Exception;
 
 	void update(ReplyVO vo) throws Exception;
 

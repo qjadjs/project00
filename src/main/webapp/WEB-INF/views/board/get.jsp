@@ -125,7 +125,7 @@
         <p>${replyList.reply}</p> 
         <div>
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  		<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button> <hr>
+  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> <hr>
 	</div>
       </li>
     </c:forEach>   
@@ -302,12 +302,17 @@
       
 	//댓글 삭제 View
 	$(".replyDeleteBtn").on("click", function(){
-		  location.href = "/board/replydeleteView?bno=${board.bno}"
+		if(!confirm("댓글을 삭제하시겠습니까?")) {
+			
+		} else{
+			 location.href = "/board/replyDeleteView?bno=${board.bno}"
 				  + "&pageNum=${cri.pageNum}"
 				  + "&amount=${cri.amount}"
 				  + "&type=${cri.type}"
 				  + "&keyword=${cri.keyword}"
-				  + "&rno="+$(this).attr("data-rno")
+				  + "&rno="+$(this).attr("data-rno")	
+		}
+		 
       	});
       
       

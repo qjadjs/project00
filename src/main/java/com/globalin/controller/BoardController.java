@@ -288,4 +288,16 @@ public class BoardController {
 		return "redirect:/board/get";
 	}
 	
+	//댓글 삭제 GET
+	@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
+	public String replyDeleteView(ReplyVO replyVO, Criteria cri, Model model) throws Exception {
+		log.info("reply");
+		
+		model.addAttribute("replyDelete", replyService.selectReply(replyVO.getRno()));
+		model.addAttribute("cri", cri);
+		replyService.remove(replyVO);
+		return "board/replyDeleteView";
+	}
+	
+
 }

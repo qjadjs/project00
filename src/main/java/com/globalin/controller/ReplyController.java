@@ -65,53 +65,7 @@ public class ReplyController {
 		} return entity;
 		
 	}
-
-	/*
-	//댓글 수정 Get 
-	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET) 
-	public String replyUpdateView(ReplyVO replyVO,Criteria cri, Model model) throws Exception {
-		logger.info("reply");
-		
-		model.addAttribute("replyUpdate", service.get(replyVO.getRno()));
-		model.addAttribute("cri", cri);
-		return "board/replyUpdateView";
-			
-	}
-
-	//댓글 수정 POST
-	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
-	public String replyUpdate(ReplyVO replyVO,Criteria cri, RedirectAttributes rttr) throws Exception {
-		logger.info("reply");
-		
-		service.modify(replyVO);
-		
-		rttr.addAttribute("bno", replyVO.getBno());
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword",cri.getKeyword());
-		
-		return "redirect:/board/get";
-	}
-	*/
 	
-	//Reply Delete 
-	@RequestMapping(value="/remove", method = RequestMethod.POST)
-	public String remove(int rno, ReplyVO replyVO, Criteria cri, RedirectAttributes rttr) throws Exception {
-		logger.info("reply");
-		
-		service.remove(rno);
-		
-		rttr.addAttribute("bno", replyVO.getBno());
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword",cri.getKeyword());
-		
-		return "redirect:/board/get";
-	}
-
-
 	// 페이지 처리된 리스트 GET
 	@RequestMapping(value = "/all/{bno}/{page}", produces = {
 			MediaType.APPLICATION_JSON_UTF8_VALUE }, method = RequestMethod.GET)

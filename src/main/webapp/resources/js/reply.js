@@ -59,67 +59,6 @@ var replyService = (function() {
 		});
 	} // getList 함수 끝
 
-	// 댓글 지우기
-	// 댓글 지울 떄 필요한 값 : 댓글의 번호(rno)
-	/*
-	function remove(rno, replyer, callback, error) {
-		console.log(rno); //현재 undefined
-		$.ajax({
-			type : "delete",
-			url : "/replies/" + rno,
-			data : JSON.stringify({rno : rno, replyer : replyer}),
-			contentType : "application/json; charset = utf-8",
-			success : function(result, status, xhr) {
-				// 성공하면 callback 함수 호출
-				if (callback) {
-					callback(result);
-				}
-			},
-			error : function(xhr, status, err) {
-				// 실패하면 error 함수 호출
-				if (error) {
-					error(err);
-				}
-			}
-		})
-	} // remove 함수 끝
-
-	// 댓글 수정
-	function update(reply, callback, error) {
-		console.log(reply);
-
-		$.ajax({
-			type : 'put',
-			url : '/replies/' + reply.rno,
-			data : JSON.stringify(reply),
-			contentType : "application/json; charset = utf-8",
-			success : function(result, status, xhr) {
-				if (callback) {
-					callback(result);
-				}
-			},
-			error : function(xhr, status, err) {
-				if (error) {
-					error(err);
-				}
-			}
-		})
-	} // update 함수 끝
-
-	// 댓글 하나 조회하는 함수
-	// 대슷 하나 조회하려면 필요한 것 : rno
-	function get(rno, callback, error) {
-		$.get("/replies/" + rno + ".json", function(result) {
-			if (callback) {
-				callback(result);
-			}
-		}).fail(function(xhr, status, err) {
-			if (error) {
-				error();
-			}
-		})
-	} // get 함수 끝
-	*/
 
 	function displayTime(timeValue) {
 		// 오늘 작성한 댓글

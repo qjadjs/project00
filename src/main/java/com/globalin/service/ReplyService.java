@@ -14,7 +14,7 @@ public interface ReplyService {
 
 	void modify(ReplyVO vo) throws Exception;
 
-	void remove(int rno) throws Exception;
+	void remove(ReplyVO vo) throws Exception;
 
 	List<ReplyVO> getList(Criteria cri, int bno);
 
