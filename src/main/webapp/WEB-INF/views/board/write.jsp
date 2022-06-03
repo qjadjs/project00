@@ -97,10 +97,13 @@
 			processData : false,
 			success : function(data) {
 				$(el).summernote('editor.insertImage', data.url);
-			}
+				  alert("Success");
+			 }
+			,error:function(request,status,error, data){
+           	            alert("이미지를 업로드 할 수 없습니다.");
+        	        }
 		});
 	}
-
 	function goWrite(frm) {
 		var title = frm.title.value;
 		var content = frm.content.value;
