@@ -302,13 +302,12 @@
       
 	//댓글 삭제 View
 	$(".replyDeleteBtn").on("click", function(){
-      	  e.preventDefault();
-           let rno = $(this).attr("rno");
-    		//var rno = $(this).parent().parent().find("rno").val();
-           replyService.remove(rno, function(result) {
-              alert(result);
-             showList(pageNum);
-          	});
+		  location.href = "/board/replydeleteView?bno=${board.bno}"
+				  + "&pageNum=${cri.pageNum}"
+				  + "&amount=${cri.amount}"
+				  + "&type=${cri.type}"
+				  + "&keyword=${cri.keyword}"
+				  + "&rno="+$(this).attr("data-rno")
       	});
       
       
