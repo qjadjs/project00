@@ -7,12 +7,12 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	<title>게시판</title>
 	</head>
-	<script type="text/javascript">
+		<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
 			$(".cancel_btn").on("click", function(){
-				location.href = "/board/get?bno=${modify.bno}"
+				location.href = "/board/get?bno=${board.bno}"
 					   + "&pageNum=${cri.pageNum}"
 					   + "&amount=${cri.amount}"
 					   + "&type=${cri.type}"
@@ -20,23 +20,19 @@
 			})
 			
 		})
-		
 	</script>
-	<body>
 	
+	
+	<body>
+
 		<div id="root">
 			<header>
 				<h1> 게시판</h1>
 			</header>
 			<hr />
-			 
-			<div>
-				
-			</div>
-			<hr />
-			
+					
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/modify">
+				<form name="updateForm" role="form" method="post" action="/board/replyUpdate">
 					<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
 					<input type="hidden" id="rno" name="rno" value="${replyUpdate.rno}" />
 					<input type="hidden" id="pageNum" name="pageNum" value="${cri.pageNum}"> 
@@ -47,8 +43,7 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="content">댓글 내용</label><input type="text" id="content" name="content" value="${replyUpdate.content}"/>
-								</td>
+								<label for="reply">댓글 내용</label><input type="text" id="reply" name="reply" value="${replyList.reply}"/>								</td>
 							</tr>	
 							
 						</tbody>			

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
    prefix="sec"%>
+   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,9 +109,30 @@
       <div class="panel-body-top" style="background-color: white;">
          <!-- 댓글 시작 -->
          <ul class="chat" style="list-style : none;  padding-inline-start:0;">
-            <!-- 댓글이 들어올 공간 -->
+            <!-- 댓글이 들어올 공간 -->           
          </ul>
+         <!-- 댓글 -->
       </div>
+      <div id="reply">
+  <ol class="replyList">
+    <c:forEach items="${replyList}" var="replyList">
+      <li>
+        <p>
+        작성자 : ${replyList.replyer}<br />
+        작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
+        </p>
+
+        <p>${replyList.reply}</p> 
+        <div>
+  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
+  		<button type="button" class="replyDeleteBtn" data-rno="${replyList.rno}">삭제</button> <hr>
+	</div>
+      </li>
+    </c:forEach>   
+  </ol>
+</div>
+
+      
       <div class="panel-footer" style="height:100px; background:white; border-top : 0;">
          <!-- 페이지 버튼이 들어온다 -->
       </div>
@@ -140,6 +162,7 @@
             </c:choose>
       </form>
    </div>
+
 
 
 <!-- 푸터 -->
@@ -187,24 +210,7 @@
                return;
             }
 
-         var comments = ""; // 여기에 html 코드를 조립
-         if (list == null || list.length == 0) {
-            replyUL.html("");
-            return; // 함수 바로 종료
-         }
-         for (let i = 0; i < list.length; i++) {
-            comments += "<li class='left_clearfix' data-rno='" + list[i].rno + "'>";
-            comments += "<div>";
-            comments += "<div class='header'>";
-            comments += "<strong class='primary-font'>" + list[i].replyer + "</strong>";
-            comments += " <small class='pull-right text-muted'>" + replyService .displayTime(list[i].replyDate) + "</br><input type='button' class='UpdateBtn' value='수정' data-rno='${left_clearfix.rno}'>&nbsp;&nbsp;&nbsp;"
-					 + "</br><input type='button' class='deleteBtn' value='삭제' data-rno='list[i].rno'></small>";
-            comments += "</div>";
-            comments += "<p>" + list[i].reply + "</p>";
-            comments += "</div>";
-            comments += "</li>";
-         }
-         replyUL.html(comments);
+        
 
          showReplyPage(replyCnt);
       });
@@ -269,6 +275,7 @@
             reply : sreply.val(),
             replyer : sreplyer,
             bno : sbnoVal
+            
          };
          
          
@@ -277,14 +284,15 @@
             alert(result);
 			
             showList(-1);
-            $('#summernote').summernote('reset'); //댓글 등록시 텍스트 초기화
+            $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화
+            window.location.reload();
+           
          })
       });
 
       //댓글 수정view
-      //$(".UpdateBtn").on("click", function(e)
-    	replyUL.on("click",".UpdateBtn", function() {
-    	  location.href = "/board/replyUpdaeView?${board.bno}"
+	$(".replyUpdateBtn").on("click", function(){
+    	  location.href = "/board/replyUpdateView?bno=${board.bno}"
       					  + "&pageNum=${cri.pageNum}"
       					  + "&amount=${cri.amount}"
       					  + "&type=${cri.type}"
@@ -292,7 +300,8 @@
       					  + "&rno="+$(this).attr("data-rno")
       });
       
-      replyUL.on("click",".deleteBtn", function(e) {
+	//댓글 삭제 View
+	$(".replyDeleteBtn").on("click", function(){
       	  e.preventDefault();
            let rno = $(this).attr("rno");
     		//var rno = $(this).parent().parent().find("rno").val();

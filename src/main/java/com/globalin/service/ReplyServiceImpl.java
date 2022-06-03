@@ -33,10 +33,10 @@ public class ReplyServiceImpl implements ReplyService {
 		boardDao.updateReplyCnt(vo.getBno(), 1);
 	}
 
-	//선택된 댓글 조회
+	
 	@Override
-	public ReplyVO get(int rno) throws Exception {
-		return replyDao.read(rno);
+	public List<ReplyVO> get(int bno) throws Exception {
+		return replyDao.read(bno);
 	}
 
 	@Override
@@ -73,4 +73,8 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDao.userReplyList(userId);
 	}
 
+	@Override
+	public ReplyVO selectReply(int rno) throws Exception {
+		return replyDao.selectReply(rno);
+	}
 }

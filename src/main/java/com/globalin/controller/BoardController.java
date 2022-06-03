@@ -46,11 +46,14 @@ import com.globalin.domain.SearchCriteria;
 import com.globalin.service.BoardService;
 import com.globalin.service.DisLikeService;
 import com.globalin.service.LikeService;
+import com.globalin.service.ReplyService;
 import com.google.gson.JsonObject;
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
+	private ReplyService replyService;
+	
 	private BoardService service;
 
 	private BoardDAO dao;
@@ -62,7 +65,8 @@ public class BoardController {
 	private DisLikeService Dservice;
 
 	@Inject
-	public BoardController(BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice) {
+	public BoardController(ReplyService replyService, BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice) {
+		this.replyService = replyService;
 		this.service = service;
 		this.dao = dao;
 		this.Ldao = Ldao;
@@ -138,39 +142,6 @@ public class BoardController {
 	}
 
 	
-//	// 댓글 작성
-//	@RequestMapping(value = "/new", method = RequestMethod.POST) 
-//	public String register(ReplyVO replyVO, SearchCriteria scri, RedirectAttributes rttr) throws Exception { 
-//		log.info("reply");
-//		
-//		replyService.register(replyVO);
-//		
-//		rttr.addAttribute("bno", replyVO.getBno());
-//		rttr.addAttribute("pageNum", scri.getPageNum());
-//		rttr.addAttribute("amount", scri.getAmount());
-//		rttr.addAttribute("searchType", scri.getSearchType());
-//		rttr.addAttribute("keyword", scri.getKeyword());
-//		
-//		return "redirect:/board/get";
-//	}
-
-	/*
-	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public String get(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
-		log.info(" get or modify : " + bno);
-		log.info("cri : " + cri);
-		BoardVO board = service.read(bno);
-		model.addAttribute("cri", cri);
-		model.addAttribute("board", board);
-
-		List<ReplyVO> replyList = replyService.get(bno);
-		model.addAttribute("replyList", replyList);
-		
-		return "/board/get";
-	}
-*/
-	
-	
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	public String get(HttpServletRequest req, HttpServletResponse resp, @RequestParam("bno") int bno, Criteria cri,
 			Model model) throws Exception {
@@ -208,6 +179,9 @@ public class BoardController {
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
 
+		List<ReplyVO> replyList = replyService.get(board.getBno());
+		model.addAttribute("replyList", replyList);
+		
 		return "/board/get";
 
 	}
@@ -286,5 +260,32 @@ public class BoardController {
 		return a;
 	}
 	
+	//댓글 수정 Get 
+	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET) 
+	public String replyUpdateView(ReplyVO replyVO,Criteria cri, Model model) throws Exception {
+		log.info("reply");
+		
+		model.addAttribute("replyUpdate", replyService.selectReply(replyVO.getRno()));
+		model.addAttribute("cri", cri);
+		
+		return "board/replyUpdateView";
+			
+	}
+
+	//댓글 수정 POST
+	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReplyVO replyVO,Criteria cri, RedirectAttributes rttr) throws Exception {
+		log.info("reply");
+		
+		replyService.modify(replyVO);
+		
+		rttr.addAttribute("bno", replyVO.getBno());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
+		
+		return "redirect:/board/get";
+	}
 	
 }

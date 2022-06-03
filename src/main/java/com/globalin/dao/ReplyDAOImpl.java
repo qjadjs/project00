@@ -35,8 +35,8 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 //댓글 조회
 	@Override
-	public ReplyVO read(int rno) throws Exception {
-		return sqlSession.selectOne(NameSpace + ".read", rno);
+	public List<ReplyVO> read(int bno) throws Exception {
+		return sqlSession.selectList(NameSpace + ".read", bno);
 	}
 
 	@Override
@@ -72,6 +72,11 @@ public class ReplyDAOImpl implements ReplyDAO {
 	@Override
 	public List<ReplyVO> userReplyList(String userId) throws Exception {
 		return sqlSession.selectList(NameSpace +".userReplyList", userId);
+	}
+	//선택된 댓글 조회
+	@Override
+	public ReplyVO selectReply(int rno) throws Exception {
+		return sqlSession.selectOne(NameSpace + ".selectReply", rno);
 	}
 	
 }

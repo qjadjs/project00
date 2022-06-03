@@ -12,7 +12,7 @@ public interface ReplyDAO {
 
 	void insert(ReplyVO vo) throws Exception;
 
-	ReplyVO read(int bno) throws Exception;
+	List<ReplyVO> read(int bno) throws Exception;
 
 	void delete(int rno) throws Exception;
 
@@ -25,5 +25,8 @@ public interface ReplyDAO {
 	int getBno(int rno);
 	
 	List<ReplyVO> userReplyList(String userId) throws Exception;
+	
+	//선택된 댓글 조회
+	ReplyVO selectReply(int rno) throws Exception;
 	
 }

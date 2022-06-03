@@ -33,7 +33,7 @@ import com.globalin.service.ReplyService;
 
 
 @RestController
-@RequestMapping("/replies/")
+@RequestMapping("/replies/*")
 public class ReplyController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
@@ -66,7 +66,7 @@ public class ReplyController {
 		
 	}
 
-	
+	/*
 	//댓글 수정 Get 
 	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET) 
 	public String replyUpdateView(ReplyVO replyVO,Criteria cri, Model model) throws Exception {
@@ -81,17 +81,19 @@ public class ReplyController {
 	//댓글 수정 POST
 	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(ReplyVO replyVO,Criteria cri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply");
 		
 		service.modify(replyVO);
 		
 		rttr.addAttribute("bno", replyVO.getBno());
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("Type", cri.getType());
+		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword",cri.getKeyword());
 		
 		return "redirect:/board/get";
 	}
+	*/
 	
 	//Reply Delete 
 	@RequestMapping(value="/remove", method = RequestMethod.POST)
@@ -108,48 +110,7 @@ public class ReplyController {
 		
 		return "redirect:/board/get";
 	}
-/*	
-	@RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> remove(@PathVariable("rno") int rno) { 
-		ResponseEntity<String> entity = null; 
-		try { service.remove(rno); 
-		
-		entity = new ResponseEntity<String>("delSuccess", HttpStatus.OK);
-		
-		} catch (Exception e) { e.printStackTrace(); 
-		
-		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); 
-		
-		} return entity; 
-	} 
-*/	
 
-	/*
-	@RequestMapping(value = "/{rno}", consumes = "application/json", produces = {
-			MediaType.TEXT_PLAIN_VALUE }, method = RequestMethod.PUT)
-	public ResponseEntity<String> modify(@PathVariable("rno") int rno, @RequestBody ReplyVO vo) {
-		vo.setRno(rno);
-
-		return service.modify(vo) == 1 ? new ResponseEntity<String>("success", HttpStatus.OK)
-				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	*/
-	
-	/*
-	//Reply Modify Ge
-	@RequestMapping(value = "/{rno}", method = {RequestMethod.PUT, RequestMethod.PATCH}) 
-	public ResponseEntity<String> update(@PathVariable("rno") int rno, 
-			@RequestBody ReplyVO replyVO) { ResponseEntity<String> entity = null; try { 
-				replyVO.setRno(rno);
-				service.modify(replyVO);
-				entity = new ResponseEntity<String>("modSuccess", HttpStatus.OK); 
-				} catch (Exception e) { 
-					e.printStackTrace(); 
-					entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-					
-		} return entity; 
-	}
-*/
 
 	// 페이지 처리된 리스트 GET
 	@RequestMapping(value = "/all/{bno}/{page}", produces = {
