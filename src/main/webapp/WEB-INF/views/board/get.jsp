@@ -66,19 +66,24 @@
           
          <br>
          
+         <div style="display: flex;">
          <div id="title3" name="content" class="get-content">
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
+         <hr style=" height:250px; max-height:500px;width:1px; border-width:0; color:#000;background-color:#000;">
          <div id="title3" name="content" class="get-content">
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
+         </div>
+         <div style="display: flex;">
          <div id="title3" name="content" class="get-content">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
+         <hr>
          <div id="title3" name="content" class="get-content">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
-         
+         </div>
          <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
          <div  style="margin-right:1px;">
    <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
