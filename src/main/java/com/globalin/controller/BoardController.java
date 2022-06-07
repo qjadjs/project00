@@ -43,6 +43,7 @@ import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
 import com.globalin.domain.ReplyVO;
 import com.globalin.domain.SearchCriteria;
+import com.globalin.domain.UserVO;
 import com.globalin.service.BoardService;
 import com.globalin.service.DisLikeService;
 import com.globalin.service.LikeService;
@@ -298,6 +299,5 @@ public class BoardController {
 		replyService.remove(replyVO);
 		return "board/replyDeleteView";
 	}
-	
 
 }
