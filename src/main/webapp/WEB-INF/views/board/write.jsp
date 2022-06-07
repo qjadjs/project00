@@ -58,7 +58,7 @@
 <script>
 	var setting = {
 		placeholder : '이미지 넣기',
-		tabsize : 2,
+		tabsize : 2, 
 		height : 300,
 		width: 600,
 		disableResizeEditor : true,
