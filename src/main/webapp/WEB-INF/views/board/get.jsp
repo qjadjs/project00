@@ -126,8 +126,8 @@
      <div>
      <c:choose>
      <c:when test="${login.userName == replyList.replyer}">
-  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> 
+  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
+  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white; float: right;">삭제</button> 
   		</c:when>
   		<c:otherwise>		
   		</c:otherwise>
