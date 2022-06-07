@@ -124,8 +124,8 @@
 
         <p>${replyList.reply}</p> 
         <div>
-  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> <hr>
+  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
+  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white; float: right;">삭제</button> <hr>
 	</div>
       </li>
     </c:forEach>   
