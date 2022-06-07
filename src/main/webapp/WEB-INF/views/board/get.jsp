@@ -123,13 +123,16 @@
         </p>
 
         <p>${replyList.reply}</p>     
-     <div>          
-     <c:if test="${user.userName == replyList.replyer }">
+     <div>
+     <c:choose>
+     <c:when test="${login.userName == replyList.replyer}">
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> 
-  		</c:if>
-  		<hr>
-  		
+  		</c:when>
+  		<c:otherwise>		
+  		</c:otherwise>
+     </c:choose>          
+  		<hr> 		
 	</div>
       </li>
     </c:forEach>   
@@ -220,7 +223,7 @@
       });
       }
          
-      
+  /*     
       var pageNum = 1;
       var replyPageFooter = $(".panel-footer");
 
@@ -266,7 +269,7 @@
          console.log(pageHtml);
 
       }
-      
+      */
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';

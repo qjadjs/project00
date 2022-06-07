@@ -5,23 +5,16 @@
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<<<<<<< HEAD
-=======
 <link href="../resources/css/replyUpdateView.css" rel="stylesheet" />	 	
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	 	<title>댓글 수정</title>
 	</head>
 		<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
-			$(".cancel_btn").on("click", function(){
-				location.href = "/board/get?bno=${board.bno}"
-					   + "&pageNum=${cri.pageNum}"
-					   + "&amount=${cri.amount}"
-					   + "&type=${cri.type}"
-					   + "&keyword=${cri.keyword}";
-			})
+			$(".btn").on("click", function(e){
+				window.history.back()
+			});
 			
 		})
 	</script>
@@ -32,11 +25,9 @@
 		<div id="root">
 		<fieldset  class=b1>
 			<header>
-<<<<<<< HEAD
-				<h1> 댓글 수정</h1>
-=======
+
 				<h1 class="c1"> 댓글 수정</h1>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
+
 			</header>
 			<hr />
 					
