@@ -35,8 +35,10 @@
     </div>
 
     <article class="slides">
+    <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=4201">
         <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
   weight="300px" height="300px">
+    </a>
     </article><!--1-->
     <article class="slides">
         <img src="https://cdn.imweb.me/upload/S20190621aa2b1db4ac0c4/ec22f1b09b457.png" 
