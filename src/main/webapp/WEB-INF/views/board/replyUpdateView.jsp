@@ -5,6 +5,10 @@
 <html>
 	<head>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<<<<<<< HEAD
+=======
+<link href="../resources/css/replyUpdateView.css" rel="stylesheet" />	 	
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 	 	<title>댓글 수정</title>
 	</head>
 		<script type="text/javascript">
@@ -26,13 +30,18 @@
 	<body>
 
 		<div id="root">
+		<fieldset  class=b1>
 			<header>
+<<<<<<< HEAD
 				<h1> 댓글 수정</h1>
+=======
+				<h1 class="c1"> 댓글 수정</h1>
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 			</header>
 			<hr />
 					
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/replyUpdate">
+				<form class="d1" name="updateForm" role="form" method="post" action="/board/replyUpdate">
 					<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
 					<input type="hidden" id="rno" name="rno" value="${replyUpdate.rno}" />
 					<input type="hidden" id="pageNum" name="pageNum" value="${cri.pageNum}"> 
@@ -49,12 +58,13 @@
 						</tbody>			
 					</table>
 					<div>
-						<button type="submit" class="update_btn">저장</button>
-						<button type="button" class="cancel_btn">취소</button>
+						<button type="submit" class="btn">수정</button>
+						<button type="button" class="btn">취소</button>
 					</div>
 				</form>
 			</section>
 			<hr />
+			</fieldset>
 		</div>
 	</body>
 </html>
