@@ -15,4 +15,4 @@ create sequence tbl_reply_seq START WITH 1 MINVALUE 0;
 
 commit
 
-푸시용
+푸시용!!!!
