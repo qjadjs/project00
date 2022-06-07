@@ -47,7 +47,8 @@
 						<tbody>
 							<tr>
 								<td>
-								<label for="reply">댓글 내용</label><input type="text" id="reply" name="reply" value="${replyList.reply}"/>								</td>
+								<label for="reply">수정 할 댓글 내용</label><textarea id="reply" name="reply" value="${replyList.reply}"></textarea>	
+								</td>
 							</tr>	
 							
 						</tbody>			

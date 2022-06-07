@@ -28,10 +28,18 @@
 <link href="../resources/css/getHeader.css" rel="stylesheet" />
 
 <title>게시글</title>
+<style>
+      body {
+        font-family: sans-serif;
+      }
+      .re {
+        word-break: keep-all;
+      }
+</style>
 </head>
 <body class="b1">
   <%@include file ="../board/Header2.jsp" %>
-  
+    
    <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
          <input type="hidden" id="bno" name="bno"
@@ -121,8 +129,8 @@
         작성자 : ${replyList.replyer}<br />
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
-        
-        <p>${replyList.reply}</p>     
+ 
+        <p class="re">${replyList.reply}</p>     
      <div>
      <c:choose>
      <c:when test="${login.userName == replyList.replyer}">
