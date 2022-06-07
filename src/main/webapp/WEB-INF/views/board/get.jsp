@@ -121,7 +121,7 @@
         작성자 : ${replyList.replyer}<br />
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
-
+        
         <p>${replyList.reply}</p>     
      <div>
      <c:choose>
