@@ -165,16 +165,7 @@ return /******/ (function(modules) { // webpackBootstrap
         url: '이동할 URL',
         openInNewWindow: '새창으로 열기'
       },
-      table: {
-        table: '표',
-        addRowAbove: '위에 행 삽입',
-        addRowBelow: '아래에 행 삽입',
-        addColLeft: '왼쪽에 열 삽입',
-        addColRight: '오른쪽에 열 삽입',
-        delRow: '행 지우기',
-        delCol: '열 지우기',
-        delTable: '표 삭제'
-      },
+      
       hr: {
         insert: '구분선 삽입'
       },

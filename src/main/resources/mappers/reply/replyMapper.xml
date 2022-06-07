@@ -15,7 +15,10 @@
 	 <resultMap id="BoardVOResultMap" type="com.globalin.domain.BoardVO">
   <id property="bno" column="bno"/>
   <result property="title" column="title" />
-  <result property="content" column="content" />
+  <result property="content1" column="content1" />
+  <result property="content2" column="content2" />
+  <result property="content3" column="content3" />
+  <result property="content4" column="content4" />
   <result property="writer" column="writer" />
   <result property="regDate" column="regdate" />
   <result property="updateDate" column="updateDate" />
