@@ -185,7 +185,12 @@
             </c:when>
             <c:otherwise>
             <br> <br>
-            <input value="댓글 기능은 로그인후 이용 가능합니다"/> <br>
+            <input value="댓글 기능은 로그인후 이용 가능합니다" style="
+    WIDTH: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 5px;"/> <br>
             <input id="subBtn2" type="button" value="목록"
             onclick="location.href='/board/list'" />
             </c:otherwise>
