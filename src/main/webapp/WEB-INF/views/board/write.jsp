@@ -35,7 +35,14 @@
 			<input id="t4" type="text" name="writer" value="${login.userName }" readonly="readonly"/>
 			<input type="hidden" name="userId" value="${login.userId}">
 				<input class="h1" type="text" name="title" placeholder="제목">
-			<textarea id="summernote" name="content"></textarea>
+				<div class="y1">
+			<textarea id="summernote1" name="content1"></textarea>
+			<textarea id="summernote2" name="content2"></textarea>
+				</div>
+				<div class="y2">
+			<textarea id="t1" name="content3"></textarea>
+			<textarea id="t2" name="content4"></textarea>
+				</div>
 			<input id="subBtn" type="button" value="작성"
 				onclick="goWrite(this.form)" /> <input id="subBtn2" type="button"
 				value="목록" onclick="location.href='/board/list'" />
@@ -50,27 +57,14 @@
 </body>
 <script>
 	var setting = {
-		placeholder : '내용을 입력하세요',
+		placeholder : '이미지 넣기',
 		tabsize : 2,
-		height : 400,
+		height : 300,
+		width: 600,
 		disableResizeEditor : true,
 		toolbar : [
-				[ 'fontname', [ 'fontname' ] ],
-				[ 'fontsize', [ 'fontsize' ] ],
-				[
-						'style',
-						[ 'bold', 'italic', 'underline', 'strikethrough',
-								'clear' ] ],
-				[ 'color', [ 'forecolor', 'color' ] ],
-				[ 'table', [ 'table' ] ],
-				[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-				[ 'height', [ 'height' ] ],
-				[ 'insert', [ 'picture', 'link', 'video' ] ],
-				[ 'view', [ 'fullscreen', 'help' ] ] ],
-		fontNames : [ 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
-				'맑은 고딕', '궁서', '굴림체', '굴림', '돋움체', '바탕체' ],
-		fontSizes : [ '8', '9', '10', '11', '12', '14', '16', '18', '20', '22',
-				'24', '28', '30', '36', '50', '72' ],
+				[ 'insert', [ 'picture' ] ],
+				 ],
 		callbacks : {
 			onImageUpload : function(files, editor, welEditable) {
 				// 파일 업로드(다중업로드를 위해 반복문 사용)
@@ -82,7 +76,10 @@
 	}
 
 	$(document).ready(function() {
-		$('#summernote').summernote(setting);
+		$('#summernote1').summernote(setting);
+	});
+	$(document).ready(function() {
+		$('#summernote2').summernote(setting);
 	});
 
 	function uploadSummernoteImageFile(file, el) {
