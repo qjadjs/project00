@@ -122,10 +122,14 @@
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
 
-        <p>${replyList.reply}</p> 
-        <div>
+        <p>${replyList.reply}</p>     
+     <div>          
+     <c:if test="${user.userName == replyList.replyer }">
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> <hr>
+  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> 
+  		</c:if>
+  		<hr>
+  		
 	</div>
       </li>
     </c:forEach>   
