@@ -42,8 +42,8 @@
 			 <textarea id="summernote1" name="content1">${board.content1}</textarea>
          <textarea id="summernote2" name="content2">${board.content2}</textarea>
 			<br> 
-			 <textarea id="t1" name="content3"></textarea>
-         <textarea id="t2" name="content4"></textarea>
+			 <textarea id="t1" name="content3">${board.content3}</textarea>
+         <textarea id="t2" name="content4">${board.content4}</textarea>
          <br>
 			<input id="subBtn" type="button" value="수정"
 				onclick="goWrite(this.form)" /> <input id="subBtn2" type="button"
