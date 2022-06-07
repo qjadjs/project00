@@ -130,7 +130,7 @@
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
  
-        <p class="re">${replyList.reply}</p>     
+        <p style="width:350px;" class="re">${replyList.reply}</p>     
      <div>
      <c:choose>
      <c:when test="${login.userName == replyList.replyer}">

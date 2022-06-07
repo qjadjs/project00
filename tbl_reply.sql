@@ -14,3 +14,5 @@ references tbl_board(bno);
 create sequence tbl_reply_seq START WITH 1 MINVALUE 0;
 
 commit
+
+푸시용
