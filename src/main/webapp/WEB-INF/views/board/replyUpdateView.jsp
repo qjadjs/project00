@@ -12,8 +12,12 @@
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
-			$(".btn").on("click", function(e){
-				window.history.back()
+			$(".btn").on("click", function(){
+				location.href = "/board/get?bno=${replyUpdate.bno}"
+					   + "&pageNum=${cri.pageNum}"
+					   + "&amount=${cri.amount}"
+					   + "&type=${cri.type}"
+					   + "&keyword=${cri.keyword}";
 			});
 			
 		})

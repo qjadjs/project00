@@ -223,7 +223,7 @@
       });
       }
          
-  /*     
+       
       var pageNum = 1;
       var replyPageFooter = $(".panel-footer");
 
@@ -269,7 +269,7 @@
          console.log(pageHtml);
 
       }
-      */
+     
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';
