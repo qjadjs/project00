@@ -12,13 +12,9 @@
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
-			$(".cancel_btn").on("click", function(){
-				location.href = "/board/get?bno=${board.bno}"
-					   + "&pageNum=${cri.pageNum}"
-					   + "&amount=${cri.amount}"
-					   + "&type=${cri.type}"
-					   + "&keyword=${cri.keyword}";
-			})
+			$(".btn").on("click", function(e){
+				window.history.back()
+			});
 			
 		})
 	</script>
@@ -29,7 +25,9 @@
 		<div id="root">
 		<fieldset  class=b1>
 			<header>
+
 				<h1 class="c1"> 댓글 수정</h1>
+
 			</header>
 			<hr />
 					

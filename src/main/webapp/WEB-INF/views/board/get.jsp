@@ -121,11 +121,18 @@
         작성자 : ${replyList.replyer}<br />
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
-
-        <p>${replyList.reply}</p> 
-        <div>
+        
+        <p>${replyList.reply}</p>     
+     <div>
+     <c:choose>
+     <c:when test="${login.userName == replyList.replyer}">
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> <hr>
+  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> 
+  		</c:when>
+  		<c:otherwise>		
+  		</c:otherwise>
+     </c:choose>          
+  		<hr> 		
 	</div>
       </li>
     </c:forEach>   
@@ -216,7 +223,7 @@
       });
       }
          
-      
+  /*     
       var pageNum = 1;
       var replyPageFooter = $(".panel-footer");
 
@@ -262,7 +269,7 @@
          console.log(pageHtml);
 
       }
-      
+      */
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';

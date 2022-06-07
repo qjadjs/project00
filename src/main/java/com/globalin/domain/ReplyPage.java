@@ -8,6 +8,7 @@ public class ReplyPage {
 	private int replyCnt;
 	//댓글모음
 	private List<ReplyVO> list;
+	
 	public int getReplyCnt() {
 		return replyCnt;
 	}
