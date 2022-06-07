@@ -231,7 +231,7 @@ public class BoardController {
 	
 	
 
-	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
+	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8",method = RequestMethod.POST)
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
 		JsonObject jsonObject = new JsonObject();
