@@ -66,25 +66,26 @@
           
          <br>
          
-         <div style="display: flex;">
-         <div id="title3" name="content" class="get-content">
+         <div style="display:flex">
+         <div id="title1" name="content" class="get-content">
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
-         <hr style=" height:250px; max-height:500px;width:1px; border-width:0; color:#000;background-color:#000;">
-         <div id="title3" name="content" class="get-content">
+         <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
+         <div id="title2" name="content" class="get-content">
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
-         <div style="display: flex;">
-         <div id="title3" name="content" class="get-content">
+         <div>
+         <div id="title3" name="content" class="get-content"
+      style="float: left; margin-top: -1rem; border: solid 1px;width: 50%; min-width:50%; text-align: center;border-radius: 10px; font:bold;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
-         <hr>
-         <div id="title3" name="content" class="get-content">
+         <div id="title4" name="content" class="get-content"
+         style="float: right; margin-top: -1rem; border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          </div>
-         <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
+         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
          <div  style="margin-right:1px;">
    <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
 </div>
@@ -110,11 +111,11 @@
                value='<c:out value="${cri.type}"/>'> <input type="hidden"
                name="keyword" value='<c:out value="${cri.keyword}"/>'>
          </form>
-		<form method="post" action="/board/remove" id="operForm2">
-		<input type="hidden" id="bno" name="bno"
+      <form method="post" action="/board/remove" id="operForm2">
+      <input type="hidden" id="bno" name="bno"
                value='<c:out value="${board.bno}"/>'>
-		<button data-oper="delete" class="delete-btn">삭제</button>
-		</form>
+      <button data-oper="delete" class="delete-btn">삭제</button>
+      </form>
                
          </c:when>
          <c:otherwise>
@@ -149,14 +150,14 @@
      <div>
      <c:choose>
      <c:when test="${login.userName == replyList.replyer}">
-  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
-  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
-  		</c:when>
-  		<c:otherwise>		
-  		</c:otherwise>
+        <button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
+        <button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
+        </c:when>
+        <c:otherwise>      
+        </c:otherwise>
      </c:choose>          
-  		<hr> 		
-	</div>
+        <hr>       
+   </div>
       </li>
     </c:forEach>   
   </ol>
@@ -185,12 +186,7 @@
             </c:when>
             <c:otherwise>
             <br> <br>
-            <input value="댓글 기능은 로그인후 이용 가능합니다" style="
-    WIDTH: 100%;
-    height: 100px;
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 5px;"/> <br>
+            <input value="댓글 기능은 로그인후 이용 가능합니다"/> <br>
             <input id="subBtn2" type="button" value="목록"
             onclick="location.href='/board/list'" />
             </c:otherwise>
@@ -313,7 +309,7 @@
          // add(reply, callback)
          replyService.add(reply, function(result) {
             alert(result);
-			
+         
             showList(-1);
             $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화
             window.location.reload();
@@ -322,29 +318,29 @@
       });
 
       //댓글 수정view
-	$(".replyUpdateBtn").on("click", function(){
-    	  location.href = "/board/replyUpdateView?bno=${board.bno}"
-      					  + "&pageNum=${cri.pageNum}"
-      					  + "&amount=${cri.amount}"
-      					  + "&type=${cri.type}"
-      					  + "&keyword=${cri.keyword}"
-      					  + "&rno="+$(this).attr("data-rno")
+   $(".replyUpdateBtn").on("click", function(){
+         location.href = "/board/replyUpdateView?bno=${board.bno}"
+                       + "&pageNum=${cri.pageNum}"
+                       + "&amount=${cri.amount}"
+                       + "&type=${cri.type}"
+                       + "&keyword=${cri.keyword}"
+                       + "&rno="+$(this).attr("data-rno")
       });
       
-	//댓글 삭제 View
-	$(".replyDeleteBtn").on("click", function(){
-		if(!confirm("댓글을 삭제하시겠습니까?")) {
-			
-		} else{
-			 location.href = "/board/replyDeleteView?bno=${board.bno}"
-				  + "&pageNum=${cri.pageNum}"
-				  + "&amount=${cri.amount}"
-				  + "&type=${cri.type}"
-				  + "&keyword=${cri.keyword}"
-				  + "&rno="+$(this).attr("data-rno")	
-		}
-		 
-      	});
+   //댓글 삭제 View
+   $(".replyDeleteBtn").on("click", function(){
+      if(!confirm("댓글을 삭제하시겠습니까?")) {
+         
+      } else{
+          location.href = "/board/replyDeleteView?bno=${board.bno}"
+              + "&pageNum=${cri.pageNum}"
+              + "&amount=${cri.amount}"
+              + "&type=${cri.type}"
+              + "&keyword=${cri.keyword}"
+              + "&rno="+$(this).attr("data-rno")   
+      }
+       
+         });
       
       
       replyPageFooter.on("click", "li a", function(e) {
@@ -356,7 +352,7 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
-		});  
+      });  
    });
 </script>
 
@@ -374,12 +370,12 @@
          operForm.submit();
       });
       $("button[data-oper='delete']").on("click",function(e){
-    	  e.preventDefault();
-    	  if(confirm("게시글을 삭제하시겠습니까?")){
-    		 operForm2.submit();
-    	  }else{
-    		  return;
-    	  }
+         e.preventDefault();
+         if(confirm("게시글을 삭제하시겠습니까?")){
+           operForm2.submit();
+         }else{
+            return;
+         }
       });
       
    })
