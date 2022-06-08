@@ -18,7 +18,7 @@ create sequence tbl_reply_seq START WITH 1 MINVALUE 0;
 
 commit
 
-푸시용!!!!
+푸시용!!!!!
     REDEPTH number (NOT NULL은 체그 안함)
     REORDER number (NOT NULL은 체그 안함)
     REPARENT number (NOT NULL은 체그 안함)
