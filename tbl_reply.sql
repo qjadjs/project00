@@ -8,7 +8,6 @@ create table tbl_reply (
     REDEPTH NUMBER,
  	REPARENT NUMBER, 
  	REORDER NUMBER,
- 	REGROUP NUMBER,
     primary key(bno, rno)
 );
 
@@ -21,6 +20,7 @@ commit
 
 푸시용!!!!
     REDEPTH number (NOT NULL은 체그 안함)
-    REGROUP number (NOT NULL은 체그 안함)
     REORDER number (NOT NULL은 체그 안함)
     REPARENT number (NOT NULL은 체그 안함)
+    
+    USER_ID VARCHAR2 50 NOT NULL DEFAULT ' '
