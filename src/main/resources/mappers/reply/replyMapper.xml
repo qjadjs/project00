@@ -54,8 +54,8 @@
         WHERE user_id = #{userId}
 	 </select>
 	<insert id="insert">
-		insert into tbl_reply (rno, bno, reply, replyer)
-		values(seq_reply.nextval, #{bno}, #{reply}, #{replyer})
+		insert into tbl_reply (rno, bno, reply, replyer, user_Id)
+		values(seq_reply.nextval, #{bno}, #{reply}, #{replyer}, #{userId})
 	</insert>
 	
 	<select id="read" resultType="com.globalin.domain.ReplyVO">
