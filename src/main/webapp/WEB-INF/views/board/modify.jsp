@@ -39,7 +39,7 @@
 				type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
 			<input id="title2" type="hidden" name="keyword"
 				value='<c:out value="${cri.keyword}"/>'> <br> <br>
-			<textarea id="summernote" name="content">${board.content}</textarea>
+			<textarea id="summernote" name="content1">${board.content1}</textarea>
 			<br> <input id="subBtn" type="button" value="수정"
 				onclick="goWrite(this.form)" /> <input id="subBtn2" type="button"
 				value="목록" onclick="location.href='/board/list'" />

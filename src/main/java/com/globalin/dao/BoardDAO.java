@@ -22,6 +22,8 @@ public interface BoardDAO {
 	
 	List<BoardVO> getListWithPaging(Criteria cri);
 	
+	List<BoardVO> getListWithPagingWithType(Criteria cri, int type);
+	
 	void insertSelectKey(BoardVO board);
 	
 	int getTotalCount(Criteria cri);

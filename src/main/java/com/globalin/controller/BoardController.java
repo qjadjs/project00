@@ -176,7 +176,7 @@ public class BoardController {
 		}
 
 		BoardVO board = service.read(bno);
-		board.setContent(board.getContent().replaceAll(System.getProperty("line.separator"), " "));
+		board.setContent1(board.getContent1().replaceAll(System.getProperty("line.separator"), " "));
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
 
@@ -236,6 +236,7 @@ public class BoardController {
 	@ResponseBody
 	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
 		JsonObject jsonObject = new JsonObject();
+		log.info("file :" + multipartFile);
 		
 
 		String fileRoot = "C:\\temp\\"; // 외부경로로 저장을 희망할때.

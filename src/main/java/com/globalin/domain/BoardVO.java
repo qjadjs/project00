@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt;
-	private String title, content, writer, userId;
+	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, type;
+	private String title, content1, content2, content3, content4, writer, userId;
 	private Date regDate, updateDate;
 	private UserVO userVO;
-	
+
 	public int getReplyCnt() {
 		return replyCnt;
 	}
@@ -33,12 +33,36 @@ public class BoardVO {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	public String getContent1() {
+		return content1;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setContent1(String content1) {
+		this.content1 = content1;
+	}
+
+	public String getContent2() {
+		return content2;
+	}
+
+	public void setContent2(String content2) {
+		this.content2 = content2;
+	}
+
+	public String getContent3() {
+		return content3;
+	}
+
+	public void setContent3(String content3) {
+		this.content3 = content3;
+	}
+
+	public String getContent4() {
+		return content4;
+	}
+
+	public void setContent4(String content4) {
+		this.content4 = content4;
 	}
 
 	public String getWriter() {
@@ -89,7 +113,6 @@ public class BoardVO {
 		this.userId = userId;
 	}
 
-
 	public int getDislikeCnt() {
 		return dislikeCnt;
 	}
@@ -105,11 +128,20 @@ public class BoardVO {
 	public void setUserVO(UserVO userVO) {
 		this.userVO = userVO;
 	}
-	
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", dislikeCnt=" + dislikeCnt + ", title=" + title + ", content=" + content + ", writer=" + writer
+				+ ", dislikeCnt=" + dislikeCnt + ", type=" + type + ", title=" + title + ", content1=" + content1
+				+ ", content2=" + content2 + ", content3=" + content3 + ", content4=" + content4 + ", writer=" + writer
 				+ ", userId=" + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO=" + userVO
 				+ "]";
 	}

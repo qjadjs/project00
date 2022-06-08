@@ -41,6 +41,7 @@
          <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
          <input type="hidden" name="keyword"
             value='<c:out value="${cri.keyword}"/>'>
+            <input type="hidden" name="type" value='<c:out value="${board.type}"/>'/>
       </div>
       
             <div class="hh1" name="title" class="get-title">
@@ -59,7 +60,7 @@
          <br>
          
          <div id="title3" name="content" class="get-content">
-            <c:out value="${board.content}" escapeXml="false" /> 
+            <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
          <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
          <div  style="margin-right:1px;">

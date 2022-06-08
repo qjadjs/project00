@@ -4,7 +4,10 @@
 	<resultMap id="BoardVOResultMap" type="com.globalin.domain.BoardVO">
   <id property="bno" column="bno"/>
   <result property="title" column="title" />
-  <result property="content" column="content" />
+  <result property="content1" column="content1" />
+  <result property="content2" column="content2" />
+  <result property="content3" column="content3" />
+  <result property="content4" column="content4" />
   <result property="writer" column="writer" />
   <result property="regDate" column="regdate" />
   <result property="updateDate" column="updateDate" />
@@ -13,6 +16,7 @@
   <result property="likeCnt" column="likeCnt" />
   <result property="userId" column="user_id" />
   <result property="dislikeCnt" column="dislikeCnt" />
+  <result property="type" column="type"/>
   <association property="userVO" resultMap="userVOResultMap"/>
 </resultMap>
 <resultMap id="userVOResultMap"
@@ -45,7 +49,7 @@ SELECT
 							title like '%'||#{keyword}||'%'
 						</when>
 						<when test="type == 'C'.toString()">
-							content like '%'||#{keyword}||'%'
+							content3 like '%'||#{keyword}||'%'
 						</when>
 						<when test="type == 'W'.toString()">
 							writer like '%'||#{keyword}||'%'
@@ -56,17 +60,17 @@ SELECT
 		</trim>
 	</sql>
 	<insert id="create">
-		insert into tbl_board (bno, title, content, writer, user_id)
+		insert into tbl_board (bno, title, content1, content2, content3, content4, writer, user_id, type)
 		values
-		(seq_board.nextval,#{title},#{content},#{writer},#{userId})
+		(seq_board.nextval,#{title},#{content1},#{content2},#{content3},#{content4},#{writer},#{userId}, #{type})
 	</insert>
 	<insert id="insertSelectKey">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select seq_board.nextval
 			from dual
 		</selectKey>
-		insert into tbl_board(bno, title, content, writer)
-		values(#{bno},#{title},#{content},#{writer})
+		insert into tbl_board(bno, title, content1, content2, content3, content4, writer)
+		values(#{bno},#{title},#{content1},#{content2},#{content3},#{content4},#{writer})
 	</insert>
 	<select id="read"
 		resultType="com.globalin.domain.BoardVO">
@@ -75,7 +79,7 @@ SELECT
 	</select>
 	<update id="update">
 		update tbl_board set title = #{title},
-		content=#{content}, writer=#{writer},
+		content1=#{content1}, content2=#{content2}, content3=#{content3}, content4=#{content4}, writer=#{writer}, type=#{type}
 		updateDate = sysdate where bno =
 		#{bno}
 	</update>
@@ -89,15 +93,30 @@ SELECT
 	<select id="getListWithPaging"
 		resultType="com.globalin.domain.BoardVO">
 	<![CDATA[
-	select bno, title, content, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt
+	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, type
 				from (select /*+INDEX_DESC(tbl_board pk_board) */
-				rownum rn, bno, title, content, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt
+				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, type
 				from tbl_board
 				where 
 				]]>
 		<include refid="criteria"></include>
 	<![CDATA[
 	rownum <= #{pageNum}*#{amount})
+				where rn > (#{pageNum}-1)*#{amount}
+				]]>
+	</select>
+	<select id="getListWithPagingWithType"
+		resultType="com.globalin.domain.BoardVO">
+	<![CDATA[
+	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, type
+				from (select /*+INDEX_DESC(tbl_board pk_board) */
+				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, type
+				from tbl_board
+				where 
+				]]>
+		<include refid="criteria"></include>
+	<![CDATA[
+	rownum <= #{pageNum}*#{amount} and type = #{type})
 				where rn > (#{pageNum}-1)*#{amount}
 				]]>
 	</select>

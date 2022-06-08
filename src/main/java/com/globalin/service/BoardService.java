@@ -21,6 +21,8 @@ public interface BoardService {
 	void insertSelectKey(BoardVO board);
 
 	List<BoardVO> getList(Criteria cri);
+	
+	List<BoardVO> getListWithType(Criteria cri, int type);
 
 	int getTotalCount(Criteria cri);
 
