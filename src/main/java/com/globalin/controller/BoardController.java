@@ -176,7 +176,7 @@ public class BoardController {
 		}
 
 		BoardVO board = service.read(bno);
-		board.setContent(board.getContent().replaceAll(System.getProperty("line.separator"), " "));
+		board.setContent1(board.getContent1().replaceAll(System.getProperty("line.separator"), " "));
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
 

@@ -5,6 +5,10 @@ create table tbl_reply (
     replyer varchar2(50) not null,
     replydate date default sysdate,
     updatedate date default sysdate,
+    REDEPTH NUMBER,
+ 	REPARENT NUMBER, 
+ 	REORDER NUMBER,
+ 	REGROUP NUMBER,
     primary key(bno, rno)
 );
 
@@ -16,3 +20,7 @@ create sequence tbl_reply_seq START WITH 1 MINVALUE 0;
 commit
 
 푸시용!!!!
+    REDEPTH number (NOT NULL은 체그 안함)
+    REGROUP number (NOT NULL은 체그 안함)
+    REORDER number (NOT NULL은 체그 안함)
+    REPARENT number (NOT NULL은 체그 안함)

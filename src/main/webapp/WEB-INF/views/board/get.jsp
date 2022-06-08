@@ -67,7 +67,7 @@
          <br>
          
          <div id="title3" name="content" class="get-content">
-            <c:out value="${board.content}" escapeXml="false" /> 
+            <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
          <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
          <div  style="margin-right:1px;">
@@ -130,22 +130,23 @@
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
  
-        <p style="width:350px;" class="re">${replyList.reply}</p>     
+        <p style="width:350px;" class="re">${replyList.reply}
+        </p>     
      <div>
-     <c:choose>
-     <c:when test="${login.userName == replyList.replyer}">
+     <c:if test="${login.userName == replyList.replyer}">
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
-  		</c:when>
-  		<c:otherwise>		
-  		</c:otherwise>
-     </c:choose>          
+  		</c:if>       
+  		<c:if test="${login.userName != null}">  		 
+        <button type="button" class="rereply" style="border-radius: 0.25rem; border-color: white;">답글</button>
+  		</c:if>
   		<hr> 		
 	</div>
       </li>
     </c:forEach>   
   </ol>
 </div>
+
 
       
       <div class="panel-footer" style="height:100px; background:white; border-top : 0;">
