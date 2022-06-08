@@ -298,5 +298,6 @@ public class BoardController {
 		replyService.remove(replyVO);
 		return "board/replyDeleteView";
 	}
+	
 
 }

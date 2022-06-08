@@ -62,30 +62,30 @@
             
             <br>
             
-         <div id="t3" style="min-height:250px; max-height:1000px;">
+         <div id="t3" style="min-height:500px; max-height:1000px;">
           
          <br>
          
-         <div style="display:flex">
+         <div id="div-img" style="display:flex">
          <div id="title1" name="content" class="get-content">
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
-         <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
+         <img id="vs-img" src="/resources/assets/vs.png">
          <div id="title2" name="content" class="get-content">
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
          <div>
          <div id="title3" name="content" class="get-content"
-      style="float: left; margin-top: -1rem; border: solid 1px;width: 50%; min-width:50%; text-align: center;border-radius: 10px; font:bold;">
+      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font:bold; min-height:50px;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
          <div id="title4" name="content" class="get-content"
-         style="float: right; margin-top: -1rem; border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold;">
+         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold; min-height:50px;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          </div>
-         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
+         <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
          <div  style="margin-right:1px;">
    <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
 </div>
