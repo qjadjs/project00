@@ -77,11 +77,11 @@
          </div>
          <div>
          <div id="title3" name="content" class="get-content"
-      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font:bold; min-height:50px;">
+      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
          <div id="title4" name="content" class="get-content"
-         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold; min-height:50px;">
+         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          </div>
@@ -207,7 +207,7 @@
            height: 100,
            disableResizeEditor: true,
          toolbar: [
-            ['fontsize', ['fontsize']],
+            
             ['style', ['bold','strikethrough']],
             ['insert',['picture' ]],
          ],
