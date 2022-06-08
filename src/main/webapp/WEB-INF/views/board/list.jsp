@@ -13,6 +13,11 @@
 </head>
 <!-- 헤더-->
 <body>
+<<<<<<< HEAD
+=======
+<form action="/chat" method="get">
+</form>
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 <div class="slide-in">
 <%@include file ="../board/ListHeader.jsp" %>
 <div class="row">

@@ -12,8 +12,12 @@
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
-			$(".btn").on("click", function(e){
-				window.history.back()
+			$(".btn").on("click", function(){
+				location.href = "/board/get?bno=${replyUpdate.bno}"
+					   + "&pageNum=${cri.pageNum}"
+					   + "&amount=${cri.amount}"
+					   + "&type=${cri.type}"
+					   + "&keyword=${cri.keyword}";
 			});
 			
 		})
@@ -43,7 +47,8 @@
 						<tbody>
 							<tr>
 								<td>
-								<label for="reply">댓글 내용</label><input type="text" id="reply" name="reply" value="${replyList.reply}"/>								</td>
+								<label for="reply">수정 할 댓글 내용</label><textarea id="reply" name="reply" value="${replyList.reply}"></textarea>	
+								</td>
 							</tr>	
 							
 						</tbody>			

@@ -28,10 +28,18 @@
 <link href="../resources/css/getHeader.css" rel="stylesheet" />
 
 <title>게시글</title>
+<style>
+      body {
+        font-family: sans-serif;
+      }
+      .re {
+        word-break: keep-all;
+      }
+</style>
 </head>
 <body class="b1">
   <%@include file ="../board/Header2.jsp" %>
-  
+    
    <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
          <input type="hidden" id="bno" name="bno"
@@ -59,10 +67,30 @@
           
          <br>
          
+<<<<<<< HEAD
          <div id="title3" name="content" class="get-content">
+=======
+         <div style="display:flex">
+         <div id="title1" name="content" class="get-content">
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
-         <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
+         <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
+         <div id="title2" name="content" class="get-content">
+            <c:out value="${board.content2}" escapeXml="false" /> 
+         </div>
+         </div>
+         <div>
+         <div id="title3" name="content" class="get-content"
+      style="float: left; margin-top: -1rem; border: solid 1px;width: 50%; min-width:50%; text-align: center;border-radius: 10px; font:bold;">
+            <c:out value="${board.content3}" escapeXml="false" /> 
+         </div>
+         <div id="title4" name="content" class="get-content"
+         style="float: right; margin-top: -1rem; border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold;">
+            <c:out value="${board.content4}" escapeXml="false" /> 
+         </div>
+         </div>
+         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
          <div  style="margin-right:1px;">
    <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
 </div>
@@ -88,11 +116,11 @@
                value='<c:out value="${cri.type}"/>'> <input type="hidden"
                name="keyword" value='<c:out value="${cri.keyword}"/>'>
          </form>
-		<form method="post" action="/board/remove" id="operForm2">
-		<input type="hidden" id="bno" name="bno"
+      <form method="post" action="/board/remove" id="operForm2">
+      <input type="hidden" id="bno" name="bno"
                value='<c:out value="${board.bno}"/>'>
-		<button data-oper="delete" class="delete-btn">삭제</button>
-		</form>
+      <button data-oper="delete" class="delete-btn">삭제</button>
+      </form>
                
          </c:when>
          <c:otherwise>
@@ -122,19 +150,19 @@
         작성자 : ${replyList.replyer}<br />
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
-        
-        <p>${replyList.reply}</p>     
+ 
+        <p style="width:350px;" class="re">${replyList.reply}</p>     
      <div>
      <c:choose>
      <c:when test="${login.userName == replyList.replyer}">
-  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}">수정</button>
-  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" >삭제</button> 
-  		</c:when>
-  		<c:otherwise>		
-  		</c:otherwise>
+        <button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
+        <button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
+        </c:when>
+        <c:otherwise>      
+        </c:otherwise>
      </c:choose>          
-  		<hr> 		
-	</div>
+        <hr>       
+   </div>
       </li>
     </c:forEach>   
   </ol>
@@ -184,13 +212,9 @@
            height: 100,
            disableResizeEditor: true,
          toolbar: [
-            ['fontname', ['fontname']],
             ['fontsize', ['fontsize']],
-            ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-            ['color', ['forecolor','color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']],
-            ['insert',['link']],
+            ['style', ['bold','strikethrough']],
+            ['insert',['picture' ]],
          ],
          fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
          fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']}
@@ -224,7 +248,7 @@
       });
       }
          
-  /*     
+       
       var pageNum = 1;
       var replyPageFooter = $(".panel-footer");
 
@@ -270,7 +294,7 @@
          console.log(pageHtml);
 
       }
-      */
+     
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';
@@ -290,7 +314,7 @@
          // add(reply, callback)
          replyService.add(reply, function(result) {
             alert(result);
-			
+         
             showList(-1);
             $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화
             window.location.reload();
@@ -299,29 +323,29 @@
       });
 
       //댓글 수정view
-	$(".replyUpdateBtn").on("click", function(){
-    	  location.href = "/board/replyUpdateView?bno=${board.bno}"
-      					  + "&pageNum=${cri.pageNum}"
-      					  + "&amount=${cri.amount}"
-      					  + "&type=${cri.type}"
-      					  + "&keyword=${cri.keyword}"
-      					  + "&rno="+$(this).attr("data-rno")
+   $(".replyUpdateBtn").on("click", function(){
+         location.href = "/board/replyUpdateView?bno=${board.bno}"
+                       + "&pageNum=${cri.pageNum}"
+                       + "&amount=${cri.amount}"
+                       + "&type=${cri.type}"
+                       + "&keyword=${cri.keyword}"
+                       + "&rno="+$(this).attr("data-rno")
       });
       
-	//댓글 삭제 View
-	$(".replyDeleteBtn").on("click", function(){
-		if(!confirm("댓글을 삭제하시겠습니까?")) {
-			
-		} else{
-			 location.href = "/board/replyDeleteView?bno=${board.bno}"
-				  + "&pageNum=${cri.pageNum}"
-				  + "&amount=${cri.amount}"
-				  + "&type=${cri.type}"
-				  + "&keyword=${cri.keyword}"
-				  + "&rno="+$(this).attr("data-rno")	
-		}
-		 
-      	});
+   //댓글 삭제 View
+   $(".replyDeleteBtn").on("click", function(){
+      if(!confirm("댓글을 삭제하시겠습니까?")) {
+         
+      } else{
+          location.href = "/board/replyDeleteView?bno=${board.bno}"
+              + "&pageNum=${cri.pageNum}"
+              + "&amount=${cri.amount}"
+              + "&type=${cri.type}"
+              + "&keyword=${cri.keyword}"
+              + "&rno="+$(this).attr("data-rno")   
+      }
+       
+         });
       
       
       replyPageFooter.on("click", "li a", function(e) {
@@ -333,7 +357,7 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
-		});  
+      });  
    });
 </script>
 
@@ -351,12 +375,12 @@
          operForm.submit();
       });
       $("button[data-oper='delete']").on("click",function(e){
-    	  e.preventDefault();
-    	  if(confirm("게시글을 삭제하시겠습니까?")){
-    		 operForm2.submit();
-    	  }else{
-    		  return;
-    	  }
+         e.preventDefault();
+         if(confirm("게시글을 삭제하시겠습니까?")){
+           operForm2.submit();
+         }else{
+            return;
+         }
       });
       
    })
