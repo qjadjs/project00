@@ -62,14 +62,32 @@
             
             <br>
             
-         <div id="t3" style="min-height:250px; max-height:1000px;">
+         <div id="t3" style="min-height:500px; max-height:1000px;">
           
          <br>
          
-         <div id="title3" name="content" class="get-content">
+
+         <div id="div-img" style="display:flex; justify-content:center;">
+         <div id="title1" name="content" class="get-content">
+
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
-         <div id="t3-div" style="display:flex; margin-top:300px; justify-content:center">
+         <img id="vs-img" src="/resources/assets/vs.png">
+         <div id="title2" name="content" class="get-content">
+            <c:out value="${board.content2}" escapeXml="false" /> 
+         </div>
+         </div>
+         <div>
+         <div id="title3" name="content" class="get-content"
+      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
+            <c:out value="${board.content3}" escapeXml="false" /> 
+         </div>
+         <div id="title4" name="content" class="get-content"
+         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
+            <c:out value="${board.content4}" escapeXml="false" /> 
+         </div>
+         </div>
+         <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
          <div  style="margin-right:1px;">
    <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
 </div>
@@ -95,11 +113,11 @@
                value='<c:out value="${cri.type}"/>'> <input type="hidden"
                name="keyword" value='<c:out value="${cri.keyword}"/>'>
          </form>
-		<form method="post" action="/board/remove" id="operForm2">
-		<input type="hidden" id="bno" name="bno"
+      <form method="post" action="/board/remove" id="operForm2">
+      <input type="hidden" id="bno" name="bno"
                value='<c:out value="${board.bno}"/>'>
-		<button data-oper="delete" class="delete-btn">삭제</button>
-		</form>
+      <button data-oper="delete" class="delete-btn">삭제</button>
+      </form>
                
          </c:when>
          <c:otherwise>
@@ -192,7 +210,7 @@
            height: 100,
            disableResizeEditor: true,
          toolbar: [
-            ['fontsize', ['fontsize']],
+            
             ['style', ['bold','strikethrough']],
             ['insert',['picture' ]],
          ],
@@ -294,7 +312,7 @@
          // add(reply, callback)
          replyService.add(reply, function(result) {
             alert(result);
-			
+         
             showList(-1);
             $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화
             window.location.reload();
@@ -303,29 +321,29 @@
       });
 
       //댓글 수정view
-	$(".replyUpdateBtn").on("click", function(){
-    	  location.href = "/board/replyUpdateView?bno=${board.bno}"
-      					  + "&pageNum=${cri.pageNum}"
-      					  + "&amount=${cri.amount}"
-      					  + "&type=${cri.type}"
-      					  + "&keyword=${cri.keyword}"
-      					  + "&rno="+$(this).attr("data-rno")
+   $(".replyUpdateBtn").on("click", function(){
+         location.href = "/board/replyUpdateView?bno=${board.bno}"
+                       + "&pageNum=${cri.pageNum}"
+                       + "&amount=${cri.amount}"
+                       + "&type=${cri.type}"
+                       + "&keyword=${cri.keyword}"
+                       + "&rno="+$(this).attr("data-rno")
       });
       
-	//댓글 삭제 View
-	$(".replyDeleteBtn").on("click", function(){
-		if(!confirm("댓글을 삭제하시겠습니까?")) {
-			
-		} else{
-			 location.href = "/board/replyDeleteView?bno=${board.bno}"
-				  + "&pageNum=${cri.pageNum}"
-				  + "&amount=${cri.amount}"
-				  + "&type=${cri.type}"
-				  + "&keyword=${cri.keyword}"
-				  + "&rno="+$(this).attr("data-rno")	
-		}
-		 
-      	});
+   //댓글 삭제 View
+   $(".replyDeleteBtn").on("click", function(){
+      if(!confirm("댓글을 삭제하시겠습니까?")) {
+         
+      } else{
+          location.href = "/board/replyDeleteView?bno=${board.bno}"
+              + "&pageNum=${cri.pageNum}"
+              + "&amount=${cri.amount}"
+              + "&type=${cri.type}"
+              + "&keyword=${cri.keyword}"
+              + "&rno="+$(this).attr("data-rno")   
+      }
+       
+         });
       
       
       replyPageFooter.on("click", "li a", function(e) {
@@ -337,7 +355,7 @@
          console.log("target page : " + target);
          pageNum = target;
          showList(pageNum);
-		});  
+      });  
    });
 </script>
 
@@ -355,12 +373,12 @@
          operForm.submit();
       });
       $("button[data-oper='delete']").on("click",function(e){
-    	  e.preventDefault();
-    	  if(confirm("게시글을 삭제하시겠습니까?")){
-    		 operForm2.submit();
-    	  }else{
-    		  return;
-    	  }
+         e.preventDefault();
+         if(confirm("게시글을 삭제하시겠습니까?")){
+           operForm2.submit();
+         }else{
+            return;
+         }
       });
       
    })
