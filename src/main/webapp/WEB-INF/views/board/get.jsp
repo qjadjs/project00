@@ -66,7 +66,7 @@
           
          <br>
          
-         <div id="div-img" style="display:flex">
+         <div id="div-img" style="display:flex; justify-content:center;">
          <div id="title1" name="content" class="get-content">
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
