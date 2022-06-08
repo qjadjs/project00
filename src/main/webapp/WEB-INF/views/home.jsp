@@ -41,8 +41,10 @@
     </a>
     </article><!--1-->
     <article class="slides">
-        <img src="https://cdn.imweb.me/upload/S20190621aa2b1db4ac0c4/ec22f1b09b457.png" 
+    <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12869">
+        <img src="https://thumb.mtstarnews.com/06/2021/02/2021021215085758866_1.jpg/dims/optimize" 
  weight="50%" height="300px">
+    </a>
     </article><!--2-->
     <article class="slides">
         <img src="https://cdn.imweb.me/upload/S20190621aa2b1db4ac0c4/1b3382a2f8456.png" 

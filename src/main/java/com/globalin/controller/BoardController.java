@@ -53,251 +53,251 @@ import com.google.gson.JsonObject;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-	private ReplyService replyService;
-	
-	private BoardService service;
+   private ReplyService replyService;
+   
+   private BoardService service;
 
-	private BoardDAO dao;
-	
-	private LikeDAO Ldao;
-	
-	private LikeService Lservice;
-	
-	private DisLikeService Dservice;
+   private BoardDAO dao;
+   
+   private LikeDAO Ldao;
+   
+   private LikeService Lservice;
+   
+   private DisLikeService Dservice;
 
-	@Inject
-	public BoardController(ReplyService replyService, BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice) {
-		this.replyService = replyService;
-		this.service = service;
-		this.dao = dao;
-		this.Ldao = Ldao;
-		this.Lservice = Lservice;
-		this.Dservice = Dservice;
-	}
-
-
-	private static Logger log = LoggerFactory.getLogger(BoardController.class);
+   @Inject
+   public BoardController(ReplyService replyService, BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice) {
+      this.replyService = replyService;
+      this.service = service;
+      this.dao = dao;
+      this.Ldao = Ldao;
+      this.Lservice = Lservice;
+      this.Dservice = Dservice;
+   }
 
 
-
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(Criteria cri, Model model) {
-		log.info("list : " + cri);
-		model.addAttribute("list", service.getList(cri));
-		int total = service.getTotalCount(cri);
-		log.info("total : " + total);
-		model.addAttribute("pageMaker", new Page(cri, total));
-	}
-
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(BoardVO board, RedirectAttributes rttr) throws Exception {
-		log.info("write : " + board);
-		service.create(board);
-		rttr.addFlashAttribute("result", board.getBno());
-
-		return "redirect:/board/list";
-	}
+   private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
 
 
+   @RequestMapping(value = "/list", method = RequestMethod.GET)
+   public void list(Criteria cri, Model model) {
+      log.info("list : " + cri);
+      model.addAttribute("list", service.getList(cri));
+      int total = service.getTotalCount(cri);
+      log.info("total : " + total);
+      model.addAttribute("pageMaker", new Page(cri, total));
+   }
 
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public String modifyGet(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
-		log.info("modify : " + bno);
-		log.info("cri : " + cri);
-		BoardVO board = service.read(bno);
-		model.addAttribute("cri", cri);
-		model.addAttribute("board", board);
+   @RequestMapping(value = "/write", method = RequestMethod.POST)
+   public String write(BoardVO board, RedirectAttributes rttr) throws Exception {
+      log.info("write : " + board);
+      service.create(board);
+      rttr.addFlashAttribute("result", board.getBno());
 
-		return "/board/modify";
+      return "redirect:/board/list";
+   }
 
-	}
 
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) throws Exception {
-		log.info("modify : " + board);
-		if (service.update(board) == true) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		return "redirect:/board/list";
-	}
 
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr, String writer)
-			throws Exception {
 
-		log.info("remove : " + bno);
-		if (service.delete(bno) == true) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		return "redirect:/board/list";
-	}
+   @RequestMapping(value = "/modify", method = RequestMethod.GET)
+   public String modifyGet(@RequestParam("bno") int bno, Criteria cri, Model model) throws Exception {
+      log.info("modify : " + bno);
+      log.info("cri : " + cri);
+      BoardVO board = service.read(bno);
+      model.addAttribute("cri", cri);
+      model.addAttribute("board", board);
 
-	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public String writeGet() {
-		return "/board/write";
-	}
+      return "/board/modify";
 
-	
-	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public String get(HttpServletRequest req, HttpServletResponse resp, @RequestParam("bno") int bno, Criteria cri,
-			Model model) throws Exception {
-		log.info(" get : " + bno);
-		log.info("cri : " + cri);
-		
+   }
 
-		Cookie cookies[] = req.getCookies();
-		Map mapCookie = new HashMap();
-		if (req.getCookies() != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				Cookie obj = cookies[i];
-				mapCookie.put(obj.getName(), obj.getValue());
-			}
-		}
+   @RequestMapping(value = "/modify", method = RequestMethod.POST)
+   public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) throws Exception {
+      log.info("modify : " + board);
+      if (service.update(board) == true) {
+         rttr.addFlashAttribute("result", "success");
+      }
+      rttr.addAttribute("pageNum", cri.getPageNum());
+      rttr.addAttribute("amount", cri.getAmount());
+      return "redirect:/board/list";
+   }
 
-		// 저장된 쿠키중에 read_count 만 불러오기
-		String cookie_viewCnt = (String) mapCookie.get("viewCnt");
-		// 저장될 새로운 쿠키값 생성
-		String new_cookie_viewCnt = "|" + bno;
+   @RequestMapping(value = "/remove", method = RequestMethod.POST)
+   public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr, String writer)
+         throws Exception {
 
-		// 저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
-		if (StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1) {
-			// 없을 경우 쿠키 생성
-			Cookie cookie = new Cookie("viewCnt", cookie_viewCnt + new_cookie_viewCnt);
-			cookie.setMaxAge(60 * 60 * 24); // 초단위
-			resp.addCookie(cookie);
+      log.info("remove : " + bno);
+      if (service.delete(bno) == true) {
+         rttr.addFlashAttribute("result", "success");
+      }
+      rttr.addAttribute("pageNum", cri.getPageNum());
+      rttr.addAttribute("amount", cri.getAmount());
+      return "redirect:/board/list";
+   }
 
-			// 조회수 업데이트
-			this.dao.updateViewCnt(bno);
-		}
+   @RequestMapping(value = "/write", method = RequestMethod.GET)
+   public String writeGet() {
+      return "/board/write";
+   }
 
-		BoardVO board = service.read(bno);
-		model.addAttribute("cri", cri);
-		model.addAttribute("board", board);
+   
+   @RequestMapping(value = "/get", method = RequestMethod.GET)
+   public String get(HttpServletRequest req, HttpServletResponse resp, @RequestParam("bno") int bno, Criteria cri,
+         Model model) throws Exception {
+      log.info(" get : " + bno);
+      log.info("cri : " + cri);
+      
 
-		List<ReplyVO> replyList = replyService.get(board.getBno());
-		model.addAttribute("replyList", replyList);
-		
-		return "/board/get";
+      Cookie cookies[] = req.getCookies();
+      Map mapCookie = new HashMap();
+      if (req.getCookies() != null) {
+         for (int i = 0; i < cookies.length; i++) {
+            Cookie obj = cookies[i];
+            mapCookie.put(obj.getName(), obj.getValue());
+         }
+      }
 
-	}
-	
-	
-	@ResponseBody
-	@RequestMapping(value = "/updateLike" , method = RequestMethod.POST)
-	public int updateLike(int bno, String userId)throws Exception{
-		
-			int likeCheck = Lservice.likeCheck(bno, userId);
-			int dislikeCheck = Dservice.DislikeCheck(bno, userId);
-			if(likeCheck == 0 && dislikeCheck != 1) {
-				//좋아요 처음누름
-				Lservice.insertLike(bno, userId); //like테이블 삽입
-				Lservice.updateLike(bno);	//게시판테이블 +1
-				Lservice.updateLikeCheck(bno, userId);//like테이블 구분자 1
-			}else if(likeCheck == 1) {
-				Lservice.updateLikeCheckCancel(bno, userId); //like테이블 구분자0
+      // 저장된 쿠키중에 read_count 만 불러오기
+      String cookie_viewCnt = (String) mapCookie.get("viewCnt");
+      // 저장될 새로운 쿠키값 생성
+      String new_cookie_viewCnt = "|" + bno;
+
+      // 저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+      if (StringUtils.indexOfIgnoreCase(cookie_viewCnt, new_cookie_viewCnt) == -1) {
+         // 없을 경우 쿠키 생성
+         Cookie cookie = new Cookie("viewCnt", cookie_viewCnt + new_cookie_viewCnt);
+         cookie.setMaxAge(60 * 60 * 24); // 초단위
+         resp.addCookie(cookie);
+
+         // 조회수 업데이트
+         this.dao.updateViewCnt(bno);
+      }
+
+      BoardVO board = service.read(bno);
+      model.addAttribute("cri", cri);
+      model.addAttribute("board", board);
+
+      List<ReplyVO> replyList = replyService.get(board.getBno());
+      model.addAttribute("replyList", replyList);
+      
+      return "/board/get";
+
+   }
+   
+   
+   @ResponseBody
+   @RequestMapping(value = "/updateLike" , method = RequestMethod.POST)
+   public int updateLike(int bno, String userId)throws Exception{
+      
+         int likeCheck = Lservice.likeCheck(bno, userId);
+         int dislikeCheck = Dservice.DislikeCheck(bno, userId);
+         if(likeCheck == 0 && dislikeCheck != 1) {
+            //좋아요 처음누름
+            Lservice.insertLike(bno, userId); //like테이블 삽입
+            Lservice.updateLike(bno);   //게시판테이블 +1
+            Lservice.updateLikeCheck(bno, userId);//like테이블 구분자 1
+         }else if(likeCheck == 1) {
+            Lservice.updateLikeCheckCancel(bno, userId); //like테이블 구분자0
                 Lservice.updateLikeCancel(bno); //게시판테이블 - 1
-				Lservice.deleteLike(bno, userId); //like테이블 삭제
-			}
-			return likeCheck;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/updateDisLike" , method = RequestMethod.POST)
-	public int updateDisLike(int bno, String userId)throws Exception{
-		
-			int likeCheck = Lservice.likeCheck(bno, userId);
-			int dislikeCheck = Dservice.DislikeCheck(bno, userId);
-			if(dislikeCheck == 0 && likeCheck != 1) {
-				//좋아요 처음누름
-				Dservice.insertDisLike(bno, userId); //like테이블 삽입
-				Dservice.updateDisLike(bno);	//게시판테이블 +1
-				Dservice.updateDisLikeCheck(bno, userId);//like테이블 구분자 1
-			}else if(dislikeCheck == 1) {
-				Dservice.updateDisLikeCheckCancel(bno, userId); //like테이블 구분자0
+            Lservice.deleteLike(bno, userId); //like테이블 삭제
+         }
+         return likeCheck;
+   }
+   
+   @ResponseBody
+   @RequestMapping(value = "/updateDisLike" , method = RequestMethod.POST)
+   public int updateDisLike(int bno, String userId)throws Exception{
+      
+         int likeCheck = Lservice.likeCheck(bno, userId);
+         int dislikeCheck = Dservice.DislikeCheck(bno, userId);
+         if(dislikeCheck == 0 && likeCheck != 1) {
+            //좋아요 처음누름
+            Dservice.insertDisLike(bno, userId); //like테이블 삽입
+            Dservice.updateDisLike(bno);   //게시판테이블 +1
+            Dservice.updateDisLikeCheck(bno, userId);//like테이블 구분자 1
+         }else if(dislikeCheck == 1) {
+            Dservice.updateDisLikeCheckCancel(bno, userId); //like테이블 구분자0
                 Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
-				Dservice.deleteDisLike(bno, userId); //like테이블 삭제
-			}
-			return dislikeCheck;
-	}
-	
-	
-	
-	
-	
-	
+            Dservice.deleteDisLike(bno, userId); //like테이블 삭제
+         }
+         return dislikeCheck;
+   }
+   
+   
+   
+   
+   
+   
 
-	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
-	@ResponseBody
-	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
-		JsonObject jsonObject = new JsonObject();
-		
+   @RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
+   @ResponseBody
+   public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
+      JsonObject jsonObject = new JsonObject();
+      
 
-		String fileRoot = "C:\\temp\\"; // 외부경로로 저장을 희망할때.
+      String fileRoot = "C:\\temp\\"; // 외부경로로 저장을 희망할때.
 
-		
-		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
-		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
-		
-		File targetFile = new File(fileRoot + savedFileName);	
-		try {
-			InputStream fileStream = multipartFile.getInputStream();
-			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/image/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
-			jsonObject.addProperty("responseCode", "success");
-				
-		} catch (IOException e) {
-			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
-			jsonObject.addProperty("responseCode", "error");
-			e.printStackTrace();
-		}
-		String a = jsonObject.toString();
-		return a;
-	}
-	
-	//댓글 수정 Get 
-	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET) 
-	public String replyUpdateView(ReplyVO replyVO,Criteria cri, Model model) throws Exception {
-		log.info("reply");
-		
-		model.addAttribute("replyUpdate", replyService.selectReply(replyVO.getRno()));
-		model.addAttribute("cri", cri);
-		
-		return "board/replyUpdateView";
-			
-	}
+      
+      String originalFileName = multipartFile.getOriginalFilename();   //오리지날 파일명
+      String extension = originalFileName.substring(originalFileName.lastIndexOf("."));   //파일 확장자
+      String savedFileName = UUID.randomUUID() + extension;   //저장될 파일 명
+      
+      File targetFile = new File(fileRoot + savedFileName);   
+      try {
+         InputStream fileStream = multipartFile.getInputStream();
+         FileUtils.copyInputStreamToFile(fileStream, targetFile);   //파일 저장
+         jsonObject.addProperty("url", "/image/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
+         jsonObject.addProperty("responseCode", "success");
+            
+      } catch (IOException e) {
+         FileUtils.deleteQuietly(targetFile);   //저장된 파일 삭제
+         jsonObject.addProperty("responseCode", "error");
+         e.printStackTrace();
+      }
+      String a = jsonObject.toString();
+      return a;
+   }
+   
+   //댓글 수정 Get 
+   @RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET) 
+   public String replyUpdateView(ReplyVO replyVO,Criteria cri, Model model) throws Exception {
+      log.info("reply");
+      
+      model.addAttribute("replyUpdate", replyService.selectReply(replyVO.getRno()));
+      model.addAttribute("cri", cri);
+      
+      return "board/replyUpdateView";
+         
+   }
 
-	//댓글 수정 POST
-	@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
-	public String replyUpdate(ReplyVO replyVO,Criteria cri, RedirectAttributes rttr) throws Exception {
-		log.info("reply");
-		
-		replyService.modify(replyVO);
-		
-		rttr.addAttribute("bno", replyVO.getBno());
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword",cri.getKeyword());
-		
-		return "redirect:/board/get";
-	}
-	
-	//댓글 삭제 GET
-	@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
-	public String replyDeleteView(ReplyVO replyVO, Criteria cri, Model model) throws Exception {
-		log.info("reply");
-		
-		model.addAttribute("replyDelete", replyService.selectReply(replyVO.getRno()));
-		model.addAttribute("cri", cri);
-		replyService.remove(replyVO);
-		return "board/replyDeleteView";
-	}
-	
+   //댓글 수정 POST
+   @RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+   public String replyUpdate(ReplyVO replyVO,Criteria cri, RedirectAttributes rttr) throws Exception {
+      log.info("reply");
+      
+      replyService.modify(replyVO);
+      
+      rttr.addAttribute("bno", replyVO.getBno());
+      rttr.addAttribute("pageNum", cri.getPageNum());
+      rttr.addAttribute("amount", cri.getAmount());
+      rttr.addAttribute("type", cri.getType());
+      rttr.addAttribute("keyword",cri.getKeyword());
+      
+      return "redirect:/board/get";
+   }
+   
+   //댓글 삭제 GET
+   @RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
+   public String replyDeleteView(ReplyVO replyVO, Criteria cri, Model model) throws Exception {
+      log.info("reply");
+      
+      model.addAttribute("replyDelete", replyService.selectReply(replyVO.getRno()));
+      model.addAttribute("cri", cri);
+      replyService.remove(replyVO);
+      return "board/replyDeleteView";
+   }
+   
 
 }
