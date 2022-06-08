@@ -176,10 +176,6 @@ public class BoardController {
 		}
 
 		BoardVO board = service.read(bno);
-<<<<<<< HEAD
-		board.setContent1(board.getContent1().replaceAll(System.getProperty("line.separator"), " "));
-=======
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 		model.addAttribute("cri", cri);
 		model.addAttribute("board", board);
 
