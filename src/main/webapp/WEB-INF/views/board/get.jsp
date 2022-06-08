@@ -296,7 +296,8 @@
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';
-
+	  var suserId = "${login.userId}";
+      
       $("#subBtn").on("click", function(e) {
          // name 속성이 reply인 input 찾아오기 : 댓글 내용
          // name 속성이 replyer 인 input 찾아아기 : 작성자
@@ -304,7 +305,8 @@
          var reply = {
             reply : sreply.val(),
             replyer : sreplyer,
-            bno : sbnoVal
+            bno : sbnoVal,
+            userId : suserId
             
          };
          
