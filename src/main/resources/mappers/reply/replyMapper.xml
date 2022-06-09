@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mappers.reply.replyMapper">
-	 
-	 <resultMap id="ReplyResultMap" type="com.globalin.domain.ReplyVO">
-        <id property="rno" column="rno"/>
-        <result property="bno" column="bno"/>
-        <result property="reply" column="reply"/>
-        <result property="replyer" column="replyer"/>
-        <result property="replyDate" column="replyDate"/>
-        <result property="updateDate" column="updateDate"/>
-        <association property="userVO" resultMap="userVOResultMap"/>
-        <association property="boardVO" resultMap="BoardVOResultMap"/>
-    </resultMap>
-	 <resultMap id="BoardVOResultMap" type="com.globalin.domain.BoardVO">
-  <id property="bno" column="bno"/>
-  <result property="title" column="title" />
-  <result property="content1" column="content1" />
-  <result property="content2" column="content2" />
-  <result property="content3" column="content3" />
-  <result property="content4" column="content4" />
-  <result property="writer" column="writer" />
-  <result property="regDate" column="regdate" />
-  <result property="updateDate" column="updateDate" />
-  <result property="replyCnt" column="replycnt" />
-  <result property="viewCnt" column="viewcnt" />
-  <result property="likeCnt" column="likeCnt" />
-  <result property="userId" column="user_id" />
-  <result property="dislikeCnt" column="dislikeCnt" />
-  <association property="userVO" resultMap="userVOResultMap"/>
-</resultMap>
-<resultMap id="userVOResultMap"
+
+	<resultMap id="ReplyResultMap"
+		type="com.globalin.domain.ReplyVO">
+		<id property="rno" column="rno" />
+		<result property="bno" column="bno" />
+		<result property="reply" column="reply" />
+		<result property="replyer" column="replyer" />
+		<result property="replyDate" column="replyDate" />
+		<result property="updateDate" column="updateDate" />
+		<association property="userVO" resultMap="userVOResultMap" />
+		<association property="boardVO"
+			resultMap="BoardVOResultMap" />
+	</resultMap>
+	<resultMap id="BoardVOResultMap"
+		type="com.globalin.domain.BoardVO">
+		<id property="bno" column="bno" />
+		<result property="title" column="title" />
+		<result property="content1" column="content1" />
+		<result property="content2" column="content2" />
+		<result property="content3" column="content3" />
+		<result property="content4" column="content4" />
+		<result property="writer" column="writer" />
+		<result property="regDate" column="regdate" />
+		<result property="updateDate" column="updateDate" />
+		<result property="replyCnt" column="replycnt" />
+		<result property="viewCnt" column="viewcnt" />
+		<result property="likeCnt" column="likeCnt" />
+		<result property="userId" column="user_id" />
+		<result property="dislikeCnt" column="dislikeCnt" />
+		<association property="userVO" resultMap="userVOResultMap" />
+	</resultMap>
+	<resultMap id="userVOResultMap"
 		type="com.globalin.domain.UserVO">
 		<id property="userId" column="user_id" />
 		<result property="userPw" column="user_pw" />
@@ -41,28 +44,29 @@
 		<result property="userImg" column="user_img" />
 		<result property="userPoint" column="user_point" />
 	</resultMap>
-	 
-	 <select id="userReplyList" resultMap="ReplyResultMap">
-	 SELECT
-            r.reply
-            , r.replyDate
-            , a.title
-            , a.bno
-        FROM tbl_reply r
-            LEFT OUTER JOIN tbl_board a
-                ON a.bno = r.bno
-        WHERE user_id = #{userId}
-	 </select>
+	<select id="userReplyList" resultMap="ReplyResultMap">
+		SELECT
+		r.reply
+		, r.replyDate
+		, a.title
+		, a.bno
+		FROM tbl_reply r
+		LEFT OUTER JOIN tbl_board a
+		ON a.bno = r.bno
+		WHERE a.user_id = #{userId}
+	</select>
 	<insert id="insert">
-		insert into tbl_reply (rno, bno, reply, replyer, user_Id)
-		values(seq_reply.nextval, #{bno}, #{reply}, #{replyer},#{userId})
+		insert into tbl_reply (rno, bno, reply, replyer,
+		user_Id)
+		values(seq_reply.nextval, #{bno}, #{reply},
+		#{replyer},#{userId})
 	</insert>
-	
+
 	<select id="read" resultType="com.globalin.domain.ReplyVO">
 		select * from tbl_reply where bno =
 		#{bno}
 	</select>
-	
+
 	<update id="update">
 		update tbl_reply set reply = #{reply}, updatedate =
 		sysdate
@@ -71,19 +75,20 @@
 	<delete id="delete">
 		delete from tbl_reply where rno = #{rno}
 	</delete>
-	
+
 	<!-- 선택된 댓글 조회 -->
-	<select id="selectReply" resultType="com.globalin.domain.ReplyVO">
+	<select id="selectReply"
+		resultType="com.globalin.domain.ReplyVO">
 		SELECT
-				bno
-			  , rno
-			  , reply
-			  , replyer
-			  , replydate
-		  FROM tbl_reply
-		 WHERE rno = #{rno}
+		bno
+		, rno
+		, reply
+		, replyer
+		, replydate
+		FROM tbl_reply
+		WHERE rno = #{rno}
 	</select>
-	
+
 	<select id="getListWithPaging"
 		resultType="com.globalin.domain.ReplyVO">
 		<![CDATA[

@@ -53,6 +53,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getList(Criteria cri) {
 		return boardDao.getListWithPaging(cri);
 	}
+	
+	@Override
+	public List<BoardVO> getListWithType(Criteria cri, int btype) {
+		return boardDao.getListWithPagingWithType(cri, btype);
+	}
 
 	@Override
 	public int getTotalCount(Criteria cri) {
