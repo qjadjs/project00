@@ -34,33 +34,28 @@
         <span id="thisSlide">0</span> / <span id="allSlide">0</span>
     </div>
 
-    <article class="slides">
+    <article class="slides" style="width: 100%; height:100%; ">
     <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12870">
-        <img src="../resources/assets/j1.jpg" 
-  weight="300px" height="300px">
+        <img src="../resources/assets/j1.jpg" >
     </a>
     </article>
     <article class="slides">
     <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12869">
-        <img src="../resources/assets/j2.jpg" 
- weight="300px" height="300px">
+        <img src="../resources/assets/j2.jpg">
     </a>
     </article>
     <article class="slides">
     <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12866">
-        <img src="../resources/assets/j3.jpg" 
-  weight="300px" height="300px">
+        <img src="../resources/assets/j3.jpg">
   </a>
     </article>
     <article class="slides">
         <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12871">
-        <img src="../resources/assets/j4.jpg" 
-  weight="300px" height="300px">
+        <img src="../resources/assets/j4.jpg">
   </a>
     </article><!--5-->
     <article class="slides">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFLuKNSvms9Y8bhZhbrvLZVRF-3Cl5BwyiJQ&usqp=CAU" 
-  weight="300px" height="300px">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFLuKNSvms9Y8bhZhbrvLZVRF-3Cl5BwyiJQ&usqp=CAU">
     </article><!--6-->
     
     <div class="arrow prev" onclick = "prevNext(-1)">&#10096;</div>
@@ -119,7 +114,7 @@
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
-
+ 
    <script src="resources/js/scripts.js"></script>
    <script src="resources/js/animation.js"></script>
 </body>
