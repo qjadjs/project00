@@ -17,7 +17,7 @@
 >>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 ㅇㅇdd
 dd
-
+fkdlt
 ------------------개추------------------------
 create table tbl_like(
 LIKENO NUMBER NOT NULL PRIMARY KEY ,
