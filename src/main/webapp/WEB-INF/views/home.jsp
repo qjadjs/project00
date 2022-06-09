@@ -35,27 +35,27 @@
     </div>
 
     <article class="slides" style="width: 100%; height:100%; ">
-    <a href="http://localhost:9020/board/get?bno=12870">
+    <a href="/board/get?bno=12870">
         <img src="../resources/assets/j1.jpg" >
     </a>
     </article>
     <article class="slides">
-    <a href="http://localhost:9020/board/get?bno=12869">
+    <a href="/board/get?bno=12869">
         <img src="../resources/assets/j2.jpg">
     </a>
     </article>
     <article class="slides">
-    <a href="http://localhost:9020/board/get?bno=12866">
+    <a href="/board/get?bno=12866">
         <img src="../resources/assets/j3.jpg">
   </a>
     </article>
     <article class="slides">
-        <a href="http://localhost:9020/board/get?bno=12871">
+        <a href="/board/get?bno=12871">
         <img src="../resources/assets/j4.jpg">
   </a>
     </article><!--5-->  
     <article class="slides">
-        <a href="http://localhost:9020/board/get?bno=12885">
+        <a href="/board/get?bno=12885">
         <img src="../resources/assets/j5.jpg">
   </a>
     </article>
