@@ -35,6 +35,17 @@
       .re {
         word-break: keep-all;
       }
+     .get-content {
+	cursor: pointer;
+}
+#title3:hover{
+		color:white;
+        background-color: gray;
+    }
+    #title4:hover{
+		color:white;
+        background-color: gray;
+    }
 </style>
 </head>
 <body class="b1">
