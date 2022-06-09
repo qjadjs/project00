@@ -100,16 +100,16 @@
          </div>
          <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
-         <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
-         <div  style="margin-right:1px;">
-   <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
-</div>
-<div  style="margin-right:1px;">
-   <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
-</div>
-</div>
          
          </div>
+         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
+         <div  style="margin-right:1px;">
+   <button style="background:white; border-color:green; color:black;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"><img src="/resources/assets/up.jpg" width="30" height="30"> ${board.likeCnt}</button>
+</div>
+<div  style="margin-right:1px;">
+   <button style="background:white; border-color:red; color:black;" type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;"><img src="/resources/assets/down.jpg" width="30" height="30"> ${board.dislikeCnt}</button>
+</div>
+</div>
         
         <div class="modify-remove-div">
          <c:choose>
