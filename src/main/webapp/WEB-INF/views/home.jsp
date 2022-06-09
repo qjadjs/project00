@@ -35,29 +35,33 @@
     </div>
 
     <article class="slides">
-    <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=4201">
-        <img src="https://img.freepik.com/free-vector/like-and-dislike-thumbs-up-and-thumbs-down-icons_97458-346.jpg" 
+    <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12870">
+        <img src="../resources/assets/j1.jpg" 
   weight="300px" height="300px">
     </a>
-    </article><!--1-->
+    </article>
     <article class="slides">
     <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12869">
-        <img src="https://thumb.mtstarnews.com/06/2021/02/2021021215085758866_1.jpg/dims/optimize" 
- weight="50%" height="300px">
+        <img src="../resources/assets/j2.jpg" 
+ weight="300px" height="300px">
     </a>
-    </article><!--2-->
+    </article>
     <article class="slides">
-        <img src="https://cdn.imweb.me/upload/S20190621aa2b1db4ac0c4/1b3382a2f8456.png" 
+    <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12866">
+        <img src="../resources/assets/j3.jpg" 
   weight="300px" height="300px">
-    </article><!--3-->
+  </a>
+    </article>
     <article class="slides">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7nqxR48QMxB1sufUyNnCioU9cGNlovgfdow&usqp=CAU" 
+        <a href="http://localhost:9020/board/get?pageNum=1&amount=10&type=&keyword=&bno=12871">
+        <img src="../resources/assets/j4.jpg" 
   weight="300px" height="300px">
-    </article><!--4-->
+  </a>
+    </article><!--5-->
     <article class="slides">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFLuKNSvms9Y8bhZhbrvLZVRF-3Cl5BwyiJQ&usqp=CAU" 
   weight="300px" height="300px">
-    </article><!--4-->
+    </article><!--6-->
     
     <div class="arrow prev" onclick = "prevNext(-1)">&#10096;</div>
 <div class="arrow next" onclick = "prevNext(1)">&#10097;</div> 
