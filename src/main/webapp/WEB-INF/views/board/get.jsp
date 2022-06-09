@@ -63,31 +63,43 @@
             
             <br>
             
-         <div id="t3" style="min-height:250px; max-height:1000px;">
+         <div id="t3" style="min-height:500px; max-height:1000px;">
           
          <br>
          
+<<<<<<< HEAD
          <div style="display:flex">
          <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
+=======
+
+         <div id="div-img" style="display:flex; justify-content:center;">
+         <div id="title1" name="content" class="get-content">
+
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
+<<<<<<< HEAD
          <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
          <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
+=======
+         <img id="vs-img" src="/resources/assets/vs.png">
+         <div id="title2" name="content" class="get-content">
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
          <div>
          <div id="title3" name="content" class="get-content"
-      style="float: left; margin-top: -1rem; border: solid 1px;width: 50%; min-width:50%; text-align: center;border-radius: 10px; font:bold;">
+      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
          <div id="title4" name="content" class="get-content"
-         style="float: right; margin-top: -1rem; border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold;">
+         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
-         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
+         <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
          <div  style="margin-right:1px;">
    <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
 </div>
@@ -148,22 +160,23 @@
         작성 날짜 :  <fmt:formatDate value="${replyList.replyDate}" pattern="yyyy-MM-dd" />
         </p>
  
-        <p style="width:350px;" class="re">${replyList.reply}</p>     
+        <p style="width:350px;" class="re">${replyList.reply}
+        </p>     
      <div>
-     <c:choose>
-     <c:when test="${login.userName == replyList.replyer}">
-        <button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
-        <button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
-        </c:when>
-        <c:otherwise>      
-        </c:otherwise>
-     </c:choose>          
-        <hr>       
-   </div>
+     <c:if test="${login.userName == replyList.replyer}">
+  		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
+  		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
+  		</c:if>       
+  		<c:if test="${login.userName != null}">  		 
+       
+  		</c:if>
+  		<hr> 		
+	</div>
       </li>
     </c:forEach>   
   </ol>
 </div>
+
 
       
       <div class="panel-footer" style="height:100px; background:white; border-top : 0;">
@@ -188,7 +201,7 @@
             </c:when>
             <c:otherwise>
             <br> <br>
-            <input value="댓글 기능은 로그인후 이용 가능합니다"/> <br>
+            <input style="width:100%; text-align:center; font-size:15px" value="댓글 기능은 로그인후 이용 가능합니다"/> <br>
             <input id="subBtn2" type="button" value="목록"
             onclick="location.href='/board/list'" />
             </c:otherwise>
@@ -209,7 +222,7 @@
            height: 100,
            disableResizeEditor: true,
          toolbar: [
-            ['fontsize', ['fontsize']],
+            
             ['style', ['bold','strikethrough']],
             ['insert',['picture' ]],
          ],
@@ -295,7 +308,8 @@
       var sreply = $("#summernote");
       var sreplyer = "${login.userName}";
       var sbnoVal = '<c:out value="${board.bno}"/>';
-
+	  var suserId = "${login.userId}";
+      
       $("#subBtn").on("click", function(e) {
          // name 속성이 reply인 input 찾아오기 : 댓글 내용
          // name 속성이 replyer 인 input 찾아아기 : 작성자
@@ -303,14 +317,15 @@
          var reply = {
             reply : sreply.val(),
             replyer : sreplyer,
-            bno : sbnoVal
+            bno : sbnoVal,
+            userId : suserId
             
          };
          
          
          // add(reply, callback)
          replyService.add(reply, function(result) {
-            alert(result);
+            
          
             showList(-1);
             $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화

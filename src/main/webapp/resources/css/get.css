@@ -155,6 +155,17 @@ html {
     background-color: #fff;
     border-color: #0d6efd;
 }
-img{
-   width: 250px !important;
+#div-img > div > p > img {
+	width:400px !important;
+	height:400px !important; 
+}
+#vs-img {
+	max-width: 150px;
+    max-height: 100px;
+    margin-top: 150px;
+#reply-input {
+
+min-width: 100%;
+text-align: center;
+font-size: 15px;
 }

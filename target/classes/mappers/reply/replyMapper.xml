@@ -44,7 +44,6 @@
 		<result property="userImg" column="user_img" />
 		<result property="userPoint" column="user_point" />
 	</resultMap>
-
 	<select id="userReplyList" resultMap="ReplyResultMap">
 		SELECT
 		r.reply
@@ -54,11 +53,13 @@
 		FROM tbl_reply r
 		LEFT OUTER JOIN tbl_board a
 		ON a.bno = r.bno
-		WHERE user_id = #{userId}
+		WHERE a.user_id = #{userId}
 	</select>
 	<insert id="insert">
-		insert into tbl_reply (rno, bno, reply, replyer)
-		values(seq_reply.nextval, #{bno}, #{reply}, #{replyer})
+		insert into tbl_reply (rno, bno, reply, replyer,
+		user_Id)
+		values(seq_reply.nextval, #{bno}, #{reply},
+		#{replyer},#{userId})
 	</insert>
 
 	<select id="read" resultType="com.globalin.domain.ReplyVO">

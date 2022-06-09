@@ -5,11 +5,17 @@ import java.util.Date;
 public class ReplyVO {
 
 	private int rno, bno;
-	private String reply, replyer;
+	private String reply, replyer, userId;
 	private Date replyDate, updateDate;
 	private UserVO userVO;
 	private BoardVO boardVO;
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public int getRno() {
 		return rno;
 	}
@@ -61,8 +67,9 @@ public class ReplyVO {
 	}
 	@Override
 	public String toString() {
-		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", reply=" + reply + ", replyer=" + replyer + ", replyDate="
-				+ replyDate + ", updateDate=" + updateDate + ", userVO=" + userVO + ", boardVO=" + boardVO + "]";
+		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", reply=" + reply + ", replyer=" + replyer + ", userId="
+				+ userId + ", replyDate=" + replyDate + ", updateDate=" + updateDate + ", userVO=" + userVO
+				+ ", boardVO=" + boardVO + "]";
 	}
 	
 }
