@@ -49,6 +49,7 @@
          <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
          <input type="hidden" name="keyword"
             value='<c:out value="${cri.keyword}"/>'>
+            <input type="hidden" name="type" value='<c:out value="${board.btype}"/>'/>
       </div>
       
             <div class="hh1" name="title" class="get-title">
@@ -66,14 +67,24 @@
           
          <br>
          
+<<<<<<< HEAD
+         <div style="display:flex">
+         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
+=======
 
          <div id="div-img" style="display:flex; justify-content:center;">
          <div id="title1" name="content" class="get-content">
 
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
+<<<<<<< HEAD
+         <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
+         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
+=======
          <img id="vs-img" src="/resources/assets/vs.png">
          <div id="title2" name="content" class="get-content">
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
@@ -86,6 +97,7 @@
          style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
+         <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
          <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
          <div  style="margin-right:1px;">
@@ -156,7 +168,7 @@
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
   		<c:if test="${login.userName != null}">  		 
-        <button type="button" class="rereply" style="border-radius: 0.25rem; border-color: white;">답글</button>
+       
   		</c:if>
   		<hr> 		
 	</div>
@@ -223,7 +235,7 @@
          
    $(document).ready(function() {
       $('#summernote').summernote(setting);
-         
+         console.log("btype :" + "${board.btype}");
       showList(1);
 
       function showList(page) {
@@ -313,7 +325,7 @@
          
          // add(reply, callback)
          replyService.add(reply, function(result) {
-            alert(result);
+            
          
             showList(-1);
             $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화
@@ -430,5 +442,51 @@
                       }
                   }
               });
+       }
+       function updateSelectA(){
+    	   var stype = 'a';
+    	   $.ajax({
+               type : "POST",  
+               url : "/board/updateSelectA",       
+               dataType : "json",   
+               data : {'bno' : bno, 'userId' : userId, 'stype' : stype},
+               error : function(){
+                  alert("로그인 후 이용 가능합니다");
+               },
+               success : function(selectCheck) {
+                   
+            	   if(selectCheck == 0){
+                	   alert("선택하셨습니다");
+                      location.reload();
+                   }
+                   else if (selectCheck == 1){
+                	   alert("선택이 취소되었습니다");
+                      location.reload();
+                   }
+               }
+           });
+       }
+       function updateSelectB(){
+    	   var stype = 'b';
+    	   $.ajax({
+    		   type : "POST",
+    		   url : "/board/updateSelectB",
+    		   dataType : "json",
+    		   data : {'bno' : bno, 'userId' : userId, 'stype' : stype},
+               error : function(){
+                  alert("로그인 후 이용 가능합니다");
+               },
+               success : function(selectCheck) {
+                   
+                       if(selectCheck == 0){
+                    	   alert("선택하셨습니다");
+                          location.reload();
+                       }
+                       else if (selectCheck == 1){
+                    	   alert("선택이 취소되었습니다");
+                          location.reload();
+                   }
+               }
+           });
        }
 </script>

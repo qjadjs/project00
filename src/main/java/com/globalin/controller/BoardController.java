@@ -43,11 +43,13 @@ import com.globalin.domain.Criteria;
 import com.globalin.domain.Page;
 import com.globalin.domain.ReplyVO;
 import com.globalin.domain.SearchCriteria;
+import com.globalin.domain.SelectVO;
 import com.globalin.domain.UserVO;
 import com.globalin.service.BoardService;
 import com.globalin.service.DisLikeService;
 import com.globalin.service.LikeService;
 import com.globalin.service.ReplyService;
+import com.globalin.service.SelectService;
 import com.google.gson.JsonObject;
 
 @Controller
@@ -57,24 +59,26 @@ public class BoardController {
    
    private BoardService service;
 
-   private BoardDAO dao;
-   
-   private LikeDAO Ldao;
-   
-   private LikeService Lservice;
-   
-   private DisLikeService Dservice;
+	private BoardDAO dao;
+	
+	private LikeDAO Ldao;
+	
+	private LikeService Lservice;
+	
+	private DisLikeService Dservice;
+	
+	private SelectService Sservice;
 
-   @Inject
-   public BoardController(ReplyService replyService, BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice) {
-      this.replyService = replyService;
-      this.service = service;
-      this.dao = dao;
-      this.Ldao = Ldao;
-      this.Lservice = Lservice;
-      this.Dservice = Dservice;
-   }
-
+	@Inject
+	public BoardController(ReplyService replyService, BoardService service, BoardDAO dao,LikeDAO Ldao,LikeService Lservice, DisLikeService Dservice, SelectService Sservice) {
+		this.replyService = replyService;
+		this.service = service;
+		this.dao = dao;
+		this.Ldao = Ldao;
+		this.Lservice = Lservice;
+		this.Dservice = Dservice;
+		this.Sservice = Sservice;
+	}
 
    private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
@@ -219,17 +223,67 @@ public class BoardController {
             Dservice.updateDisLikeCheck(bno, userId);//like테이블 구분자 1
          }else if(dislikeCheck == 1) {
             Dservice.updateDisLikeCheckCancel(bno, userId); //like테이블 구분자0
-                Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
+            Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
             Dservice.deleteDisLike(bno, userId); //like테이블 삭제
-         }
-         return dislikeCheck;
-   }
-   
-   
-   
-   
-   
-   
+			}
+			return dislikeCheck;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateSelectA" , method = RequestMethod.POST)
+	public int updateSelectA(int bno, String userId, String stype)throws Exception{
+			log.info("bno : " + bno + ", userId : " + userId + ", stype : " + stype);
+			int selectCheck = Sservice.selectCheck(bno, userId);
+			log.info("selectCheck : " + selectCheck);
+			SelectVO selectType = Sservice.selectType(bno, userId);
+			log.info("selectType : " + selectType);
+			if(selectCheck == 0) {
+				Sservice.insertSelect(bno, userId, stype); //select테이블 삽입
+				Sservice.updateSelect(bno);	//게시판테이블 +1
+				Sservice.updateSelectCheck(bno, userId);//select테이블 구분자 1
+				int AllCount = Sservice.selectAllCount(bno);
+				log.info("AllCount : " + AllCount);
+				int SCount = Sservice.selectCountCheck(bno, stype);
+				log.info("SCount : " + SCount);
+				float persent = ((float) SCount / (float) AllCount) * 100;
+				log.info("persent : " + persent);
+			}else if(selectCheck == 1 && (selectType.getStype().equals("a"))) {
+				Sservice.updateSelectCheckCancel(bno, userId); //select 테이블 구분자 0
+                Sservice.updateSelectCancel(bno); //게시판테이블 - 1
+				Sservice.deleteSelect(bno, userId); //selcet테이블 삭제
+			}
+			return selectCheck;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateSelectB" , method = RequestMethod.POST)
+	public int updateSelectB(int bno, String userId, String stype)throws Exception{
+			log.info("bno : " + bno + ", userId : " + userId + ", stype : " + stype);
+			int selectCheck = Sservice.selectCheck(bno, userId);
+			log.info("selectCheck : " + selectCheck);
+			SelectVO selectType = Sservice.selectType(bno, userId);
+			log.info("selectType : " + selectType);
+			if(selectCheck == 0) {
+				Sservice.insertSelect(bno, userId, stype); //select테이블 삽입
+				Sservice.updateSelect(bno);	//게시판테이블 +1
+				Sservice.updateSelectCheck(bno, userId);//select테이블 구분자 1
+				int AllCount = Sservice.selectAllCount(bno);
+				log.info("AllCount : " + AllCount);
+				int SCount = Sservice.selectCountCheck(bno, stype);
+				log.info("SCount : " + SCount);
+				float persent = ((float) SCount / (float) AllCount) * 100;
+				log.info("persent : " + persent);
+			}else if(selectCheck == 1 && (selectType.getStype().equals("b"))) {
+				Sservice.updateSelectCheckCancel(bno, userId); //select 테이블 구분자 0
+                Sservice.updateSelectCancel(bno); //게시판테이블 - 1
+				Sservice.deleteSelect(bno, userId); //selcet테이블 삭제
+			} 
+			return selectCheck;
+	}
+	
+	
+	
+	
 
    @RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
    @ResponseBody

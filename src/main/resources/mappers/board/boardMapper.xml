@@ -16,6 +16,7 @@
   <result property="likeCnt" column="likeCnt" />
   <result property="userId" column="user_id" />
   <result property="dislikeCnt" column="dislikeCnt" />
+  <result property="btype" column="btype"/>
   <association property="userVO" resultMap="userVOResultMap"/>
 </resultMap>
 <resultMap id="userVOResultMap"
@@ -38,75 +39,90 @@ SELECT
   WHERE user_id = #{userId}
   ORDER BY bno DESC, regdate DESC
 </select>
-   
-   <sql id="criteria">
-      <trim prefix="(" suffix=") AND " prefixOverrides="OR">
-         <foreach item="type" collection="typeArr">
-            <trim prefix="OR">
-               <choose>
-                  <when test="type == 'T'.toString()">
-                     title like '%'||#{keyword}||'%'
-                  </when>
-                  <when test="type == 'C'.toString()">
-                     content like '%'||#{keyword}||'%'
-                  </when>
-                  <when test="type == 'W'.toString()">
-                     writer like '%'||#{keyword}||'%'
-                  </when>
-               </choose>
-            </trim>
-         </foreach>
-      </trim>
-   </sql>
-   <insert id="create">
-      insert into tbl_board (bno, title, content1,content2,content3,content4, writer, user_id)
-      values
-      (seq_board.nextval,#{title},#{content1},#{content2},#{content3},#{content4},#{writer},#{userId})
-   </insert>
-   <insert id="insertSelectKey">
-      <selectKey keyProperty="bno" order="BEFORE" resultType="int">
-         select seq_board.nextval
-         from dual
-      </selectKey>
-      insert into tbl_board(bno, title,content1,content2,content3,content4, writer)
-      values(#{bno},#{title},#{content1},#{content2},#{content3},#{content4},#{writer})
-   </insert>
-   <select id="read"
-      resultType="com.globalin.domain.BoardVO">
-      select * from tbl_board where bno =
-      #{bno}
-   </select>
-   <update id="update">
-      update tbl_board set title = #{title},
-      content1=#{content1},content2=#{content2},content3=#{content3},content4=#{content4}, writer=#{writer},
-      updateDate = sysdate where bno =
-      #{bno}
-   </update>
-   <delete id="delete"> delete from tbl_board where bno = #{bno}
-   </delete>
-   <select id="listAll"
-      resultType="com.globalin.domain.BoardVO">
-      select * from tbl_board
-      where bno > 0
-   </select>
-   <select id="getListWithPaging"
-      resultType="com.globalin.domain.BoardVO">
-   <![CDATA[
-   select bno, title, content1,content2,content3,content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt
-            from (select /*+INDEX_DESC(tbl_board pk_board) */
-            rownum rn, bno, title, content1,content2,content3,content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt
-            from tbl_board
-            where 
-            ]]>
-      <include refid="criteria"></include>
-   <![CDATA[
-   rownum <= #{pageNum}*#{amount})
-            where rn > (#{pageNum}-1)*#{amount}
-            ]]>
-   </select>
-   <select id="getTotalCount" resultType="int">
-      select count(*) from
-      tbl_board where
+	
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content3 like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	<insert id="create">
+		insert into tbl_board (bno, title, content1, content2, content3, content4, writer, user_id, btype)
+		values
+		(seq_board.nextval,#{title},#{content1},#{content2},#{content3},#{content4},#{writer},#{userId}, #{btype})
+	</insert>
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select seq_board.nextval
+			from dual
+		</selectKey>
+		insert into tbl_board(bno, title, content1, content2, content3, content4, writer)
+		values(#{bno},#{title},#{content1},#{content2},#{content3},#{content4},#{writer})
+	</insert>
+	<select id="read"
+		resultType="com.globalin.domain.BoardVO">
+		select * from tbl_board where bno =
+		#{bno}
+	</select>
+	<update id="update">
+		update tbl_board set title = #{title},
+		content1= #{content1}, content2=#{content2}, content3=#{content3}, content4=#{content4}, writer=#{writer}, btype=#{btype},
+		updateDate = sysdate where bno =
+		#{bno}
+	</update>
+	<delete id="delete"> delete from tbl_board where bno = #{bno}
+	</delete>
+	<select id="listAll"
+		resultType="com.globalin.domain.BoardVO">
+		select * from tbl_board
+		where bno > 0
+	</select>
+	<select id="getListWithPaging"
+		resultType="com.globalin.domain.BoardVO">
+	<![CDATA[
+	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, btype
+				from (select /*+INDEX_DESC(tbl_board pk_board) */
+				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, btype
+				from tbl_board
+				where 
+				]]>
+		<include refid="criteria"></include>
+	<![CDATA[
+	rownum <= #{pageNum}*#{amount})
+				where rn > (#{pageNum}-1)*#{amount}
+				]]>
+	</select>
+	<select id="getListWithPagingWithType"
+		resultType="com.globalin.domain.BoardVO">
+	<![CDATA[
+	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, btype
+				from (select /*+INDEX_DESC(tbl_board pk_board) */
+				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, btype
+				from tbl_board
+				where 
+				]]>
+		<include refid="criteria"></include>
+	<![CDATA[
+	rownum <= #{pageNum}*#{amount} and btype = #{btype})
+				where rn > (#{pageNum}-1)*#{amount}
+				]]>
+	</select>
+	<select id="getTotalCount" resultType="int">
+		select count(*) from
+		tbl_board where
 
       <include refid="criteria"></include>
 

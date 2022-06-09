@@ -4,139 +4,154 @@ import java.util.Date;
 
 public class BoardVO {
 
-   private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt;
-   private String title, content1,content2,content3,content4, writer, userId;
-   private Date regDate, updateDate;
-   private UserVO userVO;
-   
-   public int getReplyCnt() {
-      return replyCnt;
-   }
+	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, btype, selectCnt;
+	private String title, content1, content2, content3, content4, writer, userId;
+	private Date regDate, updateDate;
+	private UserVO userVO;
 
-   public void setReplyCnt(int replyCnt) {
-      this.replyCnt = replyCnt;
-   }
+	public int getBno() {
+		return bno;
+	}
 
-   public int getBno() {
-      return bno;
-   }
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 
-   public void setBno(int bno) {
-      this.bno = bno;
-   }
+	public int getReplyCnt() {
+		return replyCnt;
+	}
 
-   public String getTitle() {
-      return title;
-   }
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
 
-   public void setTitle(String title) {
-      this.title = title;
-   }
+	public int getViewCnt() {
+		return viewCnt;
+	}
 
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
 
-   public String getContent1() {
-      return content1;
-   }
+	public int getLikeCnt() {
+		return likeCnt;
+	}
 
-   public void setContent1(String content1) {
-      this.content1 = content1;
-   }
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 
-   public String getContent2() {
-      return content2;
-   }
+	public int getDislikeCnt() {
+		return dislikeCnt;
+	}
 
-   public void setContent2(String content2) {
-      this.content2 = content2;
-   }
+	public void setDislikeCnt(int dislikeCnt) {
+		this.dislikeCnt = dislikeCnt;
+	}
 
-   public String getContent3() {
-      return content3;
-   }
+	public int getBtype() {
+		return btype;
+	}
 
-   public void setContent3(String content3) {
-      this.content3 = content3;
-   }
+	public void setBtype(int btype) {
+		this.btype = btype;
+	}
 
-   public String getContent4() {
-      return content4;
-   }
+	public String getTitle() {
+		return title;
+	}
 
-   public void setContent4(String content4) {
-      this.content4 = content4;
-   }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-   public String getWriter() {
-      return writer;
-   }
+	public String getContent1() {
+		return content1;
+	}
 
-   public void setWriter(String writer) {
-      this.writer = writer;
-   }
+	public void setContent1(String content1) {
+		this.content1 = content1;
+	}
 
-   public Date getRegDate() {
-      return regDate;
-   }
+	public String getContent2() {
+		return content2;
+	}
 
-   public void setRegDate(Date regDate) {
-      this.regDate = regDate;
-   }
+	public void setContent2(String content2) {
+		this.content2 = content2;
+	}
 
-   public Date getUpdateDate() {
-      return updateDate;
-   }
+	public String getContent3() {
+		return content3;
+	}
 
-   public void setUpdateDate(Date updateDate) {
-      this.updateDate = updateDate;
-   }
+	public void setContent3(String content3) {
+		this.content3 = content3;
+	}
 
-   public int getViewCnt() {
-      return viewCnt;
-   }
+	public String getContent4() {
+		return content4;
+	}
 
-   public void setViewCnt(int viewCnt) {
-      this.viewCnt = viewCnt;
-   }
+	public void setContent4(String content4) {
+		this.content4 = content4;
+	}
 
-   public int getLikeCnt() {
-      return likeCnt;
-   }
+	public String getWriter() {
+		return writer;
+	}
 
-   public void setLikeCnt(int likeCnt) {
-      this.likeCnt = likeCnt;
-   }
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
-   public String getUserId() {
-      return userId;
-   }
+	public String getUserId() {
+		return userId;
+	}
 
-   public void setUserId(String userId) {
-      this.userId = userId;
-   }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
+	public Date getRegDate() {
+		return regDate;
+	}
 
-   public int getDislikeCnt() {
-      return dislikeCnt;
-   }
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
-   public void setDislikeCnt(int dislikeCnt) {
-      this.dislikeCnt = dislikeCnt;
-   }
+	public Date getUpdateDate() {
+		return updateDate;
+	}
 
-   public UserVO getUserVO() {
-      return userVO;
-   }
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 
-   public void setUserVO(UserVO userVO) {
-      this.userVO = userVO;
-   }
-   
-   @Override
-   public String toString() {
-      return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-            + ", dislikeCnt=" + dislikeCnt + ", title=" + title + ", content1=" + content1 + ", content2="
-            + content2 + ", content3=" + content3 + ", content4=" + content4 + ", writer=" + writer + ", userId="
-            + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO=" + userVO + "]";
-   }
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+
+	public int getSelectCnt() {
+		return selectCnt;
+	}
+
+	public void setSelectCnt(int selectCnt) {
+		this.selectCnt = selectCnt;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
+				+ ", dislikeCnt=" + dislikeCnt + ", btype=" + btype + ", selectCnt=" + selectCnt + ", title=" + title
+				+ ", content1=" + content1 + ", content2=" + content2 + ", content3=" + content3 + ", content4="
+				+ content4 + ", writer=" + writer + ", userId=" + userId + ", regDate=" + regDate + ", updateDate="
+				+ updateDate + ", userVO=" + userVO + "]";
+	}
 
 }

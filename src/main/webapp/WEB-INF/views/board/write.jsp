@@ -7,13 +7,12 @@
 <meta charset="UTF-8">
 
 <!-- include libraries(jQuery, bootstrap) -->
-<link
-   href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-   rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script
-   src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script
-   src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- include summernote css/js-->
 <link
    href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
@@ -35,6 +34,12 @@
          <input id="t4" type="text" name="writer" value="${login.userName }" readonly="readonly"/>
          <input type="hidden" name="userId" value="${login.userId}">
             <input class="h1" type="text" name="title" placeholder="제목">
+            <select name="btype">
+            <option selected="selected" value="">게시판을 선택해주세요
+            <option value="1">정치
+            <option value="2">스포츠
+            <option value="3">문화
+            </select>
             <div class="y1">
          <textarea id="summernote1" name="content1"></textarea>
          <textarea id="summernote2" name="content2"></textarea>
@@ -105,6 +110,7 @@
       var title = frm.title.value;
       var content3 = frm.content3.value;
       var content4 = frm.content4.value;
+      var btype = frm.btype.value;
       if (title.trim() == '') {
          alert("제목을 입력해주세요");
          return false;

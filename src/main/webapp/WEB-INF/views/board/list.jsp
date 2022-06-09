@@ -13,11 +13,8 @@
 </head>
 <!-- 헤더-->
 <body>
-<form action="/chat" method="get">
-</form>
 <div class="slide-in">
 <%@include file ="../board/ListHeader.jsp" %>
-   
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header"></h1>
@@ -28,6 +25,14 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				전체글
+			</div>
+			<div>
+			<select id="btype">
+			<option value="0" selected="selected">전체 글보기
+			<option value="1">정치
+			<option value="2">스포츠
+			<option value="3">문화
+			</select>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
@@ -141,7 +146,7 @@
 	$(document).ready(function() {
 		var result = "<c:out value = '${result}'/>";
 		
-
+		
 	
 		$("#writeBtn").on("click", function() {
 			self.location = "/board/write";
