@@ -223,11 +223,11 @@ public class BoardController {
             Dservice.updateDisLikeCheck(bno, userId);//like테이블 구분자 1
          }else if(dislikeCheck == 1) {
             Dservice.updateDisLikeCheckCancel(bno, userId); //like테이블 구분자0
-            Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
+                Dservice.updateDisLikeCancel(bno); //게시판테이블 - 1
             Dservice.deleteDisLike(bno, userId); //like테이블 삭제
-			}
-			return dislikeCheck;
-	}
+         }
+         return dislikeCheck;
+   }
 	
 	@ResponseBody
 	@RequestMapping(value = "/updateSelectA" , method = RequestMethod.POST)
