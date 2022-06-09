@@ -4,12 +4,34 @@ import java.util.Date;
 
 public class ReplyVO {
 
-	private int rno, bno;
+	//regroup 그룹 번호 (모댓글과 그곳에 속한 답글은 같은 그룹을 가진다)
+	//reorder 그룹 내 댓글 순서 (오랜된 글 ~최신글 오름차순)
+	//redepth 그룹 내 댓글 깊이 (댓글인지 대댓글인지)
+	
+	private int rno, bno, regroup, reorder, redepth;
 	private String reply, replyer, userId;
 	private Date replyDate, updateDate;
 	private UserVO userVO;
 	private BoardVO boardVO;
 	
+	public int getRegroup() {
+		return regroup;
+	}
+	public void setRegroup(int regroup) {
+		this.regroup = regroup;
+	}
+	public int getReorder() {
+		return reorder;
+	}
+	public void setReorder(int reorder) {
+		this.reorder = reorder;
+	}
+	public int getRedepth() {
+		return redepth;
+	}
+	public void setRedepth(int redepth) {
+		this.redepth = redepth;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -67,9 +89,9 @@ public class ReplyVO {
 	}
 	@Override
 	public String toString() {
-		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", reply=" + reply + ", replyer=" + replyer + ", userId="
-				+ userId + ", replyDate=" + replyDate + ", updateDate=" + updateDate + ", userVO=" + userVO
-				+ ", boardVO=" + boardVO + "]";
+		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", regroup=" + regroup + ", reorder=" + reorder + ", redepth="
+				+ redepth + ", reply=" + reply + ", replyer=" + replyer + ", userId=" + userId + ", replyDate="
+				+ replyDate + ", updateDate=" + updateDate + ", userVO=" + userVO + ", boardVO=" + boardVO + "]";
 	}
 	
 }
