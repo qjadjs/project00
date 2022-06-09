@@ -69,21 +69,21 @@
          
 
          <div id="div-img" style="display:flex; justify-content:center;">
-         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
+         <div id="title1" name="content" class="get-content" >
 
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
          <img id="vs-img" src="/resources/assets/vs.png">
-         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
+         <div id="title2" name="content" class="get-content" >
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
          <div>
-         <div id="title3" name="content" class="get-content"
+         <div id="title3" name="content" class="get-content" onclick="updateSelectA(); return false;"
       style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
-         <div id="title4" name="content" class="get-content"
+         <div id="title4" name="content" class="get-content" onclick="updateSelectB(); return false;"
          style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
@@ -157,12 +157,9 @@
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
-<<<<<<< HEAD
-=======
   		<c:if test="${login.userName != null}">  		 
        
   		</c:if>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
   		<hr> 		
 	</div>
       </li>
