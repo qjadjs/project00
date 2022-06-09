@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, type;
+	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, btype;
 	private String title, content1, content2, content3, content4, writer, userId;
 	private Date regDate, updateDate;
 	private UserVO userVO;
@@ -49,12 +49,13 @@ public class BoardVO {
 		this.dislikeCnt = dislikeCnt;
 	}
 
-	public int getType() {
-		return type;
+
+	public int getBtype() {
+		return btype;
 	}
 
-	public void setType(int type) {
-		this.type = type;
+	public void setBtype(int btype) {
+		this.btype = btype;
 	}
 
 	public String getTitle() {
@@ -140,7 +141,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", dislikeCnt=" + dislikeCnt + ", type=" + type + ", title=" + title + ", content1=" + content1
+				+ ", dislikeCnt=" + dislikeCnt + ", btype=" + btype + ", title=" + title + ", content1=" + content1
 				+ ", content2=" + content2 + ", content3=" + content3 + ", content4=" + content4 + ", writer=" + writer
 				+ ", userId=" + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO=" + userVO
 				+ "]";

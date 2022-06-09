@@ -67,10 +67,10 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-	public List<BoardVO> getListWithPagingWithType(Criteria cri, int type) {
+	public List<BoardVO> getListWithPagingWithType(Criteria cri, int btype) {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("cri", cri);
-		paramMap.put("type", type);
+		paramMap.put("btype", btype);
 		return sqlSession.selectList(NameSpace + ".getListWithPagingWithType", paramMap);
 	}
 

@@ -22,7 +22,7 @@ public interface BoardService {
 
 	List<BoardVO> getList(Criteria cri);
 	
-	List<BoardVO> getListWithType(Criteria cri, int type);
+	List<BoardVO> getListWithType(Criteria cri, int btype);
 
 	int getTotalCount(Criteria cri);
 

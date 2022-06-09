@@ -49,7 +49,7 @@
          <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
          <input type="hidden" name="keyword"
             value='<c:out value="${cri.keyword}"/>'>
-            <input type="hidden" name="type" value='<c:out value="${board.type}"/>'/>
+            <input type="hidden" name="type" value='<c:out value="${board.btype}"/>'/>
       </div>
       
             <div class="hh1" name="title" class="get-title">
@@ -67,16 +67,12 @@
           
          <br>
          
-<<<<<<< HEAD
-         <div id="title3" name="content" class="get-content">
-=======
          <div style="display:flex">
-         <div id="title1" name="content" class="get-content">
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
+         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
          <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
-         <div id="title2" name="content" class="get-content">
+         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
@@ -89,6 +85,7 @@
          style="float: right; margin-top: -1rem; border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font:bold;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
+         <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
          <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
          <div  style="margin-right:1px;">
@@ -225,7 +222,7 @@
          
    $(document).ready(function() {
       $('#summernote').summernote(setting);
-         
+         console.log("btype :" + "${board.btype}");
       showList(1);
 
       function showList(page) {
@@ -430,5 +427,51 @@
                       }
                   }
               });
+       }
+       function updateSelectA(){
+    	   var stype = 'a';
+    	   $.ajax({
+               type : "POST",  
+               url : "/board/updateSelectA",       
+               dataType : "json",   
+               data : {'bno' : bno, 'userId' : userId, 'stype' : stype},
+               error : function(){
+                  alert("로그인 후 이용 가능합니다");
+               },
+               success : function(selectCheck) {
+                   
+            	   if(selectCheck == 0){
+                	   alert("선택하셨습니다");
+                      location.reload();
+                   }
+                   else if (selectCheck == 1){
+                	   alert("선택이 취소되었습니다");
+                      location.reload();
+                   }
+               }
+           });
+       }
+       function updateSelectB(){
+    	   var stype = 'b';
+    	   $.ajax({
+    		   type : "POST",
+    		   url : "/board/updateSelectB",
+    		   dataType : "json",
+    		   data : {'bno' : bno, 'userId' : userId, 'stype' : stype},
+               error : function(){
+                  alert("로그인 후 이용 가능합니다");
+               },
+               success : function(selectCheck) {
+                   
+                       if(selectCheck == 0){
+                    	   alert("선택하셨습니다");
+                          location.reload();
+                       }
+                       else if (selectCheck == 1){
+                    	   alert("선택이 취소되었습니다");
+                          location.reload();
+                   }
+               }
+           });
        }
 </script>

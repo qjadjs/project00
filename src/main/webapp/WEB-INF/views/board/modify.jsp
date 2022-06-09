@@ -39,22 +39,23 @@
 				type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
 			<input id="title2" type="hidden" name="keyword"
 				value='<c:out value="${cri.keyword}"/>'> <br> <br>
-<<<<<<< HEAD
-			<textarea id="summernote" name="content1">${board.content1}</textarea>
-			<br> <input id="subBtn" type="button" value="수정"
-=======
+            <select name="btype">
+            <option value="">게시판을 선택해주세요
+            <option value="1" >정치
+            <option value="2">스포츠
+            <option value="3">문화
+			</select>            
 				<div class="y1">
-			 <textarea id="summernote1" name="content1">${board.content1}</textarea>
-         <textarea id="summernote2" name="content2">${board.content2}</textarea>
+			 <textarea id="summernote1" name="content1"><c:out value="${board.content1}"/></textarea>
+         <textarea id="summernote2" name="content2"><c:out value="${board.content2}"/></textarea>
          </div>
 			<br> 
 			<div class="y2">
-			 <textarea id="t1" name="content3">${board.content3}</textarea>
-         <textarea id="t2" name="content4">${board.content4}</textarea>
+			 <textarea id="t1" name="content3"><c:out value="${board.content3}"/></textarea>
+         <textarea id="t2" name="content4"><c:out value="${board.content4}"/></textarea>
          </div>
          <br>
 			<input id="subBtn" type="button" value="수정"
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
 				onclick="goWrite(this.form)" /> <input id="subBtn2" type="button"
 				value="목록" onclick="location.href='/board/list'" />
 		</form>
@@ -110,9 +111,12 @@ var setting = {
 	function goWrite(frm) {
 		var title = frm.title.value;
 		var writer = frm.writer.value;
+		var content1 = frm.content1.value;
+		var content2 = frm.content2.value;
 		var content3 = frm.content3.value;
-	      var content4 = frm.content4.value;
-
+	    var content4 = frm.content4.value;
+		var btype = frm.btype.value;
+		var bno = frm.bno.value;
 		if (title.trim() == '') {
 			alert("제목을 입력해주세요");
 			return false;
