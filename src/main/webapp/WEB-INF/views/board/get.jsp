@@ -155,9 +155,6 @@
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
-  		<c:if test="${login.userName != null}">  		 
-        <button type="button" class="rereply" style="border-radius: 0.25rem; border-color: white;">답글</button>
-  		</c:if>
   		<hr> 		
 	</div>
       </li>
@@ -324,7 +321,8 @@
 
       //댓글 수정view
    $(".replyUpdateBtn").on("click", function(){
-         location.href = "/board/replyUpdateView?bno=${board.bno}"
+         var url= "/board/replyUpdateView?bno=${board.bno}"
+         window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500")
                        + "&pageNum=${cri.pageNum}"
                        + "&amount=${cri.amount}"
                        + "&type=${cri.type}"
