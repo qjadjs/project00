@@ -27,7 +27,7 @@
 				전체글
 			</div>
 			<div>
-			<select id="btype">
+			<select id="btype" onchange="listChange(this)">
 			<option value="0" selected="selected">전체 글보기
 			<option value="1">정치
 			<option value="2">스포츠
@@ -194,6 +194,10 @@
 			searchForm.submit();
 		})
 	})
+	function listChange(obj){
+		
+	}
+	
 </script>
 </body>
 </html>

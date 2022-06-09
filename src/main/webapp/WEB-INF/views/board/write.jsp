@@ -35,7 +35,7 @@
          <input type="hidden" name="userId" value="${login.userId}">
             <input class="h1" type="text" name="title" placeholder="제목">
             <select name="btype">
-            <option selected="selected" value="">게시판을 선택해주세요
+            <option selected="selected" value="0">게시판을 선택해주세요
             <option value="1">정치
             <option value="2">스포츠
             <option value="3">문화
@@ -119,6 +119,11 @@
       if (content3.trim() && content4.trim() == '') {
          alert("내용을 입력해주세요");
          return false;
+      }
+      
+      if(btype.trim() == 0){
+    	  alert("게시판을 선택해주세요");
+    	  return false;
       }
       frm.submit();
    };

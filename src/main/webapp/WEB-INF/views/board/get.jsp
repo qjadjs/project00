@@ -67,24 +67,14 @@
           
          <br>
          
-<<<<<<< HEAD
-         <div style="display:flex">
-         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
-=======
 
          <div id="div-img" style="display:flex; justify-content:center;">
-         <div id="title1" name="content" class="get-content">
+         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
 
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
-<<<<<<< HEAD
-         <hr style=" height:300px; max-height:500px;width:0.5px; border-width:0; color:#000;background-color:gray; margin-top: -2rem; ">
-         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
-=======
          <img id="vs-img" src="/resources/assets/vs.png">
-         <div id="title2" name="content" class="get-content">
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
+         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
