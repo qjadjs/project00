@@ -51,7 +51,7 @@
         FROM tbl_reply r
             LEFT OUTER JOIN tbl_board a
                 ON a.bno = r.bno
-        WHERE user_id = #{userId}
+        WHERE a.user_id = #{userId}
 	 </select>
 	<insert id="insert">
 		insert into tbl_reply (rno, bno, reply, replyer, user_Id)

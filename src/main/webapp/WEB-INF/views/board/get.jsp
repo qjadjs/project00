@@ -156,7 +156,7 @@
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
   		<c:if test="${login.userName != null}">  		 
-        <button type="button" class="rereply" style="border-radius: 0.25rem; border-color: white;">답글</button>
+       
   		</c:if>
   		<hr> 		
 	</div>
@@ -313,7 +313,7 @@
          
          // add(reply, callback)
          replyService.add(reply, function(result) {
-            alert(result);
+            
          
             showList(-1);
             $('#summernote').summernote('reset');//댓글 등록시 텍스트 초기화
