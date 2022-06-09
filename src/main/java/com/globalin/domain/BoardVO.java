@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, btype;
+	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, btype, selectCnt;
 	private String title, content1, content2, content3, content4, writer, userId;
 	private Date regDate, updateDate;
 	private UserVO userVO;
@@ -48,7 +48,6 @@ public class BoardVO {
 	public void setDislikeCnt(int dislikeCnt) {
 		this.dislikeCnt = dislikeCnt;
 	}
-
 
 	public int getBtype() {
 		return btype;
@@ -138,13 +137,21 @@ public class BoardVO {
 		this.userVO = userVO;
 	}
 
+	public int getSelectCnt() {
+		return selectCnt;
+	}
+
+	public void setSelectCnt(int selectCnt) {
+		this.selectCnt = selectCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", dislikeCnt=" + dislikeCnt + ", btype=" + btype + ", title=" + title + ", content1=" + content1
-				+ ", content2=" + content2 + ", content3=" + content3 + ", content4=" + content4 + ", writer=" + writer
-				+ ", userId=" + userId + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO=" + userVO
-				+ "]";
+				+ ", dislikeCnt=" + dislikeCnt + ", btype=" + btype + ", selectCnt=" + selectCnt + ", title=" + title
+				+ ", content1=" + content1 + ", content2=" + content2 + ", content3=" + content3 + ", content4="
+				+ content4 + ", writer=" + writer + ", userId=" + userId + ", regDate=" + regDate + ", updateDate="
+				+ updateDate + ", userVO=" + userVO + "]";
 	}
 
 }
