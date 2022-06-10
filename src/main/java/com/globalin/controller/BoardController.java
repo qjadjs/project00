@@ -311,7 +311,7 @@ public class BoardController {
 	// 댓글 수정 Get
 	@RequestMapping(value = "/replyUpdateView", method = RequestMethod.GET)
 	public String replyUpdateView(ReplyVO replyVO, Criteria cri, Model model) throws Exception {
-		log.info("reply");
+		log.info("reply" + replyVO.getRno());
 
 		model.addAttribute("replyUpdate", replyService.selectReply(replyVO.getRno()));
 		model.addAttribute("cri", cri);
@@ -324,7 +324,6 @@ public class BoardController {
 	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
 	public String replyUpdate(ReplyVO replyVO, Criteria cri, RedirectAttributes rttr) throws Exception {
 		log.info("reply");
-
 		replyService.modify(replyVO);
 
 		rttr.addAttribute("bno", replyVO.getBno());

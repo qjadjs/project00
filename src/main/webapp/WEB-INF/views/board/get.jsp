@@ -171,12 +171,6 @@
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
-<<<<<<< HEAD
-=======
-  		<c:if test="${login.userName != null}">  		 
-       
-  		</c:if>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
   		<hr> 		
 	</div>
       </li>
@@ -344,12 +338,13 @@
       //댓글 수정view
    $(".replyUpdateBtn").on("click", function(){
          var url= "/board/replyUpdateView?bno=${board.bno}"
-         window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500")
-                       + "&pageNum=${cri.pageNum}"
-                       + "&amount=${cri.amount}"
-                       + "&type=${cri.type}"
-                       + "&keyword=${cri.keyword}"
-                       + "&rno="+$(this).attr("data-rno")
+        	 + "&pageNum=${cri.pageNum}"
+             + "&amount=${cri.amount}"
+             + "&type=${cri.type}"
+             + "&keyword=${cri.keyword}"
+             + "&rno="+$(this).attr("data-rno");
+             console.log(url);
+                      
       });
       
    //댓글 삭제 View

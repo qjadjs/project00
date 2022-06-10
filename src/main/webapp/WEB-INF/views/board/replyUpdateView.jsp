@@ -13,10 +13,12 @@
 			$(".close_btn").on("click", function(){
 				window.close();
 			})
-			$(".btn").on(click, function(){
+			$(".btn").on("click", function(e){
+				e.preventDefault();
+				$(".d1").submit();
 				opener.parent.location.reload();
 				alert("수정되었습니다.")
-				window.close();
+				
 			})
 		});
 	</script>
