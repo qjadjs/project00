@@ -17,6 +17,8 @@ public interface BoardService {
 	boolean delete(int bno) throws Exception;
 
 	List<BoardVO> listAll() throws Exception;
+	
+	List<BoardVO> listAllType(int btype) throws Exception;
 
 	void insertSelectKey(BoardVO board);
 
@@ -25,6 +27,8 @@ public interface BoardService {
 	List<BoardVO> getListWithType(Criteria cri);
 
 	int getTotalCount(Criteria cri);
+	
+	int getTotalCountType(int btype);
 
 	void updateReplyCnt(@Param("bno") int bno, @Param("amount") int amount);
 

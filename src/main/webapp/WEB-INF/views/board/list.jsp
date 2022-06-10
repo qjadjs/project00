@@ -29,9 +29,9 @@
 			<div>
 			<select id="btype" onchange="listChange(this)">
 			<option value="0" selected="selected">전체 글보기</option>
-			<option value="1">정치</option>
+			<option value="1">게임</option>
 			<option value="2">스포츠</option>
-			<option value="3">문화</option>
+			<option value="3">기타</option>
 			</select>
 			</div>
 			<div class="panel-body">
@@ -93,6 +93,7 @@
 							<!-- 페이지 정보 포함 -->
 							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }" /> 
 							<input type="hidden" name="amount" value="${pageMaker.cri.amount }" />
+							<input type="hidden" name="btype" value="${pageMaker.cri.btype }" />
 							<button class="btn-search">검색</button>
 							<input id="writeBtn" type="button" class="btn btn-xs pull-right" value=글쓰기>
 						</form>
@@ -108,6 +109,7 @@
 					<input type="hidden" name="amount" value="${pageMaker.cri.amount }" /> 
 					<input type="hidden" name="type" value="<c:out value='${pageMaker.cri.type }'/>" /> 
 					<input type="hidden" name="keyword" value="<c:out value='${pageMaker.cri.keyword }'/>" />
+					<input type="hidden" name="btype" value= "<c:out value='${pageMaker.cri.btype }'/>" />				
 				</form>
 				<div class="pull-right">
 					<ul class="pagination">
@@ -158,6 +160,7 @@
 			e.preventDefault();
 			console.log("click");
 			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+			actionForm.find("input[name='btype']").val();
 			actionForm.attr("action", "/board/list");
 			actionForm.submit();
 		})
@@ -168,7 +171,7 @@
 				actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
 				actionForm.attr("action","/board/get");
 			} else {
-				actionForm.find("input[name='bno']").val($(this).attr("href"))
+				actionForm.find("input[name='bno']").val($(this).attr("href"));
 			}
 			actionForm.submit();
 		})
@@ -196,28 +199,21 @@
 	})
 	function listChange(obj){
 		var sbtype = $("#btype").val();
-		var scri = {
-	 			  pageNum : 1, 
-	 			  amount : 10, 
-	 			  btype : sbtype,
-	 			  type : null, 
-	 			  keyword : null
-	 		   };
+		var cri = "${pageMaker.cri}";
+		var actionForm = $("#actionForm");
 		$.ajax({
- 		   type : "GET",
+ 		   type : "POST",
+ 		  dataType : "json",
  		   url : "/board/listCheck",
- 		   datatype: "json",
- 		   data : {'cri' : scri} ,
-            error : function(){
+ 		   data : {'cri' : cri, 'btype' : sbtype} ,
+            error : function(e){
+            	console.log(e);
                alert("오류가 발생하였습니다");
             },
-            success : function(list) {
-                		if(btype == 0){
-                			location.href='/board/list';
-                		}else if (btype != 0){
-                			$(this).list = list;
-                			location.reload();
-                		}
+            success : function(cri) {
+            	actionForm.find("input[name='btype']").val(sbtype);
+    			actionForm.attr("action", "/board/list");
+    			actionForm.submit();
             }
         }); 
 	}

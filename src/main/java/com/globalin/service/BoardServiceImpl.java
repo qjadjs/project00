@@ -43,6 +43,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> listAll() throws Exception {
 		return boardDao.listAll();
 	}
+	
+	@Override
+	public List<BoardVO> listAllType(int btype) throws Exception {
+		return boardDao.listAllType(btype);
+	}
 
 	@Override
 	public void insertSelectKey(BoardVO board) {
@@ -62,6 +67,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int getTotalCount(Criteria cri) {
 		return boardDao.getTotalCount(cri);
+	}
+	
+	@Override
+	public int getTotalCountType(int btype) {
+		return boardDao.getTotalCountType(btype);
 	}
 
 	@Override

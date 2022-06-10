@@ -83,23 +83,42 @@ public class BoardController {
 
 	private static Logger log = LoggerFactory.getLogger(BoardController.class);
 
+//	@RequestMapping(value = "/list", method = RequestMethod.GET)
+//	public void list(Criteria cri, Model model) {
+//		log.info("list : " + cri);
+//		model.addAttribute("list", service.getList(cri));
+//		int total = service.getTotalCount(cri);
+//		log.info("total : " + total);
+//		model.addAttribute("pageMaker", new Page(cri, total));
+//	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void list(Criteria cri, Model model) {
-		log.info("list : " + cri);
-		model.addAttribute("list", service.getList(cri));
-		int total = service.getTotalCount(cri);
-		log.info("total : " + total);
-		model.addAttribute("pageMaker", new Page(cri, total));
+		log.info("l"
+				+ "ist : " + cri);
+		if(cri.getBtype() == 0) {
+			List<BoardVO> list = service.getList(cri);
+			model.addAttribute("list", list);
+			log.info("list : " + list);
+			int total = service.getTotalCount(cri);
+			log.info("total : " + total);
+			model.addAttribute("pageMaker", new Page(cri, total));
+		}else if (cri.getBtype() != 0) {
+			List<BoardVO> list = service.getListWithType(cri);
+			model.addAttribute("list", list);
+			log.info("list : " + list);
+			int total = service.getTotalCountType(cri.getBtype());
+			log.info("total : " + total);
+			model.addAttribute("pageMaker", new Page(cri, total));
+		}
 	}
 
-	@RequestMapping(value = "/listCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/listCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public List<BoardVO> listWithType(@RequestParam("cri") Criteria cri) {
+	public Criteria listWithType(Criteria cri, int btype) {
 		log.info("cri : " + cri);
-		List<BoardVO> list = service.getListWithType(cri);
-		log.info("list : " + list);
-
-		return list;
+		cri.setBtype(btype);
+		return cri;
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
@@ -193,6 +212,16 @@ public class BoardController {
 		return "/board/get";
 
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/checkSelect", method = RequestMethod.POST)
+	public String checkSelect(String userId, int bno) throws Exception{
+		SelectVO select = Sservice.selectType(bno, userId);
+		String stype = select.getStype();
+		log.info("stype :" + stype);
+		return stype;
+	}
+	
 
 	@ResponseBody
 	@RequestMapping(value = "/updateLike", method = RequestMethod.POST)

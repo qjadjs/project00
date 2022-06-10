@@ -90,6 +90,10 @@ SELECT
 		select * from tbl_board
 		where bno > 0
 	</select>
+	<select id="" resultType="com.globalin.domain.BoardVO">
+		select * from tbl_board
+		where bno > 0 and btype = #{btype}
+	</select>
 	<select id="getListWithPaging"
 		resultType="com.globalin.domain.BoardVO">
 	<![CDATA[
@@ -124,6 +128,11 @@ SELECT
       <include refid="criteria"></include>
 
       bno > 0
+   </select>
+   <select id="getTotalCountType" resultType="int">
+   select count(*) from
+		tbl_board where
+      bno > 0 and btype = #{btype}
    </select>
 
    <select id="bestList1" resultType="com.globalin.domain.BoardVO">
