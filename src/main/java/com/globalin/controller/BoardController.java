@@ -91,7 +91,7 @@ public class BoardController {
 		model.addAttribute("pageMaker", new Page(cri, total));
 	}
 
-	@RequestMapping(value = "/listCheck", method = RequestMethod.POST)
+	@RequestMapping(value = "/listCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public List<BoardVO> listWithType(@RequestParam("cri") Criteria cri) {
 		log.info("cri : " + cri);

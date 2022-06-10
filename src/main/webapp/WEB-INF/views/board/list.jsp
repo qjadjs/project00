@@ -198,15 +198,15 @@
 		var sbtype = obj;
 		var cri = null;
 		$.ajax({
- 		   type : "POST",
+ 		   type : "GET",
  		   url : "/board/listCheck",
- 		   data : {'cri' : {
+ 		   data : cri {
  			  pageNum : 1, 
  			  amount : 10, 
  			  btype : sbtype,
  			  type : null, 
  			  keyword : null
- 		   } },
+ 		   } ,
             error : function(){
                alert("오류가 발생하였습니다");
             },

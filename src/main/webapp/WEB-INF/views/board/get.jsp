@@ -492,4 +492,10 @@
            });
        }
        
+       let All = ${board.selectCnt};
+       let Aselect = ${board.select_a};
+       let Bselect = ${board.select_b};
+       
+       
+       
 </script>
