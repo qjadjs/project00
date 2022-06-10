@@ -466,10 +466,10 @@
                    
             	   if(selectCheck == 0){
                 	   alert("선택하셨습니다");
-                      location.reload();
+                	   location.reload();
                    }
                    else if (selectCheck == 1){
-                	   alert("선택이 취소되었습니다");
+                	   alert("이미 선택하셧습니다");
                       location.reload();
                    }
                }
@@ -491,10 +491,10 @@
                    
                        if(selectCheck == 0){
                     	   alert("선택하셨습니다");
-                          location.reload();
+                    	   location.reload();
                        }
                        else if (selectCheck == 1){
-                    	   alert("선택이 취소되었습니다");
+                    	   alert("이미 선택하셧습니다.");
                           location.reload();
                    }
                }
