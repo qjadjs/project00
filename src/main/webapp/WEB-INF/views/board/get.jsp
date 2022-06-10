@@ -39,12 +39,12 @@
 	cursor: pointer;
 }
 #title3:hover{
-		color:white;
-        background-color: gray;
+		color:black;
+        background-color: #ffead8;
     }
     #title4:hover{
-		color:white;
-        background-color: gray;
+		color:black;
+        background-color: #ffead8;
     }
 </style>
 </head>
@@ -91,16 +91,19 @@
          </div>
          <div>
          <div id="title3" name="content" class="get-content" onclick="updateSelectA(); return false;"
-      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
+      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px; height:auto;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
+         
          <div id="title4" name="content" class="get-content" onclick="updateSelectB(); return false;"
-         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
+         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px; height:auto;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
-         
+         <div style="font-size:50px; text-align:center; font-style:bold;">
+         ${board.select_a }                     :                  ${board.select_b }
+         </div>
          </div>
          <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
          <div  style="margin-right:1px;">
@@ -446,7 +449,11 @@
               });
        }
        function updateSelectA(){
-    	   var stype = 'a';
+    	   $("#title3").css("background" , "#ff953e");
+    	   $("#title3").css("color" , "black");
+    	   
+
+    	   var stype = 'a'; 
     	   $.ajax({
                type : "POST",  
                url : "/board/updateSelectA",       
@@ -459,10 +466,10 @@
                    
             	   if(selectCheck == 0){
                 	   alert("선택하셨습니다");
-                      location.reload();
+                	   location.reload();
                    }
                    else if (selectCheck == 1){
-                	   alert("선택이 취소되었습니다");
+                	   alert("이미 선택하셧습니다");
                       location.reload();
                    }
                }
@@ -470,6 +477,8 @@
        }
        function updateSelectB(){
     	   var stype = 'b';
+    	   $("#title4").css("background" , "#ff953e");
+    	   $("#title4").css("color" , "black");
     	   $.ajax({
     		   type : "POST",
     		   url : "/board/updateSelectB",
@@ -482,10 +491,10 @@
                    
                        if(selectCheck == 0){
                     	   alert("선택하셨습니다");
-                          location.reload();
+                    	   location.reload();
                        }
                        else if (selectCheck == 1){
-                    	   alert("선택이 취소되었습니다");
+                    	   alert("이미 선택하셧습니다.");
                           location.reload();
                    }
                }

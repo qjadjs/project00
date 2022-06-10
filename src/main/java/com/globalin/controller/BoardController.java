@@ -269,9 +269,7 @@ public class BoardController {
 			float persent = ((float) SCount / (float) AllCount) * 100;
 			log.info("persent : " + persent);
 		} else if (selectCheck == 1 && (selectType.getStype().equals("a"))) {
-			Sservice.updateSelectCheckCancel(bno, userId); // select 테이블 구분자 0
-			Sservice.updateCancelA(bno); // 게시판테이블 - 1
-			Sservice.deleteSelect(bno, userId); // selcet테이블 삭제
+			return selectCheck;
 		}
 		return selectCheck;
 	}
@@ -295,9 +293,7 @@ public class BoardController {
 			float persent = ((float) SCount / (float) AllCount) * 100;
 			log.info("persent : " + persent);
 		} else if (selectCheck == 1 && (selectType.getStype().equals("b"))) {
-			Sservice.updateSelectCheckCancel(bno, userId); // select 테이블 구분자 0
-			Sservice.updateCancelB(bno);; // 게시판테이블 - 1
-			Sservice.deleteSelect(bno, userId); // selcet테이블 삭제
+		
 		}
 		return selectCheck;
 	}
