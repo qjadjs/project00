@@ -93,9 +93,9 @@ SELECT
 	<select id="getListWithPaging"
 		resultType="com.globalin.domain.BoardVO">
 	<![CDATA[
-	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, btype
+	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, btype, selectcnt, select_a, select_b
 				from (select /*+INDEX_DESC(tbl_board pk_board) */
-				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, btype
+				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, btype, selectcnt, select_a, select_b
 				from tbl_board
 				where 
 				]]>
@@ -108,15 +108,12 @@ SELECT
 	<select id="getListWithPagingWithType"
 		resultType="com.globalin.domain.BoardVO">
 	<![CDATA[
-	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, btype
+	select bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id,  dislikecnt, btype, selectcnt, select_a, select_b
 				from (select /*+INDEX_DESC(tbl_board pk_board) */
-				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, btype
+				rownum rn, bno, title, content1, content2, content3, content4, writer, regdate, updatedate, replycnt, viewcnt, likecnt, user_id, dislikecnt, btype, selectcnt, select_a, select_b
 				from tbl_board
-				where 
-				]]>
-		<include refid="criteria"></include>
-	<![CDATA[
-	rownum <= #{pageNum}*#{amount} and btype = #{btype})
+				where btype = #{btype} and
+	rownum <= #{pageNum}*#{amount})
 				where rn > (#{pageNum}-1)*#{amount}
 				]]>
 	</select>

@@ -9,6 +9,7 @@
 		<result property="reply" column="reply" />
 		<result property="replyer" column="replyer" />
 		<result property="replyDate" column="replyDate" />
+		<result property="userId" column="user_id" />
 		<result property="updateDate" column="updateDate" />
 		<association property="userVO" resultMap="userVOResultMap" />
 		<association property="boardVO"
@@ -45,15 +46,15 @@
 		<result property="userPoint" column="user_point" />
 	</resultMap>
 	<select id="userReplyList" resultMap="ReplyResultMap">
-		SELECT
-		r.reply
-		, r.replyDate
-		, a.title
-		, a.bno
-		FROM tbl_reply r
-		LEFT OUTER JOIN tbl_board a
-		ON a.bno = r.bno
-		WHERE a.user_id = #{userId}
+		   SELECT
+            r.reply
+            , r.replydate
+            , a.title
+            , a.bno
+        FROM tbl_reply r, tbl_board a
+        WHERE r.user_id = #{userId}
+       and r.bno = a.bno
+       ORDER BY bno DESC, regdate DESC
 	</select>
 	<insert id="insert">
 		insert into tbl_reply (rno, bno, reply, replyer,

@@ -23,4 +23,12 @@ public interface SelectDAO {
 	int selectCountCheck(int bno, String stype) throws Exception;
 	
 	int selectAllCount(int bno) throws Exception;
+	
+	void updateSelectAtype(int bno) throws Exception;
+	
+	void updateCancelA(int bno) throws Exception;
+	
+	void updateSelectBtype(int bno) throws Exception;
+	
+	void updateCancelB(int bno) throws Exception;
 }

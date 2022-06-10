@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, btype, selectCnt;
+	private int bno, replyCnt, viewCnt, likeCnt, dislikeCnt, btype, selectCnt, select_a, select_b;
 	private String title, content1, content2, content3, content4, writer, userId;
 	private Date regDate, updateDate;
 	private UserVO userVO;
@@ -145,13 +145,29 @@ public class BoardVO {
 		this.selectCnt = selectCnt;
 	}
 
+	public int getSelect_a() {
+		return select_a;
+	}
+
+	public void setSelect_a(int select_a) {
+		this.select_a = select_a;
+	}
+
+	public int getSelect_b() {
+		return select_b;
+	}
+
+	public void setSelect_b(int select_b) {
+		this.select_b = select_b;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", replyCnt=" + replyCnt + ", viewCnt=" + viewCnt + ", likeCnt=" + likeCnt
-				+ ", dislikeCnt=" + dislikeCnt + ", btype=" + btype + ", selectCnt=" + selectCnt + ", title=" + title
-				+ ", content1=" + content1 + ", content2=" + content2 + ", content3=" + content3 + ", content4="
-				+ content4 + ", writer=" + writer + ", userId=" + userId + ", regDate=" + regDate + ", updateDate="
-				+ updateDate + ", userVO=" + userVO + "]";
+				+ ", dislikeCnt=" + dislikeCnt + ", btype=" + btype + ", selectCnt=" + selectCnt + ", select_a="
+				+ select_a + ", select_b=" + select_b + ", title=" + title + ", content1=" + content1 + ", content2="
+				+ content2 + ", content3=" + content3 + ", content4=" + content4 + ", writer=" + writer + ", userId="
+				+ userId + ", regDate=" + regDate + ", updateDate=" + updateDate + ", userVO=" + userVO + "]";
 	}
 
 }

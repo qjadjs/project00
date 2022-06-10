@@ -98,4 +98,24 @@ public class SelectDAOImpl implements SelectDAO {
 		return sqlSession.selectOne(NameSpace + ".selectAllCount", bno);
 	}
 	
+	@Override
+	public void updateSelectAtype(int bno) throws Exception {
+		sqlSession.update(NameSpace + ".updateSelectAtype", bno);
+	}
+	
+	@Override
+	public void updateCancelA(int bno) throws Exception {
+		sqlSession.update(NameSpace + ".updateCancelA", bno);
+	}
+	
+	@Override
+	public void updateSelectBtype(int bno) throws Exception {
+		sqlSession.update(NameSpace + ".updateSelectBtype", bno);
+	}
+	
+	@Override
+	public void updateCancelB(int bno) throws Exception {
+		sqlSession.update(NameSpace + ".updateCancelB", bno);
+	}
+	
 }

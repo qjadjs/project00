@@ -35,6 +35,17 @@
       .re {
         word-break: keep-all;
       }
+     .get-content {
+	cursor: pointer;
+}
+#title3:hover{
+		color:black;
+        background-color: #ffead8;
+    }
+    #title4:hover{
+		color:black;
+        background-color: #ffead8;
+    }
 </style>
 </head>
 <body class="b1">
@@ -69,36 +80,39 @@
          
 
          <div id="div-img" style="display:flex; justify-content:center;">
-         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
+         <div id="title1" name="content" class="get-content" >
 
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
          <img id="vs-img" src="/resources/assets/vs.png">
-         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
+         <div id="title2" name="content" class="get-content" >
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
          <div>
-         <div id="title3" name="content" class="get-content"
-      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
+         <div id="title3" name="content" class="get-content" onclick="updateSelectA(); return false;"
+      style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px; height:auto;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
-         <div id="title4" name="content" class="get-content"
-         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
+         
+         <div id="title4" name="content" class="get-content" onclick="updateSelectB(); return false;"
+         style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px; height:auto;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
-         <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
+         <div style="font-size:50px; text-align:center; font-style:bold;">
+         ${board.select_a }                     :                  ${board.select_b }
+         </div>
+         </div>
+         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
          <div  style="margin-right:1px;">
-   <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
+   <button style="background:white; border-color:green; color:black;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"><img src="/resources/assets/up.jpg" width="30" height="30"> ${board.likeCnt}</button>
 </div>
 <div  style="margin-right:1px;">
-   <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
+   <button style="background:white; border-color:red; color:black;" type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;"><img src="/resources/assets/down.jpg" width="30" height="30"> ${board.dislikeCnt}</button>
 </div>
 </div>
-         
-         </div>
         
         <div class="modify-remove-div">
          <c:choose>
@@ -157,6 +171,12 @@
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
+<<<<<<< HEAD
+=======
+  		<c:if test="${login.userName != null}">  		 
+       
+  		</c:if>
+>>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
   		<hr> 		
 	</div>
       </li>
@@ -432,7 +452,11 @@
               });
        }
        function updateSelectA(){
-    	   var stype = 'a';
+    	   $("#title3").css("background" , "#ff953e");
+    	   $("#title3").css("color" , "black");
+    	   
+
+    	   var stype = 'a'; 
     	   $.ajax({
                type : "POST",  
                url : "/board/updateSelectA",       
@@ -445,10 +469,10 @@
                    
             	   if(selectCheck == 0){
                 	   alert("선택하셨습니다");
-                      location.reload();
+                	   location.reload();
                    }
                    else if (selectCheck == 1){
-                	   alert("선택이 취소되었습니다");
+                	   alert("이미 선택하셧습니다");
                       location.reload();
                    }
                }
@@ -456,6 +480,8 @@
        }
        function updateSelectB(){
     	   var stype = 'b';
+    	   $("#title4").css("background" , "#ff953e");
+    	   $("#title4").css("color" , "black");
     	   $.ajax({
     		   type : "POST",
     		   url : "/board/updateSelectB",
@@ -468,13 +494,20 @@
                    
                        if(selectCheck == 0){
                     	   alert("선택하셨습니다");
-                          location.reload();
+                    	   location.reload();
                        }
                        else if (selectCheck == 1){
-                    	   alert("선택이 취소되었습니다");
+                    	   alert("이미 선택하셧습니다.");
                           location.reload();
                    }
                }
            });
        }
+       
+       let All = ${board.selectCnt};
+       let Aselect = ${board.select_a};
+       let Bselect = ${board.select_b};
+       
+       
+       
 </script>

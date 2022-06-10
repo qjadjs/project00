@@ -2,7 +2,7 @@ package com.globalin.domain;
 
 public class Criteria {
 
-	private int pageNum, amount;
+	private int pageNum, amount, btype;
 
 	private String type, keyword;
 
@@ -43,16 +43,26 @@ public class Criteria {
 		this.amount = amount;
 	}
 
+	public int getBtype() {
+		return btype;
+	}
+
+	public void setBtype(int btype) {
+		this.btype = btype;
+	}
+
 	@Override
 	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", type=" + type + ", keyword=" + keyword + "]";
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", btype=" + btype + ", type=" + type
+				+ ", keyword=" + keyword + "]";
 	}
 
 	public String[] getTypeArr() {
 		String[] result = {};
 		if (type == null) {
 		} else {
-			result = type.split("");
+			// btype 1 == > 정치 (P)
+
 		}
 		return result;
 	}

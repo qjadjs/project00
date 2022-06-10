@@ -62,7 +62,7 @@ response.setDateHeader("Expires", 0L);
                   
       <input type="button" class="btn" value="메인으로" onclick="location.href='/'">
       <input type="button" value="회원정보수정" class="btn" onclick="updateId()">
-   <input type="button" value="로그아웃" class="btn" onclick="location.href='/user/logout'">
+   <input type="button" value="로그아웃" class="btn" onclick="location.href='/user/mylogout'">
    <input type="button" value="회원탈퇴" class="btn" onclick="deleteId()"><br>
 
    <input type="button" value="내가 쓴 게시글" class="btn" onclick="MyBoard()" style="font-size:12px";>
@@ -71,24 +71,37 @@ response.setDateHeader("Expires", 0L);
    <script type="text/javascript">
   function deleteId(){
 		var url="/user/delete";
-		
-		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+			 var _width = "505";
+		   var _height = "320";
+		 var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2);
+		window.open(url, "_blank_1", "toolbar=no,menubar=no,scrollbars=yes,resizable=no,width="+_width+",height="+_height+ ",left=" + _left + ",top="+ _top);
 	}
   
   function updateId(){
 	  var url="/user/update";
-	  
-	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+	   var _width = "505";
+		   var _height = "575";
+		 var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2);
+		window.open(url, "_blank_1", "toolbar=no,menubar=no,scrollbars=yes,resizable=no,width="+_width+",height="+_height+ ",left=" + _left + ",top="+ _top);
   }
   function MyBoard(){
 	  var url="/user/MyBoard";
-	  
-	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+	   var _width = "600";
+		   var _height = "575";
+		 var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2);
+		window.open(url, "_blank_1", "toolbar=no,menubar=no,scrollbars=yes,resizable=no,width="+_width+",height="+_height+ ",left=" + _left + ",top="+ _top);
   }
   function MyReply(){
 	  var url="/user/MyReply";
 	  
-	  window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=500");
+	   var _width = "505";
+		   var _height = "575";
+		 var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2);
+		window.open(url, "_blank_1", "toolbar=no,menubar=no,scrollbars=yes,resizable=no,width="+_width+",height="+_height+ ",left=" + _left + ",top="+ _top);
   }
   </script>
    </form>
