@@ -211,6 +211,16 @@ public class BoardController {
 		return "/board/get";
 
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/checkSelect", method = RequestMethod.POST)
+	public String checkSelect(String userId, int bno) throws Exception{
+		SelectVO select = Sservice.selectType(bno, userId);
+		String stype = select.getStype();
+		log.info("stype :" + stype);
+		return stype;
+	}
+	
 
 	@ResponseBody
 	@RequestMapping(value = "/updateLike", method = RequestMethod.POST)

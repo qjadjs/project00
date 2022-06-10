@@ -50,6 +50,7 @@
 </head>
 <body class="b1">
   <%@include file ="../board/Header2.jsp" %>
+  <button onclick="checkSelect()">체크용</button>
     
    <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
@@ -259,6 +260,32 @@
         
 
          showReplyPage(replyCnt);
+         
+         function checkSelect(){
+ 			var userId = "${login.userId}"; 
+ 	    	var bnoValue = '<c:out value="${board.bno}"/>';
+
+ 	    	  $.ajax({
+ 	              type : "POST",  
+ 	              url : "/board/checkSelect",         
+ 	              data : {'userId' : userId, 'bno' : bnoValue},
+ 	              error : function(e){
+ 	            	  console.log(e);
+ 	                      alert("에러입니다");
+ 	              },
+ 	              success : function(stype) {
+ 	                  if(stype == "a"){
+ 	                	$("#title3").css("background" , "#ff953e");
+ 	               	   	$("#title3").css("color" , "black");
+ 	                  } else if(stype == "b"){
+ 	                	$("#title4").css("background" , "#ff953e");
+ 	               	   	$("#title4").css("color" , "black");
+ 	                  } 
+ 	              }
+ 	          });
+ 	    	  
+ 	      };
+
       });
       }
          
@@ -507,4 +534,31 @@
        
        
        
+</script>
+<script type="text/javascript">
+function checkSelect(){
+			var userId = "${login.userId}"; 
+	    	var bnoValue = '<c:out value="${board.bno}"/>';
+
+	    	  $.ajax({
+	              type : "POST",  
+	              url : "/board/checkSelect",         
+	              data : {'userId' : userId, 'bno' : bnoValue},
+	              error : function(e){
+	            	  console.log(e);
+	                      alert("에러입니다");
+	              },
+	              success : function(stype) {
+	                  if(stype == "a"){
+	                	$("#title3").css("background" , "#ff953e");
+	               	   	$("#title3").css("color" , "black");
+	                  } else if(stype == "b"){
+	                	$("#title4").css("background" , "#ff953e");
+	               	   	$("#title4").css("color" , "black");
+	                  } 
+	              }
+	          });
+	    	  
+	      };
+
 </script>
