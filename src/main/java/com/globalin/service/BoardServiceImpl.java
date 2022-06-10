@@ -55,8 +55,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> getListWithType(Criteria cri, int btype) {
-		return boardDao.getListWithPagingWithType(cri, btype);
+	public List<BoardVO> getListWithType(Criteria cri) {
+		return boardDao.getListWithPagingWithType(cri);
 	}
 
 	@Override

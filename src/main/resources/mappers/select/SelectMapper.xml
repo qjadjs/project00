@@ -56,4 +56,27 @@ select count(*) from tbl_select where bno = #{bno} and stype = #{stype}
 select count(*) from tbl_select where bno = #{bno}
 </select>
 
+<update id="updateSelectAtype">
+update tbl_board set 
+select_a = select_a +1
+where BNO = #{bno}
+</update>
+
+<update id="updateCancelA">
+update tbl_board set 
+select_a = select_a - 1
+where BNO = #{bno}
+</update>
+<update id="updateSelectBtype">
+update tbl_board set 
+select_b = select_b +1
+where BNO = #{bno}
+</update>
+<update id="updateCancelB">
+update tbl_board set 
+select_b = select_b - 1
+where BNO = #{bno}
+</update>
+
+
 </mapper>

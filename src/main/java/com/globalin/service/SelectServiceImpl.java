@@ -63,4 +63,28 @@ public class SelectServiceImpl implements SelectService {
 	public int selectAllCount(int bno) throws Exception {
 		return selectDao.selectAllCount(bno);
 	}
+	
+	@Override
+	public void updateSelectAtype(int bno) throws Exception {
+		selectDao.updateSelect(bno);
+		selectDao.updateSelectAtype(bno);
+	}
+	
+	@Override
+	public void updateCancelA(int bno) throws Exception {
+		selectDao.updateSelectCancel(bno);
+		selectDao.updateCancelA(bno);
+	}
+	
+	@Override
+	public void updateSelectBtype(int bno) throws Exception {
+		selectDao.updateSelect(bno);
+		selectDao.updateSelectBtype(bno);
+	}
+	
+	@Override
+	public void updateCancelB(int bno) throws Exception {
+		selectDao.updateSelectCancel(bno);
+		selectDao.updateCancelB(bno);
+	}
 }

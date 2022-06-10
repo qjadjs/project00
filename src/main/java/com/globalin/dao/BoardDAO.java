@@ -22,7 +22,7 @@ public interface BoardDAO {
 	
 	List<BoardVO> getListWithPaging(Criteria cri);
 	
-	List<BoardVO> getListWithPagingWithType(Criteria cri, int btype);
+	List<BoardVO> getListWithPagingWithType(Criteria cri);
 	
 	void insertSelectKey(BoardVO board);
 	

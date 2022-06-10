@@ -157,12 +157,9 @@
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
-<<<<<<< HEAD
-=======
   		<c:if test="${login.userName != null}">  		 
        
   		</c:if>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
   		<hr> 		
 	</div>
       </li>

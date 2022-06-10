@@ -28,10 +28,10 @@
 			</div>
 			<div>
 			<select id="btype" onchange="listChange(this)">
-			<option value="0" selected="selected">전체 글보기
-			<option value="1">정치
-			<option value="2">스포츠
-			<option value="3">문화
+			<option value="0" selected="selected">전체 글보기</option>
+			<option value="1">정치</option>
+			<option value="2">스포츠</option>
+			<option value="3">문화</option>
 			</select>
 			</div>
 			<div class="panel-body">
@@ -195,7 +195,30 @@
 		})
 	})
 	function listChange(obj){
-		
+		var sbtype = obj;
+		var cri = null;
+		$.ajax({
+ 		   type : "POST",
+ 		   url : "/board/listCheck",
+ 		   data : {'cri' : {
+ 			  pageNum : 1, 
+ 			  amount : 10, 
+ 			  btype : sbtype,
+ 			  type : null, 
+ 			  keyword : null
+ 		   } },
+            error : function(){
+               alert("오류가 발생하였습니다");
+            },
+            success : function(list) {
+                		if(btype == 0){
+                			location.href='/board/list';
+                		}else if (btype != 0){
+                			$(this).list = list;
+                			location.reload();
+                		}
+            }
+        }); 
 	}
 	
 </script>
