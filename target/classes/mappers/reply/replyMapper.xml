@@ -54,6 +54,7 @@
         FROM tbl_reply r, tbl_board a
         WHERE r.user_id = #{userId}
        and r.bno = a.bno
+       ORDER BY bno DESC, regdate DESC
 	</select>
 	<insert id="insert">
 		insert into tbl_reply (rno, bno, reply, replyer,

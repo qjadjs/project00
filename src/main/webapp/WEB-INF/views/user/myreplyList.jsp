@@ -27,9 +27,9 @@
                   <tr>
                      <td><c:out value="${myreply.bno }" /></td>
                      <td><a class="move" href="javascript:goList(${myreply.bno });"><c:out
-                              value="${myreply.boardVO.title }" />
+                              value="${myreply.boardVO.title }" escapeXml="false" />
                         </a></td>
-                     <td><c:out value="${myreply.reply }" /></td>
+                     <td><c:out value="${myreply.reply }" escapeXml="false"/></td>
                      <td><fmt:formatDate pattern="yyyy-MM-dd"
                            value="${myreply.replyDate }" /></td>
                   </tr>
