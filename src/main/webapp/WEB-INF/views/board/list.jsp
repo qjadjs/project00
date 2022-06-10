@@ -29,9 +29,9 @@
 			<div>
 			<select id="btype" onchange="listChange(this)">
 			<option value="0" selected="selected">전체 글보기</option>
-			<option value="1">정치</option>
+			<option value="1">게임</option>
 			<option value="2">스포츠</option>
-			<option value="3">문화</option>
+			<option value="3">기타</option>
 			</select>
 			</div>
 			<div class="panel-body">

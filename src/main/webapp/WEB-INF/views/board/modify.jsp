@@ -41,9 +41,9 @@
 				value='<c:out value="${cri.keyword}"/>'> <br> <br>
             <select name="btype">
             <option value="">게시판을 선택해주세요
-            <option value="1" >정치
+            <option value="1" >게임
             <option value="2">스포츠
-            <option value="3">문화
+            <option value="3">기타
 			</select>            
 				<div class="y1">
 			 <textarea id="summernote1" name="content1"><c:out value="${board.content1}"/></textarea>
@@ -125,7 +125,10 @@ var setting = {
 	         alert("내용을 입력해주세요");
 	         return false;
 	      }
-
+		 if(btype.trim() == 0){
+	    	  alert("게시판을 선택해주세요");
+	    	  return false;
+	      }
 		frm.submit();
 
 	};

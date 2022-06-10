@@ -36,9 +36,9 @@
             <input class="h1" type="text" name="title" placeholder="제목">
             <select name="btype">
             <option selected="selected" value="0">게시판을 선택해주세요
-            <option value="1">정치
+            <option value="1">게임
             <option value="2">스포츠
-            <option value="3">문화
+            <option value="3">기타
             </select>
             <div class="y1">
          <textarea id="summernote1" name="content1"></textarea>
