@@ -48,9 +48,8 @@
     }
 </style>
 </head>
-<body class="b1">
+<body class="b1" onload="checkSelect()">
   <%@include file ="../board/Header2.jsp" %>
-  <button onclick="checkSelect()">체크용</button>
     
    <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
@@ -546,7 +545,6 @@ function checkSelect(){
 	              data : {'userId' : userId, 'bno' : bnoValue},
 	              error : function(e){
 	            	  console.log(e);
-	                      alert("에러입니다");
 	              },
 	              success : function(stype) {
 	                  if(stype == "a"){
