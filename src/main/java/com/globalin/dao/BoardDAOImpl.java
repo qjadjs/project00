@@ -59,6 +59,11 @@ public class BoardDAOImpl implements BoardDAO {
 		log.info("리스트 조회...");
 		return sqlSession.selectList(NameSpace + ".listAll");
 	}
+	
+	@Override
+	public List<BoardVO> listAllType(int btype) throws Exception {
+		return sqlSession.selectList(NameSpace + ".", btype);
+	}
 
 	@Override
 	public List<BoardVO> getListWithPaging(Criteria cri) {
@@ -81,6 +86,11 @@ public class BoardDAOImpl implements BoardDAO {
 	public int getTotalCount(Criteria cri) {
 		log.info("");
 		return sqlSession.selectOne(NameSpace + ".getTotalCount", cri);
+	}
+	
+	@Override
+	public int getTotalCountType(int btype) {
+		return sqlSession.selectOne(NameSpace + ".getTotalCountType", btype);
 	}
 
 	@Override

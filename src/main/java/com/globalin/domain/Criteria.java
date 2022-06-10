@@ -25,6 +25,7 @@ public class Criteria {
 	public Criteria() {
 		this.pageNum = 1;
 		this.amount = 10;
+		this.btype = 0;
 	}
 
 	public int getPageNum() {

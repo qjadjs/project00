@@ -20,6 +20,8 @@ public interface BoardDAO {
 	
 	List<BoardVO> listAll() throws Exception;
 	
+	List<BoardVO> listAllType(int btype) throws Exception;
+	
 	List<BoardVO> getListWithPaging(Criteria cri);
 	
 	List<BoardVO> getListWithPagingWithType(Criteria cri);
@@ -27,6 +29,8 @@ public interface BoardDAO {
 	void insertSelectKey(BoardVO board);
 	
 	int getTotalCount(Criteria cri);
+	
+	int getTotalCountType(int btype);
 
 	void updateReplyCnt(@Param("bno") int bno, @Param("amount") int amount);
 	
