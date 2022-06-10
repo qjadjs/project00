@@ -84,7 +84,24 @@ public class UserLoginController {
 				}
 			} return "/user/logout";
 	}
-
+	
+	
+	@RequestMapping(value = "/mylogout", method = RequestMethod.GET) 
+	public String mylogout(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) throws Exception { 
+		Object object = httpSession.getAttribute("login"); 
+		if (object != null) { 
+			UserVO userVO = (UserVO) object;
+			httpSession.removeAttribute("login");
+			httpSession.invalidate(); 
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			if (loginCookie != null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0); 
+				response.addCookie(loginCookie);
+				userService.keepLogin(userVO.getUserId(), "none", new Date());
+				}
+			} return "/user/mylogout";
+	}
 
 	
 }

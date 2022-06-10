@@ -35,6 +35,17 @@
       .re {
         word-break: keep-all;
       }
+     .get-content {
+	cursor: pointer;
+}
+#title3:hover{
+		color:white;
+        background-color: gray;
+    }
+    #title4:hover{
+		color:white;
+        background-color: gray;
+    }
 </style>
 </head>
 <body class="b1">
@@ -69,36 +80,36 @@
          
 
          <div id="div-img" style="display:flex; justify-content:center;">
-         <div id="title1" name="content" class="get-content" onclick="updateSelectA(); return false;">
+         <div id="title1" name="content" class="get-content" >
 
             <c:out value="${board.content1}" escapeXml="false" /> 
          </div>
          <img id="vs-img" src="/resources/assets/vs.png">
-         <div id="title2" name="content" class="get-content" onclick="updateSelectB(); return false;">
+         <div id="title2" name="content" class="get-content" >
             <c:out value="${board.content2}" escapeXml="false" /> 
          </div>
          </div>
          <div>
-         <div id="title3" name="content" class="get-content"
+         <div id="title3" name="content" class="get-content" onclick="updateSelectA(); return false;"
       style="float: left;  border: solid 1px; width: 50%; min-width:50%; text-align: center;border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content3}" escapeXml="false" /> 
          </div>
-         <div id="title4" name="content" class="get-content"
+         <div id="title4" name="content" class="get-content" onclick="updateSelectB(); return false;"
          style="float: right;  border: solid 1px;width:50%; min-width:50%; text-align:center; border-radius: 10px; font-size:17px; min-height:50px;">
             <c:out value="${board.content4}" escapeXml="false" /> 
          </div>
          <input type="hidden" value='<c:out value="${board.btype }"/>'>
          </div>
-         <div id="t3-div" style="display:flex; margin-top:5rem; justify-content:center">
-         <div  style="margin-right:1px;">
-   <button style="background:#5858FA; border-color:#5858FA;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"> 추천 ${board.likeCnt}</button>
-</div>
-<div  style="margin-right:1px;">
-   <button type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;">비추 ${board.dislikeCnt}</button>
-</div>
-</div>
          
          </div>
+         <div id="t3-div" style="display:flex; margin-top:1rem; justify-content:center">
+         <div  style="margin-right:1px;">
+   <button style="background:white; border-color:green; color:black;" type="button" class="btn btn-warning " id="like_btn" onclick="updateLike(); return false;"><img src="/resources/assets/up.jpg" width="30" height="30"> ${board.likeCnt}</button>
+</div>
+<div  style="margin-right:1px;">
+   <button style="background:white; border-color:red; color:black;" type="button" class="btn btn-danger " id="like_btn" onclick="updateDisLike(); return false;"><img src="/resources/assets/down.jpg" width="30" height="30"> ${board.dislikeCnt}</button>
+</div>
+</div>
         
         <div class="modify-remove-div">
          <c:choose>
