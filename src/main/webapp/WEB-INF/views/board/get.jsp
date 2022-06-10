@@ -38,7 +38,7 @@
 </style>
 </head>
 <body class="b1">
-  <%@include file ="../board/Header2.jsp" %>
+  <%@include file ="../board/Header2.jsp" %>z
     
    <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
@@ -157,12 +157,6 @@
   		<button type="button" class="replyUpdateBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">수정</button>
   		<button type="submit" class="replyDeleteBtn" data-rno="${replyList.rno}" style="border-radius: 0.25rem; border-color: white;">삭제</button> 
   		</c:if>       
-<<<<<<< HEAD
-=======
-  		<c:if test="${login.userName != null}">  		 
-       
-  		</c:if>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
   		<hr> 		
 	</div>
       </li>

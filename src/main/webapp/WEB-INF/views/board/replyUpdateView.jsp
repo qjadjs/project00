@@ -10,17 +10,15 @@
 	</head>
 		<script type="text/javascript">
 		$(document).ready(function(){
-			var formObj = $("form[name='updateForm']");
-			
-			$(".btn").on("click", function(){
-				location.href = "/board/get?bno=${replyUpdate.bno}"
-					   + "&pageNum=${cri.pageNum}"
-					   + "&amount=${cri.amount}"
-					   + "&type=${cri.type}"
-					   + "&keyword=${cri.keyword}";
-			});
-			
-		})
+			$(".close_btn").on("click", function(){
+				window.close();
+			})
+			$(".btn").on(click, function(){
+				opener.parent.location.reload();
+				alert("수정되었습니다.")
+				window.close();
+			})
+		});
 	</script>
 	
 	
@@ -55,7 +53,7 @@
 					</table>
 					<div>
 						<button type="submit" class="btn">수정</button>
-						<button type="button" class="btn">취소</button>
+						<button type="button" class="close_btn">취소</button>
 					</div>
 				</form>
 			</section>
