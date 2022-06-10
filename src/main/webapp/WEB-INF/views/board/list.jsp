@@ -195,18 +195,19 @@
 		})
 	})
 	function listChange(obj){
-		var sbtype = obj;
-		var cri = null;
+		var sbtype = $("#btype").val();
+		var scri = {
+	 			  pageNum : 1, 
+	 			  amount : 10, 
+	 			  btype : sbtype,
+	 			  type : null, 
+	 			  keyword : null
+	 		   };
 		$.ajax({
  		   type : "GET",
  		   url : "/board/listCheck",
- 		   data : cri {
- 			  pageNum : 1, 
- 			  amount : 10, 
- 			  btype : sbtype,
- 			  type : null, 
- 			  keyword : null
- 		   } ,
+ 		   datatype: "json",
+ 		   data : {'cri' : scri} ,
             error : function(){
                alert("오류가 발생하였습니다");
             },
