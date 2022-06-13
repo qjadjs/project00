@@ -48,13 +48,9 @@
     }
 </style>
 </head>
-<<<<<<< HEAD
-<body class="b1">
-  <%@include file ="../board/Header2.jsp" %>z
-=======
+
 <body class="b1" onload="checkSelect()">
   <%@include file ="../board/Header2.jsp" %>
->>>>>>> branch 'master' of https://github.com/qjadjs/project00.git
     
    <form id="operForm" action="/board/modify" method="get" style="width: 70%; margin:auto; height:auto; background-color:white;">
       <div>
@@ -368,13 +364,13 @@
 
       //댓글 수정view
    $(".replyUpdateBtn").on("click", function(){
-         var url= "/board/replyUpdateView?bno=${board.bno}"
-        	 + "&pageNum=${cri.pageNum}"
-             + "&amount=${cri.amount}"
-             + "&type=${cri.type}"
-             + "&keyword=${cri.keyword}"
-             + "&rno="+$(this).attr("data-rno");
-             console.log(url);
+         location.href = "/board/replyUpdateView?bno=${board.bno}"
+                       + "&pageNum=${cri.pageNum}"
+                       + "&amount=${cri.amount}"
+                       + "&type=${cri.type}"
+                       + "&keyword=${cri.keyword}"
+                       + "&rno="+$(this).attr("data-rno")
+             			console.log(url);
                       
       });
       

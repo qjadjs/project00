@@ -11,16 +11,14 @@
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$(".close_btn").on("click", function(){
-				window.close();
-			})
-			$(".btn").on("click", function(e){
-				e.preventDefault();
-				$(".d1").submit();
-				opener.parent.location.reload();
-				alert("수정되었습니다.")
-				
-			})
-		});
+				location.href = "/board/get?bno=${replyUpdate.bno}"
+					   + "&pageNum=${cri.pageNum}"
+					   + "&amount=${cri.amount}"
+					   + "&type=${cri.type}"
+					   + "&keyword=${cri.keyword}";
+			});
+			
+		})
 	</script>
 	
 	
