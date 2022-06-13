@@ -9,4 +9,4 @@ FOREIGN KEY (user_ID) REFERENCES tb_user(user_ID) ON DELETE CASCADE,
 FOREIGN KEY (BNO) REFERENCES tbl_BOARD (BNO) ON DELETE CASCADE 
 );
 
-보드테이블에 selectCnt 추가할것
+보드테이블에 selectCnt 추가할것!!
